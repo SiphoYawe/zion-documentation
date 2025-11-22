@@ -1,54 +1,332 @@
 ---
 title: Quickstart
-description: Get started with Zion in 5 minutes
+description: Set up your ACE school in Zion and start tracking Goal Check in 15 minutes
 ---
 
 # Quickstart Guide
 
-Follow these steps to get started with Zion quickly.
+Get your ACE school operational in Zion in just 15 minutes. This guide walks you through the complete setup process from account creation to your first Goal Check.
+
+<Note>
+**New to Zion?** This quickstart is designed for school administrators setting up Zion for the first time. If you&apos;re a supervisor or monitor, your administrator will invite you - skip to [Daily Goal Check Workflow](/guides/supervisor/goal-check).
+</Note>
+
+## Prerequisites
+
+Before you begin, have ready:
+- School information (name, location, contact details)
+- School logo (optional, PNG/JPG, max 2MB)
+- List of learning centres (classrooms)
+- List of teaching staff (names and emails for supervisors/monitors)
+- Student roster (names, grades, learning centre assignments)
+
+<Tip>
+**Pro Tip:** Have your student data in a CSV file? You can bulk import students later to save time.
+</Tip>
 
 ## Step 1: Create Your Account
 
-Visit [zionapp.co](https://zionapp.co) and sign up for a free account.
+<Steps>
+  <Step title="Sign Up">
+    Visit [zionapp.co/sign-up](https://zionapp.co/sign-up) and create your administrator account with your email and password.
+  </Step>
 
-## Step 2: Set Up Your School Profile
+  <Step title="Verify Email">
+    Check your inbox for the verification email from Clerk and click the verification link.
+  </Step>
 
-1. Navigate to **Settings** > **School Profile**
-2. Enter your school information
-3. Upload your school logo (optional)
-4. Click **Save**
+  <Step title="Create Organization">
+    Upon first login, you&apos;ll be prompted to create your school organization. Enter your school name and submit.
+  </Step>
+</Steps>
+
+**Time Required:** 2 minutes
+
+---
+
+## Step 2: Complete School Onboarding
+
+Zion&apos;s guided onboarding wizard will walk you through four essential setup steps. You&apos;ll be automatically redirected to `/onboarding` after creating your organization.
+
+### School Profile
+
+<Steps>
+  <Step title="Enter School Details">
+    - School name (auto-filled from organization)
+    - Location (city and country)
+    - Contact email and phone number
+    - Time zone (e.g., "Africa/Kampala")
+  </Step>
+
+  <Step title="Upload Logo (Optional)">
+    Click "Upload Logo" and select your school logo. This will appear in reports and navigation.
+  </Step>
+
+  <Step title="Save and Continue">
+    Click "Save & Continue" to proceed to academic terms.
+  </Step>
+</Steps>
+
+### Academic Terms
+
+<Steps>
+  <Step title="Create First Term">
+    Click "Add Term" and enter:
+    - Term name (e.g., "Term 1 2025")
+    - Start date (e.g., October 1, 2025)
+    - End date (e.g., December 20, 2025)
+  </Step>
+
+  <Step title="Mark as Active">
+    Check "Set as active term" to indicate this is your current term. Goal Check data will be tracked within this term.
+  </Step>
+
+  <Step title="Add More Terms (Optional)">
+    You can add all your terms now or add them later. Click "Save & Continue" when ready.
+  </Step>
+</Steps>
+
+### Learning Centres
+
+<Steps>
+  <Step title="Create Learning Centres">
+    Add each classroom/learning centre:
+    - Centre name (e.g., "Faith Centre", "Grace Centre", "Hope Centre")
+    - Description (optional)
+    - Capacity (optional, e.g., 25 students)
+  </Step>
+
+  <Step title="Add Multiple Centres">
+    Click "Add Another Centre" to create additional centres. Most ACE schools have 3-10 learning centres.
+  </Step>
+
+  <Step title="Save and Continue">
+    Click "Save & Continue" when all centres are added.
+  </Step>
+</Steps>
+
+### Invite Teaching Staff
+
+<Steps>
+  <Step title="Invite Supervisors">
+    For each supervisor:
+    - Full name
+    - Email address
+    - Role: Select "Supervisor"
+    - Assigned centres: Select which learning centres they supervise
+  </Step>
+
+  <Step title="Invite Monitors">
+    For each monitor:
+    - Full name
+    - Email address
+    - Role: Select "Monitor"
+    - Assigned centres: Select which centres they assist in
+  </Step>
+
+  <Step title="Send Invitations">
+    Click "Send Invitations" and staff will receive email invitations with instructions to set their passwords and access Zion.
+  </Step>
+
+  <Step title="Complete Onboarding">
+    Click "Complete Setup" to finish onboarding. You&apos;ll be redirected to your administrator dashboard.
+  </Step>
+</Steps>
+
+**Time Required:** 10 minutes
+
+---
 
 ## Step 3: Add Students
 
+Now that your school structure is ready, add your student roster.
+
+### Option A: Add Students Individually
+
 <Steps>
   <Step title="Navigate to Students">
-    Click on **Students** in the sidebar navigation
+    Click "Students" in the sidebar navigation.
   </Step>
-  <Step title="Add New Student">Click the **Add Student** button</Step>
-  <Step title="Enter Student Details">
-    Fill in the student&apos;s name, grade level, and other information
+
+  <Step title="Click Add Student">
+    Click the "Add Student" button in the top right.
   </Step>
-  <Step title="Save">Click **Save** to add the student to your system</Step>
+
+  <Step title="Fill Student Form">
+    Enter student information:
+    - Full name
+    - Student ID (optional, your internal ID)
+    - Date of birth
+    - Grade level (1-12)
+    - Assigned learning centre
+    - Parent email and phone (optional)
+  </Step>
+
+  <Step title="Save Student">
+    Click "Save" to add the student to your roster.
+  </Step>
 </Steps>
 
-## Step 4: Create Reading Goals
+### Option B: Bulk Import via CSV (Recommended for 20+ students)
 
-1. Select a student from your student list
-2. Click **Set Goal**
-3. Configure the goal parameters (pages per day, duration, etc.)
-4. Click **Create Goal**
+<Steps>
+  <Step title="Download CSV Template">
+    On the Students page, click "Import CSV" and then "Download Template" to get the correct CSV format.
+  </Step>
+
+  <Step title="Fill CSV File">
+    Open the template in Excel and fill in student data with columns:
+    - name (required)
+    - student_id (optional)
+    - dob (format: YYYY-MM-DD)
+    - grade (1-12)
+    - centre (exact learning centre name)
+    - parent_email (optional)
+    - parent_phone (optional)
+  </Step>
+
+  <Step title="Upload CSV">
+    Click "Import CSV", select your file, and click "Upload". Zion will validate your data and show any errors.
+  </Step>
+
+  <Step title="Confirm Import">
+    Review the validation results. If all rows are valid, click "Confirm Import" to create all students at once.
+  </Step>
+</Steps>
+
+**Time Required:** 3-5 minutes (individual) or 2 minutes + prep time (CSV)
+
+---
+
+## Step 4: Assign PACEs to Students
+
+Students need PACE assignments before you can set daily goals. Zion includes the complete ACE PACE catalog (144 PACEs, 1001-1144).
+
+<Steps>
+  <Step title="Open Student Detail">
+    Click any student from the Students list to view their detail page.
+  </Step>
+
+  <Step title="Click Assign PACE">
+    In the "Current PACEs" section, click "Assign PACE" or "Manage PACEs".
+  </Step>
+
+  <Step title="Select PACEs">
+    A modal opens with the PACE catalog. Select 4-5 PACEs across different subjects for the student:
+    - Example: Math 1005, English 1015, Science 1025, Social Studies 1035
+  </Step>
+
+  <Step title="Save Assignments">
+    Click "Save" and the PACEs will appear in the student&apos;s profile.
+  </Step>
+
+  <Step title="Repeat for All Students">
+    Repeat this process for all students. Each student can have individualized PACE assignments based on their progression.
+  </Step>
+</Steps>
+
+<Tip>
+**Time Saver:** Most students in the same grade level will have similar PACE assignments. Assign PACEs to one student, then use their assignments as a reference for others.
+</Tip>
+
+**Time Required:** 5-10 minutes for 20-30 students
+
+---
+
+## Step 5: Set Your First Daily Goals
+
+You&apos;re ready to use Zion&apos;s Goal Check feature! Let&apos;s set today&apos;s goals.
+
+<Steps>
+  <Step title="Navigate to Goal Check">
+    Click "Goal Check" in the sidebar, then click "Set Goals".
+  </Step>
+
+  <Step title="Select Today's Date">
+    The date picker defaults to today. Confirm the date is correct.
+  </Step>
+
+  <Step title="Enter Goal Pages">
+    For each student and PACE, enter:
+    - Goal start page (e.g., 15)
+    - Goal end page (e.g., 20)
+    - Total pages auto-calculates (6 pages in this example)
+  </Step>
+
+  <Step title="Use Quick Templates (Optional)">
+    Click "Copy Previous Day" to pre-fill goals from yesterday, or use standard templates:
+    - Grades 1-4: 5 pages per day
+    - Grades 5-8: 8 pages per day
+    - Grades 9-12: 10 pages per day
+  </Step>
+
+  <Step title="Goals Auto-Save">
+    As you type, goals auto-save. No "Submit All" button needed. Navigate away when done.
+  </Step>
+</Steps>
+
+**Time Required:** 5 minutes for 20 students (vs. hours of manual compilation!)
+
+---
+
+## Step 6: View Your Dashboard
+
+<Steps>
+  <Step title="Navigate to Dashboard">
+    Click "Dashboard" in the sidebar to see your school&apos;s real-time status.
+  </Step>
+
+  <Step title="Explore Dashboard Sections">
+    - **Today&apos;s Snapshot:** Total students, completion %, at-risk count
+    - **Weekly Trends:** 7-day completion rate chart
+    - **Centre Performance:** Which centres are performing well
+    - **Quick Actions:** Shortcuts to Goal Check, Students, Reports
+  </Step>
+
+  <Step title="Mark Progress (End of Day)">
+    When students complete their goals, navigate to "Goal Check" → "Mark Progress" and enter actual pages completed for each student.
+  </Step>
+</Steps>
+
+---
 
 ## Next Steps
 
-<CardGroup cols={2}>
-  <Card title="Track Progress" icon="chart-line" href="/guides/tracking">
-    Learn how to track student reading progress
+<CardGroup cols={3}>
+  <Card title="Daily Workflow" icon="calendar-check" href="/guides/supervisor/goal-check">
+    Learn the morning-to-evening Goal Check workflow for supervisors and monitors
   </Card>
-  <Card
-    title="Generate Reports"
-    icon="file-chart-column"
-    href="/guides/reports"
-  >
-    Create comprehensive reading reports
+
+  <Card title="Generate Reports" icon="file-pdf" href="/features/goal-check/reports">
+    Create daily centre reports and weekly school reports in seconds
+  </Card>
+
+  <Card title="Administrator Guide" icon="user-shield" href="/guides/administrator/onboarding">
+    Explore the complete administrator handbook for advanced features
   </Card>
 </CardGroup>
+
+## Need Help?
+
+<CardGroup cols={2}>
+  <Card title="Watch Video Tutorial" icon="video" href="https://zionapp.co/tutorials">
+    See Zion in action with our step-by-step video guide
+  </Card>
+
+  <Card title="Contact Support" icon="life-ring" href="/support">
+    Get help from our team - we&apos;re here for you
+  </Card>
+</CardGroup>
+
+## You&apos;re All Set! 🎉
+
+Congratulations! Your school is now operational in Zion. You&apos;ve completed:
+
+- ✅ School profile and academic terms configured
+- ✅ Learning centres created
+- ✅ Teaching staff invited
+- ✅ Student roster added with PACE assignments
+- ✅ First daily goals set
+- ✅ Dashboard showing real-time intelligence
+
+**The magic begins now:** Tomorrow morning, set goals in 5 minutes. At end of day, mark progress in 5 minutes. Generate daily and weekly reports in under 30 seconds. Reclaim 10+ hours per week! 🚀

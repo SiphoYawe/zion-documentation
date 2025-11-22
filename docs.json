@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
   "name": "Zion",
-  "description": "Zion - Student reading goal tracking and analytics platform",
+  "description": "AI-powered school management system for ACE schools - Transform Goal Check, attendance, and reporting",
   "colors": {
     "primary": "#3B82F6",
     "light": "#F8FAFC",
@@ -38,20 +38,29 @@
             "pages": ["index", "quickstart", "features"]
           },
           {
-            "group": "User Guides",
+            "group": "Administrator Guides",
             "pages": [
-              "guides/students",
-              "guides/goals",
-              "guides/reports",
-              "guides/analytics"
+              "guides/administrator/onboarding"
             ]
           },
           {
-            "group": "Administration",
+            "group": "Supervisor & Monitor Guides",
             "pages": [
-              "admin/school-setup",
-              "admin/user-management",
-              "admin/settings"
+              "guides/supervisor/goal-check"
+            ]
+          },
+          {
+            "group": "Goal Check Features",
+            "pages": [
+              "features/goal-check/overview"
+            ]
+          },
+          {
+            "group": "AI Tools Integration",
+            "pages": [
+              "ai-tools/claude-code",
+              "ai-tools/cursor",
+              "ai-tools/windsurf"
             ]
           }
         ]
@@ -66,7 +75,7 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/yourusername/zion",
+      "github": "https://github.com/siphozion/zion",
       "linkedin": "https://www.linkedin.com/company/zion"
     },
     "links": [
@@ -75,7 +84,7 @@
         "items": [
           {
             "label": "Features",
-            "href": "https://zionapp.co/features"
+            "href": "https://zionapp.co"
           },
           {
             "label": "Pricing",

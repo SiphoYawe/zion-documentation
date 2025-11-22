@@ -1,0 +1,167 @@
+---
+title: Changelog
+description: Latest updates and new features in Zion
+icon: "clock-rotate-left"
+---
+
+# Changelog
+
+Stay up to date with the latest features, improvements, and bug fixes in Zion.
+
+## Version 1.0.0 - Launch (2025-11-22)
+
+### 🎉 Initial Release
+
+Zion Phase 1 (Micro-MVP) is now live with complete Epic 1 and Epic 2 features!
+
+### ✨ Epic 1: Foundation & School Setup
+
+**School Administration:**
+- Multi-tenant school organization setup
+- School profile configuration with logo upload
+- Academic term management (create, edit, activate terms)
+- Learning centre creation and management
+- Timezone configuration for accurate date/time handling
+
+**User Management:**
+- Role-based access control (Administrator, Supervisor, Monitor, Student, Parent)
+- Staff invitation system via email
+- Centre-based user assignments
+- User activation/deactivation
+
+**Student Roster:**
+- Individual student profile creation
+- CSV bulk import for efficient roster setup
+- Student assignment to learning centres
+- Parent contact information
+
+**PACE Curriculum:**
+- Complete ACE PACE catalog (144 PACEs, 1001-1144)
+- 12 subjects across 12 levels
+- Individualized PACE assignments per student
+- Search and filter PACE catalog
+
+### ✨ Epic 2: Goal Check Intelligence
+
+**Daily Goal Setting:**
+- Quick goal entry interface for all students
+- Auto-calculate goal total pages
+- Copy previous day&apos;s goals feature
+- Auto-save functionality
+- Tablet-optimized touch interface
+
+**Progress Tracking:**
+- End-of-day progress marking
+- Actual vs goal variance calculation
+- Optional notes for struggling students
+- Color-coded completion status
+- Real-time dashboard updates
+
+**Dashboards:**
+- **Administrator Dashboard:**
+  - Today&apos;s school-wide snapshot
+  - Weekly trends visualization
+  - Centre performance comparison
+  - At-risk student alerts
+  - Quick action cards
+- **Supervisor Dashboard:**
+  - Centre-scoped data view
+  - Student progress table
+  - My centres&apos; trends
+  - Centre-specific alerts
+  - Report readiness indicators
+
+**Automated Reporting:**
+- Daily centre reports (PDF and CSV)
+- Weekly school reports (PDF and CSV)
+- Centre summary statistics
+- Student-by-student breakdowns
+- At-risk student identification
+- Subject performance analysis
+- Trend indicators (current vs previous week)
+
+**Data Export:**
+- CSV export with flexible filters
+- Complete audit trail in exports
+- Background processing for large exports
+- Export history tracking
+- Date range, centre, student, status, subject filters
+
+**Mobile Optimization:**
+- Responsive design for tablets
+- Touch-friendly interface (≥44px touch targets)
+- Native mobile inputs (number pads, date pickers)
+- Offline detection with status banner
+- Fast load times (<3 seconds)
+
+### 🔧 Technical Infrastructure
+
+- Next.js 15 with App Router
+- TypeScript with strict mode
+- Supabase PostgreSQL database
+- Clerk authentication and organizations
+- Tremor UI component library
+- Hugeicons icon library
+- Row Level Security (RLS) for multi-tenancy
+- Automated database migrations
+- Vercel deployment
+
+### 📚 Documentation
+
+- Comprehensive documentation site at docs.zionapp.co
+- Quickstart guide (15-minute setup)
+- Administrator onboarding handbook
+- Supervisor daily workflow guide
+- Feature documentation
+- FAQ and support resources
+
+---
+
+## Upcoming Features (Phase 2)
+
+### Epic 3: Trend Analysis & Predictive Insights *(Coming Soon)*
+
+- Time-series trend visualization
+- Student-level trend analysis
+- Learning centre comparison insights
+- Subject-level performance analysis
+- Predictive alerts & early warning system
+- Pattern identification & insights engine
+
+### Epic 4: Attendance Tracking *(Month 4)*
+
+- 3-tap attendance marking (Present/Absent/Late)
+- Real-time attendance dashboard
+- Chronic absence alerts
+- Attendance reports integrated with Goal Check
+- Attendance trend analysis
+
+### Epic 5: PACE Grading & 3-Stage Moderation *(Months 5-6)*
+
+- Test score entry workflow
+- 3-stage moderation pipeline (Initial → Internal → External)
+- Pass threshold enforcement (80%/90%)
+- Automatic grade calculations
+- Audit trail for ACE compliance
+
+### Epic 6: Report Card Automation *(Month 7)*
+
+- One-click report card generation
+- Professional PDF formatting
+- Compile all term data (grades, attendance, Goal Check)
+- Bulk distribution to parents
+- Historical report card archive
+
+---
+
+## Get Help
+
+<CardGroup cols={2}>
+  <Card title="Support" icon="life-ring" href="/support">
+    Contact our support team
+  </Card>
+
+  <Card title="FAQ" icon="question-circle" href="/faq">
+    Common questions answered
+  </Card>
+</CardGroup>

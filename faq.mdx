@@ -1,0 +1,246 @@
+---
+title: Frequently Asked Questions
+description: Common questions about Zion answered
+icon: "question-circle"
+---
+
+# Frequently Asked Questions
+
+Find answers to common questions about Zion.
+
+## General
+
+### What is Zion?
+
+Zion is an AI-powered school management system designed specifically for ACE (Accelerated Christian Education) schools. We automate Goal Check, attendance tracking, grading, and reporting - saving administrators 10+ hours per week.
+
+### Who is Zion for?
+
+Zion is built for ACE schools of all sizes. Whether you have 30 students or 300, Zion scales to meet your needs.
+
+### How much does Zion cost?
+
+Visit [zionapp.co/pricing](https://zionapp.co/pricing) for current pricing information. We offer free trials and flexible plans based on school size.
+
+### Is my school&apos;s data secure?
+
+Yes! Zion uses enterprise-grade security:
+- Multi-tenant architecture with complete data isolation
+- Row Level Security (RLS) prevents cross-school data access
+- Encrypted data storage
+- Automatic backups
+- Audit trails for compliance
+- SOC 2 compliance *(in progress)*
+
+---
+
+## Getting Started
+
+### How long does setup take?
+
+**Quickstart:** 15 minutes to get operational
+**Complete Setup:** 30-60 minutes for full school configuration
+
+Our guided onboarding wizard walks you through every step.
+
+### Can I import my existing student roster?
+
+Yes! Zion supports CSV bulk import. Simply download our template, fill in your student data, and upload. We&apos;ll validate and import all students at once.
+
+### Do I need special equipment?
+
+No special equipment required! Zion works on:
+- Any modern web browser (Chrome, Safari, Edge, Firefox)
+- Desktop computers
+- Tablets (iPad, Android tablets)
+- Mobile phones (limited functionality)
+
+We recommend tablets for Goal Check entry (easy on-the-go data entry).
+
+---
+
+## Goal Check
+
+### Do I have to set goals every single day?
+
+For best results, yes. But it only takes 5 minutes with our "Copy Previous Day" feature. Goal Check intelligence requires consistent daily data.
+
+### What if I forget to set goals one morning?
+
+You can set goals anytime - even retroactively for past dates. Students can work from their PACEs while you enter goals.
+
+### What if a student completes different pages than their goal?
+
+That&apos;s perfectly fine! Enter the actual pages they completed. Zion calculates the variance (difference between goal and actual), which helps you adjust future goals and identify trends.
+
+### Can I edit goals after setting them?
+
+Yes, goals are editable until you mark progress. Just go back to "Set Goals" and update.
+
+### How do I know which students need intervention?
+
+Check the "At-Risk Alerts" section on your dashboard. Zion automatically flags students who:
+- Miss goals 3+ consecutive days
+- Show declining trend (>20% drop over 2 weeks)
+- Consistently struggle in specific subjects
+
+---
+
+## Reports
+
+### When can I generate daily centre reports?
+
+Daily centre reports can only be generated when **all students in that centre are marked** for the day. The readiness indicator shows "Ready (X/X students marked)" when you can generate.
+
+### How long do reports take to generate?
+
+**Daily Centre Report:** <30 seconds  
+**Weekly School Report:** <1 minute for 200-student school
+
+Large reports (>100 students) may be processed as background jobs with email notification.
+
+### Can I access historical reports?
+
+Yes! All generated reports are saved to your report history. You can view, download, or regenerate any past report.
+
+### What formats are reports available in?
+
+All reports export in:
+- **PDF:** Professional format for printing/sharing
+- **CSV:** Excel-compatible for custom analysis
+
+---
+
+## Users & Permissions
+
+### What&apos;s the difference between roles?
+
+**Administrator:**
+- Full school access
+- Manage settings, users, students
+- View all data
+- Generate school-wide reports
+
+**Supervisor:**
+- Assigned learning centres only
+- Set goals and mark progress
+- Generate centre reports
+- View centre-scoped dashboard
+
+**Monitor:**
+- Assigned learning centres only
+- Set goals and mark progress
+- Data entry role (no reporting)
+
+**Student/Parent:** *(Coming in Phase 2)*
+- View own data only
+
+### Can supervisors access multiple centres?
+
+Yes! Supervisors can be assigned to multiple learning centres. They&apos;ll see combined data for all assigned centres.
+
+### Can I change a user&apos;s role after inviting them?
+
+Yes, administrators can edit user roles anytime. The user must log out and back in for changes to take effect.
+
+### What happens when I deactivate a user?
+
+Deactivation prevents login but preserves all historical data and audit trails. You can reactivate users anytime.
+
+---
+
+## Students & PACEs
+
+### How many PACEs can a student be assigned?
+
+Students can have unlimited PACE assignments, but typically 4-6 PACEs (one per subject) is standard for individualized learning.
+
+### Can I assign the same PACE to multiple students?
+
+Absolutely! The PACE catalog is shared across all students. Each assignment is independent.
+
+### What happens to student data when they graduate?
+
+When you deactivate a student (graduated/withdrawn), all their historical data is preserved for records and reporting. Deactivated students don&apos;t appear in active lists but remain in historical reports.
+
+### Can I track PACE completion percentage?
+
+Currently, Zion tracks daily goal pages. PACE completion tracking is planned for a future update.
+
+---
+
+## Technical
+
+### What browsers does Zion support?
+
+Zion works on all modern browsers:
+- Google Chrome (recommended)
+- Safari (iOS and macOS)
+- Microsoft Edge
+- Mozilla Firefox
+
+We support the latest 2 versions of each browser.
+
+### Does Zion work offline?
+
+Zion requires internet connection for auto-save and real-time updates. If connection is lost, an offline banner appears. Data will save when connection is restored.
+
+### Can I use Zion on my phone?
+
+Yes, but tablet or desktop is recommended for Goal Check entry. The mobile interface is optimized for viewing dashboards and reports, not data entry.
+
+### How is my data backed up?
+
+Zion uses Supabase PostgreSQL with:
+- Automatic continuous backups
+- Point-in-time recovery
+- Geographic redundancy
+- 99.9% uptime SLA
+
+Your data is safe!
+
+---
+
+## Billing & Subscriptions
+
+### Is there a free trial?
+
+Yes! All new schools get a free trial. Visit [zionapp.co/sign-up](https://zionapp.co/sign-up) to start your trial.
+
+### Can I cancel anytime?
+
+Yes, you can cancel your subscription anytime. Your data remains accessible until the end of your billing period.
+
+### What happens to my data if I cancel?
+
+Your data remains in the system for 90 days after cancellation. During this time, you can export all data or reactivate your subscription.
+
+---
+
+## Future Features
+
+### When is attendance tracking available?
+
+Attendance tracking (Epic 4) is planned for Month 4. Sign up for our newsletter to be notified when it launches!
+
+### When is report card automation available?
+
+Report card automation (Epic 6) is planned for Month 7. We&apos;ll announce the launch date closer to release.
+
+### Can you add [specific feature]?
+
+We love feature requests! Email features@zionapp.co with your idea. We carefully consider all feedback when planning updates.
+
+---
+
+## Still Have Questions?
+
+<CardGroup cols={2}>
+  <Card title="Contact Support" icon="life-ring" href="/support">
+    Get help from our team
+  </Card>
+
+  <Card title="Documentation" icon="book-open" href="/">
+    Browse our comprehensive guides
+  </Card>
+</CardGroup>
