@@ -1,0 +1,111 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "maple",
+  "name": "Zion",
+  "description": "Zion - Student reading goal tracking and analytics platform",
+  "colors": {
+    "primary": "#3B82F6",
+    "light": "#F8FAFC",
+    "dark": "#0F172A"
+  },
+  "logo": {
+    "light": "/images/logo-light.svg",
+    "dark": "/images/logo-dark.svg",
+    "href": "https://zionapp.co"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Go to App",
+        "href": "https://zionapp.co"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Sign Up",
+      "href": "https://zionapp.co/sign-up"
+    }
+  },
+  "navigation": {
+    "dropdowns": [
+      {
+        "dropdown": "Documentation",
+        "icon": "book-open",
+        "description": "Learn how to use Zion",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": ["index", "quickstart", "features"]
+          },
+          {
+            "group": "User Guides",
+            "pages": [
+              "guides/students",
+              "guides/goals",
+              "guides/reports",
+              "guides/analytics"
+            ]
+          },
+          {
+            "group": "Administration",
+            "pages": [
+              "admin/school-setup",
+              "admin/user-management",
+              "admin/settings"
+            ]
+          }
+        ]
+      },
+      {
+        "dropdown": "Resources",
+        "icon": "graduation-cap",
+        "description": "Additional resources",
+        "pages": ["changelog", "support", "faq"]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/yourusername/zion",
+      "linkedin": "https://www.linkedin.com/company/zion"
+    },
+    "links": [
+      {
+        "header": "Product",
+        "items": [
+          {
+            "label": "Features",
+            "href": "https://zionapp.co/features"
+          },
+          {
+            "label": "Pricing",
+            "href": "https://zionapp.co/pricing"
+          }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          {
+            "label": "About",
+            "href": "https://zionapp.co/about"
+          },
+          {
+            "label": "Privacy Policy",
+            "href": "https://zionapp.co/privacy"
+          }
+        ]
+      }
+    ]
+  },
+  "integrations": {
+    "ga4": {
+      "measurementId": "G-XXXXXXXXXX"
+    }
+  },
+  "seo": {
+    "metatags": {
+      "canonical": "https://docs.zionapp.co"
+    }
+  }
+}
