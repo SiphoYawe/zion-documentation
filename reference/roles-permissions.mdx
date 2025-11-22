@@ -1,0 +1,365 @@
+---
+title: Roles & Permissions Matrix
+description: Complete breakdown of user roles and their access levels across Zion features
+icon: "shield"
+---
+
+# Roles & Permissions Matrix
+
+Comprehensive reference for the five user roles in Zion - Administrator, Supervisor, Monitor, Student, and Parent - and what each role can access and perform.
+
+## Role Overview
+
+Zion has **5 user roles**, each with specific permissions designed for their responsibilities in an ACE school:
+
+1. **Administrator** - Full school management and oversight
+2. **Supervisor** - Learning centre management and reporting
+3. **Monitor** - Goal Check data entry only
+4. **Student** - View own progress (future)
+5. **Parent** - View child&apos;s progress (future)
+
+<Note>
+**Student and Parent Portals:** Currently in development. This guide focuses on the three active roles: Administrator, Supervisor, and Monitor.
+</Note>
+
+---
+
+## Complete Permissions Matrix
+
+### School Configuration & Settings
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| Edit School Profile |  Full |  No |  No |  No |  No |
+| View School Profile |  Yes |  Yes |  No |  No |  No |
+| Manage Academic Terms |  Full |  No |  No |  No |  No |
+| Set Active Term |  Yes |  No |  No |  No |  No |
+| Upload School Logo |  Yes |  No |  No |  No |  No |
+| Configure Timezone |  Yes |  No |  No |  No |  No |
+
+### Learning Centre Management
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| Create Learning Centres |  Yes |  No |  No |  No |  No |
+| Edit Centre Details |  Yes |  No |  No |  No |  No |
+| Deactivate Centres |  Yes |  No |  No |  No |  No |
+| Assign Supervisors to Centres |  Yes |  No |  No |  No |  No |
+| View All Centres |  Yes |  Assigned Only |  Assigned Only |  No |  No |
+| Set Centre Capacity |  Yes |  No |  No |  No |  No |
+
+### User & Staff Management
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| Invite Supervisors/Monitors |  Yes |  No |  No |  No |  No |
+| Edit Staff Profiles |  Yes |  No |  No |  No |  No |
+| Change Staff Roles |  Yes |  No |  No |  No |  No |
+| Deactivate Staff |  Yes |  No |  No |  No |  No |
+| View Staff List |  Yes |  View Only |  No |  No |  No |
+| Assign Centres to Staff |  Yes |  No |  No |  No |  No |
+
+### Student Management
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| Add Students (Individual) |  Yes |  No |  No |  No |  No |
+| Bulk Import Students (CSV) |  Yes |  No |  No |  No |  No |
+| Edit Student Profiles |  Yes |  Limited* |  No |  No |  No |
+| Deactivate Students |  Yes |  No |  No |  No |  No |
+| View All Students |  Yes |  Assigned Centre |  Assigned Centre |  No |  No |
+| Reassign Students to Centres |  Yes |  No |  No |  No |  No |
+| Assign PACEs to Students |  Yes |  Own Centre |  No |  No |  No |
+| View Student Goal Check History |  All Students |  Own Centre |  Own Centre |  Own Only |  Own Child |
+
+*Supervisors can add notes but cannot edit core profile fields like name, DOB, grade
+
+### PACE Management
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| View PACE Catalog |  Yes |  Yes |  No |  No |  No |
+| Assign PACEs to Students |  Yes |  Own Centre |  No |  No |  No |
+| Remove PACE Assignments |  Yes |  Own Centre |  No |  No |  No |
+| View Student PACE Assignments |  All Students |  Own Centre |  Own Centre |  Own Only |  Own Child |
+
+### Goal Check - Goal Setting
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| Set Daily Goals |  All Students |  Own Centre |  Own Centre |  No |  No |
+| Edit Goals (Same Day) |  All Students |  Own Centre |  Own Centre |  No |  No |
+| Copy Previous Day Goals |  Yes |  Yes |  Yes |  No |  No |
+| Use Goal Templates |  Yes |  Yes |  Yes |  No |  No |
+| Set Goals for Past Dates |  Yes |  Yes |  Yes |  No |  No |
+| View Goal Entry History |  All |  Own Centre |  Own Centre |  Own Only |  Own Child |
+
+### Goal Check - Progress Marking
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| Mark Daily Progress |  All Students |  Own Centre |  Own Centre |  No |  No |
+| Edit Progress (Same Day) |  All Students |  Own Centre |  Own Centre |  No |  No |
+| Add Notes to Progress |  All Students |  Own Centre |  Own Centre |  No |  No |
+| Mark Progress for Past Dates |  Yes |  Yes |  Yes |  No |  No |
+| View Variance Calculations |  All |  Own Centre |  Own Centre |  Own Only |  Own Child |
+
+### Dashboards & Analytics
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| View Administrator Dashboard |  Yes |  No |  No |  No |  No |
+| View Supervisor Dashboard |  All Centres |  Own Centres |  No |  No |  No |
+| View School-Wide KPIs |  Yes |  No |  No |  No |  No |
+| View Centre Performance |  All Centres |  Own Centres |  No |  No |  No |
+| View Weekly Trends Chart |  School-Wide |  Own Centres |  No |  No |  No |
+| View At-Risk Alerts |  All Students |  Own Centre |  No |  No |  No |
+| View Real-Time Metrics |  Yes |  Own Centres |  No |  Own Only |  Own Child |
+
+### Reports - Generation
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| Generate Daily Centre Reports |  All Centres |  Own Centres |  No |  No |  No |
+| Generate Weekly School Reports |  Yes |  No |  No |  No |  No |
+| Export Reports as PDF |  Yes |  Own Centre |  No |  No |  No |
+| Export Reports as CSV |  Yes |  Own Centre |  No |  No |  No |
+| Schedule Automatic Reports |  Future |  Future |  No |  No |  No |
+| Share Reports via Email |  Yes |  Limited |  No |  No |  No |
+
+### Data Export
+
+| Feature | Administrator | Supervisor | Monitor | Student | Parent |
+|---------|--------------|------------|---------|---------|--------|
+| Export Goal Check Data (CSV) |  All Data |  No |  No |  No |  No |
+| Filter Export by Centre |  Yes |  No |  No |  No |  No |
+| Filter Export by Date Range |  Yes |  No |  No |  No |  No |
+| Filter Export by Student |  Yes |  No |  No |  No |  No |
+| Access Audit Trail in Export |  Yes |  No |  No |  No |  No |
+| Large Export Background Jobs |  Yes |  No |  No |  No |  No |
+
+---
+
+## Role Details
+
+### Administrator
+
+**Primary Responsibilities:**
+- School-wide oversight and strategic planning
+- User and centre management
+- Weekly reporting and analytics
+- Data governance and exports
+- System configuration
+
+**Typical Users:**
+- School Principal
+- Head of School
+- Academic Director
+- Designated Administrator
+
+**Access Level:** Full access to all features and data across entire school
+
+**Count Per School:** Typically 1-3 administrators
+
+---
+
+### Supervisor
+
+**Primary Responsibilities:**
+- Daily Goal Check for assigned centres
+- Student support and progress monitoring
+- Daily centre reports
+- Centre-level analytics
+
+**Typical Users:**
+- Learning Centre Teachers
+- Lead Teachers
+- Full-time ACE Supervisors
+
+**Access Level:** Full access to assigned learning centres only
+
+**Count Per School:** Typically 3-10 supervisors (one per centre minimum)
+
+---
+
+### Monitor
+
+**Primary Responsibilities:**
+- Goal Check data entry (setting goals, marking progress)
+- Assist supervisors with data collection
+- Tablet-based data entry in classroom
+
+**Typical Users:**
+- Teacher Assistants
+- Part-time Staff
+- Volunteer Helpers
+- Student Teachers
+
+**Access Level:** Data entry only for assigned centres, no reporting or analytics
+
+**Count Per School:** Typically 2-5 monitors (supporting supervisors)
+
+**Key Difference from Supervisor:** No dashboard, no report generation, simpler interface focused on data entry
+
+---
+
+### Student (Future Feature)
+
+**Planned Responsibilities:**
+- View own daily goals and progress
+- Track personal completion trends
+- View own PACE assignments
+- See personal achievement metrics
+
+**Access Level:** Own data only, read-only
+
+**Planned Launch:** Q2 2025
+
+---
+
+### Parent (Future Feature)
+
+**Planned Responsibilities:**
+- View child&apos;s daily goals and progress
+- Track child&apos;s completion trends
+- See child&apos;s PACE assignments
+- Receive weekly progress summaries
+
+**Access Level:** Own child&apos;s data only, read-only
+
+**Planned Launch:** Q3 2025
+
+---
+
+## Permission Boundaries
+
+### What Supervisors CANNOT Do
+
+Even though supervisors have significant access, they **cannot**:
+-  Create or edit learning centres
+-  Invite or manage other staff
+-  Add or remove students from the school
+-  Reassign students to different centres
+-  Change school settings (timezone, logo, etc.)
+-  Generate weekly school reports
+-  Export raw Goal Check data
+-  See students from other centres
+
+**Why These Limits:**
+- Maintains data security and privacy
+- Prevents accidental system-wide changes
+- Focuses supervisors on their centres only
+- Reserves strategic functions for administrators
+
+### What Monitors CANNOT Do
+
+Monitors have the most restricted access:
+-  Generate any reports (daily or weekly)
+-  Access any dashboards or analytics
+-  Manage students or PACEs
+-  See historical trends or patterns
+-  Export data
+
+**Why These Limits:**
+- Keeps interface simple for data entry focus
+- Prevents information overload
+- Reserves analysis to supervisors and administrators
+- Ideal for part-time or assistant staff
+
+---
+
+## Role Assignment Best Practices
+
+### Choosing the Right Role
+
+**Use Administrator for:**
+- School leadership responsible for whole-school decisions
+- Staff managing all learning centres
+- Personnel handling system configuration
+- Users needing weekly school reports
+
+**Use Supervisor for:**
+- Full-time learning centre teachers
+- Staff responsible for daily centre management
+- Personnel who need centre dashboards and daily reports
+- Users managing students in their centre
+
+**Use Monitor for:**
+- Part-time teaching assistants
+- Volunteer helpers with data entry tasks
+- Staff who only need to enter Goal Check data
+- Users who don&apos;t need analytics or reporting
+
+### Common Role Assignment Scenarios
+
+**Small School (50 students, 3 centres):**
+- 1 Administrator (Principal)
+- 3 Supervisors (one per centre)
+- 1-2 Monitors (float between centres as needed)
+
+**Medium School (150 students, 6 centres):**
+- 2 Administrators (Principal + Academic Director)
+- 6 Supervisors (one per centre)
+- 3-4 Monitors (support various centres)
+
+**Large School (300 students, 12 centres):**
+- 3 Administrators (Principal + 2 Academic Directors)
+- 12-15 Supervisors (1-2 per centre)
+- 6-8 Monitors (support across centres)
+
+---
+
+## Security & Data Privacy
+
+### Data Access Principles
+
+**Need-to-Know Basis:**
+- Users only see data necessary for their role
+- Supervisors don&apos;t see other centres (prevents comparison, maintains privacy)
+- Monitors don&apos;t see analytics (focus on data entry)
+
+**Audit Trail:**
+- All actions tracked with user name and timestamp
+- Shows who set goals, who marked progress, who generated reports
+- Immutable history for accountability
+
+**Role Changes:**
+- When role changes (Supervisor → Monitor), access adjusts immediately
+- Historical data shows what role user had when action was performed
+- No data is deleted when roles change
+
+### Recommended Policies
+
+**DO:**
+- Review staff access quarterly (deactivate unused accounts)
+- Use least-privilege principle (don&apos;t make everyone administrator)
+- Document who has which role and why
+- Train staff on their role limitations
+
+**DON&apos;T:**
+- Share login credentials between staff
+- Give administrator access unless truly needed
+- Keep deactivated staff accounts active "just in case"
+- Make monitors into supervisors just to see dashboards
+
+---
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Staff Management" icon="users" href="/guides/administrator/staff-management">
+    How to invite staff and assign roles
+  </Card>
+
+  <Card title="Learning Centres" icon="building" href="/guides/administrator/learning-centres">
+    Assign supervisors to centres for access control
+  </Card>
+
+  <Card title="Goal Check Overview" icon="target" href="/features/goal-check/overview">
+    Understand what each role does in Goal Check
+  </Card>
+
+  <Card title="Reports Guide" icon="file-pdf" href="/guides/administrator/reports">
+    Who can generate which reports
+  </Card>
+</CardGroup>

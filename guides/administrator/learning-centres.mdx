@@ -1,0 +1,547 @@
+---
+title: Learning Centre Management
+description: Create, configure, and manage learning centres (classrooms) for your ACE school
+icon: "building"
+---
+
+# Learning Centre Management
+
+Learning centres are your classrooms in Zion - the organizational units where students are grouped and supervisors work. This guide covers creating centres, assigning supervisors, managing capacity, and deactivating centres when needed.
+
+<Note>
+**ACE Terminology:** Learning centres are what ACE schools call classrooms. Each centre typically has 10-25 students and at least one supervisor.
+</Note>
+
+## Learning Centre Overview
+
+**What Is a Learning Centre:**
+- Organizational unit representing a classroom
+- Has a name (e.g., "Faith Centre", "Grace Centre")
+- Contains students assigned to that classroom
+- Has one or more assigned supervisors
+- Optional capacity limit (max students)
+
+**Why Learning Centres Matter:**
+- Organize students into manageable groups
+- Scope supervisor access (supervisors only see their centres)
+- Enable centre-level reporting and analysis
+- Structure your school in Zion to match physical layout
+
+---
+
+## Creating Learning Centres
+
+### Before You Create Centres
+
+**Planning Questions:**
+1. How many physical classrooms do you have?
+2. How will you group students (by age, grade, ability)?
+3. What naming convention will you use?
+4. What&apos;s the max capacity per centre?
+5. Which staff will supervise each centre?
+
+**Typical School Setup:**
+- Small school (50 students): 3-5 centres
+- Medium school (100 students): 6-10 centres
+- Large school (200+ students): 10-15 centres
+
+### Step-by-Step: Creating a Centre
+
+<Steps>
+  <Step title="Navigate to Learning Centres">
+    Click "Management" → "Learning Centres" in sidebar
+  </Step>
+
+  <Step title="Click Create Centre">
+    Click "Create Centre" button at top right
+  </Step>
+
+  <Step title="Enter Centre Details">
+    Fill in centre name, description (optional), and capacity (optional)
+  </Step>
+
+  <Step title="Save">
+    Click "Save" to create the centre
+  </Step>
+
+  <Step title="Repeat">
+    Repeat for all centres in your school
+  </Step>
+</Steps>
+
+**Estimated Time:** 1 minute per centre (5-10 minutes for whole school)
+
+### Centre Details Explained
+
+#### Centre Name
+- **Required:** Yes
+- **Format:** Free text, 50 characters max
+- **Examples:** "Faith Centre", "Grace Centre", "Hope Learning Centre", "Level 1 Classroom"
+- **Best Practice:** Short, distinct, easy to remember
+- **Appears:** All reports, dashboards, student assignments, supervisor views
+
+**Naming Conventions:**
+
+**Christian-Inspired Names (Most Common in ACE Schools):**
+- Virtues: Faith, Hope, Love, Joy, Peace, Grace, Mercy, Compassion
+- Biblical Figures: Joshua, David, Esther, Ruth, Daniel, Samuel, Lydia, Deborah
+- Biblical Concepts: Cornerstone, Foundation, Promise, Covenant, Harvest, Vine, Living Water
+
+**Level-Based Names:**
+- "Foundation Centre" (younger students)
+- "Intermediate Centre" (middle grades)
+- "Advanced Centre" (older students)
+
+**Color-Coded Names:**
+- "Red Centre", "Blue Centre", "Green Centre", "Yellow Centre"
+
+**Simple Numbering:**
+- "Centre 1", "Centre 2", "Centre 3"
+
+<Tip>
+**Keep It Simple:** Short names (1-2 words) are easier to read in reports and tables. "Faith" is better than "Faith Christian Learning Centre".
+</Tip>
+
+#### Description
+- **Required:** No
+- **Format:** Free text, 200 characters max
+- **Use Cases:** Notes about centre purpose, student age range, special focus
+- **Examples:**
+  - "Primary students ages 6-8"
+  - "Advanced Math students, grades 9-12"
+  - "Remedial support centre for struggling students"
+- **Appears:** Centre detail page (not in reports)
+
+#### Capacity
+- **Required:** No
+- **Format:** Positive number (e.g., 25)
+- **Meaning:** Maximum number of students that can be assigned to this centre
+- **Enforcement:** Zion warns (but doesn&apos;t prevent) when assigning students beyond capacity
+- **Best Practice:** Set based on physical space and supervisor capability
+- **Typical Values:**
+  - Small centres: 10-15 students
+  - Standard centres: 20-25 students
+  - Large centres: 30-35 students (requires multiple supervisors)
+
+<Warning>
+**Capacity Is a Guideline:** Zion will warn you when assigning students beyond capacity, but it won&apos;t prevent it. Use capacity to help manage centre size, not as a hard limit.
+</Warning>
+
+### Bulk Centre Creation
+
+**Scenario:** Creating 8 centres at once during initial setup
+
+**Efficient Approach:**
+1. List centre names in a document first (Faith, Hope, Love, Joy, Peace, Grace, Truth, Wisdom)
+2. Open Create Centre form
+3. Create first centre with full details (name, description, capacity)
+4. Keep form open in one tab
+5. Create remaining centres quickly (name + capacity only)
+6. Add descriptions later if needed
+
+**Time Saved:** 5-10 minutes for 8 centres vs doing one at a time
+
+---
+
+## Assigning Supervisors to Centres
+
+### Why Supervisor Assignment Matters
+
+**Access Control:**
+- Supervisors only see data for their assigned centres
+- Prevents information overload
+- Ensures privacy and data security
+
+**Reporting:**
+- Centre reports show supervisor name
+- Tracks accountability
+- Enables supervisor performance evaluation
+
+**Flexibility:**
+- One supervisor can be assigned to multiple centres
+- One centre can have multiple supervisors
+- Easy to change assignments
+
+### Assigning Supervisors
+
+<Steps>
+  <Step title="Navigate to Centre Details">
+    Click "Management" → "Learning Centres", then click on a centre
+  </Step>
+
+  <Step title="Click Assign Supervisor">
+    On centre detail page, click "Assign Supervisor" button
+  </Step>
+
+  <Step title="Select Supervisor(s)">
+    Check boxes for supervisors to assign to this centre
+  </Step>
+
+  <Step title="Save">
+    Click "Save" to apply assignments
+  </Step>
+</Steps>
+
+**Estimated Time:** 30 seconds per centre
+
+### Supervisor Assignment Scenarios
+
+**Scenario 1: One Supervisor, One Centre**
+- Most common setup
+- Faith Centre → Supervisor Sarah
+- Clear ownership, simple accountability
+
+**Scenario 2: One Supervisor, Multiple Centres**
+- Faith Centre → Supervisor Sarah
+- Hope Centre → Supervisor Sarah
+- Used when: Small school, part-time supervisors, or supervisor manages multiple groups
+- Sarah sees data for both Faith and Hope centres in her dashboard
+
+**Scenario 3: Multiple Supervisors, One Centre**
+- Faith Centre → Supervisor Sarah AND Supervisor John
+- Used when: Large centre (30+ students), morning/afternoon shifts, or co-teaching
+- Both Sarah and John see Faith Centre data
+
+**Scenario 4: Floating Supervisor**
+- Assign to all centres for oversight
+- Used for: Lead supervisors, administrators who work hands-on, substitute coverage
+
+### Changing Supervisor Assignments
+
+**Mid-Year Reassignment:**
+1. Navigate to centre detail page
+2. Click "Manage Supervisors"
+3. Uncheck old supervisor, check new supervisor
+4. Save
+
+**Effect:**
+- Old supervisor immediately loses access to centre data
+- New supervisor immediately gains access
+- Historical data preserved (shows who was responsible when)
+
+<Tip>
+**Audit Trail:** All supervisor assignments are tracked. Reports show which supervisor was assigned when data was entered, even if assignment later changes.
+</Tip>
+
+---
+
+## Managing Centre Capacity
+
+### Setting Capacity Limits
+
+**Factors to Consider:**
+
+**Physical Space:**
+- Desks available: 25 desks = 25 capacity
+- Room size and safety regulations
+- ACE Office requirements (typically 1 office per 10 students)
+
+**Supervisor Workload:**
+- One supervisor: 15-20 students ideal, 25 max
+- Two supervisors: 30-40 students possible
+- More than 40: Consider splitting into two centres
+
+**Student Needs:**
+- Younger students (K-4): Lower capacity (15-20)
+- Older students (5-12): Higher capacity possible (25-30)
+- Special needs students: Significantly lower capacity
+
+### Capacity Warnings
+
+When assigning students to a centre at/over capacity:
+- Zion displays warning: "Centre at capacity (25/25). Add student anyway?"
+- You can proceed (capacity is advisory, not enforced)
+- Warning helps prevent accidental overcrowding
+
+**Best Practice:** Review capacity quarterly and redistribute students if centres are unbalanced
+
+### Rebalancing Students Between Centres
+
+**Scenario:** Faith Centre has 30 students, Hope Centre has 12 students
+
+**Steps to Rebalance:**
+1. Identify students to move (perhaps 8-10 students)
+2. Navigate to each student&apos;s profile
+3. Change "Assigned Centre" from Faith to Hope
+4. Save
+5. Repeat for remaining students
+
+**Result:** Faith has 20-22, Hope has 20-22 (balanced)
+
+<Warning>
+**Timing Matters:** Reassigning students mid-term is disruptive. Best to rebalance during term breaks or at start of new term.
+</Warning>
+
+---
+
+## Deactivating Learning Centres
+
+### When to Deactivate a Centre
+
+**Common Scenarios:**
+- Enrollment decreased (don&apos;t need as many centres)
+- School restructuring (combining centres)
+- Physical classroom no longer available
+- Centre was created by mistake
+
+**What Happens When Deactivated:**
+- Centre hidden from active centre lists
+- Cannot assign new students to deactivated centre
+- Historical data preserved and accessible
+- Can reactivate later if needed
+
+### Deactivation Prerequisites
+
+**Before deactivating, you MUST:**
+1. **Reassign all students** - Deactivated centres cannot have active students
+2. **Generate final reports** - Ensure all centre reports are generated and saved
+3. **Unassign supervisors** (optional but recommended)
+
+### Step-by-Step: Deactivating a Centre
+
+<Steps>
+  <Step title="Reassign All Students">
+    Move all students from this centre to other centres
+  </Step>
+
+  <Step title="Navigate to Centre Details">
+    Click "Management" → "Learning Centres", then click on the centre
+  </Step>
+
+  <Step title="Verify Empty">
+    Confirm student count shows 0 students
+  </Step>
+
+  <Step title="Click Deactivate">
+    Click "Deactivate Centre" button (usually at bottom of page)
+  </Step>
+
+  <Step title="Confirm">
+    Read confirmation dialog, click "Deactivate" to confirm
+  </Step>
+</Steps>
+
+**Estimated Time:** 5 minutes (assuming students already reassigned)
+
+### Viewing Deactivated Centres
+
+**Where They Appear:**
+- NOT in active centre lists or dropdowns
+- YES in historical reports (for dates when centre was active)
+- YES in dedicated "All Centres" view with status filter
+
+**How to View:**
+1. Navigate to "Management" → "Learning Centres"
+2. Toggle "Show Deactivated" filter
+3. Deactivated centres appear with "Inactive" badge
+
+### Reactivating a Centre
+
+**Scenario:** Need to reopen a previously deactivated centre
+
+<Steps>
+  <Step title="View All Centres">
+    Toggle "Show Deactivated" filter on Learning Centres page
+  </Step>
+
+  <Step title="Find Centre">
+    Locate the deactivated centre
+  </Step>
+
+  <Step title="Click Reactivate">
+    Click "Reactivate Centre" button
+  </Step>
+
+  <Step title="Confirm">
+    Confirm reactivation
+  </Step>
+
+  <Step title="Reassign Supervisors">
+    Assign supervisors to the reactivated centre
+  </Step>
+
+  <Step title="Add Students">
+    Begin assigning students to the centre
+  </Step>
+</Steps>
+
+**What Restores:**
+- Centre appears in active lists and dropdowns
+- Can assign students and supervisors again
+- All historical data still intact
+
+---
+
+## Centre Performance Monitoring
+
+### Centre-Level Metrics
+
+**Where to View:**
+1. Administrator Dashboard → Centre Performance section
+2. Learning Centres page → Click on a centre → View metrics
+
+**Key Metrics Per Centre:**
+- **Student Count:** Total active students in centre
+- **Completion Rate:** % of students meeting daily goals
+- **At-Risk Count:** Students in this centre needing intervention
+- **Average Variance:** How far students are from goals (positive or negative)
+- **Trend:** 7-day completion trend (improving/declining)
+
+### Comparing Centre Performance
+
+**Administrator Dashboard View:**
+- All centres listed with side-by-side metrics
+- Color-coded badges: Green (≥80%), Yellow (50-79%), Red (<50%)
+- Quickly identify top performers and struggling centres
+
+**Weekly Reports:**
+- Centre Comparison section ranks all centres
+- Shows completion rates in descending order
+- Use to evaluate supervisor effectiveness
+
+### Using Centre Data for Decisions
+
+**Top-Performing Centre (85%+ completion):**
+- **Action:** Document supervisor&apos;s best practices
+- **Action:** Have struggling supervisors observe this centre
+- **Action:** Celebrate and recognize in staff meetings
+
+**Struggling Centre (<60% completion):**
+- **Action:** Meet with supervisor to diagnose issues
+- **Action:** Review student composition (are goals appropriate?)
+- **Action:** Consider supervisor training or reassignment
+
+**Inconsistent Centre (varies 20%+ week to week):**
+- **Action:** Investigate causes of inconsistency
+- **Action:** May indicate supervisor attendance issues
+- **Action:** Review goal-setting consistency
+
+---
+
+## Best Practices
+
+### Initial Setup (New School)
+
+<Steps>
+  <Step title="Map Physical Layout">
+    List all physical classrooms and their capacities
+  </Step>
+
+  <Step title="Choose Naming Convention">
+    Decide on consistent naming (Christian names, levels, colors, etc.)
+  </Step>
+
+  <Step title="Create All Centres">
+    Create all centres at once with names and capacities
+  </Step>
+
+  <Step title="Assign Supervisors">
+    Assign at least one supervisor to each centre
+  </Step>
+
+  <Step title="Add Students">
+    Distribute students evenly across centres based on capacity
+  </Step>
+
+  <Step title="Review Balance">
+    Verify student distribution is reasonably balanced
+  </Step>
+</Steps>
+
+### Annual Maintenance
+
+**Start of Academic Year:**
+- Review centre names (still appropriate?)
+- Verify capacities (any changes to physical space?)
+- Rebalance students if some centres too full/empty
+- Update supervisor assignments for new staff
+
+**Mid-Year Check:**
+- Review centre performance metrics
+- Rebalance if one centre significantly over/under capacity
+- Address consistently struggling centres
+
+**End of Year:**
+- Generate final reports for all centres
+- Deactivate centres no longer needed
+- Plan centre structure for next year
+
+### Naming Best Practices
+
+**DO:**
+- Use short, memorable names (1-2 words)
+- Be consistent (all Christian names OR all colors, not mixed)
+- Make names distinct and easy to differentiate
+- Consider alphabetical ordering for easy reference
+
+**DON&apos;T:**
+- Use very long names ("The Exceptional Learning Centre of Excellence")
+- Number centres if you might reorder later ("Centre 1" becomes confusing if you add "Centre 1A")
+- Use easily confused names ("Hope" and "Faith" vs "Hope" and "Joy")
+- Include year in name (centres persist year to year)
+
+### Capacity Management
+
+**Ideal Balance:**
+- All centres within 5 students of each other
+- Example: 5 centres with 18, 20, 22, 19, 21 students (good balance)
+- Avoid: 35, 12, 28, 15, 10 (very unbalanced)
+
+**When to Rebalance:**
+- When one centre ≥130% of average and another ≤70% of average
+- During term breaks (not mid-term)
+- When adding/removing centres
+
+---
+
+## Troubleshooting Common Issues
+
+### "Can&apos;t Deactivate Centre"
+**Cause:** Centre still has active students assigned
+**Solution:** Reassign all students to other centres first, then deactivate
+
+### "Supervisor Can&apos;t See Centre Data"
+**Cause:** Supervisor not assigned to that centre
+**Solution:** Navigate to centre, click "Assign Supervisor", select the supervisor, save
+
+### "Centre Showing 0 Students but I Assigned Some"
+**Cause:** Students may be deactivated, or wrong term selected
+**Solution:** Verify students are active (not deactivated), check that you&apos;re viewing correct term
+
+### "Centre Over Capacity Warning"
+**Cause:** Attempting to assign student to full centre
+**Solution:** Either increase capacity, remove capacity limit, or assign student to different centre
+
+### "Centre Name Not Updating in Reports"
+**Cause:** Old reports generated before name change
+**Solution:** Centre name changes only affect NEW reports. Historical reports retain old name (by design for audit trail).
+
+---
+
+## Related Resources
+
+<CardGroup cols={3}>
+  <Card title="Staff Management" icon="users" href="/guides/administrator/staff-management">
+    Invite and assign supervisors to centres
+  </Card>
+
+  <Card title="Student Management" icon="graduation-cap" href="/guides/administrator/students">
+    Add students and assign them to centres
+  </Card>
+
+  <Card title="Goal Check Oversight" icon="chart-line" href="/guides/administrator/goal-check">
+    Monitor centre performance and identify struggling centres
+  </Card>
+
+  <Card title="Reports" icon="file-pdf" href="/guides/administrator/reports">
+    Generate centre-specific and school-wide reports
+  </Card>
+
+  <Card title="Onboarding Guide" icon="rocket" href="/guides/administrator/onboarding">
+    Complete administrator setup including centres
+  </Card>
+
+  <Card title="Roles & Permissions" icon="shield" href="/reference/roles-permissions">
+    Understand supervisor access to centres
+  </Card>
+</CardGroup>

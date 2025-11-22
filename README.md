@@ -9,11 +9,11 @@ Official documentation for **Zion** - the AI-powered school management system de
 Zion transforms time-consuming manual processes into intelligent automation, liberating administrators and supervisors to focus on what matters most: student success.
 
 **Key Features:**
-- 🎯 **Goal Check Intelligence** - Transform 2-3 hours of manual compilation into <1 minute
-- 📚 **PACE Curriculum Integration** - Complete ACE PACE catalog (144 PACEs, 1001-1144)
-- 📊 **Real-Time Dashboards** - Instant school-wide and centre-level intelligence
-- 📑 **Automated Reporting** - Generate professional daily and weekly reports in seconds
-- 👥 **Multi-Centre Management** - Purpose-built for ACE schools with multiple learning centres
+- **Goal Check Intelligence** - Transform 2-3 hours of manual compilation into <1 minute
+- **PACE Curriculum Integration** - Complete ACE PACE catalog (144 PACEs, 1001-1144)
+- **Real-Time Dashboards** - Instant school-wide and centre-level intelligence
+- **Automated Reporting** - Generate professional daily and weekly reports in seconds
+- **Multi-Centre Management** - Purpose-built for ACE schools with multiple learning centres
 
 ## Documentation Structure
 
@@ -168,11 +168,11 @@ chore: Update navigation structure
 ### Review Process
 
 All documentation changes should be:
-- ✅ Tested locally with `mint dev`
-- ✅ Proofread for clarity and accuracy
-- ✅ Checked for broken links
-- ✅ Verified frontmatter is complete
-- ✅ Confirmed component usage is correct
+- Tested locally with `mint dev`
+- Proofread for clarity and accuracy
+- Checked for broken links
+- Verified frontmatter is complete
+- Confirmed component usage is correct
 
 ## Project Structure
 

@@ -1,0 +1,477 @@
+---
+title: School Profile & Settings Management
+description: Configure school profile, logo, timezone, and academic terms for your ACE school
+icon: "gear"
+---
+
+# School Profile & Settings Management
+
+Your school profile is the foundation of Zion - it determines how your school appears throughout the platform and affects critical settings like timezone for Goal Check dates and reports. This guide covers all school profile and settings management.
+
+<Note>
+**Access Required:** Only administrators can edit school profile and settings. Supervisors and monitors have read-only access.
+</Note>
+
+## School Profile Overview
+
+Your school profile includes:
+- **Basic Information:** Name, location, contact details
+- **Branding:** Logo for navigation and reports
+- **Technical Settings:** Timezone for accurate date/time handling
+- **Academic Structure:** Terms for Goal Check data tracking
+
+---
+
+## Accessing School Settings
+
+<Steps>
+  <Step title="Navigate to Settings">
+    Click "Administration" in sidebar, then "Settings"
+  </Step>
+
+  <Step title="View School Profile">
+    You&apos;ll see the School Profile form with current information
+  </Step>
+
+  <Step title="Edit Information">
+    Update any fields as needed
+  </Step>
+
+  <Step title="Save Changes">
+    Click "Save School Profile" at bottom of form
+  </Step>
+</Steps>
+
+**Estimated Time:** 5 minutes for initial setup, 2 minutes for updates
+
+---
+
+## School Profile Fields
+
+### Basic Information
+
+#### School Name
+- **Default:** Auto-filled from your organization name during signup
+- **Editable:** Yes, change anytime
+- **Best Practice:** Use official school name exactly as it appears on documentation
+- **Example:** "Grace Christian Academy" or "Hope ACE School"
+- **Appears:** Navigation header, all reports, email communications
+
+<Tip>
+**Consistency Matters:** Use the exact same name across all platforms (website, ACE registration, Zion) to avoid confusion.
+</Tip>
+
+#### Location
+- **Format:** "City, Country" (e.g., "Kampala, Uganda" or "Dallas, United States")
+- **Purpose:** Appears on reports for context
+- **Best Practice:** Use recognizable city name (not village/suburb)
+- **Appears:** Footer of all generated reports
+
+#### Contact Email
+- **Format:** Valid email address
+- **Purpose:** Main school contact email for Zion-related communications
+- **Best Practice:** Use a monitored school email (e.g., admin@yourschool.com), not personal email
+- **Used For:** System notifications, report sharing, support communications
+
+#### Phone Number
+- **Format:** Include country code (e.g., "+256 701 234567" or "+1 214-555-0123")
+- **Purpose:** Contact information for reports and emergencies
+- **Best Practice:** Use main school office number
+- **Appears:** School profile and reports
+
+---
+
+## Branding: School Logo
+
+### Logo Requirements
+
+**Technical Specifications:**
+- **Formats:** PNG or JPG
+- **Max File Size:** 2MB
+- **Recommended Dimensions:** 500×500px (square) or 1000×500px (horizontal)
+- **Background:** Transparent PNG recommended for best results
+
+**Visual Guidelines:**
+- Simple, recognizable design works best
+- High contrast for visibility on both light and dark backgrounds
+- Avoid very detailed logos (they may not scale well)
+
+### Uploading Your Logo
+
+<Steps>
+  <Step title="Prepare Logo File">
+    Save logo as PNG (preferred) or JPG, ensure it meets size requirements
+  </Step>
+
+  <Step title="Click Upload Button">
+    In School Profile form, click "Upload Logo" button
+  </Step>
+
+  <Step title="Select File">
+    Choose your logo file from computer
+  </Step>
+
+  <Step title="Preview">
+    Logo preview appears immediately - verify it looks correct
+  </Step>
+
+  <Step title="Save">
+    Click "Save School Profile" to apply logo throughout platform
+  </Step>
+</Steps>
+
+**Processing Time:** Instant (appears immediately after save)
+
+### Where Your Logo Appears
+
+**In Zion Platform:**
+- Navigation sidebar (top left)
+- Login page
+- All dashboard pages
+
+**In Generated Reports:**
+- PDF daily centre reports (header)
+- PDF weekly school reports (header)
+- Printed materials
+
+<Warning>
+**Logo Changes Are Immediate:** When you update your logo, it appears immediately on all pages and in future reports. Past reports retain the logo that was active when they were generated.
+</Warning>
+
+### Logo Best Practices
+
+**Square Logo (500×500px):**
+- Best for: Schools with circular or square emblems
+- Scales well in navigation sidebar
+- Works on all report formats
+
+**Horizontal Logo (1000×500px or 2:1 ratio):**
+- Best for: Schools with long school names in logo
+- May be cropped in some sidebar views
+- Excellent for report headers
+
+**Transparent Background:**
+- Use PNG with transparent background
+- Adapts to both light and dark theme in platform
+- Looks professional on all backgrounds
+
+**High Resolution:**
+- Use at least 500px minimum dimension
+- Prevents pixelation when printed
+- Ensures crisp display on high-resolution screens
+
+---
+
+## Timezone Configuration
+
+### Why Timezone Matters
+
+**Critical for:**
+- Goal Check date accuracy (ensures "today" matches your actual today)
+- Report timestamps (all reports show your local time)
+- Scheduled operations (if any automated tasks run)
+- Audit trail timestamps (track who did what when in your local time)
+
+**What Happens with Wrong Timezone:**
+- Goals set "tomorrow" when you think it&apos;s "today"
+- Reports show wrong dates
+- Dashboard metrics misaligned with your actual day
+
+### Selecting Your Timezone
+
+<Steps>
+  <Step title="Find Timezone Dropdown">
+    In School Profile form, scroll to "Timezone" field
+  </Step>
+
+  <Step title="Search or Scroll">
+    Type your city name or scroll through alphabetical list
+  </Step>
+
+  <Step title="Select Exact Match">
+    Choose timezone that matches your location exactly (e.g., "Africa/Kampala", "America/Chicago")
+  </Step>
+
+  <Step title="Save">
+    Click "Save School Profile"
+  </Step>
+</Steps>
+
+### Common Timezones for ACE Schools
+
+**Africa:**
+- East Africa: Africa/Nairobi (Kenya, Uganda, Tanzania)
+- West Africa: Africa/Lagos (Nigeria)
+- South Africa: Africa/Johannesburg
+
+**Americas:**
+- US Eastern: America/New_York
+- US Central: America/Chicago
+- US Mountain: America/Denver
+- US Pacific: America/Los_Angeles
+
+**Asia:**
+- Philippines: Asia/Manila
+- Singapore: Asia/Singapore
+
+**Oceania:**
+- Australia Eastern: Australia/Sydney
+- New Zealand: Pacific/Auckland
+
+<Warning>
+**Timezone Changes and Historical Data:** Changing timezone DOES NOT retroactively adjust existing Goal Check dates. Only future data uses the new timezone. Be very careful when changing timezone mid-term.
+</Warning>
+
+### Timezone Best Practices
+
+1. **Set Once, Forget:** Configure timezone during initial setup and don&apos;t change it
+2. **Match Your Location:** Use the timezone for your school&apos;s physical location
+3. **Consider Daylight Saving:** Most modern timezones handle DST automatically (e.g., America/New_York switches between EST and EDT)
+4. **Verify After Saving:** Set a test goal and verify the date matches your expectation
+
+---
+
+## Academic Terms Setup
+
+### Understanding Academic Terms
+
+**What Are Terms:**
+- Time periods for organizing Goal Check data (e.g., "Term 1 2025", "Fall Semester 2025")
+- Most ACE schools have 3 terms per year
+- Each term has start date and end date
+
+**Why Terms Matter:**
+- All Goal Check data is scoped to the active term
+- Reports are generated for specific terms
+- Allows year-over-year comparison (Term 1 2025 vs Term 1 2024)
+- Prevents data mixing across academic years
+
+**Active Term:**
+- Only ONE term can be active at a time
+- Active term receives all new Goal Check data
+- Dashboard and reports default to active term
+- Changing active term DOES NOT delete old term data
+
+### Creating Academic Terms
+
+<Steps>
+  <Step title="Navigate to Academic Terms">
+    Click "Administration" → "Academic Terms" in sidebar
+  </Step>
+
+  <Step title="Click Add Term">
+    Click "Add Term" button
+  </Step>
+
+  <Step title="Fill Term Details">
+    Enter term name, start date, end date
+  </Step>
+
+  <Step title="Set as Active (Optional)">
+    Check "Set as active term" if this is your current term
+  </Step>
+
+  <Step title="Save">
+    Click "Save" to create term
+  </Step>
+</Steps>
+
+**Estimated Time:** 1 minute per term
+
+### Term Details Explained
+
+#### Term Name
+- **Format:** Free text (e.g., "Term 1 2025", "Fall Semester 2025", "Q1 2025")
+- **Best Practice:** Include year for clarity
+- **Recommendation:** Follow ACE convention if applicable ("Term 1", "Term 2", "Term 3")
+- **Character Limit:** 50 characters
+
+#### Start Date
+- **Format:** Calendar date picker
+- **Meaning:** First day of term when Goal Check data begins
+- **Best Practice:** Use actual first day of classes (not planning/prep days)
+- **Example:** January 8, 2025
+
+#### End Date
+- **Format:** Calendar date picker
+- **Meaning:** Last day of term when Goal Check data ends
+- **Best Practice:** Use actual last day of classes (not after-term cleanup days)
+- **Example:** April 12, 2025
+- **Validation:** Must be after start date
+
+### Example Term Schedule
+
+**Three-Term Academic Year:**
+
+**Term 1:**
+- Name: "Term 1 2025"
+- Start: January 8, 2025
+- End: April 12, 2025
+- Duration: ~14 weeks
+
+**Term 2:**
+- Name: "Term 2 2025"
+- Start: April 22, 2025
+- End: August 2, 2025
+- Duration: ~14 weeks
+
+**Term 3:**
+- Name: "Term 3 2025"
+- Start: August 19, 2025
+- End: December 6, 2025
+- Duration: ~14 weeks
+
+<Tip>
+**Plan Ahead:** Create all 3 terms at the beginning of the year. You can create inactive terms in advance - just don&apos;t set them as active until they start.
+</Tip>
+
+### Managing Active Term
+
+#### Viewing Active Term
+- Active term badge shows "Active" in green
+- Dashboard always displays active term data
+- All new Goal Check entries go to active term
+
+#### Changing Active Term
+
+<Steps>
+  <Step title="Navigate to Academic Terms">
+    Click "Administration" → "Academic Terms"
+  </Step>
+
+  <Step title="Find Target Term">
+    Locate the term you want to activate
+  </Step>
+
+  <Step title="Click Set Active">
+    Click "Set Active" button for that term
+  </Step>
+
+  <Step title="Confirm Change">
+    Confirm you want to change active term
+  </Step>
+</Steps>
+
+**What Happens:**
+- Previous active term becomes inactive (data preserved)
+- New active term becomes active
+- Dashboard switches to new term data
+- All new Goal Check entries go to new term
+
+**When to Change:**
+- First day of new term
+- AFTER final reports generated for previous term
+
+<Warning>
+**End-of-Term Checklist:** Before switching active term, ensure all Goal Check data is marked for previous term and all final reports are generated. You can still access old term data, but it&apos;s easier to finalize before switching.
+</Warning>
+
+### Viewing Historical Term Data
+
+Even after a term is inactive, you can still:
+- View all Goal Check data from that term
+- Generate reports for that term
+- Export data from that term
+- Reference for year-over-year comparisons
+
+**How to Access:**
+1. Navigate to reports or data export
+2. Use term filter to select inactive term
+3. View/generate reports as normal
+
+---
+
+## School Profile Best Practices
+
+### Initial Setup Checklist
+
+During your first Zion setup:
+- [ ] Verify school name is official name
+- [ ] Set location (City, Country format)
+- [ ] Add monitored contact email
+- [ ] Add main school phone with country code
+- [ ] Upload high-quality logo (PNG with transparent background)
+- [ ] Set timezone for your location
+- [ ] Create all 3 terms for current academic year
+- [ ] Set current term as active
+- [ ] Test: Set a goal and verify date is correct
+
+### Annual Maintenance Routine
+
+**Start of Each Academic Year:**
+1. Review school profile information (update if changed)
+2. Create next year&apos;s 3 terms
+3. On first day of Term 1, set it as active term
+4. Generate final reports for previous year before switching
+
+**Mid-Year Checks:**
+- Verify contact email is still monitored
+- Ensure logo is still current (some schools update branding)
+- Confirm phone number hasn&apos;t changed
+
+### Logo Refresh Timing
+
+**When to Update Logo:**
+- School rebranding
+- Logo design refresh
+- Better quality version available
+- Current logo looks pixelated
+
+**When NOT to Update:**
+- Mid-term (wait until term break)
+- During ACE review/accreditation (keep consistency)
+- When old reports need to match current branding
+
+---
+
+## Troubleshooting Common Issues
+
+### "Logo Looks Pixelated"
+**Cause:** Logo file resolution too low
+**Solution:** Upload higher resolution logo (minimum 500×500px)
+
+### "Dates Are Off by One Day"
+**Cause:** Wrong timezone selected
+**Solution:** Verify timezone matches your location exactly. Remember: changing timezone doesn&apos;t fix historical data.
+
+### "Can&apos;t Change Active Term"
+**Cause:** System validation preventing change
+**Solution:** Ensure new term start date has passed. Can&apos;t activate future term.
+
+### "Logo Not Appearing in Reports"
+**Cause:** Logo upload didn&apos;t save properly
+**Solution:** Re-upload logo, ensure file size <2MB, verify save was successful
+
+### "Contact Email Not Receiving Notifications"
+**Cause:** Email in spam folder or invalid
+**Solution:** Check spam folder, verify email address is correct and receiving other mail
+
+---
+
+## Related Resources
+
+<CardGroup cols={3}>
+  <Card title="Academic Terms" icon="calendar" href="/guides/administrator/onboarding#academic-terms-setup">
+    Detailed term management in onboarding guide
+  </Card>
+
+  <Card title="Learning Centres" icon="building" href="/guides/administrator/learning-centres">
+    Create and manage learning centres for your school
+  </Card>
+
+  <Card title="Initial Setup" icon="rocket" href="/quickstart">
+    15-minute quickstart for new schools
+  </Card>
+
+  <Card title="Reports" icon="file-pdf" href="/features/goal-check/reports">
+    See how your logo appears in generated reports
+  </Card>
+
+  <Card title="Staff Management" icon="users" href="/guides/administrator/staff-management">
+    Invite and manage teaching staff
+  </Card>
+
+  <Card title="Students" icon="graduation-cap" href="/guides/administrator/students">
+    Add and manage student roster
+  </Card>
+</CardGroup>

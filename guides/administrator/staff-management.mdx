@@ -1,0 +1,422 @@
+---
+title: Staff Management Guide
+description: Invite teaching staff, assign roles and centres, and manage user access in Zion
+icon: "user-tie"
+---
+
+# Staff Management Guide
+
+This guide covers inviting teaching staff (supervisors and monitors), assigning roles and learning centres, and managing user access throughout the year. Proper staff setup ensures team members have appropriate access to perform their duties.
+
+<Note>
+**Roles in Zion:** Administrator (you), Supervisor (manages centres, generates reports), Monitor (enters Goal Check data only). This guide focuses on inviting Supervisors and Monitors.
+</Note>
+
+## Understanding Staff Roles
+
+### Role Comparison
+
+| Feature | Administrator | Supervisor | Monitor |
+|---------|--------------|------------|---------|
+| School Settings | Full Access | View Only | No Access |
+| Learning Centres | All Centres | Assigned Centres | Assigned Centres |
+| Goal Check Entry | All Students | My Centre Students | My Centre Students |
+| Goal Check Marking | All Students | My Centre Students | My Centre Students |
+| Dashboard | School-Wide | My Centres | No Dashboard |
+| Reports (Generate) | All Reports | Daily Centre Reports | No Reports |
+| Reports (Weekly School) | Yes | No | No |
+| Student Management | Yes | View Only | View Only |
+| Staff Management | Yes | No | No |
+| Data Export | Yes | No | No |
+
+### When to Use Each Role
+
+**Supervisor:**
+- Full-time teaching staff managing a learning centre
+- Responsible for daily Goal Check and centre reports
+- Needs dashboard insights for their centres
+- Example: Mrs. Johnson teaches Faith Centre, sets goals, marks progress, generates daily reports
+
+**Monitor:**
+- Part-time staff or assistants who help with data entry
+- Enters goals and marks progress but doesn&apos;t generate reports
+- No dashboard access (simpler interface)
+- Example: Mr. Smith assists in Hope Centre, enters Goal Check data on tablet, supervisor generates reports
+
+**Administrator:**
+- School principal, head of school, or designated administrator
+- Full oversight and configuration access
+- Typically 1-3 administrators per school
+- Example: Principal oversees all centres, generates weekly reports, manages staff and students
+
+---
+
+## Inviting Teaching Staff
+
+### Prerequisites
+
+Before inviting staff:
+- Learning centres created
+- Staff member&apos;s email address confirmed
+- Decision made: Supervisor or Monitor role
+- Decision made: Which centres they&apos;ll access
+
+### Invitation Workflow
+
+<Steps>
+  <Step title="Navigate to Teaching Staff">
+    Click "Management" → "Teaching Staff" in sidebar
+  </Step>
+
+  <Step title="Click Invite User">
+    Click "Invite User" button at top right
+  </Step>
+
+  <Step title="Fill Invitation Form">
+    Enter full name, email, role, and assigned centres
+  </Step>
+
+  <Step title="Send Invitation">
+    Click "Send Invitation" - email sent immediately
+  </Step>
+
+  <Step title="Staff Accepts">
+    Staff member receives email, clicks link, sets password, logs in
+  </Step>
+</Steps>
+
+**Estimated Time:** 2 minutes per staff member
+
+### Invitation Form Details
+
+#### Full Name
+- **Format:** First and Last name (e.g., "Sarah Johnson")
+- **Best Practice:** Use professional name as it appears in school records
+- **Appears:** All Goal Check audit trails, reports, staff lists
+
+#### Email Address
+- **Format:** Valid email address (must be unique in Zion)
+- **Validation:** Zion checks if email already in use
+- **Best Practice:** Use staff member&apos;s school email if available
+- **Important:** Staff member must have access to this email to accept invitation
+
+#### Role
+- **Options:** Supervisor or Monitor
+- **Default:** Supervisor
+- **Cannot Select:** Administrator (admins must be added differently through Clerk)
+- **Changeable:** Yes, can change role later
+
+#### Assigned Centres
+- **Format:** Multi-select dropdown of all active learning centres
+- **Required:** Must select at least one centre
+- **Flexibility:** Can select multiple centres
+- **Changeable:** Yes, can modify assignments later
+
+<Tip>
+**Bulk Invitations:** Invite all staff at once during initial setup. They can accept invitations and set passwords at their convenience before school starts.
+</Tip>
+
+### What Happens After Invitation
+
+**Email Sent (Immediate):**
+- Staff member receives invitation email from Clerk (Zion&apos;s authentication provider)
+- Email contains invitation link and basic instructions
+- Link expires in 7 days (can resend if needed)
+
+**Staff Accepts Invitation:**
+1. Clicks link in email
+2. Lands on Zion signup page
+3. Sets their own password (must meet security requirements)
+4. Confirms email address
+5. Redirected to Zion dashboard
+
+**First Login:**
+- Staff member sees onboarding tour (optional)
+- Dashboard/interface reflects their role and assigned centres
+- Can immediately begin using Zion
+
+---
+
+## Managing Staff Assignments
+
+### Viewing Staff List
+
+**Navigate to Teaching Staff:**
+- Shows all administrators, supervisors, and monitors
+- Displays: Name, email, role, assigned centres, status
+
+**Filter Options:**
+- By role (all, supervisors, monitors)
+- By status (active, deactivated)
+- By centre assignment
+
+### Editing Staff Information
+
+<Steps>
+  <Step title="Find Staff Member">
+    Navigate to "Management" → "Teaching Staff", locate staff member
+  </Step>
+
+  <Step title="Click Edit">
+    Click "Edit" button next to their name
+  </Step>
+
+  <Step title="Modify Details">
+    Update name, role, or assigned centres
+  </Step>
+
+  <Step title="Save Changes">
+    Click "Save" to apply changes
+  </Step>
+</Steps>
+
+**What Can Be Changed:**
+- Full name
+- Role (Supervisor ↔ Monitor)
+- Assigned centres (add or remove)
+- Email address (cannot change - contact support if needed)
+
+### Changing Assigned Centres
+
+**Scenario 1: Add Centre to Staff Member**
+- Edit staff member → Check additional centres → Save
+- Staff immediately sees new centre data on next login
+
+**Scenario 2: Remove Centre from Staff Member**
+- Edit staff member → Uncheck centre(s) → Save
+- Staff immediately loses access to that centre data
+
+**Scenario 3: Transfer Centre from One Staff to Another**
+1. Edit first staff member → Uncheck centre → Save
+2. Edit second staff member → Check centre → Save
+3. Historical data shows who was responsible when
+
+<Warning>
+**Access Changes Require Re-Login:** When you change a staff member&apos;s role or centres, they must log out and back in for changes to take effect. Inform them before making changes.
+</Warning>
+
+### Changing Staff Role
+
+**Supervisor → Monitor:**
+- Staff loses: Dashboard access, ability to generate reports
+- Staff retains: Goal Check entry/marking for assigned centres
+- Use case: Staff member becoming part-time or assistant
+
+**Monitor → Supervisor:**
+- Staff gains: Dashboard access, ability to generate reports
+- Staff retains: Goal Check entry/marking for assigned centres
+- Use case: Promoting assistant to full supervisor role
+
+---
+
+## Deactivating Staff
+
+### When to Deactivate
+
+**Common Scenarios:**
+- Staff member left the school
+- End of temporary/contract position
+- Staff on extended leave (optional - can keep active)
+- Staff role eliminated due to enrollment changes
+
+**What Happens When Deactivated:**
+- Staff member cannot log in
+- Data entry/marking history preserved (audit trail intact)
+- Name still appears in historical reports
+- Can reactivate later if needed
+
+### Deactivation Process
+
+<Steps>
+  <Step title="Reassign Centres (Optional)">
+    If staff had assigned centres, assign them to other supervisors/monitors
+  </Step>
+
+  <Step title="Navigate to Teaching Staff">
+    Click "Management" → "Teaching Staff"
+  </Step>
+
+  <Step title="Find Staff Member">
+    Locate the staff member to deactivate
+  </Step>
+
+  <Step title="Click Deactivate">
+    Click "Deactivate" button next to their name
+  </Step>
+
+  <Step title="Confirm">
+    Read confirmation dialog, click "Deactivate" to confirm
+  </Step>
+</Steps>
+
+**Estimated Time:** 1 minute
+
+<Note>
+**Audit Trail Preserved:** Deactivating staff does NOT delete their historical data. All Goal Check entries, reports, and actions they performed remain visible with their name in audit trails.
+</Note>
+
+### Reactivating Staff
+
+**Scenario:** Staff member returning after leave or rehired
+
+<Steps>
+  <Step title="View All Staff">
+    Toggle "Show Deactivated" filter on Teaching Staff page
+  </Step>
+
+  <Step title="Find Staff Member">
+    Locate deactivated staff member
+  </Step>
+
+  <Step title="Click Reactivate">
+    Click "Reactivate" button
+  </Step>
+
+  <Step title="Update Assignments">
+    Edit staff member to assign current centres
+  </Step>
+
+  <Step title="Notify Staff">
+    Inform staff they can log in again
+  </Step>
+</Steps>
+
+---
+
+## Best Practices
+
+### Initial School Setup
+
+**Recommended Order:**
+1. Create all learning centres first
+2. Invite all supervisors and monitors together
+3. Assign each supervisor to their primary centre(s)
+4. Assign monitors to support specific centres
+5. Test: Have one supervisor log in and verify access
+
+**Timeline:**
+- 1 week before term starts: Invite all staff
+- 3 days before term starts: Follow up with staff who haven&apos;t accepted
+- 1 day before term starts: Verify all staff can log in
+
+### Mid-Year Staff Changes
+
+**New Staff Joining:**
+1. Create invitation immediately
+2. Assign to appropriate centres
+3. Have them shadow existing supervisor for 1-2 days
+4. Grant access to Goal Check once trained
+
+**Staff Departing:**
+1. Reassign centres to other staff BEFORE deactivation
+2. Generate final reports for their centres
+3. Deactivate user account
+4. Document transition in staff notes
+
+### Annual Maintenance
+
+**Start of Academic Year:**
+- Review all staff assignments
+- Update centre assignments for any changes
+- Reactivate returning staff if they were deactivated
+- Invite new staff for the year
+
+**End of Academic Year:**
+- Generate final reports for all centres
+- Optionally deactivate staff on summer break (or keep active)
+- Document any staff departures
+
+---
+
+## Security Best Practices
+
+### Email Address Management
+
+**DO:**
+- Use school email addresses when possible
+- Verify email address before sending invitation
+- Keep staff email addresses current
+
+**DON&apos;T:**
+- Share login credentials between staff
+- Use personal email if school policy prohibits
+- Reuse email addresses from deactivated staff
+
+### Password Requirements
+
+Zion (via Clerk) enforces:
+- Minimum 8 characters
+- At least one uppercase letter
+- At least one number
+- At least one special character
+
+**Best Practice:** Encourage staff to use password managers
+
+### Access Principle
+
+**Least Privilege:**
+- Give staff minimum access needed for their role
+- Use Monitor role for assistants (not Supervisor)
+- Assign only necessary centres
+
+**Regular Audits:**
+- Quarterly: Review staff list, deactivate unused accounts
+- Annually: Verify all assignments still appropriate
+
+---
+
+## Troubleshooting Common Issues
+
+### "Invitation Email Not Received"
+**Possible Causes:** Email in spam, typo in email address, email server blocking
+**Solutions:**
+1. Check spam/junk folder
+2. Verify email address is correct
+3. Resend invitation
+4. Try alternative email address
+
+### "Staff Can&apos;t See Learning Centre"
+**Cause:** Staff not assigned to that centre
+**Solution:** Edit staff member, assign them to the centre, save, have them log out and back in
+
+### "Staff Can&apos;t Generate Reports"
+**Cause:** Staff has Monitor role (monitors can&apos;t generate reports)
+**Solution:** Change role from Monitor to Supervisor
+
+### "Staff Sees All Centres (Should Only See Assigned)"
+**Cause:** Staff might be an Administrator
+**Solution:** Verify role is Supervisor or Monitor, not Administrator
+
+### "Can&apos;t Change Staff Email Address"
+**Cause:** Email is managed by Clerk authentication system
+**Solution:** Contact Zion support to change email address, or deactivate old account and create new invitation
+
+---
+
+## Related Resources
+
+<CardGroup cols={3}>
+  <Card title="Learning Centres" icon="building" href="/guides/administrator/learning-centres">
+    Create centres before assigning staff to them
+  </Card>
+
+  <Card title="Roles & Permissions" icon="shield" href="/reference/roles-permissions">
+    Detailed breakdown of what each role can access
+  </Card>
+
+  <Card title="Goal Check Overview" icon="target" href="/features/goal-check/overview">
+    Understand what supervisors and monitors do daily
+  </Card>
+
+  <Card title="Onboarding Guide" icon="rocket" href="/guides/administrator/onboarding">
+    Complete setup including staff invitations
+  </Card>
+
+  <Card title="Supervisor Guide" icon="calendar-check" href="/guides/supervisor/goal-check">
+    Share this with supervisors for their workflow
+  </Card>
+
+  <Card title="Monitor Guide" icon="clipboard" href="/guides/monitor/goal-check">
+    Share this with monitors for their workflow
+  </Card>
+</CardGroup>

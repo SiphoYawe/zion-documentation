@@ -55,14 +55,6 @@
             "pages": [
               "features/goal-check/overview"
             ]
-          },
-          {
-            "group": "AI Tools Integration",
-            "pages": [
-              "ai-tools/claude-code",
-              "ai-tools/cursor",
-              "ai-tools/windsurf"
-            ]
           }
         ]
       },

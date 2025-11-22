@@ -1,0 +1,526 @@
+---
+title: Student Roster Management
+description: Add students individually or via CSV import, manage profiles, assign to centres, and track status
+icon: "graduation-cap"
+---
+
+# Student Roster Management
+
+Complete guide to managing your student roster in Zion - from initial import to ongoing profile management, learning centre assignments, and PACE allocations.
+
+## Student Management Overview
+
+**Key Responsibilities:**
+- Add new students (individual or bulk CSV import)
+- Assign students to learning centres
+- Manage student profiles and status
+- Assign PACEs to students
+- Deactivate/reactivate students as needed
+
+**Estimated Time:**
+- Individual entry: 2-3 minutes per student
+- CSV bulk import: 5-10 minutes for 50+ students
+
+---
+
+## Adding Students Individually
+
+### When to Use Individual Entry
+- Adding 1-5 new students
+- Mid-year enrollments
+- Transfer students
+- Quick additions
+
+### Step-by-Step: Adding One Student
+
+<Steps>
+  <Step title="Navigate to Students">
+    Click "Management" → "Students" in sidebar
+  </Step>
+
+  <Step title="Click Add Student">
+    Click "Add Student" button
+  </Step>
+
+  <Step title="Fill Student Form">
+    Enter required fields: first name, last name, date of birth, grade level, learning centre
+  </Step>
+
+  <Step title="Save">
+    Click "Save Student"
+  </Step>
+
+  <Step title="Assign PACEs">
+    Immediately assign PACEs to new student (or do later)
+  </Step>
+</Steps>
+
+### Student Form Fields
+
+**Required Fields:**
+
+**First Name:**
+- Student&apos;s legal first name
+- Example: "John", "Mary", "Emmanuel"
+- Used in all reports and Goal Check entries
+
+**Last Name:**
+- Student&apos;s legal last name
+- Example: "Smith", "Nakato", "Obiang"
+
+**Date of Birth:**
+- Format: MM/DD/YYYY or DD/MM/YYYY (based on your locale)
+- Used for: Age calculations, grade progression
+- Validation: Must be reasonable (typically 4-18 years ago)
+
+**Grade Level:**
+- Dropdown: Grades 1-12
+- ACE PACE levels correspond to grades
+- Used for: PACE assignment validation, reporting
+
+**Learning Centre:**
+- Dropdown: Select from active learning centres
+- Required: Every student must be in a centre
+- Can change later if needed
+
+**Optional Fields:**
+
+**Student ID:**
+- Your school&apos;s internal student ID number
+- Example: "2025-001", "STU-12345"
+- Useful for cross-referencing with other systems
+
+**Contact Information:**
+- Parent/guardian names
+- Phone numbers
+- Email addresses (for future parent portal)
+
+**Notes:**
+- Special needs, allergies, or relevant information
+- Only visible to administrators and assigned supervisors
+
+<Tip>
+**Start Minimal:** During bulk entry, only fill required fields. Add optional details later as needed.
+</Tip>
+
+---
+
+## CSV Bulk Import
+
+### When to Use CSV Import
+- Initial school setup (20+ students)
+- Start of academic year (new cohort)
+- Transferring from another system
+- Faster than individual entry for large groups
+
+See detailed [CSV Bulk Import Guide](/features/students/bulk-import) for complete instructions.
+
+### Quick CSV Import Overview
+
+<Steps>
+  <Step title="Download Template">
+    Navigate to Students → Click "Import Students" → Download CSV template
+  </Step>
+
+  <Step title="Fill Template">
+    Open in Excel/Google Sheets, fill one row per student
+  </Step>
+
+  <Step title="Upload CSV">
+    Return to Zion, upload filled CSV file
+  </Step>
+
+  <Step title="Validate">
+    Zion validates data, shows errors if any
+  </Step>
+
+  <Step title="Confirm Import">
+    Review preview, click "Import X Students"
+  </Step>
+
+  <Step title="Assign PACEs">
+    After import, assign PACEs to all students
+  </Step>
+</Steps>
+
+**CSV Template Columns:**
+- first_name (required)
+- last_name (required)
+- date_of_birth (required, format: YYYY-MM-DD)
+- grade_level (required, 1-12)
+- learning_centre_name (required, must match existing centre)
+- student_id (optional)
+- parent_name (optional)
+- parent_email (optional)
+- parent_phone (optional)
+- notes (optional)
+
+**Estimated Time:** 10 minutes for 50 students (vs 2 hours individual entry)
+
+---
+
+## Managing Student Profiles
+
+### Viewing Students
+
+**Student List View:**
+- Navigate to "Management" → "Students"
+- Shows all active students in table format
+- Columns: Name, Grade, Learning Centre, Status, Actions
+
+**Filters:**
+- By learning centre
+- By grade level
+- By status (active/deactivated)
+- Search by name
+
+**Sort Options:**
+- Alphabetically by name (default)
+- By grade level
+- By learning centre
+- By date added
+
+### Editing Student Information
+
+<Steps>
+  <Step title="Find Student">
+    Navigate to Students list, search or scroll to find student
+  </Step>
+
+  <Step title="Click Edit">
+    Click "Edit" button next to student name
+  </Step>
+
+  <Step title="Modify Fields">
+    Update any fields (name, grade, centre, etc.)
+  </Step>
+
+  <Step title="Save Changes">
+    Click "Save Student"
+  </Step>
+</Steps>
+
+**What Can Be Changed:**
+-  Name (if misspelled or legal name changed)
+-  Date of birth (if entered incorrectly)
+-  Grade level (for grade promotion)
+-  Learning centre (reassignment)
+-  Student ID
+-  Contact information
+-  Notes
+
+**What Cannot Be Changed:**
+-  Student&apos;s historical Goal Check data
+-  Past PACE assignments
+
+---
+
+## Learning Centre Assignment
+
+### Initial Assignment
+
+When adding students, assign to a learning centre based on:
+- **Grade Level:** Group similar grades together
+- **Centre Capacity:** Don&apos;t exceed capacity limits
+- **Supervisor Load:** Balance student count across supervisors
+- **Student Needs:** Consider special needs, abilities, learning styles
+
+### Reassigning Students to Different Centres
+
+**Common Scenarios:**
+- Centre rebalancing (one centre too full)
+- Student needs change (requires different supervisor)
+- Grade progression (moving to older student centre)
+
+<Steps>
+  <Step title="Edit Student">
+    Navigate to Students, click "Edit" on student
+  </Step>
+
+  <Step title="Change Centre">
+    Select new learning centre from dropdown
+  </Step>
+
+  <Step title="Save">
+    Click "Save Student"
+  </Step>
+
+  <Step title="Verify Access">
+    Ensure new centre&apos;s supervisor can now see student in their dashboard
+  </Step>
+</Steps>
+
+**Effect of Reassignment:**
+- Student immediately appears in new centre&apos;s lists
+- Student disappears from old centre&apos;s lists
+- Historical Goal Check data preserved (shows which centre student was in at that time)
+- Supervisor sees student on next dashboard refresh
+
+<Warning>
+**Mid-Term Reassignments:** Reassigning students mid-term disrupts their routine and supervisor relationships. Best to do during term breaks unless urgent.
+</Warning>
+
+---
+
+## PACE Assignments
+
+### Why PACE Assignments Matter
+
+**Required for Goal Check:**
+- Students MUST have assigned PACEs before Goal Check can begin
+- Goal entry shows PACEs as columns
+- Without PACEs, student cannot have goals set
+
+**Individualized Learning:**
+- Each student has their own PACE assignments
+- Different students can work on different PACEs in same subject
+- Allows personalized pacing
+
+### Assigning PACEs to Students
+
+<Steps>
+  <Step title="Navigate to Student Profile">
+    Click on student name from Students list
+  </Step>
+
+  <Step title="Click Assign PACE">
+    In student detail page, click "Assign PACE" or "Manage PACEs"
+  </Step>
+
+  <Step title="Search for PACE">
+    Use PACE catalog search (by number or subject)
+  </Step>
+
+  <Step title="Select PACE">
+    Click on PACE to assign it to student
+  </Step>
+
+  <Step title="Repeat">
+    Assign 4-6 PACEs (one per subject typically)
+  </Step>
+
+  <Step title="Save">
+    Click "Save PACE Assignments"
+  </Step>
+</Steps>
+
+**Typical PACE Load Per Student:**
+- **Light Load:** 3-4 PACEs (struggling students, primary grades)
+- **Standard Load:** 5-6 PACEs (most students)
+- **Heavy Load:** 7-8 PACEs (advanced students, high school)
+
+See [PACE Assignments Guide](/features/students/pace-assignments) for detailed instructions.
+
+### PACE Catalog Structure
+
+**PACE Numbering:** 1001-1144 (144 total PACEs in catalog)
+
+**Subjects:**
+- **1001-1012:** English
+- **1013-1024:** Math
+- **1025-1036:** Science
+- **1037-1048:** Social Studies
+- **1049-1060:** Word Building
+- And more...
+
+Each PACE has ~36 pages typically.
+
+See [PACE Catalog Reference](/features/paces/catalog) for complete list.
+
+---
+
+## Student Status Management
+
+### Active vs Deactivated
+
+**Active Students:**
+- Appear in all lists and dropdowns
+- Can have goals set and progress marked
+- Counted in dashboard metrics
+- Included in reports
+
+**Deactivated Students:**
+- Hidden from active lists
+- Cannot have new goals set
+- NOT counted in dashboard metrics
+- Historical data preserved
+- Can be reactivated later
+
+### Deactivating Students
+
+**When to Deactivate:**
+- Student withdrew from school
+- Student transferred to another school
+- Long-term absence (extended illness, family leave)
+- Graduation (optional - some schools keep graduates for records)
+
+<Steps>
+  <Step title="Navigate to Student">
+    Find student in Students list
+  </Step>
+
+  <Step title="Click Deactivate">
+    Click "Deactivate" button next to student
+  </Step>
+
+  <Step title="Confirm">
+    Read confirmation dialog, click "Deactivate"
+  </Step>
+</Steps>
+
+**What Happens:**
+- Student immediately removed from active lists
+- Supervisors no longer see student in Goal Check entry
+- Historical data preserved (all past Goal Check entries remain)
+- Can generate historical reports including this student
+
+### Reactivating Students
+
+**When to Reactivate:**
+- Student returns after leave
+- Student re-enrolls
+- Accidental deactivation
+
+<Steps>
+  <Step title="View All Students">
+    Toggle "Show Deactivated" filter on Students page
+  </Step>
+
+  <Step title="Find Student">
+    Locate deactivated student
+  </Step>
+
+  <Step title="Click Reactivate">
+    Click "Reactivate" button
+  </Step>
+
+  <Step title="Update Information">
+    Edit student to update grade, centre if needed
+  </Step>
+
+  <Step title="Verify PACE Assignments">
+    Ensure PACE assignments are still appropriate
+  </Step>
+</Steps>
+
+---
+
+## Best Practices
+
+### Initial School Setup
+
+**Week 1-2 Before Term Starts:**
+1. Gather complete student roster (names, DOBs, grades)
+2. Decide centre assignments (balance by grade/ability)
+3. Create CSV file with all students
+4. Import CSV into Zion
+5. Verify import success (student count matches)
+
+**Week 1 of Term:**
+1. Assign PACEs to all students (4-6 per student)
+2. Verify each student has PACEs assigned
+3. Test: Have supervisor set goals for a few students
+
+### Mid-Year Enrollments
+
+**New Student Joins:**
+1. Add student immediately (individual entry)
+2. Assign to appropriate centre based on grade/capacity
+3. Assign PACEs matching their current level
+4. Inform supervisor that new student added
+5. Supervisor sets goals starting next day
+
+**Student Withdraws:**
+1. Generate final reports for that student
+2. Deactivate student profile
+3. Document withdrawal date in notes
+4. Inform supervisor
+
+### Annual Maintenance
+
+**Start of Academic Year:**
+1. Promote students to next grade (mass update if needed)
+2. Rebalance centre assignments (new grade groupings)
+3. Update PACE assignments for new academic year
+4. Reactivate any students returning from leave
+
+**End of Academic Year:**
+1. Generate final reports for all students
+2. Optionally deactivate graduating seniors
+3. Document academic year completion
+4. Archive student data if needed (export to CSV)
+
+### Data Quality
+
+**Regular Audits (Monthly):**
+- Verify all active students have assigned PACEs
+- Check for duplicate student entries
+- Update grade levels if mid-year promotions occur
+- Correct any misspelled names
+
+**Red Flags:**
+- Student with 0 PACEs assigned (cannot do Goal Check)
+- Student in wrong grade for their age
+- Duplicate student entries (same name and DOB)
+
+---
+
+## Troubleshooting Common Issues
+
+### "Student Not Appearing in Goal Check"
+**Causes:**
+1. Student has no PACE assignments
+2. Student is deactivated
+3. Supervisor not assigned to student&apos;s centre
+
+**Solutions:**
+1. Assign PACEs to student
+2. Reactivate student if appropriate
+3. Assign supervisor to student&apos;s learning centre
+
+### "CSV Import Failed"
+**Common Errors:**
+- Learning centre name doesn&apos;t match exactly (check spelling, case)
+- Date format wrong (use YYYY-MM-DD)
+- Grade level not 1-12
+- Missing required fields (first_name, last_name, date_of_birth, grade_level, learning_centre_name)
+
+**Solution:** Download error report, fix CSV, re-upload
+
+### "Cannot Deactivate Student"
+**Cause:** Student may have active Goal Check entries for today
+**Solution:** Wait until next day or have supervisor remove today&apos;s entries
+
+### "Student in Wrong Centre"
+**Cause:** Assigned to incorrect centre during import or entry
+**Solution:** Edit student, change learning centre, save
+
+---
+
+## Related Resources
+
+<CardGroup cols={3}>
+  <Card title="CSV Bulk Import" icon="file-csv" href="/features/students/bulk-import">
+    Complete guide to importing students via CSV
+  </Card>
+
+  <Card title="PACE Assignments" icon="book-open" href="/features/students/pace-assignments">
+    How to assign and manage student PACEs
+  </Card>
+
+  <Card title="PACE Catalog" icon="books" href="/features/paces/catalog">
+    Complete PACE catalog reference (1001-1144)
+  </Card>
+
+  <Card title="Learning Centres" icon="building" href="/guides/administrator/learning-centres">
+    Create centres before assigning students
+  </Card>
+
+  <Card title="Goal Check" icon="target" href="/features/goal-check/overview">
+    Understand how student PACE assignments enable Goal Check
+  </Card>
+
+  <Card title="CSV Templates" icon="table" href="/reference/csv-templates">
+    Student import CSV template and format reference
+  </Card>
+</CardGroup>
