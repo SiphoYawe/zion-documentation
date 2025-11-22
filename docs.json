@@ -13,6 +13,7 @@
     "dark": "/logo/dark.svg",
     "href": "https://zionapp.co"
   },
+  "favicon": "/favicon.svg",
   "navbar": {
     "links": [
       {
