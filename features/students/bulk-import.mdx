@@ -1,0 +1,666 @@
+---
+title: CSV Bulk Student Import
+description: Import 20-500 students at once using CSV file with template download, validation, error handling, and best practices
+icon: "file-import"
+---
+
+# CSV Bulk Student Import
+
+Import large student rosters efficiently using CSV file upload. This guide covers template download, data preparation, validation, error handling, and successful import completion.
+
+## When to Use CSV Bulk Import
+
+**Recommended For:**
+- Initial school setup (50-200 students)
+- Start of academic year (new cohort)
+- Transferring from another system
+- 20+ students at once
+
+**Time Savings:**
+- Manual entry: 2-3 minutes × 50 students = 100-150 minutes
+- CSV import: 10-15 minutes total (including prep)
+- **Saves 1.5-2 hours for 50 students**
+
+**Not Recommended For:**
+- Adding 1-10 students (faster to add individually)
+- Students with unique circumstances requiring manual attention
+- When you don&apos;t have digital student data
+
+---
+
+## CSV Import Overview
+
+### Process Summary
+
+<Steps>
+  <Step title="Download Template">
+    Get Zion&apos;s CSV template with correct columns
+  </Step>
+
+  <Step title="Fill Template">
+    Add student data in Excel/Google Sheets
+  </Step>
+
+  <Step title="Upload CSV">
+    Upload filled CSV to Zion
+  </Step>
+
+  <Step title="Validate">
+    Zion checks data for errors
+  </Step>
+
+  <Step title="Review Validation Results">
+    Fix any errors in CSV, re-upload if needed
+  </Step>
+
+  <Step title="Confirm Import">
+    When validation passes, click "Import X Students"
+  </Step>
+
+  <Step title="Verify Success">
+    Check students appeared in Students list
+  </Step>
+
+  <Step title="Assign PACEs">
+    After import, assign PACEs to all students
+  </Step>
+</Steps>
+
+**Total Time:** 15-20 minutes for 50 students
+
+---
+
+## Step 1: Download CSV Template
+
+### Accessing the Template
+
+<Steps>
+  <Step title="Navigate to Students">
+    Click "Management" → "Students" in sidebar
+  </Step>
+
+  <Step title="Click Import Students">
+    Button in top right corner
+  </Step>
+
+  <Step title="Click Download Template">
+    Downloads CSV file to your computer
+  </Step>
+</Steps>
+
+**Template File Name:**
+```
+zion-student-import-template.csv
+```
+
+### Template Structure
+
+**Required Columns:**
+- `first_name` - Student&apos;s first name
+- `last_name` - Student&apos;s last name
+- `date_of_birth` - Format: YYYY-MM-DD
+- `grade_level` - Number 1-12
+- `learning_centre_name` - Exact name of existing centre
+
+**Optional Columns:**
+- `student_id` - Your school&apos;s internal ID
+- `parent_name` - Parent or guardian full name
+- `parent_email` - Email for future parent portal
+- `parent_phone` - Phone number with country code
+- `notes` - Any special notes about student
+
+**Example Template Content:**
+```csv
+first_name,last_name,date_of_birth,grade_level,learning_centre_name,student_id,parent_name,parent_email,parent_phone,notes
+John,Smith,2013-03-15,5,Faith Centre,2024-001,Jane Smith,jane@email.com,+256701234567,
+Mary,Johnson,2014-07-22,4,Faith Centre,2024-002,Robert Johnson,robert@email.com,+256702345678,Allergic to peanuts
+```
+
+---
+
+## Step 2: Prepare Your CSV Data
+
+### Opening the Template
+
+**In Excel:**
+1. Right-click downloaded template
+2. Select "Open with" → "Microsoft Excel"
+3. Data should appear in columns
+
+**In Google Sheets:**
+1. Go to sheets.google.com
+2. File → Import
+3. Upload → Select template file
+4. Import as new spreadsheet
+
+### Filling Out Student Data
+
+**For Each Student (One Row):**
+
+**first_name (Required):**
+- Legal first name only (no nicknames)
+- Example: "John" not "Johnny"
+- No special characters unless part of legal name
+
+**last_name (Required):**
+- Legal last name
+- Example: "Smith"
+- Hyphenated names okay: "Smith-Jones"
+
+**date_of_birth (Required):**
+- **CRITICAL: Use YYYY-MM-DD format**
+- Example: 2013-03-15 (March 15, 2013)
+- NOT 03/15/2013 or 15/03/2013
+- Excel may auto-format dates - check before saving!
+
+**grade_level (Required):**
+- Number only: 1, 2, 3, ... 12
+- NOT "Grade 5" or "Fifth Grade"
+- Example: 5
+
+**learning_centre_name (Required):**
+- **CRITICAL: Must match existing centre name exactly**
+- Case-sensitive: "Faith Centre" ≠ "faith centre"
+- No extra spaces: "Faith Centre" ≠ "Faith Centre "
+- Get exact names from Zion (Management → Learning Centres)
+
+**student_id (Optional):**
+- Your internal school ID
+- Any format works: "2024-001", "STU-12345"
+- Must be unique (no two students with same ID)
+
+**parent_name (Optional):**
+- Full name of parent/guardian
+- Example: "Jane Smith"
+
+**parent_email (Optional):**
+- Valid email format
+- Example: jane@example.com
+- Used for future parent portal
+
+**parent_phone (Optional):**
+- Include country code for international
+- Example: +256701234567 (Uganda), +1-555-123-4567 (USA)
+- Can include or omit dashes/spaces
+
+**notes (Optional):**
+- Any relevant information
+- Medical info, accommodations, etc.
+- Keep brief (1-2 sentences)
+
+### Data Quality Tips
+
+**Before Saving:**
+
+<Steps>
+  <Step title="Check Date Format">
+    Ensure all dates are YYYY-MM-DD (Excel often changes this!)
+  </Step>
+
+  <Step title="Verify Centre Names">
+    Copy exact names from Zion to avoid typos
+  </Step>
+
+  <Step title="Remove Empty Rows">
+    Delete any blank rows at bottom
+  </Step>
+
+  <Step title="Check for Duplicates">
+    Sort by name, look for duplicate students
+  </Step>
+
+  <Step title="Verify Grade Levels">
+    All grades should be 1-12 (numbers only)
+  </Step>
+</Steps>
+
+**Common Mistakes to Avoid:**
+- Date format wrong (most common error!)
+- Learning centre name doesn&apos;t match exactly
+- Grade level as text ("Grade 5") instead of number (5)
+- Extra commas in notes field (breaks CSV format)
+- Blank required fields
+
+---
+
+## Step 3: Save and Upload CSV
+
+### Saving Your CSV File
+
+**In Excel:**
+1. File → Save As
+2. Choose location (Desktop for easy finding)
+3. **CRITICAL: Select "CSV (Comma delimited) (*.csv)" as format**
+4. Name file: "students-import-2024.csv"
+5. Click Save
+6. Excel may warn "Some features not compatible" - click Yes/OK
+
+**In Google Sheets:**
+1. File → Download
+2. Select "Comma Separated Values (.csv)"
+3. File downloads to Downloads folder
+4. Rename if desired: "students-import-2024.csv"
+
+<Warning>
+**Excel Date Warning:** Excel often changes date format when saving CSV. After saving, re-open CSV in Notepad (Windows) or TextEdit (Mac) to verify dates are still YYYY-MM-DD format. If not, you&apos;ll need to fix in Excel and re-save.
+</Warning>
+
+### Uploading to Zion
+
+<Steps>
+  <Step title="Return to Zion Import Page">
+    Management → Students → Import Students
+  </Step>
+
+  <Step title="Click Choose File or Drag/Drop">
+    Select your saved CSV file
+  </Step>
+
+  <Step title="Wait for Upload">
+    File uploads (5-10 seconds for 50 students)
+  </Step>
+
+  <Step title="Validation Begins Automatically">
+    Zion checks data immediately after upload
+  </Step>
+</Steps>
+
+---
+
+## Step 4: Validation and Error Handling
+
+### Validation Process
+
+**Zion Checks:**
+1. **File Format:** Is it valid CSV?
+2. **Required Columns:** Are all 5 required columns present?
+3. **Data Types:** Are dates valid? Grades 1-12? Emails formatted correctly?
+4. **Learning Centres:** Do all centre names match existing centres?
+5. **Duplicates:** Any duplicate student IDs or exact name+DOB matches?
+6. **Logical Errors:** Age appropriate for grade? Future dates of birth?
+
+**Validation Results:**
+
+**All Valid (Green):**
+```
+✓ 50 students validated successfully
+✓ 0 errors found
+Ready to import!
+```
+
+**Some Errors (Red):**
+```
+✗ 45 students validated successfully
+✗ 5 students have errors
+Review errors below and fix your CSV
+```
+
+### Common Validation Errors
+
+**Error: "Invalid date format"**
+- **Cause:** Date not in YYYY-MM-DD format
+- **Example:** "03/15/2013" should be "2013-03-15"
+- **Fix:** Open CSV, correct date format, re-save, re-upload
+
+**Error: "Learning centre not found"**
+- **Cause:** Centre name doesn&apos;t match exactly
+- **Example:** CSV says "faith centre" but Zion has "Faith Centre" (case mismatch)
+- **Fix:** Copy exact centre name from Zion, paste into CSV, re-save, re-upload
+
+**Error: "Grade level must be between 1 and 12"**
+- **Cause:** Grade is text or out of range
+- **Example:** "Grade 5" should be "5", or "13" is invalid
+- **Fix:** Change to number 1-12
+
+**Error: "Invalid email format"**
+- **Cause:** Email missing @ or domain
+- **Example:** "janeemail.com" should be "jane@email.com"
+- **Fix:** Correct email format
+
+**Error: "Duplicate student found"**
+- **Cause:** Same first name + last name + date of birth as existing student
+- **Example:** Already have "John Smith" born 2013-03-15
+- **Fix:** If truly different student, add middle initial or nickname to differentiate. If duplicate, remove from CSV.
+
+**Error: "Required field missing"**
+- **Cause:** One of the 5 required columns is blank
+- **Example:** Student 15 has no first_name
+- **Fix:** Fill in missing data, re-save, re-upload
+
+### Viewing Error Details
+
+**Error Display:**
+```
+Row 15: Invalid date format in date_of_birth
+  Student: John Smith
+  Value entered: 03/15/2013
+  Expected format: YYYY-MM-DD (2013-03-15)
+
+Row 22: Learning centre not found
+  Student: Mary Johnson
+  Value entered: "faith centre"
+  Available centres: Faith Centre, Grace Centre, Hope Centre
+```
+
+**Download Error Report:**
+1. Click "Download Error Report" button
+2. CSV file downloads with errors highlighted
+3. Fix errors in this file
+4. Re-upload
+
+---
+
+## Step 5: Confirm Import
+
+### Review Import Preview
+
+**When Validation Passes:**
+- Zion shows preview of first 10 students to be imported
+- Review to ensure data looks correct
+- Check names, grades, centres are as expected
+
+**Import Summary:**
+```
+Ready to Import:
+- 50 students
+- Into 3 learning centres (Faith: 20, Grace: 18, Hope: 12)
+- Grades 1-12
+- 45 with parent email, 5 without
+```
+
+### Executing Import
+
+<Steps>
+  <Step title="Review Summary">
+    Verify student count matches expectation
+  </Step>
+
+  <Step title="Click Import X Students Button">
+    Button shows exact count (e.g., "Import 50 Students")
+  </Step>
+
+  <Step title="Wait for Import">
+    Progress bar shows 10-30 seconds for 50 students
+  </Step>
+
+  <Step title="Success Message">
+    "50 students imported successfully!"
+  </Step>
+
+  <Step title="Navigate to Students List">
+    Click "View Students" to see new entries
+  </Step>
+</Steps>
+
+### Verifying Import Success
+
+<Steps>
+  <Step title="Check Total Count">
+    Students list should show increased count
+  </Step>
+
+  <Step title="Filter by Centre">
+    Verify students in correct centres
+  </Step>
+
+  <Step title="Spot-Check Random Students">
+    Click few students to verify data imported correctly
+  </Step>
+
+  <Step title="Check for Missing Students">
+    If count doesn&apos;t match, some students may not have imported (check error log)
+  </Step>
+</Steps>
+
+---
+
+## Step 6: Post-Import Tasks
+
+### Assign PACEs to All Students
+
+**Immediately After Import:**
+Students have NO PACE assignments after CSV import (too individualized to import via CSV).
+
+<Steps>
+  <Step title="Filter Students">
+    Filter to newly imported students (by date added)
+  </Step>
+
+  <Step title="Assign PACEs Student-by-Student">
+    Click each student, assign 4-6 PACEs based on grade
+  </Step>
+
+  <Step title="Or Batch Assign">
+    For students of same grade, assign similar PACEs
+  </Step>
+
+  <Step title="Verify All Have PACEs">
+    Check that all imported students now have PACE assignments
+  </Step>
+</Steps>
+
+**Time Required:** 15-20 minutes for 50 students
+
+**See [PACE Assignments Guide](/features/students/pace-assignments) for details.**
+
+### Notify Supervisors
+
+**Email Template:**
+```
+Subject: New Students Assigned to [Centre Name]
+
+Hi [Supervisor Name],
+
+I&apos;ve just imported [X] new students into Zion and assigned them to your centre ([Centre Name]).
+
+Students added:
+- [List student names and grades]
+
+Please verify:
+1. Students appear in your Goal Check entry
+2. PACE assignments are appropriate
+3. All student information is correct
+
+Let me know if you have questions or need changes.
+
+Thanks,
+[Administrator Name]
+```
+
+---
+
+## Advanced CSV Import Features
+
+### Updating Existing Students via CSV
+
+**Use Case:**
+Update multiple students&apos; information at once (e.g., change grades at start of year).
+
+**How It Works:**
+1. Export existing students as CSV (Data Export feature)
+2. Modify CSV (change grades, centres, etc.)
+3. Upload modified CSV
+4. Zion matches by student_id or name+DOB
+5. Updates existing records instead of creating duplicates
+
+**Caution:**
+This feature is powerful but can overwrite data. Test with small batch first.
+
+### Partial Imports
+
+**Use Case:**
+Import fails validation for 5 of 50 students.
+
+**Options:**
+
+**Option 1: Fix and Re-Import All**
+- Fix 5 errors in CSV
+- Re-upload entire CSV
+- Zion skips duplicates, imports only new students
+
+**Option 2: Remove Invalid Rows and Import Valid Only**
+- Delete 5 error rows from CSV
+- Import 45 valid students
+- Later, manually add 5 problematic students individually
+
+**Recommendation:** Option 1 (fix and re-import) for completeness.
+
+---
+
+## Troubleshooting CSV Import
+
+### "CSV Upload Failed"
+
+**Causes:**
+1. File too large (>5MB)
+2. File not actually CSV format (saved as Excel .xlsx)
+3. Internet connection lost during upload
+
+**Solutions:**
+1. Split CSV into smaller files (import in batches)
+2. Re-save as .csv (not .xlsx)
+3. Check internet, re-upload
+
+### "All Students Failing Validation with Same Error"
+
+**Common Cause:**
+Column headers wrong or missing.
+
+**Check:**
+- First row should be: `first_name,last_name,date_of_birth,grade_level,learning_centre_name,...`
+- No extra header rows above this
+- Column names match exactly (case-sensitive)
+
+**Fix:**
+Re-download template, copy your data into it (don&apos;t modify headers).
+
+### "Validation Says 50 Success But Only 45 Imported"
+
+**Cause:**
+5 students already exist (duplicates detected during import, not validation).
+
+**Verify:**
+Check Students list for those 5 names - likely they were already in system.
+
+### "Dates Importing as Numbers"
+
+**Cause:**
+Excel saved dates as serial numbers instead of YYYY-MM-DD.
+
+**Example:**
+CSV shows "44981" instead of "2023-01-15"
+
+**Fix:**
+1. Open CSV in Notepad/TextEdit (not Excel)
+2. Check date format visually
+3. If numbers, go back to Excel
+4. Format date columns as "Text" BEFORE entering dates
+5. Re-enter dates as YYYY-MM-DD
+6. Re-save as CSV
+
+---
+
+## CSV Import Best Practices
+
+### Before Import
+
+<Steps>
+  <Step title="Create Backup">
+    If updating existing students, export current data first (safety net)
+  </Step>
+
+  <Step title="Test with Small Batch">
+    Import 5-10 students first to verify format works
+  </Step>
+
+  <Step title="Verify Centre Names">
+    List all centres in Zion, copy names exactly into CSV
+  </Step>
+
+  <Step title="Standardize Data">
+    Use consistent formats (dates, phone numbers, etc.)
+  </Step>
+</Steps>
+
+### During Import
+
+<Steps>
+  <Step title="Don&apos;t Close Browser">
+    Keep Zion tab open during validation and import
+  </Step>
+
+  <Step title="Review Validation Carefully">
+    Even if only 1 error, fix it (incomplete data causes issues later)
+  </Step>
+
+  <Step title="Save Error Report">
+    Download error CSV for records
+  </Step>
+</Steps>
+
+### After Import
+
+<Steps>
+  <Step title="Verify Count">
+    Expected students = imported students?
+  </Step>
+
+  <Step title="Assign PACEs Immediately">
+    Don&apos;t delay - students can&apos;t use Goal Check without PACEs
+  </Step>
+
+  <Step title="Notify Supervisors">
+    Inform supervisors of new students in their centres
+  </Step>
+
+  <Step title="Spot-Check Data">
+    Review random students to ensure data imported correctly
+  </Step>
+</Steps>
+
+---
+
+## CSV Import FAQs
+
+**Q: Can I import students without learning centre assignments?**
+A: No, `learning_centre_name` is required. All students must be assigned to a centre.
+
+**Q: What happens if I upload the same CSV twice?**
+A: Zion detects duplicates (same name+DOB) and skips them. Won&apos;t create duplicate entries.
+
+**Q: Can I import PACE assignments via CSV?**
+A: Not yet. PACE assignments too individualized for bulk import. Assign manually after import.
+
+**Q: Maximum students per CSV import?**
+A: 500 students per import. For larger schools, split into multiple CSVs.
+
+**Q: Can I update existing students via CSV?**
+A: Yes, advanced feature. Match by student_id, update fields. Use with caution.
+
+**Q: What if my CSV has extra columns?**
+A: Extra columns are ignored. Only recognized columns are processed.
+
+**Q: Can I import to multiple centres in one CSV?**
+A: Yes! Each row can specify different learning centre.
+
+---
+
+## Related Features
+
+<CardGroup cols={2}>
+  <Card title="Student Management" icon="users" href="/features/students/overview">
+    Complete student management guide
+  </Card>
+
+  <Card title="CSV Templates" icon="table" href="/reference/csv-templates">
+    All CSV template formats reference
+  </Card>
+
+  <Card title="PACE Assignments" icon="book-open" href="/features/students/pace-assignments">
+    Assign PACEs after importing students
+  </Card>
+
+  <Card title="Learning Centres" icon="building" href="/guides/administrator/learning-centres">
+    Create centres before importing students
+  </Card>
+</CardGroup>

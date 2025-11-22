@@ -1,0 +1,651 @@
+---
+title: Monitor Goal Check Workflow
+description: Simplified Goal Check data entry workflow for monitors - setting goals and marking progress
+icon: "clipboard-check"
+---
+
+# Monitor Goal Check Workflow
+
+This guide shows monitors how to use Zion for Goal Check data entry. Your role is focused and streamlined: enter goals in the morning and mark actual progress at end of day.
+
+<Note>
+**Monitor vs Supervisor:** Monitors focus solely on data entry (setting goals, marking progress). You won&apos;t have access to dashboards, reports, or analytics - those are supervisor features. Your interface is simpler and faster for efficient data collection.
+</Note>
+
+## Your Role as Monitor
+
+**Primary Responsibilities:**
+- Set daily PACE page goals for students in your assigned centres
+- Mark actual pages completed at end of day
+- Add notes for students who struggled
+
+**What You Will NOT Do:**
+- Generate reports (supervisor function)
+- View dashboards or analytics (supervisor function)
+- Manage students or PACEs (administrator function)
+- Make strategic decisions (supervisor/administrator function)
+
+**Estimated Time:**
+- Morning goal entry: 5 minutes for 20 students
+- End of day marking: 5 minutes for 20 students
+- Total: ~10 minutes per day
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Before you can use Goal Check, your administrator must:
+1. Invite you as a monitor (you&apos;ll receive email invitation)
+2. Assign you to one or more learning centres
+3. Ensure students in your centres have PACE assignments
+
+### Accessing Zion
+
+<Steps>
+  <Step title="Check Your Email">
+    Look for invitation email from Zion (via Clerk)
+  </Step>
+
+  <Step title="Click Invitation Link">
+    Opens Zion sign-up page with your email pre-filled
+  </Step>
+
+  <Step title="Set Your Password">
+    Create a secure password for your account
+  </Step>
+
+  <Step title="Log In">
+    Use your email and password to access Zion
+  </Step>
+
+  <Step title="Verify Role">
+    You&apos;ll see "Monitor" badge in top right corner
+  </Step>
+</Steps>
+
+### Monitor Interface
+
+**Sidebar Navigation:**
+- **Goal Check** - Your primary workflow
+  - Set Goals (morning task)
+  - Mark Progress (end of day task)
+- **Profile** - Update your personal info
+- **Help** - Access documentation and support
+
+**What You WON&apos;T See:**
+- Dashboard (supervisor only)
+- Reports (supervisor/administrator only)
+- Students management (administrator only)
+- Learning centres management (administrator only)
+
+<Tip>
+**Simplified Interface:** Your interface is intentionally simple to keep you focused on data entry. This makes your work faster and reduces cognitive load.
+</Tip>
+
+---
+
+## Morning: Setting Daily Goals
+
+### Step 1: Access Goal Entry
+
+<Steps>
+  <Step title="Log Into Zion">
+    Use your email and password
+  </Step>
+
+  <Step title="Click Goal Check">
+    In sidebar navigation
+  </Step>
+
+  <Step title="Click Set Goals">
+    Opens goal entry interface
+  </Step>
+
+  <Step title="Confirm Date">
+    Ensure date is today (or select different date if needed)
+  </Step>
+</Steps>
+
+### Step 2: Understand the Goal Entry Table
+
+**Table Structure:**
+- **Rows:** Each row is a student in your assigned centre(s)
+- **Column Groups:** Each student has columns for their assigned PACEs
+- **Fields per PACE:**
+  - Goal Start Page (where they&apos;ll start today)
+  - Goal End Page (where they should end today)
+  - Goal Total Pages (auto-calculated: end - start + 1)
+
+**Example:**
+```
+Student: John Smith
+PACE: Math 1015
+
+Goal Start Page: 15
+Goal End Page: 20
+Goal Total Pages: 6 pages (auto-calculated)
+```
+
+### Step 3: Enter Goals for Each Student
+
+**For Each Student and PACE:**
+
+<Steps>
+  <Step title="Enter Goal Start Page">
+    Type the page number where student will begin today (e.g., 15)
+  </Step>
+
+  <Step title="Enter Goal End Page">
+    Type the page number where student should finish today (e.g., 20)
+  </Step>
+
+  <Step title="Verify Total Pages">
+    System auto-calculates total pages (should be reasonable: 5-10 pages typically)
+  </Step>
+
+  <Step title="Move to Next PACE">
+    Press Tab or click next field to continue
+  </Step>
+
+  <Step title="Repeat for All PACEs">
+    Each student typically has 4-6 PACEs
+  </Step>
+</Steps>
+
+**Auto-Save:**
+- Goals save automatically as you type (500ms after you stop typing)
+- Checkmarks appear when data is saved
+- No "Submit All" button needed - just enter data and navigate away when done
+
+### Step 4: Use Quick Templates (Optional)
+
+**Copy Previous Day:**
+1. Click "Copy Previous Day" button at top of page
+2. Yesterday&apos;s goals pre-fill for all students
+3. Adjust as needed for students who did/didn&apos;t complete goals
+
+**Why Use Copy Previous Day:**
+- Saves time (pre-fills all fields)
+- Maintains continuity (students pick up where they left off)
+- Requires minimal adjustments (only change for students who struggled or excelled)
+
+**Standard Goal Guidelines by Grade:**
+- Grades 1-4: 5-6 pages per subject
+- Grades 5-8: 7-8 pages per subject
+- Grades 9-12: 9-10 pages per subject
+
+These are guidelines - your supervisor may adjust based on student ability and PACE difficulty.
+
+### Step 5: Validation and Error Handling
+
+**Zion Validates Your Entries:**
+
+**Valid Entry:**
+- Goal start page ≤ goal end page
+- Goal end page ≤ PACE total pages (typically 36)
+- All fields numeric (no letters or special characters)
+
+**Invalid Entry Examples:**
+- Goal start page 25, goal end page 20 (start > end) - ERROR
+- Goal end page 40 (PACE only has 36 pages) - ERROR
+- Goal start page "abc" (not a number) - ERROR
+
+**Error Display:**
+- Red border around invalid field
+- Error message below field
+- Cannot save until fixed
+
+**Fix Errors:**
+1. Review error message
+2. Correct the value
+3. Error clears automatically when fixed
+4. Data saves when valid
+
+---
+
+## End of Day: Marking Actual Progress
+
+### Step 1: Access Progress Marking
+
+<Steps>
+  <Step title="Log Into Zion">
+    If not already logged in
+  </Step>
+
+  <Step title="Click Goal Check">
+    In sidebar navigation
+  </Step>
+
+  <Step title="Click Mark Progress">
+    Opens progress marking interface
+  </Step>
+
+  <Step title="Confirm Date">
+    Ensure date is today (or select different date if needed)
+  </Step>
+</Steps>
+
+### Step 2: Understand the Progress Marking Table
+
+**Table Structure:**
+- Same layout as goal entry
+- Shows goals you set this morning (read-only)
+- Has fields for actual pages completed
+
+**Fields per PACE:**
+- Goal Pages (read-only, set this morning)
+- Actual Start Page (where student actually started)
+- Actual End Page (where student actually finished)
+- Actual Total Pages (auto-calculated)
+- Variance (actual - goal, auto-calculated)
+
+**Example:**
+```
+Student: John Smith
+PACE: Math 1015
+
+Goal Pages: 6 pages (15-20, set this morning)
+Actual Start Page: 15 (enter now)
+Actual End Page: 19 (enter now)
+Actual Total Pages: 5 pages (auto-calculated)
+Variance: -1 page (missed by 1 page)
+```
+
+### Step 3: Mark Progress for Each Student
+
+**For Each Student and PACE:**
+
+<Steps>
+  <Step title="Check Physical PACE">
+    Look at student&apos;s PACE to see which pages they completed
+  </Step>
+
+  <Step title="Enter Actual Start Page">
+    Type the page number where student actually began work today
+  </Step>
+
+  <Step title="Enter Actual End Page">
+    Type the page number where student actually finished work today
+  </Step>
+
+  <Step title="Verify Actual Total Pages">
+    System auto-calculates total pages completed
+  </Step>
+
+  <Step title="Review Variance">
+    System shows difference between actual and goal (+ or - pages)
+  </Step>
+
+  <Step title="Move to Next PACE">
+    Press Tab or click next field to continue
+  </Step>
+</Steps>
+
+**Auto-Save:**
+- Progress saves automatically as you type
+- Checkmarks appear when saved
+- Status badge updates (Completed, Missed, Exceeded)
+
+### Step 4: Understanding Variance
+
+**Variance = Actual Total Pages - Goal Total Pages**
+
+**Positive Variance (+pages):**
+- Student did MORE than goal
+- Example: Goal 6 pages, Actual 8 pages = +2 variance
+- Status: "Exceeded" (blue badge)
+
+**Zero Variance (0 pages):**
+- Student met goal exactly
+- Example: Goal 6 pages, Actual 6 pages = 0 variance
+- Status: "Completed" (green badge)
+
+**Negative Variance (-pages):**
+- Student did FEWER than goal
+- Example: Goal 6 pages, Actual 4 pages = -2 variance
+- Status: "Missed" (red badge)
+
+**Color-Coded Badges:**
+- **Green "Completed"**: Met or slightly exceeded goal
+- **Blue "Exceeded"**: Significantly exceeded goal
+- **Red "Missed"**: Did not meet goal
+
+### Step 5: Adding Notes (Optional)
+
+**When to Add Notes:**
+- Student missed goal (explain why)
+- Student struggled with specific concept
+- Student excelled (note what went well)
+- External factors affected performance (illness, disruption, etc.)
+
+**How to Add Notes:**
+
+<Steps>
+  <Step title="Click Notes Field">
+    Below student&apos;s PACE entries
+  </Step>
+
+  <Step title="Type Brief Note">
+    Example: "Struggled with multiplication tables in pages 15-17"
+  </Step>
+
+  <Step title="Save Automatically">
+    Notes auto-save as you type
+  </Step>
+</Steps>
+
+**Note Guidelines:**
+- Keep notes brief (1-2 sentences)
+- Be specific about what struggled/excelled
+- Include page numbers if relevant
+- Avoid vague notes like "did ok" (not helpful for analysis)
+
+**Good Note Examples:**
+- "Missed goal due to spelling difficulty in pages 22-24"
+- "Exceeded goal - very focused today, completed early"
+- "Absent for second half of day, partial completion"
+
+---
+
+## Best Practices for Monitors
+
+### Goal Setting Best Practices
+
+<Steps>
+  <Step title="Copy Previous Day First">
+    Start with yesterday&apos;s goals as baseline
+  </Step>
+
+  <Step title="Adjust for Completion">
+    If student completed yesterday&apos;s goal, continue from where they left off. If not, repeat same pages.
+  </Step>
+
+  <Step title="Check with Supervisor">
+    If unsure about goal difficulty for a student, ask your supervisor
+  </Step>
+
+  <Step title="Be Consistent">
+    Set goals at same time each morning (e.g., 8:00 AM before students arrive)
+  </Step>
+
+  <Step title="Double-Check Entries">
+    Glance through entries before navigating away to catch typos
+  </Step>
+</Steps>
+
+### Progress Marking Best Practices
+
+<Steps>
+  <Step title="Mark Daily">
+    Don&apos;t let marking pile up - daily marking is crucial for accurate tracking
+  </Step>
+
+  <Step title="Check Physical PACEs">
+    Look at actual PACEs to see what students completed (don&apos;t guess)
+  </Step>
+
+  <Step title="Be Honest">
+    Enter actual pages completed, not what you wish they completed
+  </Step>
+
+  <Step title="Add Notes for Struggles">
+    Always note why student missed goal (helps supervisor plan support)
+  </Step>
+
+  <Step title="Mark Consistently">
+    Same time each afternoon (e.g., 3:00 PM after students finish)
+  </Step>
+</Steps>
+
+### Time Management Tips
+
+**Morning Goal Entry (5 min for 20 students):**
+- Use "Copy Previous Day" to save time
+- Only adjust for students who struggled/excelled yesterday
+- Work in batches: All Math goals, then all English goals, etc.
+
+**Afternoon Progress Marking (5 min for 20 students):**
+- Have all PACEs collected before starting
+- Work student-by-student (mark all PACEs for one student, then move to next)
+- Add notes as you go (don&apos;t save notes for end)
+
+---
+
+## Mobile/Tablet Data Entry
+
+**Optimized for Tablets:**
+- Zion is designed for tablet-based data entry
+- Use landscape mode for better table visibility
+- Number pad inputs for page numbers (touch-friendly)
+
+**Tablet Tips:**
+
+**Landscape Orientation:**
+- Table fits more columns on screen
+- Less horizontal scrolling needed
+- Easier to see full student roster
+
+**Touch Targets:**
+- All input fields are ≥44x44px (finger-friendly)
+- Tap field to activate number pad
+- Swipe table to scroll horizontally
+
+**Internet Connection:**
+- Zion requires internet for auto-save
+- Offline banner appears if connection lost
+- Data saves when connection restored
+- Don&apos;t close browser until data saved (checkmarks visible)
+
+**Recommended Devices:**
+- iPad (Safari browser)
+- Android tablet (Chrome browser)
+- Minimum screen size: 9 inches for comfortable data entry
+
+---
+
+## Common Questions
+
+**Q: What if I make a mistake entering goals?**
+A: Goals are editable until you mark progress. Just go back to Set Goals and correct the entry.
+
+**Q: Can I set goals for past dates?**
+A: Yes, if you forgot to set goals yesterday, you can select past date and enter goals. Same for marking progress.
+
+**Q: What if a student was absent?**
+A: Set goals anyway (for record-keeping), then at end of day, mark 0 pages completed (leave actual start/end blank or enter 0).
+
+**Q: Student completed different pages than goal - is that okay?**
+A: Yes! Enter the actual pages they completed. Variance will reflect the difference. This is normal and expected.
+
+**Q: How do I know if my data saved?**
+A: Look for green checkmarks next to fields. If no checkmark, data may not have saved - check internet connection.
+
+**Q: Can I see reports of the data I entered?**
+A: No, monitors don&apos;t have access to reports. Your supervisor generates reports using the data you enter.
+
+**Q: What if I don&apos;t know what goal pages to set?**
+A: Use "Copy Previous Day" or ask your supervisor for guidance. They can provide standard templates for your students.
+
+**Q: Student completed a different PACE than assigned - what do I do?**
+A: Contact your supervisor. They can adjust PACE assignments. Don&apos;t enter data for PACEs not showing in the table.
+
+---
+
+## Troubleshooting
+
+### "I Can&apos;t See Any Students"
+
+**Causes:**
+1. You&apos;re not assigned to any learning centres
+2. Your assigned centres have no students
+3. Students in your centres have no PACE assignments
+
+**Solutions:**
+1. Contact your administrator to verify centre assignment
+2. Ensure students exist in your centres
+3. Verify students have PACEs assigned
+
+### "Goal Entry is Slow"
+
+**Causes:**
+1. Slow internet connection
+2. Too many browser tabs open
+3. Device memory low
+
+**Solutions:**
+1. Check internet speed (need 1+ Mbps)
+2. Close other tabs and apps
+3. Restart device if sluggish
+
+### "Data Not Saving"
+
+**Causes:**
+1. No internet connection
+2. Invalid data (errors in fields)
+3. Session expired (logged out)
+
+**Solutions:**
+1. Check internet connection (look for offline banner)
+2. Review fields for red error messages
+3. Refresh page and log in again
+
+### "I Forgot My Password"
+
+**Solution:**
+1. Go to Zion login page
+2. Click "Forgot Password"
+3. Enter your email
+4. Check email for password reset link
+5. Set new password
+
+### "Students Showing in Wrong Order"
+
+**Not an Error:**
+- Students sort alphabetically by default
+- This is normal behavior
+- Use search if you need to find specific student quickly
+
+---
+
+## Working with Supervisors
+
+### Your Supervisor&apos;s Role
+
+**What Your Supervisor Does:**
+- Uses the data you enter to generate reports
+- Analyzes student performance trends
+- Plans interventions for struggling students
+- Sets strategic goals for the centre
+
+**How Your Work Helps:**
+- Your accurate data entry enables all supervisor functions
+- Timely entry (daily) keeps data fresh and actionable
+- Notes you add help supervisor understand student struggles
+
+### Communication Tips
+
+**Report to Your Supervisor:**
+- Students consistently missing goals (3+ days)
+- Data entry issues or technical problems
+- Questions about appropriate goal difficulty
+- Students with special circumstances (illness, etc.)
+
+**Ask Your Supervisor:**
+- "What goal pages should I set for new student?"
+- "Student struggling - should I lower goals?"
+- "I&apos;m unsure how to handle [situation] - advice?"
+
+**Don&apos;t:**
+- Make strategic decisions (that&apos;s supervisor role)
+- Skip data entry without notifying supervisor
+- Guess at goal pages if unsure (ask first)
+
+---
+
+## Daily Workflow Summary
+
+### Morning Routine (5 minutes)
+
+<Steps>
+  <Step title="Log Into Zion (30 sec)">
+    Use email and password
+  </Step>
+
+  <Step title="Navigate to Set Goals (10 sec)">
+    Sidebar → Goal Check → Set Goals
+  </Step>
+
+  <Step title="Copy Previous Day (10 sec)">
+    Click button to pre-fill all goals
+  </Step>
+
+  <Step title="Adjust Goals (3-4 min)">
+    Modify for students who struggled or excelled yesterday
+  </Step>
+
+  <Step title="Verify Save (10 sec)">
+    Look for checkmarks, then navigate away
+  </Step>
+</Steps>
+
+### Afternoon Routine (5 minutes)
+
+<Steps>
+  <Step title="Collect PACEs (before Zion)">
+    Gather all students&apos; PACEs to see actual pages completed
+  </Step>
+
+  <Step title="Navigate to Mark Progress (10 sec)">
+    Sidebar → Goal Check → Mark Progress
+  </Step>
+
+  <Step title="Mark Each Student (4-5 min)">
+    Enter actual start/end pages for all PACEs, add notes for struggles
+  </Step>
+
+  <Step title="Verify Save (10 sec)">
+    Look for checkmarks and status badges
+  </Step>
+
+  <Step title="Log Out (5 sec)">
+    Click profile → Sign Out
+  </Step>
+</Steps>
+
+**Total Daily Time: ~10 minutes** (vs hours of manual compilation!)
+
+---
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Setting Goals Guide" icon="target" href="/features/goal-check/setting-goals">
+    Detailed guide on goal entry best practices
+  </Card>
+
+  <Card title="Marking Progress Guide" icon="check-circle" href="/features/goal-check/marking-progress">
+    Detailed guide on progress marking techniques
+  </Card>
+
+  <Card title="PACE Catalog" icon="book-open" href="/features/paces/catalog">
+    Reference for all 144 PACEs and their page counts
+  </Card>
+
+  <Card title="Terminology" icon="book" href="/reference/terminology">
+    ACE and Zion terminology explained
+  </Card>
+</CardGroup>
+
+## Need Help?
+
+<CardGroup cols={2}>
+  <Card title="Contact Support" icon="life-ring" href="/support">
+    Get help from our support team
+  </Card>
+
+  <Card title="Ask Your Supervisor" icon="user" href="#">
+    Your supervisor can answer school-specific questions
+  </Card>
+</CardGroup>

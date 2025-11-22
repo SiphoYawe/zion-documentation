@@ -1,0 +1,700 @@
+---
+title: Data Export
+description: Export raw Goal Check data as CSV with flexible filters, background processing for large exports, and complete audit trails
+icon: "download"
+---
+
+# Goal Check Data Export
+
+Export all Goal Check data for custom analysis, long-term archival, integration with other systems, or ACE accreditation reporting. This guide covers CSV export, filtering, background jobs, and advanced use cases.
+
+<Note>
+**Administrator Feature:** Data export is available to administrators only. Supervisors can export their daily centre reports, but not raw data exports.
+</Note>
+
+## Export Overview
+
+**Purpose:**
+Extract raw Goal Check data from Zion for:
+- Custom analysis in Excel or other tools
+- Long-term archival beyond Zion retention
+- Integration with other school systems
+- ACE accreditation reporting
+- Board presentations with custom charts
+- Research and data science projects
+
+**Export Format:**
+- CSV (Comma-Separated Values)
+- Opens in Excel, Google Sheets, Numbers, database tools
+- One row per student per PACE per date
+
+**Data Included:**
+- All goal entries (start/end pages, total pages)
+- All progress entries (actual start/end pages, total pages, variance)
+- Student information (name, grade, centre)
+- PACE information (number, subject, title)
+- Timestamps (when goal set, when progress marked)
+- Notes added during progress marking
+- Audit trail (who entered data)
+
+---
+
+## Accessing Data Export
+
+### Navigation
+
+<Steps>
+  <Step title="Log In as Administrator">
+    Data export requires administrator role
+  </Step>
+
+  <Step title="Navigate to Goal Check">
+    Click "Goal Check" in sidebar
+  </Step>
+
+  <Step title="Click Data Export">
+    Opens export configuration page
+  </Step>
+</Steps>
+
+### Export Interface
+
+**Page Layout:**
+- **Filters Section:** Configure which data to export
+- **Preview Section:** Sample of data to be exported (first 10 rows)
+- **Export Button:** Initiates export
+- **Download History:** Previously generated exports
+
+---
+
+## Configuring Your Export
+
+### Date Range Filter
+
+**Purpose:**
+Specify which dates to include in export.
+
+**Options:**
+
+**Last 7 Days:**
+- Quick option for recent data
+- Example: Export Nov 15-22, 2024
+
+**Last 30 Days:**
+- Monthly snapshot
+- Example: Export Oct 22 - Nov 22, 2024
+
+**This Term:**
+- All data for active academic term
+- Example: Export Oct 1 - Dec 20, 2024 (Term 1)
+
+**Custom Date Range:**
+- Select any start and end date
+- Maximum: 1 year of data per export
+- Example: Export Jan 1 - Dec 31, 2024 (full calendar year)
+
+**All Historical Data:**
+- Complete Goal Check history since Zion implementation
+- May trigger background job if >10,000 rows
+- Use for comprehensive archival
+
+<Tip>
+**Start Small:** First-time exports should use smaller date ranges (last 7-30 days) to understand data structure before exporting large datasets.
+</Tip>
+
+### Centre Filter
+
+**Purpose:**
+Include specific centres or all centres.
+
+**Options:**
+
+**All Centres:**
+- School-wide export
+- Includes all learning centres
+- Default selection
+
+**Specific Centre(s):**
+- Select one or more centres from checklist
+- Example: Export only "Faith Centre" and "Grace Centre"
+- Useful for centre-specific analysis
+
+**Use Cases:**
+- Export one centre for supervisor review
+- Export select centres for comparison study
+- Export all centres for school-wide reporting
+
+### Student Filter
+
+**Purpose:**
+Include specific students or all students.
+
+**Options:**
+
+**All Students:**
+- Include every student in selected centres
+- Default selection
+
+**Specific Student(s):**
+- Search and select individual students
+- Example: Export data for 5 at-risk students only
+- Useful for case studies or parent meetings
+
+**Active Students Only:**
+- Exclude deactivated students
+- Default: enabled
+- Uncheck to include historical data for withdrawn students
+
+**Use Cases:**
+- Export single student for parent conference
+- Export at-risk students for intervention planning
+- Export graduates for historical records
+
+### Status Filter
+
+**Purpose:**
+Include only certain completion statuses.
+
+**Options:**
+
+**All Statuses:**
+- Completed, Exceeded, Missed, Not Started
+- Default selection
+
+**Completed Only:**
+- Students who met or exceeded goals
+- Useful for success analysis
+
+**Missed Only:**
+- Students who didn&apos;t meet goals
+- Useful for intervention planning
+
+**Exceeded Only:**
+- Students who significantly exceeded goals
+- Useful for identifying advanced students
+
+**Multiple Selection:**
+- Check multiple statuses
+- Example: Export "Completed" and "Exceeded" (success cases only)
+
+### Subject/PACE Filter
+
+**Purpose:**
+Include specific subjects or all subjects.
+
+**Options:**
+
+**All Subjects:**
+- Math, English, Science, Social Studies, Word Building, etc.
+- Default selection
+
+**Specific Subject(s):**
+- Select one or more subjects
+- Example: Export only Math data for curriculum analysis
+
+**Specific PACE(s):**
+- Select individual PACEs by number
+- Example: Export only PACE 1015 for difficulty assessment
+
+**Use Cases:**
+- Export Math data for curriculum planning
+- Export specific PACE to assess difficulty
+- Compare performance across subjects
+
+### Additional Options
+
+**Include Notes:**
+- ✅ Checked (default): Export includes notes added during progress marking
+- ❌ Unchecked: Export excludes notes (smaller file)
+
+**Include Audit Trail:**
+- ✅ Checked (default): Export includes who entered data and when
+- ❌ Unchecked: Export excludes audit data
+
+**Calculate Aggregations:**
+- ✅ Checked: Export includes calculated fields (daily totals, averages, etc.)
+- ❌ Unchecked: Raw data only (you calculate in Excel)
+
+---
+
+## Understanding Export Data Structure
+
+### CSV Columns
+
+**Student Information:**
+- `student_id` - Internal Zion student ID
+- `student_name` - Full name
+- `student_grade` - Grade level (1-12)
+- `learning_centre` - Centre name
+
+**Date Information:**
+- `date` - Date of Goal Check entry (YYYY-MM-DD format)
+- `day_of_week` - Mon, Tue, Wed, Thu, Fri
+- `academic_term` - Term name (e.g., "Term 1 2024")
+
+**PACE Information:**
+- `pace_number` - PACE number (1001-1144)
+- `pace_subject` - Subject (Math, English, etc.)
+- `pace_title` - Full PACE title
+- `pace_total_pages` - Total pages in PACE (typically 36)
+
+**Goal Data:**
+- `goal_start_page` - Goal start page set in morning
+- `goal_end_page` - Goal end page set in morning
+- `goal_total_pages` - Goal total pages (calculated)
+- `goal_set_at` - Timestamp when goal was set
+- `goal_set_by` - User who set goal
+
+**Actual Progress Data:**
+- `actual_start_page` - Actual start page marked at end of day
+- `actual_end_page` - Actual end page marked at end of day
+- `actual_total_pages` - Actual total pages (calculated)
+- `actual_marked_at` - Timestamp when progress was marked
+- `actual_marked_by` - User who marked progress
+
+**Calculated Fields:**
+- `variance` - Actual total - goal total
+- `variance_percentage` - (Variance / goal total) × 100
+- `status` - Completed, Exceeded, Missed, Not Started
+
+**Notes and Audit:**
+- `notes` - Any notes added during progress marking
+- `created_at` - When record was created
+- `updated_at` - When record was last updated
+- `created_by` - User who created record
+- `updated_by` - User who last updated record
+
+### Example CSV Row
+
+```csv
+student_id,student_name,student_grade,learning_centre,date,pace_number,pace_subject,goal_start_page,goal_end_page,goal_total_pages,actual_start_page,actual_end_page,actual_total_pages,variance,status,notes
+12345,John Smith,5,Faith Centre,2024-11-22,1015,Math,15,20,6,15,18,4,-2,Missed,"Struggled with long division on pages 18-19"
+```
+
+---
+
+## Generating and Downloading Export
+
+### Small Exports (Immediate Download)
+
+**Criteria:**
+- Less than 10,000 rows
+- Simple filters (single centre, short date range)
+- Completes in <10 seconds
+
+**Process:**
+
+<Steps>
+  <Step title="Configure Filters">
+    Set date range, centre, status, etc.
+  </Step>
+
+  <Step title="Preview Data">
+    Review first 10 rows to verify correct data
+  </Step>
+
+  <Step title="Click Export">
+    Button shows "Export X,XXX rows"
+  </Step>
+
+  <Step title="Wait for Generation">
+    Progress bar shows 5-10 seconds
+  </Step>
+
+  <Step title="Download Automatically">
+    CSV file downloads to browser default location
+  </Step>
+
+  <Step title="Open in Excel">
+    Double-click downloaded file
+  </Step>
+</Steps>
+
+**File Name Format:**
+```
+Zion-GoalCheck-Export-2024-11-22-143045.csv
+(Date and timestamp ensure unique names)
+```
+
+### Large Exports (Background Job)
+
+**Criteria:**
+- More than 10,000 rows
+- Complex filters (all centres, full year)
+- Completes in 30-120 seconds
+
+**Process:**
+
+<Steps>
+  <Step title="Configure Filters">
+    Set date range, centres, etc. for large dataset
+  </Step>
+
+  <Step title="Click Export">
+    Button shows "Export X,XXX rows (background job)"
+  </Step>
+
+  <Step title="Job Queued">
+    Message: "Export job queued. You&apos;ll receive email when ready."
+  </Step>
+
+  <Step title="Continue Working">
+    No need to wait - navigate away, log out, close browser
+  </Step>
+
+  <Step title="Check Email">
+    Receive email when export complete (5-30 minutes for 50,000+ rows)
+  </Step>
+
+  <Step title="Download from Link">
+    Email contains download link valid for 7 days
+  </Step>
+
+  <Step title="Or Check Download History">
+    Navigate back to Data Export page → Download History tab
+  </Step>
+</Steps>
+
+**Background Job Benefits:**
+- No waiting with browser open
+- No timeout errors
+- Can export huge datasets (100,000+ rows)
+- Multiple exports can queue simultaneously
+
+---
+
+## Working with Exported Data
+
+### Opening in Excel
+
+<Steps>
+  <Step title="Locate Downloaded CSV">
+    Check browser downloads folder
+  </Step>
+
+  <Step title="Right-Click File">
+    Select "Open With" → "Microsoft Excel"
+  </Step>
+
+  <Step title="Verify Data Import">
+    Excel may ask about delimiter - choose "Comma"
+  </Step>
+
+  <Step title="Format Date Columns">
+    Select date columns, format as "Date" (may import as text)
+  </Step>
+
+  <Step title="Create Pivot Tables">
+    Use Excel pivot tables for analysis
+  </Step>
+</Steps>
+
+**Excel Tips:**
+- Freeze top row (View → Freeze Panes → Freeze Top Row)
+- Filter columns (Data → Filter)
+- Sort by variance to find struggling students
+- Create charts from data
+
+### Common Excel Analyses
+
+**Completion Rate by Centre:**
+1. Create pivot table
+2. Rows: learning_centre
+3. Values: Count of status (filter to "Completed" and "Exceeded")
+4. Show as % of grand total
+
+**Average Variance by Student:**
+1. Create pivot table
+2. Rows: student_name
+3. Values: Average of variance
+4. Sort descending to find students most behind
+
+**Subject Difficulty Analysis:**
+1. Create pivot table
+2. Rows: pace_subject
+3. Values: Average of variance
+4. Negative averages indicate difficult subjects
+
+**Daily Trends:**
+1. Create pivot table
+2. Rows: date
+3. Values: Count of status (filter to "Completed")
+4. Insert line chart
+
+### Opening in Google Sheets
+
+<Steps>
+  <Step title="Open Google Sheets">
+    Go to sheets.google.com
+  </Step>
+
+  <Step title="File → Import">
+    Select "Upload" tab
+  </Step>
+
+  <Step title="Drag CSV File">
+    Or click "Select file from device"
+  </Step>
+
+  <Step title="Import Options">
+    Choose "Comma" as separator, "Replace spreadsheet"
+  </Step>
+
+  <Step title="Click Import Data">
+    Sheet populates with export data
+  </Step>
+</Steps>
+
+**Google Sheets Benefits:**
+- Cloud storage (no local file)
+- Easy sharing with colleagues
+- Collaborative analysis
+- Built-in charts and pivot tables
+
+---
+
+## Export Use Cases and Examples
+
+### Use Case 1: Quarterly ACE Accreditation Report
+
+**Scenario:**
+Your school needs to document Goal Check compliance for ACE review.
+
+**Export Configuration:**
+- Date Range: Last 3 months (one quarter)
+- Centres: All centres
+- Students: All students
+- Status: All statuses
+- Include Notes: Yes
+- Include Audit Trail: Yes
+
+**Analysis:**
+1. Calculate school-wide completion rate
+2. Show Goal Check used daily (date coverage)
+3. Demonstrate individualized pacing (variance data)
+4. Include supervisor notes as evidence of monitoring
+
+**Deliverable:**
+Excel workbook with pivot tables showing compliance metrics.
+
+### Use Case 2: At-Risk Student Intervention Plan
+
+**Scenario:**
+Administrator needs data on students consistently missing goals for intervention planning.
+
+**Export Configuration:**
+- Date Range: Last 30 days
+- Centres: All centres
+- Students: All students
+- Status: Missed only
+- Include Notes: Yes
+
+**Analysis:**
+1. Filter to students with 10+ missed entries
+2. Review notes to identify common struggles
+3. Group by subject (are they struggling in one subject or all?)
+4. Group by centre (is this centre-specific or school-wide?)
+
+**Deliverable:**
+List of 15 at-risk students with intervention recommendations.
+
+### Use Case 3: Centre Performance Comparison
+
+**Scenario:**
+Administrator wants to understand why some centres outperform others.
+
+**Export Configuration:**
+- Date Range: Last term
+- Centres: All centres
+- Students: All students
+- Status: All statuses
+
+**Analysis:**
+1. Calculate completion rate per centre
+2. Calculate average variance per centre
+3. Identify top 3 and bottom 3 centres
+4. Compare goal-setting patterns (are top centres setting more achievable goals?)
+
+**Deliverable:**
+Centre comparison report with recommendations for bottom performers.
+
+### Use Case 4: Subject Curriculum Review
+
+**Scenario:**
+School leadership wants to assess Math curriculum difficulty.
+
+**Export Configuration:**
+- Date Range: Full academic year
+- Centres: All centres
+- Students: All students
+- Subject: Math only
+- Status: All statuses
+
+**Analysis:**
+1. Calculate completion rate for Math vs other subjects
+2. Identify specific Math PACEs with low completion
+3. Review notes for common struggles
+4. Compare grade levels (is Math harder for certain grades?)
+
+**Deliverable:**
+Math curriculum difficulty report with recommendations for support.
+
+### Use Case 5: Individual Student Portfolio
+
+**Scenario:**
+Parent meeting to discuss student&apos;s performance.
+
+**Export Configuration:**
+- Date Range: Last term
+- Students: Specific student only
+- Status: All statuses
+- Include Notes: Yes
+
+**Analysis:**
+1. Create line chart of daily variance (trending up or down?)
+2. Identify subjects where student excels vs struggles
+3. Review notes for patterns
+4. Calculate overall term completion rate
+
+**Deliverable:**
+Student performance portfolio for parent meeting.
+
+---
+
+## Data Security and Privacy
+
+### Access Controls
+
+**Who Can Export:**
+- Administrators only (full school data)
+- Supervisors cannot export (can only view reports for their centres)
+- Monitors cannot export (data entry only)
+
+**Why Restricted:**
+- Protects student privacy
+- Prevents unauthorized data sharing
+- Maintains FERPA compliance
+- Enables audit trail of who accessed data
+
+### Secure Handling
+
+**Best Practices:**
+- Download exports to secure, password-protected computers only
+- Do not email exports (use secure file sharing if needed)
+- Delete local copies after analysis complete
+- Store long-term archives in encrypted cloud storage
+
+**What NOT to Do:**
+- Share CSV files via public links
+- Store on USB drives (easily lost)
+- Email exports to personal email addresses
+- Leave exports in Downloads folder indefinitely
+
+### Data Retention
+
+**In Zion:**
+- Goal Check data retained indefinitely
+- Can export historical data anytime
+
+**Exported CSVs:**
+- Background job download links expire after 7 days
+- Download History shows last 90 days
+- You own the exported CSV (store as long as needed)
+
+---
+
+## Troubleshooting Export Issues
+
+### "Export Button Disabled"
+
+**Causes:**
+1. No data matches selected filters
+2. Date range invalid (start after end)
+3. Not logged in as administrator
+
+**Solutions:**
+1. Adjust filters to broader selection
+2. Verify date range
+3. Log in with administrator account
+
+### "Export Taking Too Long"
+
+**Causes:**
+- Exporting large dataset (50,000+ rows)
+- Server under load
+
+**Solutions:**
+- Wait for background job to complete (check email)
+- Reduce date range or filters
+- Retry during off-peak hours (early morning)
+
+### "CSV File Won&apos;t Open"
+
+**Causes:**
+1. File corrupted during download
+2. No CSV-compatible app installed
+3. Browser download failed
+
+**Solutions:**
+1. Re-download from Download History
+2. Install Excel, Google Sheets, or LibreOffice
+3. Try different browser
+
+### "Data Looks Incorrect"
+
+**Causes:**
+1. Misunderstanding data structure
+2. Filters not configured as intended
+3. Data entry errors in Zion
+
+**Verify:**
+1. Review column headers and data types
+2. Check preview before export
+3. Spot-check few rows against Zion interface data
+
+---
+
+## Export FAQs
+
+**Q: How much data can I export at once?**
+A: No hard limit. Exports of 100,000+ rows possible via background job.
+
+**Q: Can I schedule automatic exports?**
+A: Not yet - planned feature. Currently manual export only.
+
+**Q: Can I export as PDF instead of CSV?**
+A: No, raw data export is CSV only. Use Reports feature for PDF exports.
+
+**Q: How long do background job download links last?**
+A: 7 days. Download within that window or re-generate export.
+
+**Q: Can I export student photos?**
+A: No, CSV exports are data-only. Photos not included.
+
+**Q: Will export include future dates?**
+A: No, only historical data (dates with actual Goal Check entries).
+
+**Q: Can I filter by variance range (e.g., variance < -5)?**
+A: Not in export interface. Export all, then filter in Excel by variance column.
+
+---
+
+## Related Features
+
+<CardGroup cols={2}>
+  <Card title="Reports Guide" icon="file-chart-column" href="/features/goal-check/reports">
+    Generate formatted PDF reports instead of raw CSV exports
+  </Card>
+
+  <Card title="Goal Check Overview" icon="target" href="/features/goal-check/overview">
+    Understand what data is being exported
+  </Card>
+
+  <Card title="Administrator Reports" icon="file-pdf" href="/guides/administrator/reports">
+    Weekly school reports for regular review
+  </Card>
+
+  <Card title="CSV Templates" icon="table" href="/reference/csv-templates">
+    Other CSV features in Zion (student import, etc.)
+  </Card>
+</CardGroup>

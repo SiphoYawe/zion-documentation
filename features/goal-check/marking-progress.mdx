@@ -1,0 +1,717 @@
+---
+title: Marking Daily Progress
+description: Complete guide to marking actual progress, calculating variance, adding notes, and understanding completion status
+icon: "circle-check"
+---
+
+# Marking Daily Progress
+
+Comprehensive guide to marking actual pages completed at end of day. Learn how to enter progress efficiently, understand variance calculations, add meaningful notes, and use auto-save features.
+
+## Progress Marking Overview
+
+**Purpose:**
+Record actual pages completed by each student to:
+- Calculate whether students met their goals (variance)
+- Track completion rates and trends
+- Identify struggling students early
+- Generate accurate reports
+- Provide accountability
+
+**Who Marks Progress:**
+- Supervisors (for their assigned centres)
+- Monitors (for their assigned centres)
+- Administrators (for any centre)
+
+**When to Mark Progress:**
+- End of each school day
+- After students complete their PACE work
+- Takes 5 minutes for 20 students
+
+---
+
+## Accessing Progress Marking
+
+### Navigation
+
+<Steps>
+  <Step title="Log Into Zion">
+    Use your email and password
+  </Step>
+
+  <Step title="Click Goal Check">
+    In sidebar navigation
+  </Step>
+
+  <Step title="Click Mark Progress">
+    Opens progress marking interface
+  </Step>
+
+  <Step title="Select Date">
+    Defaults to today - confirm or select different date
+  </Step>
+</Steps>
+
+### Date Selection
+
+**Today (Default):**
+- Interface defaults to current date
+- Most common use case
+- Shows goals set this morning
+
+**Past Dates:**
+- Click date picker at top of page
+- Select any past date
+- Use if you forgot to mark progress yesterday
+- Can mark progress for any day with set goals
+
+**Progress Must Follow Goals:**
+- Can only mark progress for dates with goals already set
+- If no goals exist for selected date, you&apos;ll see message: "No goals set for this date"
+
+---
+
+## Progress Marking Interface
+
+### Table Structure
+
+**Layout:**
+- **Rows:** One row per student in your centre(s)
+- **Column Groups:** Each student has columns for their assigned PACEs
+- **Goal Section (Read-Only):** Shows goals set this morning
+- **Actual Section (Editable):** Where you enter actual pages completed
+
+**Example Table:**
+```
+Student    | Math 1015                                    | English 1025
+           | Goal Pages | Actual Start | Actual End | Actual Pages | Variance
+John Smith | 6 (15-20)  | 15           | 19         | 5 pages      | -1
+Mary Jones | 7 (22-28)  | 22           | 30         | 9 pages      | +2
+```
+
+### Fields Explained
+
+**Goal Pages (Read-Only):**
+- Shows goal set this morning
+- Format: Total pages (start-end)
+- Example: "6 pages (15-20)"
+- Cannot edit (goals locked once progress marking begins)
+
+**Actual Start Page:**
+- Page number where student actually started work today
+- Example: 15 (student started on page 15 as planned)
+- Usually matches goal start page (but not always)
+- Editable field - type the actual page
+
+**Actual End Page:**
+- Page number where student actually finished work today
+- Example: 19 (student finished on page 19)
+- May differ from goal end page (that&apos;s normal)
+- Editable field - type the actual page
+
+**Actual Total Pages:**
+- Auto-calculated: Actual End - Actual Start + 1
+- Example: Pages 15-19 = 5 total pages
+- Read-only field (cannot edit directly)
+- This is compared to goal pages for variance
+
+**Variance:**
+- Auto-calculated: Actual Total - Goal Total
+- Example: 5 actual - 6 goal = -1 variance (missed by 1 page)
+- Read-only field
+- Color-coded: Green (0 or +), Red (-)
+
+**Status Badge:**
+- Auto-calculated based on variance
+- Updates in real-time as you enter progress
+- Possible values:
+  - **Green "Completed"**: Actual ≥ goal
+  - **Blue "Exceeded"**: Actual > goal
+  - **Red "Missed"**: Actual < goal
+  - **Gray "Not Started"**: Progress not yet marked
+
+---
+
+## Entering Progress
+
+### Basic Entry Process
+
+<Steps>
+  <Step title="Check Physical PACE">
+    Look at student&apos;s PACE to see which pages they completed
+  </Step>
+
+  <Step title="Click Actual Start Page Field">
+    For first student and first PACE
+  </Step>
+
+  <Step title="Type Actual Start Page">
+    Example: 15 (page where student started)
+  </Step>
+
+  <Step title="Press Tab or Click Next Field">
+    Moves to Actual End Page
+  </Step>
+
+  <Step title="Type Actual End Page">
+    Example: 19 (page where student finished)
+  </Step>
+
+  <Step title="Verify Actual Total and Variance">
+    System calculates automatically (5 pages actual, -1 variance in this example)
+  </Step>
+
+  <Step title="Review Status Badge">
+    Badge updates to "Missed" (red) since variance is negative
+  </Step>
+
+  <Step title="Move to Next PACE">
+    Press Tab to continue to next PACE for same student
+  </Step>
+
+  <Step title="Repeat for All PACEs">
+    Each student typically has 4-6 PACEs
+  </Step>
+
+  <Step title="Add Notes if Needed">
+    Click notes field if student struggled or excelled
+  </Step>
+
+  <Step title="Move to Next Student">
+    After completing all PACEs for one student, Tab moves to next student
+  </Step>
+</Steps>
+
+### Keyboard Shortcuts
+
+**Tab:** Move to next field (right)
+**Shift+Tab:** Move to previous field (left)
+**Enter:** Move down to same field for next student
+**Arrow Keys:** Navigate any direction
+
+**Efficient Entry Pattern:**
+Use Enter key to mark same PACE across all students (vertical entry), then Tab to next PACE.
+
+### Auto-Save Behavior
+
+**Automatic Saving:**
+- Data saves 500ms after you stop typing
+- No "Submit All" button required
+- Each field saves independently
+
+**Save Indicators:**
+- Green checkmark appears when field saved
+- Spinner shows while saving
+- Red X indicates save failed (check internet)
+
+**Real-Time Updates:**
+- Variance updates as you type
+- Status badge changes immediately
+- Dashboard updates in real-time (if refreshed)
+
+---
+
+## Understanding Variance
+
+### Variance Calculation
+
+**Formula:**
+```
+Variance = Actual Total Pages - Goal Total Pages
+```
+
+**Examples:**
+
+**Positive Variance (Exceeded Goal):**
+- Goal: 6 pages (15-20)
+- Actual: 8 pages (15-22)
+- Variance: +2 pages
+- Meaning: Student did 2 more pages than goal
+- Status: "Exceeded" (blue badge)
+
+**Zero Variance (Met Goal Exactly):**
+- Goal: 6 pages (15-20)
+- Actual: 6 pages (15-20)
+- Variance: 0 pages
+- Meaning: Student met goal exactly
+- Status: "Completed" (green badge)
+
+**Negative Variance (Missed Goal):**
+- Goal: 6 pages (15-20)
+- Actual: 4 pages (15-18)
+- Variance: -2 pages
+- Meaning: Student did 2 fewer pages than goal
+- Status: "Missed" (red badge)
+
+### Interpreting Variance
+
+**Positive Variance (+pages):**
+
+**Occasional (+1 to +3):**
+- Normal variation
+- Student had good day
+- PACE section easier than expected
+- **Action:** Celebrate success, no changes needed
+
+**Consistent (+3 to +5 for 3+ days):**
+- Goals may be too low
+- Student is excelling
+- **Action:** Consider increasing goals slightly
+
+**Extreme (+10+):**
+- Goals significantly too low
+- Data entry error (verify)
+- Student skipped pages (check quality)
+- **Action:** Review and adjust goals upward, or verify data accuracy
+
+**Negative Variance (-pages):**
+
+**Occasional (-1 to -2):**
+- Normal variation
+- Student had off day
+- PACE section harder than expected
+- **Action:** Note reason, monitor pattern
+
+**Consistent (-3 to -5 for 3+ days):**
+- Goals too high
+- Student struggling
+- **Action:** Lower goals or provide intervention
+
+**Extreme (-10+):**
+- Significant struggle
+- Student absent or disrupted
+- Goals unrealistic
+- **Action:** Investigate cause, adjust goals significantly, provide support
+
+### Zero Variance Myth
+
+**It&apos;s Okay to NOT Have Zero Variance:**
+- Zero variance is ideal, but not required
+- Students are humans, not robots
+- Variance is expected and normal
+- Target: Most students within -2 to +2 range
+
+**Red Flag:**
+- ALL students exactly zero variance daily (may indicate inaccurate marking or unrealistic expectation)
+
+---
+
+## Adding Notes
+
+### When to Add Notes
+
+**Always Add Notes For:**
+- Students who missed goals (explain why)
+- Students who exceeded significantly (note what went well)
+- Students absent or partially absent
+- Unusual circumstances (illness, behavior issues, disruptions)
+
+**Consider Notes For:**
+- Students struggling with specific concept
+- Students who completed work early
+- PACEs that seem particularly difficult or easy
+- Any context that helps explain variance
+
+### How to Add Notes
+
+<Steps>
+  <Step title="Complete Progress Entry">
+    Enter actual start/end pages for student first
+  </Step>
+
+  <Step title="Click Notes Field">
+    Below student&apos;s PACE entries or in notes column
+  </Step>
+
+  <Step title="Type Brief Note">
+    1-2 sentences maximum
+  </Step>
+
+  <Step title="Auto-Save">
+    Notes save automatically as you type
+  </Step>
+</Steps>
+
+### Note Writing Best Practices
+
+**Good Notes (Specific and Actionable):**
+- "Struggled with long division on pages 18-19, needs review"
+- "Completed early, very focused today - consider increasing goals"
+- "Absent afternoon for doctor appointment, partial completion"
+- "Pages 15-17 very difficult, multiplication concepts need reinforcement"
+
+**Poor Notes (Vague and Unhelpful):**
+- "Did ok"
+- "Struggled"
+- "Good job"
+- "Not great"
+
+**Note Guidelines:**
+- Be specific about what/why
+- Include page numbers if relevant
+- Note concepts or skills (not just "struggled")
+- Keep brief (1-2 sentences)
+- Focus on actionable information
+
+### Notes for Common Scenarios
+
+**Student Missed Goal:**
+```
+"Struggled with fraction division on pages 20-22, needs one-on-one help tomorrow"
+```
+
+**Student Exceeded Goal:**
+```
+"Completed pages 15-25 (goal was 15-20), excellent focus and understanding of topic"
+```
+
+**Student Absent:**
+```
+"Absent entire day for family emergency, no work completed"
+```
+
+**PACE Too Difficult:**
+```
+"All students struggled with pages 18-20 (geometry proofs), may need group review"
+```
+
+**External Disruption:**
+```
+"Fire drill during work time, lost 30 minutes of focus"
+```
+
+---
+
+## Handling Special Cases
+
+### Student Absent
+
+**Full Day Absence:**
+1. Leave actual start/end pages blank, OR
+2. Enter 0 for both start and end
+3. Add note: "Absent - [reason if known]"
+4. Variance will show as negative (expected)
+5. Status: "Missed"
+
+**Partial Day Absence:**
+1. Enter actual pages completed during time present
+2. Add note: "Left at 11am for appointment, partial completion"
+3. Variance reflects partial work (expected)
+
+### Student Worked on Different Pages
+
+**Scenario:** Goal was 15-20, but student worked on 25-30 instead.
+
+**How to Handle:**
+1. Enter actual pages student worked on (25-30)
+2. Add note: "Worked on pages 25-30 instead of goal 15-20 - [reason]"
+3. Variance will be off, but data is accurate
+4. Follow up: Why did student work on different pages? Communicate with supervisor
+
+### Student Skipped Pages
+
+**Scenario:** Goal was 15-25, student marked 15-25 but skipped 18-20.
+
+**How to Handle:**
+1. Enter 15-25 (what student marked as "done")
+2. Add note: "Skipped pages 18-20, needs to complete before advancing"
+3. Variance shows as met/exceeded, but note flags quality issue
+4. Follow up: Ensure student completes skipped pages
+
+### Multiple PACEs in Same Subject
+
+**Scenario:** Student finished Math 1015 and started Math 1016 in same day.
+
+**How to Handle:**
+1. Mark progress on Math 1015 (completed pages)
+2. If Math 1016 not yet assigned, contact administrator to assign
+3. Once assigned, set goals and mark progress for Math 1016
+4. Add note: "Completed PACE 1015, started 1016"
+
+### Student Repeated Same Pages
+
+**Scenario:** Goal was 15-20, student redid 10-15 instead (review).
+
+**How to Handle:**
+1. Enter actual pages worked on (10-15)
+2. Add note: "Redid pages 10-15 for review/mastery instead of advancing"
+3. Variance will be negative (expected)
+4. Follow up: Discuss with supervisor if review was necessary or student is struggling
+
+---
+
+## Progress Marking Best Practices
+
+### Pre-Marking Preparation
+
+<Steps>
+  <Step title="Collect All PACEs">
+    Gather all students&apos; PACEs before starting Zion entry
+  </Step>
+
+  <Step title="Verify Work Quality">
+    Quick scan to ensure students actually completed pages (not just marked)
+  </Step>
+
+  <Step title="Note Struggles">
+    Mental note of students who struggled or excelled (for notes)
+  </Step>
+
+  <Step title="Organize by Student">
+    Stack PACEs in student order to match Zion table
+  </Step>
+</Steps>
+
+### Entry Strategies
+
+**Strategy 1: Student-by-Student**
+- Mark all PACEs for Student 1
+- Move to Student 2, mark all PACEs
+- Continue through all students
+- **Advantage:** Complete picture of each student before moving on
+- **Best for:** Smaller classes (10-15 students)
+
+**Strategy 2: PACE-by-PACE**
+- Mark Math for all students
+- Mark English for all students
+- Continue through all subjects
+- **Advantage:** Easier to spot patterns across students in same subject
+- **Best for:** Larger classes (20+ students)
+
+**Strategy 3: Hybrid**
+- Mark all struggling students first (need immediate notes)
+- Then mark remaining students in batches
+- **Advantage:** Prioritizes students needing attention
+- **Best for:** Mixed-ability classes with known at-risk students
+
+### Accuracy Tips
+
+**Be Honest:**
+- Enter actual pages completed, not what you wish they completed
+- Accurate data enables better decision-making
+- Inflating numbers helps no one
+
+**Verify PACE Page Numbers:**
+- Don&apos;t assume student marked pages correctly
+- Check PACE physically to confirm pages completed
+- Students may mark pages as "done" when incomplete
+
+**Double-Check Math:**
+- Ensure actual start ≤ actual end
+- Verify calculated totals make sense
+- System will validate, but catch obvious errors early
+
+**Review Before Leaving:**
+- Glance through table for any missing entries
+- Check that all students marked (or noted as absent)
+- Verify all checkmarks appeared (data saved)
+
+---
+
+## Completion Status and Badges
+
+### Status Badge Colors
+
+**Green "Completed"**
+- Actual pages ≥ goal pages
+- Variance: 0 or positive
+- Example: Goal 6, Actual 6 or 7
+- Meaning: Student met or slightly exceeded goal
+
+**Blue "Exceeded"**
+- Actual pages significantly > goal pages
+- Variance: +3 or more
+- Example: Goal 6, Actual 10
+- Meaning: Student well exceeded goal
+
+**Red "Missed"**
+- Actual pages < goal pages
+- Variance: Negative
+- Example: Goal 6, Actual 4
+- Meaning: Student did not meet goal
+
+**Gray "Not Started"**
+- Progress not yet marked
+- No actual pages entered
+- Meaning: Data entry pending
+
+### Using Status for Quick Filtering
+
+**Filter Table by Status:**
+1. Click status dropdown at top of table
+2. Select "Missed" to see only students who missed goals
+3. Quickly add notes for all students who struggled
+
+**View Completion Summary:**
+- Top of page shows: "18 Completed, 2 Exceeded, 3 Missed, 2 Not Started"
+- Quick glance at overall performance
+
+---
+
+## Mobile/Tablet Progress Marking
+
+### Optimized for Tablets
+
+**Portrait Mode:**
+- Table shows student name, one PACE at a time
+- Swipe left/right to see other PACEs
+- Large input fields for touch
+
+**Landscape Mode:**
+- Table shows 2-3 PACEs side-by-side
+- Less swiping required
+- Better for efficiency
+
+### Touch Interactions
+
+**Number Pad:**
+- Tap input field to open numeric keypad
+- No need for keyboard
+- Faster entry on tablets
+
+**Swipe Gestures:**
+- Swipe table horizontally to see more PACEs
+- Swipe vertically to scroll students
+
+**Pinch to Zoom:**
+- Zoom in on table if text too small
+- Zoom out to see more students at once
+
+---
+
+## Troubleshooting Progress Marking
+
+### "Cannot Mark Progress - No Goals Set"
+
+**Cause:**
+- Goals not yet set for selected date
+- Must set goals before marking progress
+
+**Solution:**
+1. Navigate to Set Goals
+2. Set goals for the date
+3. Return to Mark Progress
+
+### "Progress Not Saving"
+
+**Causes:**
+1. Internet connection lost
+2. Invalid data (errors in fields)
+3. Session expired
+
+**Solutions:**
+1. Check internet (offline banner will appear)
+2. Review fields for red error messages
+3. Refresh page and log in again
+
+### "Variance Seems Wrong"
+
+**Common Cause:**
+- Mistyped actual start or end page
+
+**Verify:**
+1. Check actual start page matches student&apos;s PACE
+2. Check actual end page matches student&apos;s PACE
+3. Recalculate manually: End - Start + 1
+4. Compare to goal pages
+
+**Example of Error:**
+- Goal: 15-20 (6 pages)
+- Accidentally entered actual: 15-120 (typo, should be 15-20)
+- Variance shows +114 (obviously wrong)
+- **Fix:** Correct actual end to 20
+
+### "Student Showing as Not Started But I Marked Them"
+
+**Causes:**
+1. Data didn&apos;t save (no checkmark)
+2. Viewing wrong date
+3. Viewing different student
+
+**Solutions:**
+1. Re-enter data and verify checkmark
+2. Confirm date at top of page
+3. Search for student name to verify
+
+---
+
+## Progress Marking FAQs
+
+**Q: How long does progress marking take?**
+A: 5 minutes for 20 students if organized. 10 minutes if unorganized or many notes needed.
+
+**Q: Can I mark progress before end of day?**
+A: Yes, but students may complete more work afterward. Best to wait until work time ends.
+
+**Q: What if I mark progress incorrectly?**
+A: Progress is editable same-day. Go back and correct the entry. After day ends, contact administrator to unlock.
+
+**Q: Student worked on pages but didn&apos;t finish any - how do I mark?**
+A: If student didn&apos;t complete any full pages, mark 0 pages with note explaining. Or mark partial pages if policy allows.
+
+**Q: Can I see yesterday&apos;s progress while marking today?**
+A: Yes, open two browser tabs - one for today (Mark Progress), one for yesterday (view only). Or check student&apos;s history.
+
+**Q: Should variance always be calculated by system or can I override?**
+A: System calculates automatically based on actual vs goal pages. No override needed or allowed.
+
+**Q: Multiple students missed same goal - should I add same note for each?**
+A: Yes, or add one note at top of page: "All students struggled with [concept] today."
+
+---
+
+## After Marking Progress
+
+### Immediate Next Steps
+
+<Steps>
+  <Step title="Review Completion Summary">
+    Check percentage of students who met goals
+  </Step>
+
+  <Step title="Identify At-Risk Students">
+    Note students with 3+ consecutive misses
+  </Step>
+
+  <Step title="Plan Interventions">
+    Decide which students need support tomorrow
+  </Step>
+
+  <Step title="Adjust Tomorrow's Goals">
+    If many students missed, lower tomorrow&apos;s goals
+  </Step>
+</Steps>
+
+### When Ready to Report
+
+**Supervisors:**
+- Can generate daily centre report once all students marked
+- Report shows variance, notes, at-risk students
+- See [Reports Guide](/features/goal-check/reports) for details
+
+**Monitors:**
+- Data you entered enables supervisor to generate reports
+- Your notes appear in supervisor&apos;s reports
+- Accurate marking is crucial for meaningful reports
+
+---
+
+## Related Features
+
+<CardGroup cols={2}>
+  <Card title="Setting Goals" icon="bullseye-arrow" href="/features/goal-check/setting-goals">
+    How to set daily goals each morning
+  </Card>
+
+  <Card title="Reports Guide" icon="file-pdf" href="/features/goal-check/reports">
+    Generate reports showing progress and variance
+  </Card>
+
+  <Card title="Supervisor Dashboard" icon="chart-line" href="/guides/supervisor/dashboard">
+    View real-time progress as you mark
+  </Card>
+
+  <Card title="Goal Check Overview" icon="target" href="/features/goal-check/overview">
+    Understand the complete Goal Check workflow
+  </Card>
+</CardGroup>
