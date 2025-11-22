@@ -1,0 +1,506 @@
+---
+title: CSV Template Reference
+description: Complete reference for all CSV templates used in Zion including student imports with column definitions, formats, and examples
+icon: "file-spreadsheet"
+---
+
+# CSV Template Reference
+
+Complete reference for all CSV (Comma-Separated Values) templates used in Zion, including column definitions, data formats, validation rules, and examples.
+
+## CSV Overview
+
+**What is CSV?**
+- Plain text file format for tabular data
+- Values separated by commas
+- First row contains column headers
+- Subsequent rows contain data
+- Opens in Excel, Google Sheets, Numbers, database tools
+
+**When to Use CSV in Zion:**
+- Bulk student imports (20+ students)
+- Data exports for analysis
+- Integration with other systems
+
+---
+
+## Student Import CSV Template
+
+### Template Download
+
+**Access:**
+1. Navigate to Management → Students
+2. Click "Import Students" button
+3. Click "Download Template"
+4. File downloads: `zion-student-import-template.csv`
+
+### Column Definitions
+
+**Required Columns:**
+
+**first_name**
+- **Type:** Text
+- **Description:** Student&apos;s legal first name
+- **Format:** Plain text, no special characters unless part of legal name
+- **Max Length:** 50 characters
+- **Example:** "John", "Mary", "Emmanuel"
+
+**last_name**
+- **Type:** Text
+- **Description:** Student&apos;s legal last name
+- **Format:** Plain text, hyphenated names allowed
+- **Max Length:** 50 characters
+- **Example:** "Smith", "Johnson", "O&apos;Brien", "Smith-Jones"
+
+**date_of_birth**
+- **Type:** Date
+- **Description:** Student&apos;s date of birth
+- **Format:** YYYY-MM-DD (ISO 8601 standard)
+- **Example:** 2013-03-15 (March 15, 2013)
+- **Validation:** Must be 4-18 years ago (school-age children)
+
+<Warning>
+**Critical:** Excel often auto-formats dates incorrectly. Always use YYYY-MM-DD format. After saving CSV, open in Notepad/TextEdit to verify dates didn&apos;t change.
+</Warning>
+
+**grade_level**
+- **Type:** Integer
+- **Description:** Student&apos;s current grade level
+- **Format:** Number 1-12 only (not text like "Grade 5")
+- **Example:** 1, 5, 12
+- **Validation:** Must be between 1 and 12
+
+**learning_centre_name**
+- **Type:** Text
+- **Description:** Name of learning centre student is assigned to
+- **Format:** Exact match to existing centre name (case-sensitive)
+- **Example:** "Faith Centre", "Grace Centre", "Hope Centre"
+- **Validation:** Must match an existing centre exactly (including capitalization and spaces)
+
+<Tip>
+**Best Practice:** Copy-paste exact centre names from Zion (Management → Learning Centres) to avoid typos.
+</Tip>
+
+**Optional Columns:**
+
+**student_id**
+- **Type:** Text
+- **Description:** Your school&apos;s internal student ID number
+- **Format:** Any alphanumeric format
+- **Max Length:** 20 characters
+- **Example:** "2024-001", "STU-12345", "A12345"
+- **Validation:** Must be unique (no two students with same ID)
+
+**parent_name**
+- **Type:** Text
+- **Description:** Full name of parent or guardian
+- **Format:** Plain text
+- **Max Length:** 100 characters
+- **Example:** "Jane Smith", "Robert and Mary Johnson"
+
+**parent_email**
+- **Type:** Email
+- **Description:** Parent or guardian email address
+- **Format:** Valid email format (user@domain.com)
+- **Example:** "jane@example.com", "robert.johnson@gmail.com"
+- **Validation:** Must be valid email format
+
+**parent_phone**
+- **Type:** Text (not number to preserve formatting)
+- **Description:** Parent or guardian phone number
+- **Format:** Any format, international preferred with country code
+- **Example:** "+256701234567" (Uganda), "+1-555-123-4567" (USA)
+- **Notes:** Can include dashes, spaces, parentheses
+
+**notes**
+- **Type:** Text
+- **Description:** Any relevant notes about student
+- **Format:** Plain text, no commas (commas break CSV format)
+- **Max Length:** 500 characters
+- **Example:** "Allergic to peanuts", "Needs extra time for tests"
+
+### Template Structure
+
+**CSV Header Row:**
+```csv
+first_name,last_name,date_of_birth,grade_level,learning_centre_name,student_id,parent_name,parent_email,parent_phone,notes
+```
+
+**Example Data Rows:**
+```csv
+first_name,last_name,date_of_birth,grade_level,learning_centre_name,student_id,parent_name,parent_email,parent_phone,notes
+John,Smith,2013-03-15,5,Faith Centre,2024-001,Jane Smith,jane@email.com,+256701234567,
+Mary,Johnson,2014-07-22,4,Faith Centre,2024-002,Robert Johnson,robert@email.com,+256702345678,Allergic to peanuts
+David,Williams,2012-11-08,6,Grace Centre,2024-003,Sarah Williams,sarah@email.com,+256703456789,
+Emma,Brown,2015-01-30,3,Hope Centre,2024-004,Michael Brown,michael@email.com,+256704567890,Needs extra time for reading
+```
+
+### Validation Rules
+
+**Pre-Upload Validation (Prevent Errors):**
+
+<Steps>
+  <Step title="Check Date Format">
+    All dates must be YYYY-MM-DD. No other format accepted.
+  </Step>
+
+  <Step title="Verify Centre Names">
+    Must match existing centres exactly. Case-sensitive. No extra spaces.
+  </Step>
+
+  <Step title="Confirm Grade Levels">
+    Numbers 1-12 only. Not text like "Grade 5" or "Fifth Grade".
+  </Step>
+
+  <Step title="Remove Empty Rows">
+    Delete any blank rows at bottom of spreadsheet.
+  </Step>
+
+  <Step title="Check for Duplicates">
+    No two students with same first+last name and DOB.
+  </Step>
+
+  <Step title="Verify Emails">
+    If provided, must be valid email format with @ and domain.
+  </Step>
+</Steps>
+
+**Zion Upload Validation (Automatic Checks):**
+- File format is valid CSV
+- All required columns present
+- Date of birth is valid date in YYYY-MM-DD format
+- Grade level is integer 1-12
+- Learning centre exists in system
+- Student ID unique (if provided)
+- Email format valid (if provided)
+- No duplicate students (same name+DOB as existing student)
+
+---
+
+## Common CSV Errors and Solutions
+
+### Error: "Invalid date format"
+
+**Example Error Message:**
+```
+Row 5: Invalid date format in date_of_birth
+  Student: John Smith
+  Value entered: 03/15/2013
+  Expected format: YYYY-MM-DD (2013-03-15)
+```
+
+**Causes:**
+1. Date in wrong format (MM/DD/YYYY instead of YYYY-MM-DD)
+2. Excel auto-formatted dates
+3. Date as text ("March 15, 2013")
+
+**Solutions:**
+1. Change all dates to YYYY-MM-DD format
+2. In Excel, format date column as "Text" BEFORE entering dates
+3. Enter dates as YYYY-MM-DD manually
+4. After saving CSV, open in Notepad to verify format
+
+### Error: "Learning centre not found"
+
+**Example Error Message:**
+```
+Row 8: Learning centre not found
+  Student: Mary Johnson
+  Value entered: "faith centre"
+  Available centres: Faith Centre, Grace Centre, Hope Centre
+```
+
+**Causes:**
+1. Centre name doesn&apos;t match exactly (case mismatch)
+2. Extra spaces before/after name
+3. Typo in centre name
+4. Centre doesn&apos;t exist in Zion
+
+**Solutions:**
+1. Copy exact centre name from Zion (Management → Learning Centres)
+2. Paste into CSV (ensures exact match)
+3. Check for leading/trailing spaces
+4. Verify centre exists in Zion before importing
+
+### Error: "Grade level must be between 1 and 12"
+
+**Example Error Message:**
+```
+Row 12: Grade level must be between 1 and 12
+  Student: David Williams
+  Value entered: "Grade 5"
+  Expected: 5
+```
+
+**Causes:**
+1. Grade as text ("Grade 5", "Fifth Grade")
+2. Grade out of range (0, 13, etc.)
+
+**Solutions:**
+1. Change to number only: 5 (not "Grade 5")
+2. Ensure 1-12 range
+
+### Error: "Duplicate student found"
+
+**Example Error Message:**
+```
+Row 20: Duplicate student found
+  Student: John Smith (DOB: 2013-03-15)
+  Existing student: John Smith (DOB: 2013-03-15) in Faith Centre
+```
+
+**Causes:**
+1. Student already exists in Zion
+2. Same student entered twice in CSV
+3. Different student with same name and DOB (rare)
+
+**Solutions:**
+1. Remove duplicate row from CSV if already in Zion
+2. If truly different student, add middle name or initial to differentiate
+3. If updating existing student, remove from CSV (or use update feature)
+
+### Error: "Invalid email format"
+
+**Example Error Message:**
+```
+Row 15: Invalid email format
+  Student: Emma Brown
+  Value entered: "sarahemail.com"
+  Expected format: user@domain.com
+```
+
+**Causes:**
+1. Missing @ symbol
+2. Missing domain
+3. Spaces in email
+
+**Solutions:**
+1. Add @ and domain: sarah@email.com
+2. Verify email correct
+3. Remove spaces
+
+---
+
+## CSV File Preparation Best Practices
+
+### Using Excel
+
+**Before Entering Data:**
+
+<Steps>
+  <Step title="Open Template in Excel">
+    Right-click template → Open with Microsoft Excel
+  </Step>
+
+  <Step title="Format Date Column as Text">
+    Select date_of_birth column → Format → Text (prevents auto-formatting)
+  </Step>
+
+  <Step title="Enter Data">
+    Fill one row per student
+  </Step>
+
+  <Step title="Save as CSV">
+    File → Save As → CSV (Comma delimited) (*.csv)
+  </Step>
+
+  <Step title="Verify in Notepad">
+    Open saved CSV in Notepad to check dates are YYYY-MM-DD
+  </Step>
+</Steps>
+
+**Common Excel Pitfalls:**
+- Auto-formatting dates (always verify in Notepad after saving)
+- Commas in notes field (use semicolons instead)
+- Leading zeros removed from student IDs (format column as Text)
+
+### Using Google Sheets
+
+**Process:**
+
+<Steps>
+  <Step title="Open Template in Google Sheets">
+    File → Import → Upload template
+  </Step>
+
+  <Step title="Enter Data">
+    Fill one row per student (dates stay as YYYY-MM-DD more reliably)
+  </Step>
+
+  <Step title="Download as CSV">
+    File → Download → Comma Separated Values (.csv)
+  </Step>
+
+  <Step title="Verify in Text Editor">
+    Open downloaded CSV to verify format
+  </Step>
+</Steps>
+
+**Google Sheets Advantage:**
+Better date handling (less likely to auto-format incorrectly).
+
+---
+
+## Large CSV Files
+
+### Performance Guidelines
+
+**Recommended Limits:**
+- **Ideal:** 50-100 students per CSV
+- **Maximum:** 500 students per CSV
+- **Time:** 10-20 seconds to validate/upload 50 students
+
+**For 500+ Students:**
+Split into multiple CSV files:
+- File 1: Students A-M (250 students)
+- File 2: Students N-Z (250 students)
+- Import sequentially
+
+### Batch Import Strategy
+
+**Scenario:** 300 students to import
+
+**Recommended Approach:**
+
+<Steps>
+  <Step title="Split by Centre">
+    - faith-centre-students.csv (100 students)
+    - grace-centre-students.csv (100 students)
+    - hope-centre-students.csv (100 students)
+  </Step>
+
+  <Step title="Import One at a Time">
+    Import and verify each centre before next
+  </Step>
+
+  <Step title="Fix Errors Between Batches">
+    If errors in first batch, fix before proceeding
+  </Step>
+
+  <Step title="Verify Each Import">
+    Check student count matches expected after each import
+  </Step>
+</Steps>
+
+---
+
+## Data Export CSV Format
+
+### Goal Check Data Export
+
+**When You Export Goal Check Data:**
+Zion generates CSV with these columns:
+
+**Student Information:**
+- student_id, student_name, student_grade, learning_centre
+
+**Date Information:**
+- date, day_of_week, academic_term
+
+**PACE Information:**
+- pace_number, pace_subject, pace_title, pace_total_pages
+
+**Goal Data:**
+- goal_start_page, goal_end_page, goal_total_pages, goal_set_at, goal_set_by
+
+**Actual Progress Data:**
+- actual_start_page, actual_end_page, actual_total_pages, actual_marked_at, actual_marked_by
+
+**Calculated Fields:**
+- variance, variance_percentage, status
+
+**Notes:**
+- notes, created_at, updated_at
+
+**See Also:** [Data Export Guide](/features/goal-check/export)
+
+---
+
+## CSV FAQs
+
+**Q: Can I add extra columns to the template?**
+A: Yes, extra columns are ignored. Only recognized columns are processed.
+
+**Q: What if I don&apos;t have parent emails for all students?**
+A: Leave those cells blank. Optional fields can be empty.
+
+**Q: Can I use semicolons instead of commas?**
+A: No, CSV specifically uses commas. Semicolons in data are okay, but file must use commas as separator.
+
+**Q: How do I handle students with same name?**
+A: Add middle initial or student ID to differentiate. Example: "John A Smith" vs "John B Smith".
+
+**Q: Can I import student photos via CSV?**
+A: Not yet. Photos must be uploaded individually after import (planned feature).
+
+**Q: What character encoding should CSV use?**
+A: UTF-8 (default for Excel/Google Sheets). Handles international characters.
+
+**Q: Can I update existing students via CSV?**
+A: Advanced feature. Match by student_id, update fields. Use with caution. Test with small batch first.
+
+**Q: Maximum row count for CSV?**
+A: 500 students per file recommended. Technical limit is 10,000 but performance degrades.
+
+---
+
+## CSV Tools and Utilities
+
+### Recommended Software
+
+**Excel (Windows/Mac):**
+- Most common, widely available
+- Watch for date auto-formatting
+- Save as "CSV (Comma delimited)"
+
+**Google Sheets (Web):**
+- Better date handling than Excel
+- Cloud-based (no local file)
+- Download as "Comma Separated Values (.csv)"
+
+**LibreOffice Calc (Free, All Platforms):**
+- Open-source alternative to Excel
+- Good CSV handling
+- Export as "Text CSV (.csv)"
+
+**Numbers (Mac):**
+- Apple&apos;s spreadsheet app
+- Export as "CSV"
+- Watch for date formatting
+
+### Text Editors for Verification
+
+**Notepad (Windows):**
+- View raw CSV after saving from Excel
+- Verify dates are YYYY-MM-DD
+
+**TextEdit (Mac):**
+- Open CSV in plain text mode
+- Check format before upload
+
+**VS Code (All Platforms):**
+- Advanced text editor
+- Syntax highlighting for CSV
+- Good for large files
+
+---
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="CSV Bulk Import" icon="file-import" href="/features/students/bulk-import">
+    Complete guide to importing students via CSV
+  </Card>
+
+  <Card title="Data Export" icon="download" href="/features/goal-check/export">
+    Export Goal Check data as CSV for analysis
+  </Card>
+
+  <Card title="Student Management" icon="users" href="/features/students/overview">
+    Managing students after import
+  </Card>
+
+  <Card title="Terminology" icon="book-open" href="/reference/terminology">
+    Definitions of terms used in this reference
+  </Card>
+</CardGroup>

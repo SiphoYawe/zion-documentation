@@ -1,0 +1,531 @@
+---
+title: Terminology Reference
+description: Complete glossary of ACE methodology and Zion app terminology with definitions, examples, and cross-references
+icon: "book-open"
+---
+
+# ACE & Zion Terminology Reference
+
+Comprehensive glossary of terms used in ACE (Accelerated Christian Education) methodology and Zion school management system.
+
+## ACE Methodology Terms
+
+### PACE
+
+**Definition:**
+Packet of Accelerated Christian Education. Self-contained workbook covering specific topic or unit in a subject.
+
+**Details:**
+- Typically 36 pages
+- Includes instruction, exercises, self-tests, and final checkup
+- Sequentially numbered (1001-1144 across all grades and subjects)
+- Designed for self-paced, individualized learning
+
+**Example:**
+PACE 1015 is the 3rd Math PACE for Grade 1 students.
+
+**See Also:** [PACE Catalog](/features/paces/catalog)
+
+---
+
+### Goal Check
+
+**Definition:**
+Daily accountability system where students set page completion goals each morning and supervisors check actual progress at end of day.
+
+**In Traditional ACE:**
+- Manual tracking on whiteboards or paper
+- 2-3 hours daily for compilation and reporting
+- Limited analytics or trend analysis
+
+**In Zion:**
+- Digital goal setting (5 minutes)
+- Automated progress tracking
+- Real-time dashboards
+- One-click reports (<30 seconds)
+
+**Components:**
+1. Morning: Set goals (start page, end page)
+2. Throughout day: Students work toward goals
+3. End of day: Mark actual progress (actual start page, actual end page)
+4. Calculate variance (actual - goal)
+5. Generate reports
+
+**Example:**
+Goal: Pages 15-20 (6 pages). Actual: Pages 15-18 (4 pages). Variance: -2 pages (missed goal by 2 pages).
+
+**See Also:** [Goal Check Overview](/features/goal-check/overview)
+
+---
+
+### Learning Centre
+
+**Definition:**
+Classroom or learning space in ACE school where students work on PACEs under supervisor guidance.
+
+**Characteristics:**
+- Typically 15-30 students per centre
+- Mixed grades (e.g., Grades 1-3 together) or single grade
+- Individual offices/carrels for focused work
+- Supervisor desk for monitoring and assistance
+
+**In Zion:**
+- Organizational unit for student assignment
+- Determines which supervisor sees which students
+- Used for filtering reports and dashboards
+- Examples: "Faith Centre", "Grace Centre", "Hope Centre"
+
+**See Also:** [Learning Centres](/guides/administrator/learning-centres)
+
+---
+
+### Supervisor
+
+**Definition:**
+Adult staff member responsible for managing a learning centre, setting daily goals, monitoring student progress, and providing academic support.
+
+**Responsibilities:**
+- Set daily PACE page goals for all students
+- Monitor student work throughout day
+- Mark actual progress at end of day
+- Generate daily centre reports
+- Provide one-on-one instruction as needed
+- Maintain discipline and learning environment
+
+**In Zion:**
+- Has access to assigned learning centre(s) only
+- Can set goals, mark progress, view dashboard, generate reports
+- Cannot manage students, staff, or school-wide settings
+
+**See Also:** [Supervisor Guide](/guides/supervisor/goal-check), [Roles & Permissions](/reference/roles-permissions)
+
+---
+
+### Monitor
+
+**Definition:**
+Assistant staff member who helps supervisor with data entry tasks (setting goals, marking progress) but has no access to reports or analytics.
+
+**Responsibilities:**
+- Set daily goals for students
+- Mark actual progress at end of day
+- Add notes for struggling students
+
+**Does NOT:**
+- Generate reports
+- View dashboards
+- Manage students or PACEs
+- Make strategic decisions
+
+**In Zion:**
+- Simplified interface focused on data entry
+- No dashboard or reporting access
+- Ideal for part-time staff or volunteers
+
+**See Also:** [Monitor Guide](/guides/monitor/goal-check), [Roles & Permissions](/reference/roles-permissions)
+
+---
+
+### Variance
+
+**Definition:**
+Difference between actual pages completed and goal pages set. Key metric for Goal Check performance.
+
+**Formula:**
+```
+Variance = Actual Total Pages - Goal Total Pages
+```
+
+**Interpretation:**
+- **Positive (+)**: Student exceeded goal (completed more than planned)
+- **Zero (0)**: Student met goal exactly
+- **Negative (-)**: Student missed goal (completed fewer than planned)
+
+**Examples:**
+- Goal 6 pages, Actual 8 pages = +2 variance (exceeded by 2 pages)
+- Goal 6 pages, Actual 6 pages = 0 variance (met exactly)
+- Goal 6 pages, Actual 4 pages = -2 variance (missed by 2 pages)
+
+**Uses:**
+- Assess if goals are appropriately challenging
+- Identify struggling students (consistent negative variance)
+- Track student trends over time
+- Adjust future goal-setting strategies
+
+**See Also:** [Marking Progress](/features/goal-check/marking-progress)
+
+---
+
+### Completion Rate
+
+**Definition:**
+Percentage of students who met or exceeded their daily goals.
+
+**Formula:**
+```
+Completion Rate = (Students Completed + Students Exceeded) / Total Students Marked × 100
+```
+
+**Example:**
+- 30 students total
+- 25 marked today
+- 18 completed, 3 exceeded, 4 missed
+- Completion Rate = (18 + 3) / 25 × 100 = 84%
+
+**Targets:**
+- **Excellent**: 85%+
+- **Good**: 75-84%
+- **Fair**: 60-74%
+- **Poor**: <60%
+
+**See Also:** [Supervisor Dashboard](/guides/supervisor/dashboard)
+
+---
+
+## Zion-Specific Terms
+
+### Dashboard
+
+**Definition:**
+Real-time overview screen showing Goal Check status, student progress, trends, and alerts.
+
+**Types:**
+
+**Administrator Dashboard:**
+- School-wide view
+- All centres and students
+- Strategic metrics
+- Weekly trends
+
+**Supervisor Dashboard:**
+- Centre-specific view
+- Only assigned students
+- Operational metrics
+- Daily trends
+
+**Features:**
+- KPI cards (completion rate, at-risk students, etc.)
+- Student progress table
+- Trend charts (7-day history)
+- Automated alerts
+
+**See Also:** [Supervisor Dashboard Guide](/guides/supervisor/dashboard)
+
+---
+
+### Data Export
+
+**Definition:**
+Feature allowing administrators to extract raw Goal Check data as CSV file for custom analysis.
+
+**Purpose:**
+- Long-term archival
+- Custom Excel analysis
+- Integration with other systems
+- ACE accreditation reporting
+
+**Export Options:**
+- Date range filter (last 7 days, 30 days, full term, custom)
+- Centre filter (all or specific centres)
+- Student filter (all or specific students)
+- Status filter (completed, missed, exceeded, all)
+
+**Formats:**
+- CSV (comma-separated values)
+- Opens in Excel, Google Sheets, database tools
+
+**See Also:** [Data Export Guide](/features/goal-check/export)
+
+---
+
+### Daily Centre Report
+
+**Definition:**
+Auto-generated report showing one centre&apos;s Goal Check performance for a single day.
+
+**Contents:**
+- Centre summary (completion rate, total students)
+- Student-by-student detail (goals, actuals, variance)
+- At-risk student alerts
+- Notes from progress marking
+
+**Who Can Generate:**
+- Supervisors (for their centres)
+- Administrators (for any centre)
+
+**When:**
+- After all students in centre marked for the day
+
+**Time to Generate:**
+- <30 seconds (vs 2-3 hours manual compilation)
+
+**Formats:**
+- PDF (for printing/sharing)
+- CSV (for Excel analysis)
+
+**See Also:** [Reports Guide](/features/goal-check/reports)
+
+---
+
+### Weekly School Report
+
+**Definition:**
+Auto-generated comprehensive report showing whole school&apos;s Goal Check performance across full week (Mon-Fri).
+
+**Contents:**
+- School-wide summary (overall completion rate, total students)
+- Daily breakdown (Mon, Tue, Wed, Thu, Fri performance)
+- Centre comparison (ranked performance)
+- Subject analysis (which subjects struggling/excelling)
+- At-risk students (school-wide)
+- Trend indicators (current week vs previous week)
+
+**Who Can Generate:**
+- Administrators only
+
+**When:**
+- After week completes (typically Friday afternoon or Monday morning)
+
+**Time to Generate:**
+- 30-90 seconds for 100-300 student school
+
+**See Also:** [Reports Guide](/features/goal-check/reports)
+
+---
+
+### Auto-Save
+
+**Definition:**
+Zion feature that automatically saves data as you type, eliminating need for "Save" or "Submit" buttons.
+
+**How It Works:**
+- 500ms debounce (saves 0.5 seconds after you stop typing)
+- Each field saves independently
+- Green checkmark appears when saved
+- Spinner shows while saving
+
+**Where Used:**
+- Goal entry (setting goals)
+- Progress marking (marking actuals)
+- Notes entry
+- Student profile editing
+
+**Benefits:**
+- No data loss if browser crashes
+- No "forgot to save" errors
+- Faster workflow (no clicking Save buttons)
+
+**See Also:** [Setting Goals](/features/goal-check/setting-goals)
+
+---
+
+### At-Risk Student
+
+**Definition:**
+Student flagged by Zion as needing intervention based on Goal Check performance patterns.
+
+**Criteria:**
+- **Critical**: 3+ consecutive days missing goals
+- **Warning**: 2 consecutive days missing goals
+- **Declining trend**: Performance dropping >20% over 2 weeks
+- **Subject-specific struggle**: Consistently missing in one subject
+
+**Alert Display:**
+- Dashboard alerts section
+- Daily centre reports
+- Weekly school reports
+- Color-coded severity (red = critical, yellow = warning)
+
+**Recommended Actions:**
+- Meet with student to assess difficulty
+- Adjust goals lower
+- Provide one-on-one tutoring
+- Review PACE assignments (too difficult?)
+- Involve parent if pattern continues
+
+**See Also:** [Supervisor Dashboard](/guides/supervisor/dashboard)
+
+---
+
+### CSV Bulk Import
+
+**Definition:**
+Feature allowing administrators to add 20-500 students at once using CSV file upload.
+
+**Process:**
+1. Download CSV template from Zion
+2. Fill template with student data (Excel/Google Sheets)
+3. Upload filled CSV to Zion
+4. Zion validates data (checks for errors)
+5. Fix any errors, re-upload if needed
+6. Confirm import when validation passes
+
+**Time Savings:**
+- Manual entry: 2-3 min × 50 students = 100-150 min
+- CSV import: 10-15 min total
+- **Saves 1.5-2 hours for 50 students**
+
+**Required Fields:**
+- first_name, last_name, date_of_birth, grade_level, learning_centre_name
+
+**See Also:** [CSV Bulk Import](/features/students/bulk-import), [CSV Templates](/reference/csv-templates)
+
+---
+
+### Academic Term
+
+**Definition:**
+School term or semester configured in Zion for tracking Goal Check data within defined date ranges.
+
+**Typical Structure:**
+- Term 1: Oct 1 - Dec 20 (12 weeks)
+- Term 2: Jan 8 - Mar 25 (11 weeks)
+- Term 3: Apr 5 - Jun 20 (11 weeks)
+- Term 4 (optional): Jul 1 - Aug 30 (summer school)
+
+**Active Term:**
+- Current term where Goal Check data is being tracked
+- Only one term active at a time
+- Set during school onboarding
+- Change at term boundaries
+
+**Uses:**
+- Filter reports by term
+- Track student progression term-to-term
+- Archive data by term
+
+**See Also:** [Onboarding Guide](/guides/administrator/onboarding)
+
+---
+
+## Status and States
+
+### Student Status
+
+**Active:**
+- Student currently enrolled
+- Appears in Goal Check, dashboards, reports
+- Can have goals set and progress marked
+- Counted in all metrics
+
+**Deactivated:**
+- Student withdrawn, transferred, or graduated
+- Hidden from active lists (filter required to view)
+- Cannot have new goals set
+- NOT counted in active metrics
+- Historical data preserved
+
+**See Also:** [Student Management](/features/students/overview)
+
+---
+
+### Goal Check Status
+
+**Not Started:**
+- Progress not yet marked for the day
+- Student has goals set but no actual pages entered
+- Gray badge
+- Cannot generate reports until all students marked
+
+**Completed:**
+- Actual pages ≥ goal pages
+- Student met or slightly exceeded goal
+- Green badge
+- Variance: 0 or small positive
+
+**Exceeded:**
+- Actual pages significantly > goal pages
+- Student well exceeded goal
+- Blue badge
+- Variance: +3 or more pages
+
+**Missed:**
+- Actual pages < goal pages
+- Student did not meet goal
+- Red badge
+- Variance: Negative
+
+**See Also:** [Marking Progress](/features/goal-check/marking-progress)
+
+---
+
+## Common ACE Phrases
+
+### "Set Goals"
+
+Morning task of entering daily PACE page goals for each student.
+
+**Example:** "I need to set goals before 8 AM so students know their targets for the day."
+
+---
+
+### "Mark Progress"
+
+End-of-day task of entering actual pages completed by each student.
+
+**Example:** "After students finish at 3 PM, I&apos;ll mark progress for all of them."
+
+---
+
+### "Goal Check Intelligence"
+
+Zion&apos;s transformation of traditional Goal Check from manual compilation to automated intelligence.
+
+**Traditional:** 2-3 hours manual work, limited insights
+**Zion:** 10 minutes total, rich analytics, real-time dashboards
+
+---
+
+### "PACE Progression"
+
+Student&apos;s advancement through sequential PACEs in a subject.
+
+**Example:** "John has excellent PACE progression in Math - completing 2 PACEs per term."
+
+---
+
+### "Copy Previous Day"
+
+Zion feature that pre-fills today&apos;s goals with yesterday&apos;s values for quick entry.
+
+**Time Savings:** 5 minutes → 2 minutes for 20 students
+
+**See Also:** [Setting Goals](/features/goal-check/setting-goals)
+
+---
+
+## Acronyms
+
+**ACE** - Accelerated Christian Education (educational methodology and curriculum provider)
+
+**PACE** - Packet of Accelerated Christian Education
+
+**CSV** - Comma-Separated Values (file format for data import/export)
+
+**KPI** - Key Performance Indicator (metrics on dashboard)
+
+**DOB** - Date of Birth
+
+**RLS** - Row-Level Security (Supabase database security)
+
+---
+
+## Related References
+
+<CardGroup cols={2}>
+  <Card title="Roles & Permissions" icon="shield" href="/reference/roles-permissions">
+    User roles and access levels
+  </Card>
+
+  <Card title="CSV Templates" icon="table" href="/reference/csv-templates">
+    CSV file formats for imports
+  </Card>
+
+  <Card title="PACE Catalog" icon="books" href="/features/paces/catalog">
+    Complete PACE numbering reference
+  </Card>
+
+  <Card title="Goal Check Overview" icon="target" href="/features/goal-check/overview">
+    How Goal Check works in Zion
+  </Card>
+</CardGroup>
