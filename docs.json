@@ -27,79 +27,68 @@
       "href": "https://zionapp.co/sign-up"
     }
   },
-  "navigation": {
-    "dropdowns": [
-      {
-        "dropdown": "Documentation",
-        "icon": "book-open",
-        "description": "Learn how to use Zion",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": ["index", "quickstart", "features"]
-          },
-          {
-            "group": "Administrator Guides",
-            "pages": [
-              "guides/administrator/onboarding",
-              "guides/administrator/goal-check",
-              "guides/administrator/school-management",
-              "guides/administrator/learning-centres",
-              "guides/administrator/staff-management",
-              "guides/administrator/students",
-              "guides/administrator/reports"
-            ]
-          },
-          {
-            "group": "Supervisor & Monitor Guides",
-            "pages": [
-              "guides/supervisor/goal-check",
-              "guides/supervisor/dashboard",
-              "guides/monitor/goal-check"
-            ]
-          },
-          {
-            "group": "Goal Check Features",
-            "pages": [
-              "features/goal-check/overview",
-              "features/goal-check/setting-goals",
-              "features/goal-check/marking-progress",
-              "features/goal-check/reports",
-              "features/goal-check/export"
-            ]
-          },
-          {
-            "group": "Student Management",
-            "pages": [
-              "features/students/overview",
-              "features/students/bulk-import",
-              "features/students/pace-assignments"
-            ]
-          },
-          {
-            "group": "PACE Catalog",
-            "pages": [
-              "features/paces/catalog"
-            ]
-          },
-          {
-            "group": "Reference",
-            "pages": [
-              "reference/roles-permissions",
-              "reference/terminology",
-              "reference/csv-templates"
-            ]
-          }
-        ]
-      },
-      {
-        "dropdown": "Resources",
-        "icon": "graduation-cap",
-        "description": "Additional resources",
-        "pages": ["changelog", "support", "faq"]
-      }
-    ]
-  },
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": ["index", "quickstart", "features"]
+    },
+    {
+      "group": "Administrator Guides",
+      "pages": [
+        "guides/administrator/onboarding",
+        "guides/administrator/goal-check",
+        "guides/administrator/school-management",
+        "guides/administrator/learning-centres",
+        "guides/administrator/staff-management",
+        "guides/administrator/students",
+        "guides/administrator/reports"
+      ]
+    },
+    {
+      "group": "Supervisor & Monitor Guides",
+      "pages": [
+        "guides/supervisor/goal-check",
+        "guides/supervisor/dashboard",
+        "guides/monitor/goal-check"
+      ]
+    },
+    {
+      "group": "Goal Check Features",
+      "pages": [
+        "features/goal-check/overview",
+        "features/goal-check/setting-goals",
+        "features/goal-check/marking-progress",
+        "features/goal-check/reports",
+        "features/goal-check/export"
+      ]
+    },
+    {
+      "group": "Student Management",
+      "pages": [
+        "features/students/overview",
+        "features/students/bulk-import",
+        "features/students/pace-assignments"
+      ]
+    },
+    {
+      "group": "PACE Catalog",
+      "pages": [
+        "features/paces/catalog"
+      ]
+    },
+    {
+      "group": "Reference",
+      "pages": [
+        "reference/roles-permissions",
+        "reference/terminology",
+        "reference/csv-templates"
+      ]
+    },
+    {
+      "group": "Resources",
+      "pages": ["changelog", "support", "faq"]
+    }
+  ],
   "footer": {
     "socials": {
       "github": "https://github.com/siphozion/zion",
