@@ -1,0 +1,309 @@
+---
+title: Grading Overview
+description: Understanding Zion&apos;s comprehensive grading and test score management system for ACE schools
+icon: "graduation-cap"
+---
+
+# Grading System Overview
+
+Zion&apos;s Grading module provides a complete digital solution for test score entry, multi-stage moderation, grade calculations, and ACE compliance audit trails. Designed specifically for ACE curriculum requirements, it ensures accurate, auditable, and timely grade management.
+
+## What is the Grading System?
+
+In ACE schools, students complete PACE workbooks and take tests to demonstrate mastery. Zion transforms this grading process from paper-based records into a digital workflow with built-in moderation and compliance features.
+
+**Traditional Grading (Manual):**
+- Paper gradebooks and test records
+- Manual grade calculations
+- No systematic moderation process
+- Difficult to track retests
+- Audit trails nearly impossible
+- Time required: Hours per week
+
+**Zion Grading (Digital):**
+- Digital test score entry
+- Automatic grade calculations
+- 3-stage moderation pipeline
+- Retest tracking and limits
+- Complete audit trail for ACE compliance
+- SLA tracking for timely moderation
+- Time required: Minutes per class
+
+---
+
+## How the Grading System Works
+
+### Test Score Entry
+
+**Who:** Supervisors
+**Where:** Grading → Enter Scores
+**Time:** 1-2 minutes per test
+
+1. Select the student
+2. Select the PACE being tested
+3. Enter the test score (0-100)
+4. Select test type (PACE Test, Self Test, Final Test)
+5. Confirm and submit
+
+**Automatic Calculations:**
+- Pass threshold applied based on grade level
+- Pass/fail status determined immediately
+- Moderation stage assigned automatically
+
+---
+
+### Pass Thresholds
+
+Different grade levels have different pass requirements:
+
+| Grade Level | Pass Threshold | Rationale |
+|-------------|----------------|-----------|
+| Grades 1-4 | 90% | Foundational mastery required |
+| Grades 5-12 | 80% | Standard mastery level |
+
+These thresholds are configurable per school in settings.
+
+---
+
+### 3-Stage Moderation Pipeline
+
+For Grades 8-12, test scores go through a moderation process before finalization:
+
+**Stage 1: Entry (Supervisor)**
+- Supervisor enters test score
+- Score status: `stage_1_pending`
+- Awaits administrator moderation
+
+**Stage 2: Internal Moderation (Administrator)**
+- Administrator reviews score
+- Can approve, adjust, or reject
+- Approved scores move to `stage_2_internal_approved`
+- Rejected scores return to supervisor
+
+**Stage 3: Finalization**
+- Approved scores are finalized
+- Available for report cards
+- Locked from further modification
+
+<Note>
+**Grades 1-7:** Test scores are automatically finalized after entry (no moderation required). This reflects the lower complexity of these grade levels.
+</Note>
+
+---
+
+### Retest Management
+
+When students fail a test, the retest process begins:
+
+1. **Failed Test Identified:** Score below pass threshold
+2. **Retest Scheduled:** Date set for retest attempt
+3. **Retest Taken:** Student retakes the test
+4. **New Score Entered:** Linked to original attempt
+5. **Attempt Tracking:** System tracks attempt number
+
+**Retest Limits:**
+- Default maximum: 3 attempts per test
+- Configurable per school
+- System enforces limits automatically
+
+---
+
+## Key Features
+
+### 1. Supervisor Score Entry
+
+Intuitive interface for entering test scores:
+
+- **Student Search:** Find student by name or number
+- **PACE Selection:** Only shows assigned PACEs
+- **Score Validation:** 0-100 range enforcement
+- **Duplicate Prevention:** Blocks duplicate entries
+- **Immediate Feedback:** Pass/fail shown instantly
+
+### 2. Administrator Moderation Queue
+
+Centralized view of scores awaiting moderation:
+
+- **SLA Indicators:** Time since entry
+  - Green: &lt;36 hours
+  - Yellow: 36-48 hours (approaching)
+  - Red: &gt;48 hours (overdue)
+  - Critical: &gt;72 hours (escalated)
+- **Filtering:** By centre, subject, grade, SLA status
+- **Sorting:** By time pending, grade level, entry date
+- **Bulk Actions:** Process multiple scores efficiently
+
+### 3. Moderation Actions
+
+Three options for each pending score:
+
+**Approve:**
+- Accept score as entered
+- Moves to finalized status
+- Optional notes for record
+
+**Adjust:**
+- Change the score value
+- Mandatory reason required (min 10 characters)
+- Original score preserved in audit log
+- Moves to finalized status
+
+**Reject:**
+- Return to supervisor for re-entry
+- Mandatory reason required
+- Score appears in supervisor&apos;s rejected list
+- Does not count toward grades
+
+### 4. Audit Trail
+
+Complete tracking for ACE compliance:
+
+**Every Action Logged:**
+- Score entry (who, when, what)
+- Moderation decisions (approve/adjust/reject)
+- Score adjustments (before/after values)
+- Retest scheduling and completion
+- Threshold changes
+
+**Audit Information:**
+- User ID and name
+- Role at time of action
+- Timestamp
+- Previous and new values
+- Reason for change (when applicable)
+
+### 5. Grade Calculations
+
+Automatic calculations at multiple levels:
+
+**Student Level:**
+- Subject averages
+- Overall average
+- Pass rate percentage
+- PACE completion rate
+
+**Centre Level:**
+- Average scores by subject
+- Top performers identification
+- Students needing attention
+
+**School Level:**
+- Grade-level aggregations
+- Subject performance trends
+- Term-over-term comparisons
+
+### 6. SLA Monitoring
+
+Ensure timely moderation with alerts:
+
+**Alert Thresholds:**
+- Warning: &gt;36 hours pending
+- Overdue: &gt;48 hours pending
+- Escalated: &gt;72 hours pending
+
+**Alert Features:**
+- Automatic daily generation
+- Administrator notifications
+- Acknowledgment tracking
+- Resolution tracking
+
+---
+
+## Benefits by Role
+
+### For Supervisors
+
+- **Quick Entry:** Enter scores in under 2 minutes
+- **Clear Rejections:** Know exactly what needs fixing
+- **Retest Tracking:** Never lose track of scheduled retests
+- **Student Progress:** See individual student performance
+
+### For Administrators
+
+- **Moderation Queue:** Centralized review of all pending scores
+- **SLA Compliance:** Never miss moderation deadlines
+- **Audit Ready:** Complete paper trail for inspections
+- **Performance Insights:** School-wide grade analytics
+
+### For School Leadership
+
+- **Compliance:** Meet ACE curriculum requirements
+- **Transparency:** Clear, auditable grading process
+- **Quality Control:** Moderation ensures accuracy
+- **Data-Driven:** Make decisions based on real grade data
+
+---
+
+## Test Types
+
+Three test types are supported:
+
+| Test Type | Description | Typical Use |
+|-----------|-------------|-------------|
+| **PACE Test** | End-of-workbook assessment | Most common, after completing PACE |
+| **Self Test** | Student self-assessment | Mid-PACE progress check |
+| **Final Test** | Comprehensive unit test | End of major unit or subject |
+
+Each test type can be submitted, moderated, and retested independently.
+
+---
+
+## Grade Level Requirements
+
+### Grades 1-7 (Automatic Finalization)
+
+- Scores finalize immediately after entry
+- No moderation queue
+- Simpler workflow for lower grades
+- Full audit trail still maintained
+
+### Grades 8-12 (Moderation Required)
+
+- Scores enter moderation queue
+- Administrator review required
+- 3-stage pipeline enforced
+- Higher accountability for senior grades
+
+---
+
+## Best Practices
+
+### For Supervisors
+
+1. **Enter Scores Promptly:** Within 24 hours of test
+2. **Double-Check Entries:** Verify before submitting
+3. **Handle Rejections Quickly:** Review and correct within 48 hours
+4. **Track Retests:** Schedule retests within policy guidelines
+
+### For Administrators
+
+1. **Daily Queue Review:** Check moderation queue each morning
+2. **Meet SLA Targets:** Process before 48-hour deadline
+3. **Document Adjustments:** Always provide clear reasons
+4. **Monitor Patterns:** Watch for systematic issues
+
+### For Accuracy
+
+- Enter scores from original test papers
+- Verify student identity before entry
+- Use notes field for unusual circumstances
+- Review audit trail if questions arise
+
+---
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="Test Score Entry" href="/features/grading/score-entry" icon="keyboard">
+    How to enter test scores as a supervisor
+  </Card>
+  <Card title="Moderation Queue" href="/features/grading/moderation" icon="clipboard-check">
+    Managing the moderation workflow
+  </Card>
+  <Card title="Retest Management" href="/features/grading/retests" icon="rotate">
+    Scheduling and tracking retests
+  </Card>
+  <Card title="Audit Trail" href="/features/grading/audit-trail" icon="history">
+    Understanding the compliance audit trail
+  </Card>
+</CardGroup>

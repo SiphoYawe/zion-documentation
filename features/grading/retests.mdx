@@ -1,0 +1,331 @@
+---
+title: Retest Management
+description: Scheduling and managing retest attempts for failed tests
+icon: "rotate"
+---
+
+# Retest Management
+
+When students fail a test, they need an opportunity to retest. Zion tracks the full retest workflow from scheduling through completion, with configurable attempt limits.
+
+## Understanding Retests
+
+### When Retests Occur
+
+A retest is needed when:
+- Student scores below the pass threshold
+- Grades 1-4: Score &lt;90%
+- Grades 5-12: Score &lt;80%
+
+### Retest Limits
+
+**Default Configuration:**
+- Maximum 3 attempts per test (including original)
+- Configurable per school in settings
+- System enforces limits automatically
+
+### Retest Flow
+
+1. **Original Test Failed:** Score below threshold
+2. **Retest Scheduled:** Date set for retry
+3. **Student Studies:** Reviews material before retest
+4. **Retest Taken:** Student attempts test again
+5. **Score Entered:** Linked to original attempt
+6. **Pass or Repeat:** Continue until pass or limit reached
+
+---
+
+## Viewing Failed Tests
+
+### Access Failed Tests List
+
+1. Navigate to **Grading** in the sidebar
+2. Click **Retests** submenu
+3. View list of failed tests
+
+### Failed Tests Display
+
+Each failed test shows:
+
+| Field | Description |
+|-------|-------------|
+| **Student** | Name and grade level |
+| **PACE** | Subject and PACE number |
+| **Score** | Original failing score |
+| **Pass Threshold** | Required passing score |
+| **Attempts** | Current attempt count |
+| **Max Attempts** | Maximum allowed |
+| **Status** | Needs scheduling / Scheduled / Completed |
+
+### Filtering Options
+
+- **By Centre:** View specific learning centre
+- **By Status:** All / Needs Scheduling / Scheduled / Completed
+- **By Date Range:** Original test date range
+
+---
+
+## Scheduling a Retest
+
+<Steps>
+  <Step title="Locate Failed Test">
+    Find the failed test in the retests list
+  </Step>
+  <Step title="Click Schedule Retest">
+    Opens the scheduling dialog
+  </Step>
+  <Step title="Select Date">
+    Choose a future date for the retest
+  </Step>
+  <Step title="Confirm">
+    Retest is scheduled and tracked
+  </Step>
+</Steps>
+
+### Scheduling Rules
+
+- **Future Dates Only:** Cannot schedule for past dates
+- **School Days:** Consider scheduling on school days
+- **Study Time:** Allow adequate time for review
+
+### After Scheduling
+
+- Status changes to "Scheduled"
+- Scheduled date displayed
+- Visible in supervisor&apos;s upcoming retests view
+
+---
+
+## Entering Retest Scores
+
+When a student takes their retest:
+
+<Steps>
+  <Step title="Navigate to Retests">
+    Go to Grading → Retests
+  </Step>
+  <Step title="Find Scheduled Retest">
+    Locate the retest (filter by "Scheduled" status)
+  </Step>
+  <Step title="Click Enter Score">
+    Opens retest score entry form
+  </Step>
+  <Step title="Enter New Score">
+    Input the retest score (0-100)
+  </Step>
+  <Step title="Submit">
+    Score is linked to original attempt
+  </Step>
+</Steps>
+
+### What Happens After Entry
+
+**If Passed:**
+- Retest marked complete
+- Student achieves PACE mastery
+- No further retests needed
+
+**If Failed (Attempts Remaining):**
+- Attempt counter increments
+- Can schedule another retest
+- Process repeats
+
+**If Failed (Max Attempts Reached):**
+- Student has exhausted attempts
+- May need alternative intervention
+- Consult with administration
+
+---
+
+## Attempt Tracking
+
+### Viewing Attempt History
+
+For any failed test, view all attempts:
+
+1. Click on the failed test row
+2. View attempt history section
+3. See each attempt with:
+   - Attempt number
+   - Date taken
+   - Score achieved
+   - Pass/Fail status
+
+### Attempt Linking
+
+All retests link to the original attempt:
+- `original_attempt_id` references first test
+- Attempt chain maintains history
+- Full picture available for analysis
+
+---
+
+## Canceling a Retest
+
+If a scheduled retest needs cancellation:
+
+<Steps>
+  <Step title="Find Scheduled Retest">
+    Locate in the retests list
+  </Step>
+  <Step title="Click Cancel">
+    Opens confirmation dialog
+  </Step>
+  <Step title="Provide Reason">
+    Explain why canceling (optional but recommended)
+  </Step>
+  <Step title="Confirm Cancellation">
+    Retest removed from schedule
+  </Step>
+</Steps>
+
+### After Cancellation
+
+- Status changes to "Cancelled"
+- Can schedule new date if needed
+- Cancellation recorded in audit log
+
+---
+
+## Pending Retests View
+
+### For Supervisors
+
+See upcoming retests for your students:
+
+1. Navigate to **Grading → Retests**
+2. Filter by "Scheduled" status
+3. See list of upcoming retests with dates
+
+### Planning Your Week
+
+Use the pending retests view to:
+- See which students have retests coming
+- Prepare test materials in advance
+- Remind students to study
+- Schedule adequate supervision time
+
+---
+
+## Configuring Retest Limits
+
+Administrators can adjust retest limits:
+
+1. Navigate to **Settings → Grading**
+2. Find "Retest Configuration" section
+3. Adjust maximum attempts (default: 3)
+4. Save changes
+
+### Considerations for Limits
+
+- **Lower Limits (2):** More rigorous, less margin for error
+- **Standard Limits (3):** Balanced approach
+- **Higher Limits (4+):** More opportunities, less pressure
+
+<Warning>
+**Changing Limits:** Changes apply to future tests only. Existing tests retain their original limit to maintain fairness.
+</Warning>
+
+---
+
+## Retest Analytics
+
+### Retest Rate Metrics
+
+View overall retest statistics:
+
+- **Retest Rate:** Percentage of tests requiring retests
+- **Pass-on-Retest Rate:** How often retests succeed
+- **Average Attempts:** Mean attempts before passing
+- **Max Attempts Reached:** Students exhausting limits
+
+### Using Analytics
+
+**High Retest Rate:**
+- May indicate content difficulty
+- Could suggest teaching adjustments needed
+- Review specific subjects/PACEs
+
+**Low Pass-on-Retest Rate:**
+- Students may not be studying effectively
+- Retest scheduling may be too quick
+- Consider study support programs
+
+---
+
+## Best Practices
+
+### For Scheduling
+
+- Allow 3-5 days between attempts for study time
+- Don&apos;t batch too many retests on same day
+- Consider student&apos;s overall schedule
+- Avoid scheduling during stressful periods
+
+### For Students
+
+- Require study plan before scheduling retest
+- Review problem areas from original test
+- Consider peer tutoring or extra help
+- Encourage but don&apos;t pressure
+
+### For Tracking
+
+- Monitor students approaching max attempts
+- Intervene early with struggling students
+- Document intervention efforts
+- Escalate persistent failures to leadership
+
+---
+
+## Troubleshooting
+
+### Cannot Schedule Retest
+
+**Possible Causes:**
+- Max attempts already reached
+- Test already passed on retest
+- Not a failed test
+
+**Solution:**
+- Check attempt count
+- Verify test status
+- Confirm this is a failing score
+
+### Retest Score Not Linking
+
+**Possible Causes:**
+- Entered as new test instead of retest
+- Wrong PACE selected
+
+**Solution:**
+- Always use the retest entry form
+- Not the regular score entry
+- Contact admin if entered incorrectly
+
+### Student Disputes Attempt Count
+
+**Process:**
+1. View attempt history for the test
+2. Check audit trail for all entries
+3. Verify each recorded attempt
+4. Correct if system error found
+
+---
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
+    Complete overview of the grading system
+  </Card>
+  <Card title="Test Score Entry" href="/features/grading/score-entry" icon="keyboard">
+    How to enter test scores
+  </Card>
+  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
+    Complete grading system overview
+  </Card>
+  <Card title="Audit Trail" href="/features/grading/audit-trail" icon="history">
+    Tracking all grading activities
+  </Card>
+</CardGroup>

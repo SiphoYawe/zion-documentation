@@ -1,0 +1,373 @@
+---
+title: Audit Trail
+description: Understanding the grading audit trail for ACE compliance
+icon: "history"
+---
+
+# Grading Audit Trail
+
+Zion maintains a complete audit trail of all grading activities to support ACE curriculum compliance requirements. Every score entry, modification, and moderation action is logged with full context.
+
+## Why Audit Trails Matter
+
+### ACE Compliance
+
+ACE (Accelerated Christian Education) schools must maintain accurate records of student progress. The audit trail provides:
+
+- Proof of grading accuracy
+- Evidence of oversight processes
+- Documentation of corrections
+- Historical record for inspections
+
+### Accountability
+
+The audit trail ensures:
+
+- All actions are traceable to individuals
+- Changes are documented with reasons
+- Historical data is preserved
+- Questions can be investigated
+
+---
+
+## What Gets Logged
+
+### Score Entry Events
+
+When a supervisor enters a test score:
+
+| Field | Recorded Value |
+|-------|----------------|
+| **Action Type** | `score_entered` |
+| **Student** | Student ID and name |
+| **PACE** | PACE ID and name |
+| **Score** | Value entered (0-100) |
+| **Test Type** | PACE Test / Self Test / Final Test |
+| **Pass Threshold** | Applied threshold |
+| **Entered By** | User ID and name |
+| **Role** | Role at time of action |
+| **Timestamp** | Exact date/time |
+
+### Moderation Events
+
+When an administrator moderates a score:
+
+**Approval:**
+- Action: `moderation_approved`
+- Moderator ID and name
+- Timestamp
+- Notes (if provided)
+
+**Adjustment:**
+- Action: `score_adjusted`
+- Previous value (original score)
+- New value (adjusted score)
+- Adjustment reason (mandatory)
+- Moderator ID and name
+- Timestamp
+
+**Rejection:**
+- Action: `moderation_rejected`
+- Rejection reason (mandatory)
+- Moderator ID and name
+- Timestamp
+
+### Retest Events
+
+**Retest Scheduled:**
+- Action: `retest_scheduled`
+- Original test reference
+- Scheduled date
+- Scheduled by user
+
+**Retest Completed:**
+- Action: `retest_completed`
+- Attempt number
+- New score
+- Link to original attempt
+
+**Retest Cancelled:**
+- Action: `retest_cancelled`
+- Cancellation reason
+- Cancelled by user
+
+### Administrative Events
+
+**Pass Threshold Changed:**
+- Action: `threshold_changed`
+- Previous thresholds
+- New thresholds
+- Changed by user
+- Reason for change
+
+**Stage Transition:**
+- Action: `stage_transition`
+- From stage
+- To stage
+- Triggered by action
+
+---
+
+## Viewing Audit History
+
+### For a Specific Test
+
+1. Navigate to the test score record
+2. Click **View Audit History**
+3. See chronological list of all actions
+
+### For a Student
+
+1. Navigate to student profile
+2. Click **Grade History** tab
+3. Click **Audit Trail** button
+4. See all grading actions for this student
+
+### Organization-Wide
+
+Administrators can view all audit logs:
+
+1. Navigate to **Grading → Audit**
+2. See searchable list of all actions
+3. Filter by date range, action type, user
+
+---
+
+## Audit Entry Details
+
+Each audit entry includes:
+
+### Header Information
+
+- **Action Type:** What happened
+- **Timestamp:** When it happened
+- **Performed By:** Who did it
+
+### Context Information
+
+- **Student:** Which student affected
+- **PACE:** Which PACE involved
+- **Test Score ID:** Link to score record
+
+### Change Information
+
+- **Previous Value:** State before change (JSON)
+- **New Value:** State after change (JSON)
+- **Reason:** Why change was made (when applicable)
+
+### Metadata
+
+- **User Role:** Role at time of action
+- **IP Address:** Origin of request (if tracked)
+- **User Agent:** Browser/device info (if tracked)
+
+---
+
+## Using Audit Data
+
+### Investigating Issues
+
+When questions arise about a grade:
+
+<Steps>
+  <Step title="Locate the Test Score">
+    Find the specific test in question
+  </Step>
+  <Step title="View Audit History">
+    Open the audit trail for that score
+  </Step>
+  <Step title="Trace the Timeline">
+    Follow actions from entry to current state
+  </Step>
+  <Step title="Identify Discrepancies">
+    Note any unexpected changes
+  </Step>
+  <Step title="Contact Involved Parties">
+    Reach out to users who made changes
+  </Step>
+</Steps>
+
+### Compliance Audits
+
+When preparing for ACE inspections:
+
+1. Generate audit reports for review period
+2. Export to PDF/CSV for documentation
+3. Highlight moderation compliance
+4. Show correction processes
+
+### Pattern Analysis
+
+Use audit data to identify:
+
+- Supervisors with high error rates
+- Subjects requiring frequent adjustments
+- Moderation bottlenecks
+- Retest patterns
+
+---
+
+## Audit Trail Integrity
+
+### Immutable Records
+
+Audit logs cannot be:
+- Deleted
+- Modified
+- Backdated
+
+This ensures complete data integrity for compliance.
+
+### Retention
+
+Audit records are retained:
+- For the current academic year (immediate access)
+- For 7 years (archive access)
+- Permanently for compliance (cold storage)
+
+### Access Controls
+
+Audit viewing requires:
+- Administrator role
+- Authentication
+- All access is itself logged
+
+---
+
+## Export Options
+
+### CSV Export
+
+Export audit data to spreadsheet:
+
+1. Navigate to audit view
+2. Set filters (date range, type, user)
+3. Click **Export CSV**
+4. Download file
+
+**Columns Included:**
+- Timestamp
+- Action type
+- User name
+- Student name
+- PACE
+- Previous value
+- New value
+- Reason
+
+### PDF Report
+
+Generate formatted report:
+
+1. Set filters as needed
+2. Click **Export PDF**
+3. Download formatted report
+
+**Report Includes:**
+- Summary statistics
+- Action timeline
+- User activity summary
+- Change details
+
+---
+
+## Best Practices
+
+### Regular Review
+
+- Review audit logs weekly for anomalies
+- Check for unusual patterns
+- Verify moderation compliance
+
+### Documentation
+
+- When adjusting scores, provide clear reasons
+- Document conversation outcomes in notes
+- Reference original test when possible
+
+### Training
+
+- Train supervisors on accurate entry
+- Explain audit implications
+- Emphasize first-time accuracy
+
+---
+
+## Common Audit Scenarios
+
+### Score Discrepancy Reported
+
+**Scenario:** Parent claims grade was entered incorrectly
+
+**Investigation:**
+1. Pull audit trail for specific test
+2. Trace from entry through any modifications
+3. Compare original entry to current value
+4. Identify who made changes and why
+5. Present findings to parent
+
+### High Adjustment Rate
+
+**Scenario:** Many scores being adjusted during moderation
+
+**Investigation:**
+1. Query adjustments by supervisor
+2. Identify patterns (specific supervisors, subjects)
+3. Review original vs adjusted values
+4. Retrain supervisors if needed
+5. Consider process improvements
+
+### Compliance Audit
+
+**Scenario:** ACE inspector requests grading records
+
+**Response:**
+1. Generate audit report for requested period
+2. Export in requested format
+3. Prepare summary of moderation statistics
+4. Document SLA compliance rates
+5. Provide contact for questions
+
+---
+
+## Troubleshooting
+
+### Cannot Find Audit Entry
+
+**Possible Causes:**
+- Looking at wrong test
+- Date filters too narrow
+- Action not yet synced
+
+**Solution:**
+- Verify correct test selected
+- Expand date range
+- Wait for sync and refresh
+
+### Audit Shows Unexpected Change
+
+**Process:**
+1. Note the timestamp and user
+2. Check if legitimate moderation action
+3. Contact user if unclear
+4. Document findings
+5. Escalate if suspicious activity
+
+---
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
+    Complete overview of the grading system
+  </Card>
+  <Card title="Moderation Queue" href="/features/grading/moderation" icon="clipboard-check">
+    Understanding the moderation workflow
+  </Card>
+  <Card title="Test Score Entry" href="/features/grading/score-entry" icon="keyboard">
+    How scores are entered
+  </Card>
+  <Card title="Roles and Permissions" href="/reference/roles-permissions" icon="shield">
+    Understanding user roles
+  </Card>
+</CardGroup>

@@ -1,0 +1,270 @@
+---
+title: Test Score Entry
+description: How to enter test scores as a supervisor in Zion
+icon: "keyboard"
+---
+
+# Test Score Entry
+
+This guide covers how supervisors enter test scores into Zion. Accurate and timely score entry is the foundation of the grading system.
+
+## Accessing Score Entry
+
+1. Navigate to **Grading** in the sidebar
+2. Click **Enter Scores** (or the main Grading link)
+3. The score entry form appears
+
+---
+
+## The Entry Form
+
+### Student Selection
+
+**Search for Student:**
+- Type student name or number
+- Results filter as you type
+- Click student to select
+
+**Student Information Shown:**
+- Full name
+- Student number
+- Grade level
+- Learning centre
+
+### PACE Selection
+
+After selecting a student, choose the PACE:
+
+- **Only Assigned PACEs:** Dropdown shows only PACEs assigned to this student
+- **Subject and Number:** e.g., "Math 1042" or "English 1015"
+- **Completion Status:** Shows if already tested
+
+<Tip>
+**Tip:** If the PACE you need isn&apos;t listed, verify the student&apos;s PACE assignments in Student Management. Only assigned PACEs appear in the dropdown.
+</Tip>
+
+### Test Details
+
+**Score:**
+- Enter the numeric score (0-100)
+- Whole numbers only
+- Validation prevents out-of-range values
+
+**Test Type:**
+- PACE Test (most common)
+- Self Test
+- Final Test
+
+**Test Date:**
+- Defaults to today
+- Can select past dates if entering retroactively
+- Cannot select future dates
+
+### Automatic Calculations
+
+As you enter the score, Zion calculates:
+
+- **Pass Threshold:** Based on student&apos;s grade level
+- **Pass/Fail Status:** Immediate visual indicator
+  - Green checkmark = Passed
+  - Red X = Failed
+
+---
+
+## Submitting a Score
+
+<Steps>
+  <Step title="Complete the Form">
+    Fill in student, PACE, score, test type, and date
+  </Step>
+  <Step title="Review the Summary">
+    Verify the pass/fail status and all details
+  </Step>
+  <Step title="Click Submit">
+    Confirm the score entry
+  </Step>
+  <Step title="Confirmation">
+    Success message appears with next steps
+  </Step>
+</Steps>
+
+### What Happens After Submission
+
+**For Grades 1-7:**
+- Score is immediately finalized
+- Available for grade calculations
+- Appears in student record
+
+**For Grades 8-12:**
+- Score enters moderation queue (stage_1_pending)
+- Awaits administrator moderation
+- Not yet finalized
+
+---
+
+## Duplicate Prevention
+
+Zion prevents duplicate test entries:
+
+**Blocked If:**
+- Same student
+- Same PACE
+- Same test type
+- Same term
+- First attempt (attempt number 1)
+
+**Not Blocked If:**
+- Different test type for same PACE
+- Retest entry (attempt number 2+)
+- Different term
+
+<Warning>
+**Warning:** If you receive a duplicate error, check if this score was already entered. If you need to correct an existing score, contact your administrator.
+</Warning>
+
+---
+
+## Viewing Recent Entries
+
+After entering scores, view your recent entries:
+
+1. Click **Recent Scores** tab
+2. See list of your recent entries
+3. Entries show:
+   - Student name
+   - PACE
+   - Score and pass/fail
+   - Entry timestamp
+   - Moderation status (for Grades 8-12)
+
+### Status Indicators
+
+| Status | Meaning |
+|--------|---------|
+| **Finalized** | Score is complete and recorded |
+| **Pending Moderation** | Awaiting administrator review |
+| **Approved** | Administrator approved |
+| **Rejected** | Administrator rejected, needs re-entry |
+
+---
+
+## Handling Rejected Scores
+
+When an administrator rejects a score:
+
+1. Score appears in your **Rejected Scores** view
+2. Rejection reason is displayed
+3. You must re-enter the corrected score
+
+### Viewing Rejected Scores
+
+1. Navigate to **Grading → Enter Scores**
+2. Click **Rejected Scores** tab
+3. See list of scores needing correction
+
+### Re-Entering a Rejected Score
+
+<Steps>
+  <Step title="Review Rejection Reason">
+    Understand why the score was rejected
+  </Step>
+  <Step title="Verify Correct Information">
+    Check original test paper for accurate score
+  </Step>
+  <Step title="Enter New Score">
+    Submit the corrected score
+  </Step>
+  <Step title="Previous Rejection Clears">
+    Old rejection no longer appears
+  </Step>
+</Steps>
+
+---
+
+## Best Practices
+
+### Timing
+
+- **Enter Same Day:** Enter scores within hours of test completion
+- **Don&apos;t Batch:** Enter scores individually to reduce errors
+- **Handle Rejections Promptly:** Address within 24 hours
+
+### Accuracy
+
+- **Check Student Identity:** Verify correct student selected
+- **Verify Score:** Double-check against test paper
+- **Correct PACE:** Ensure correct PACE and test type
+- **Use Notes:** Document unusual circumstances
+
+### Efficiency
+
+- **Prepare Test Papers:** Organize before entering
+- **One at a Time:** Focus on one entry to avoid mistakes
+- **Confirm Each Entry:** Review before submitting
+
+---
+
+## Common Issues
+
+### Wrong Student Selected
+
+**If Noticed Before Submit:**
+- Clear the form
+- Start fresh with correct student
+
+**If Noticed After Submit:**
+- Contact administrator immediately
+- Administrator can void the incorrect entry
+- Re-enter with correct student
+
+### Wrong Score Entered
+
+**If Grades 1-7 (Already Finalized):**
+- Contact administrator for correction
+- Administrator creates audit entry for change
+
+**If Grades 8-12 (In Moderation):**
+- Administrator can adjust during moderation
+- Or reject for you to re-enter correctly
+
+### PACE Not Listed
+
+**Possible Causes:**
+- PACE not assigned to student
+- PACE already tested this term
+- Wrong student selected
+
+**Solution:**
+- Verify student&apos;s PACE assignments
+- Check if already tested (view student record)
+- Confirm correct student
+
+---
+
+## Mobile/Tablet Entry
+
+The score entry form is optimized for tablets:
+
+- Large touch targets
+- Clear form fields
+- Confirmation dialogs prevent accidental submission
+- Works offline (syncs when connection restored)
+
+---
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
+    Complete overview of the grading system
+  </Card>
+  <Card title="Moderation Queue" href="/features/grading/moderation" icon="clipboard-check">
+    How moderation works for Grades 8-12
+  </Card>
+  <Card title="Retest Management" href="/features/grading/retests" icon="rotate">
+    Scheduling and entering retest scores
+  </Card>
+  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
+    Complete grading system overview
+  </Card>
+</CardGroup>

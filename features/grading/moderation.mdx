@@ -1,0 +1,370 @@
+---
+title: Moderation Queue
+description: Managing the test score moderation workflow for Grades 8-12
+icon: "clipboard-check"
+---
+
+# Moderation Queue
+
+For Grades 8-12, test scores require administrator moderation before finalization. This guide covers the moderation workflow, queue management, and best practices for timely processing.
+
+## Why Moderation?
+
+The moderation process ensures:
+
+- **Accuracy:** Review catches data entry errors
+- **Accountability:** Two-person verification for senior grades
+- **Compliance:** Meets ACE curriculum audit requirements
+- **Quality Control:** Maintains grading standards
+
+---
+
+## Accessing the Moderation Queue
+
+1. Navigate to **Grading** in the sidebar
+2. Click **Moderation** submenu
+3. View the moderation queue dashboard
+
+<Note>
+**Administrator Access Only:** The moderation queue is only visible to users with Administrator role. Supervisors cannot access this view.
+</Note>
+
+---
+
+## The Moderation Dashboard
+
+### Queue Statistics
+
+**Summary Cards:**
+- **Pending:** Total scores awaiting moderation
+- **Approaching SLA:** Scores pending 36-48 hours
+- **Overdue:** Scores pending &gt;48 hours
+- **Processed Today:** Scores you&apos;ve moderated today
+
+### Queue Table
+
+Each pending score shows:
+
+| Column | Description |
+|--------|-------------|
+| **Student** | Name and grade level |
+| **PACE** | Subject and PACE number |
+| **Score** | Entered score value |
+| **Pass/Fail** | Visual indicator |
+| **Entered By** | Supervisor who entered |
+| **Entry Time** | When score was submitted |
+| **Hours Pending** | Time since entry |
+| **SLA Status** | Color-coded time indicator |
+
+### SLA Status Colors
+
+| Color | Status | Time Pending | Action |
+|-------|--------|--------------|--------|
+| **Green** | Within SLA | &lt;36 hours | Standard processing |
+| **Yellow** | Approaching | 36-48 hours | Prioritize |
+| **Red** | Overdue | &gt;48 hours | Urgent attention |
+| **Dark Red** | Escalated | &gt;72 hours | Immediate action |
+
+---
+
+## Filtering the Queue
+
+### By Learning Centre
+
+- Select specific centre from dropdown
+- Or "All Centres" for complete view
+
+### By Subject
+
+- Filter to specific subject (Math, English, etc.)
+- Useful for subject-focused review
+
+### By Grade Level
+
+- Filter by student grade (8, 9, 10, 11, 12)
+- Prioritize by grade importance
+
+### By SLA Status
+
+- All
+- Within SLA only
+- Approaching only
+- Overdue only
+
+---
+
+## Moderation Actions
+
+For each pending score, you have three options:
+
+### Approve
+
+Accept the score as entered.
+
+<Steps>
+  <Step title="Click Approve Button">
+    Opens confirmation dialog
+  </Step>
+  <Step title="Add Optional Notes">
+    Record any relevant comments
+  </Step>
+  <Step title="Confirm Approval">
+    Score moves to finalized status
+  </Step>
+</Steps>
+
+**When to Approve:**
+- Score appears accurate
+- Entry looks legitimate
+- No concerns with the value
+
+**What Happens:**
+- Score status changes to `stage_2_internal_approved`
+- Score is finalized for grade calculations
+- Audit log records your approval
+
+### Adjust
+
+Change the score value during moderation.
+
+<Steps>
+  <Step title="Click Adjust Button">
+    Opens adjustment form
+  </Step>
+  <Step title="Enter New Score">
+    Type the corrected score (0-100)
+  </Step>
+  <Step title="Provide Reason">
+    Mandatory explanation (min 10 characters)
+  </Step>
+  <Step title="Confirm Adjustment">
+    Score updates and finalizes
+  </Step>
+</Steps>
+
+**When to Adjust:**
+- Obvious data entry error (e.g., 89 entered as 98)
+- Calculation error on original test
+- Administrator has verified correct score
+
+**What Happens:**
+- Original score preserved in audit log
+- New score applied and finalized
+- `score_adjusted = true` flag set
+- Reason recorded in audit trail
+
+<Warning>
+**Adjustment Reason Required:** You must provide a reason of at least 10 characters explaining why you adjusted the score. This is for audit compliance.
+</Warning>
+
+### Reject
+
+Send the score back to the supervisor for re-entry.
+
+<Steps>
+  <Step title="Click Reject Button">
+    Opens rejection form
+  </Step>
+  <Step title="Provide Reason">
+    Mandatory explanation (min 10 characters)
+  </Step>
+  <Step title="Confirm Rejection">
+    Score returns to supervisor
+  </Step>
+</Steps>
+
+**When to Reject:**
+- Wrong student selected
+- Wrong PACE selected
+- Score cannot be verified
+- Suspicious entry patterns
+
+**What Happens:**
+- Score status changes to `stage_1_rejected`
+- Score appears in supervisor&apos;s rejected list
+- Supervisor must re-enter correct score
+- Original entry preserved in audit log
+
+---
+
+## SLA Tracking
+
+### Understanding SLA
+
+**Service Level Agreement (SLA):** Moderation should complete within 48 hours of entry.
+
+**Timeline:**
+- 0-36 hours: Normal processing (green)
+- 36-48 hours: Approaching deadline (yellow)
+- 48-72 hours: Overdue (red)
+- &gt;72 hours: Escalated (dark red)
+
+### Meeting SLA
+
+**Best Practices:**
+1. Check queue at start of each day
+2. Process approaching items first
+3. Clear overdue items immediately
+4. Aim for &lt;24 hour turnaround
+
+### SLA Alerts
+
+When items become overdue, the system:
+- Generates moderation alerts
+- Sends email notifications (if enabled)
+- Highlights items in queue
+- Tracks acknowledgment
+
+---
+
+## Moderation Alerts
+
+### Viewing Alerts
+
+1. Navigate to **Grading → Alerts**
+2. See list of overdue moderation items
+3. Each alert shows student, score, and hours pending
+
+### Acknowledging Alerts
+
+When you&apos;ve seen an overdue item but can&apos;t process immediately:
+
+1. Click **Acknowledge** on the alert
+2. Alert moves to acknowledged status
+3. You&apos;ve committed to processing soon
+4. Still appears until moderated
+
+### Alert Types
+
+| Type | Trigger | Priority |
+|------|---------|----------|
+| **Warning** | &gt;36 hours pending | Monitor |
+| **Overdue** | &gt;48 hours pending | Action needed |
+| **Escalated** | &gt;72 hours pending | Urgent |
+
+---
+
+## Processing Efficiently
+
+### Batch Processing
+
+For efficiency, process similar items together:
+
+1. Filter by centre or subject
+2. Review all items in that filter
+3. Approve straightforward entries quickly
+4. Flag items needing investigation
+
+### Quick Approve Workflow
+
+For routine approvals:
+
+1. Review score and context
+2. If acceptable, click Approve
+3. Skip notes for routine approvals
+4. Move to next item
+
+### Flagging for Review
+
+If something needs investigation:
+
+1. Note the item details
+2. Move on to other items
+3. Return to investigate later
+4. Don&apos;t let unclear items block queue
+
+---
+
+## Moderation Statistics
+
+### Dashboard Metrics
+
+**Pending Count:** Current queue size
+**Average Processing Time:** Hours from entry to moderation
+**Your Moderation Count:** Items you&apos;ve processed today/this week
+**SLA Compliance Rate:** Percentage processed within 48 hours
+
+### Using Statistics
+
+- High pending count = need to allocate more time
+- High average time = process more frequently
+- Low SLA rate = review your schedule
+
+---
+
+## Best Practices
+
+### Daily Routine
+
+1. **Morning (9 AM):** Check queue, process approaching items
+2. **Midday (12 PM):** Quick check for new urgent items
+3. **Afternoon (4 PM):** Clear remaining items before end of day
+
+### Quality Checks
+
+- Verify score matches test paper (when needed)
+- Check for patterns suggesting errors
+- Contact supervisor if questions arise
+- Document adjustment reasons clearly
+
+### Delegation
+
+If multiple administrators:
+- Divide by centre or subject
+- Communicate who&apos;s handling what
+- Cover for each other during absences
+- Don&apos;t duplicate effort
+
+---
+
+## Troubleshooting
+
+### Queue Not Loading
+
+**Possible Causes:**
+- Network connection issue
+- Session expired
+
+**Solution:**
+- Refresh the page
+- Check internet connection
+- Log out and log back in
+
+### Cannot Process Certain Items
+
+**Possible Causes:**
+- Item already processed by another admin
+- System sync delay
+
+**Solution:**
+- Refresh the queue
+- Item should disappear if already processed
+- Check moderation history
+
+### Supervisor Disputes Rejection
+
+**Process:**
+1. Review the original rejection reason
+2. Check audit trail for context
+3. Discuss with supervisor
+4. Supervisor re-enters if they agree
+5. Escalate to principal if unresolved
+
+---
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
+    Complete overview of the grading system
+  </Card>
+  <Card title="Test Score Entry" href="/features/grading/score-entry" icon="keyboard">
+    How supervisors enter scores
+  </Card>
+  <Card title="Audit Trail" href="/features/grading/audit-trail" icon="history">
+    Understanding the compliance audit trail
+  </Card>
+  <Card title="Administrator Grading Guide" href="/guides/administrator/grading" icon="user-shield">
+    Complete administrator moderation workflow
+  </Card>
+</CardGroup>
