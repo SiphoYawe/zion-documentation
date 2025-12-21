@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
   "name": "Zion",
-  "description": "AI-powered school management system for ACE schools - Transform Goal Check, attendance, and reporting",
+  "description": "AI-powered school management system for ACE schools - Transform Goal Check, attendance, grading, and reporting",
   "colors": {
     "primary": "#3B82F6",
     "light": "#F8FAFC",
@@ -38,6 +38,9 @@
         "pages": [
           "guides/administrator/onboarding",
           "guides/administrator/goal-check",
+          "guides/administrator/attendance",
+          "guides/administrator/grading",
+          "guides/administrator/insights",
           "guides/administrator/school-management",
           "guides/administrator/learning-centres",
           "guides/administrator/staff-management",
@@ -49,6 +52,8 @@
         "group": "Supervisor & Monitor Guides",
         "pages": [
           "guides/supervisor/goal-check",
+          "guides/supervisor/attendance",
+          "guides/supervisor/grading",
           "guides/supervisor/dashboard",
           "guides/monitor/goal-check"
         ]
@@ -61,6 +66,34 @@
           "features/goal-check/marking-progress",
           "features/goal-check/reports",
           "features/goal-check/export"
+        ]
+      },
+      {
+        "group": "Attendance Features",
+        "pages": [
+          "features/attendance/overview",
+          "features/attendance/marking",
+          "features/attendance/alerts",
+          "features/attendance/reports",
+          "features/attendance/trends"
+        ]
+      },
+      {
+        "group": "Grading Features",
+        "pages": [
+          "features/grading/overview",
+          "features/grading/score-entry",
+          "features/grading/moderation",
+          "features/grading/retests",
+          "features/grading/audit-trail"
+        ]
+      },
+      {
+        "group": "Insights & Analytics",
+        "pages": [
+          "features/insights/overview",
+          "features/insights/types",
+          "features/insights/analytics"
         ]
       },
       {
