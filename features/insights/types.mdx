@@ -1,0 +1,291 @@
+---
+title: Insight Types Explained
+description: Deep dive into each category of Zion insights
+icon: "shapes"
+---
+
+# Insight Types Explained
+
+Zion generates six distinct types of insights, each analyzing different aspects of your school&apos;s performance data. This guide explains each type in detail.
+
+---
+
+## Day-of-Week Patterns
+
+### What It Analyzes
+
+Goal achievement variations across different days of the week.
+
+### Detection Method
+
+1. Collects goal completion data for last 4 weeks (28 days)
+2. Groups data by day of week (Monday-Friday)
+3. Calculates average achievement per day
+4. Identifies days with &gt;10% variance from weekly average
+
+### Example Insights
+
+**Low Performance Day:**
+"Goal achievement is 18% lower on Fridays compared to the weekly average of 82%"
+
+**High Performance Day:**
+"Students perform 12% better on Tuesdays, the strongest day of the week"
+
+### Confidence Requirements
+
+| Confidence | Sample Size |
+|------------|-------------|
+| High | &gt;40 samples per day |
+| Medium | 20-40 samples per day |
+| Low | &lt;20 samples per day |
+
+### What to Do
+
+**For Low Days:**
+- Investigate day-specific factors
+- Consider reduced goals on problem days
+- Address transitions (Monday) or fatigue (Friday)
+- Plan engaging activities for struggling days
+
+**For High Days:**
+- Document what makes these days successful
+- Consider replicating conditions on other days
+- Use as benchmark for improvement
+
+---
+
+## Subject Correlations
+
+### What It Analyzes
+
+Relationships between performance in different subjects.
+
+### Detection Method
+
+1. Calculates each student&apos;s achievement rate per subject
+2. Computes Pearson correlation coefficient between subject pairs
+3. Identifies pairs with r &gt; 0.7 (strong correlation)
+4. Requires minimum 15 students with data in both subjects
+
+### Example Insights
+
+**Negative Correlation Pattern:**
+"Students struggling in Math 1042-1048 are also struggling in Science 1040-1045 (correlation: 0.78)"
+
+**Shared Challenge:**
+"English and Social Studies show strong correlation (0.82) - students struggling in one typically struggle in both"
+
+### Confidence Requirements
+
+| Confidence | Students with Both Subjects |
+|------------|----------------------------|
+| High | &gt;30 students |
+| Medium | 20-30 students |
+| Low | &lt;20 students |
+
+### What to Do
+
+- Investigate shared prerequisite gaps
+- Consider paired tutoring or support
+- Review if subjects share foundational skills
+- Create integrated support programs
+
+---
+
+## Centre Performance
+
+### What It Analyzes
+
+How each learning centre compares to the school average.
+
+### Detection Method
+
+1. Calculates achievement rate per learning centre
+2. Computes school-wide mean and standard deviation
+3. Identifies centres &gt;15% above or below average
+4. Requires minimum 20 goal samples per centre
+
+### Example Insights
+
+**Underperforming Centre:**
+"Learning Centre B is performing 22% below the school average (58% vs 80%)"
+
+**High-Performing Centre:**
+"Learning Centre A is 15% above average - top performer at 95%"
+
+### Confidence Requirements
+
+| Confidence | Goal Samples |
+|------------|--------------|
+| High | &gt;60 samples |
+| Medium | 40-60 samples |
+| Low | &lt;40 samples |
+
+### What to Do
+
+**For Underperforming Centres:**
+- Investigate environmental factors
+- Review supervisor practices
+- Consider resource reallocation
+- Provide targeted support
+
+**For High-Performing Centres:**
+- Document successful practices
+- Share approaches with other centres
+- Consider mentor relationships
+
+---
+
+## Seasonal Trends
+
+### What It Analyzes
+
+Performance changes over the course of a term.
+
+### Detection Method
+
+1. Requires at least 6 weeks into current term
+2. Compares first half vs second half of term
+3. Calculates percentage change in achievement
+4. Flags changes &gt;15% as significant
+
+### Example Insights
+
+**Declining Performance:**
+"Achievement has dropped 18% in the second half of this term (72% down from 90%)"
+
+**Improving Performance:**
+"Performance improved 22% in term&apos;s second half - strong positive momentum"
+
+### Confidence Requirements
+
+| Confidence | Total Goals in Period |
+|------------|----------------------|
+| High | &gt;150 goals |
+| Medium | 100-150 goals |
+| Low | &lt;100 goals |
+
+### What to Do
+
+**For Declining Trends:**
+- Address term fatigue factors
+- Review workload distribution
+- Consider mid-term breaks or incentives
+- Increase engagement activities
+
+**For Improving Trends:**
+- Document what&apos;s driving improvement
+- Maintain successful approaches
+- Celebrate progress with students
+
+---
+
+## Student Velocity
+
+### What It Analyzes
+
+Individual student acceleration or deceleration over time.
+
+### Detection Method
+
+1. Analyzes 8-week window (split at 4-week mark)
+2. Compares achievement in first 4 weeks vs last 4 weeks
+3. Identifies &gt;25% change in either direction
+4. Requires 20+ total goals per student
+
+### Example Insights
+
+**Accelerating Students:**
+"8 students have improved their achievement rate by &gt;30% in the last 4 weeks"
+
+**Decelerating Students:**
+"5 students have shown &gt;25% decline in recent weeks - intervention needed"
+
+### Confidence Requirements
+
+Based on total goal count per student over 8 weeks.
+
+### What to Do
+
+**For Accelerating Students:**
+- Celebrate and reinforce progress
+- Identify what changed for them
+- Consider leadership/peer mentor roles
+- Maintain momentum
+
+**For Decelerating Students:**
+- Investigate root causes immediately
+- Schedule student/parent meetings
+- Develop intervention plans
+- Monitor closely going forward
+
+---
+
+## Subject Difficulty
+
+### What It Analyzes
+
+PACEs with abnormally low completion rates.
+
+### Detection Method
+
+1. Calculates completion rate per PACE
+2. Compares to expected rate for subject/grade
+3. Flags PACEs with &lt;70% completion rate
+4. Requires 10+ attempts per PACE
+
+### Example Insights
+
+**Difficult PACE:**
+"Math 1048 has a 58% completion rate - significantly below expected 85%"
+
+**Completion Time Issue:**
+"Science 1052 is taking 3x longer to complete than similar PACEs"
+
+### Confidence Requirements
+
+| Confidence | Attempts |
+|------------|----------|
+| High | &gt;25 attempts |
+| Medium | 15-25 attempts |
+| Low | 10-15 attempts |
+
+### What to Do
+
+- Review PACE content for complexity
+- Provide additional support resources
+- Consider teaching approach changes
+- Check if prerequisites are adequately covered
+- Discuss with curriculum specialists
+
+---
+
+## Comparing Insight Types
+
+| Type | Analysis Focus | Time Window | Min Data |
+|------|----------------|-------------|----------|
+| Day-of-Week | Daily patterns | 4 weeks | 20+ samples/day |
+| Subject Correlations | Subject relationships | 4 weeks | 15+ students |
+| Centre Performance | Centre comparison | 4 weeks | 20+ samples/centre |
+| Seasonal Trends | Term progression | 6+ weeks | 100+ goals |
+| Student Velocity | Individual change | 8 weeks | 20+ goals/student |
+| Subject Difficulty | PACE analysis | 4 weeks | 10+ attempts |
+
+---
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="Insights Overview" href="/features/insights/overview" icon="lightbulb">
+    Introduction to the insights system
+  </Card>
+  <Card title="Administrator Insights Guide" href="/guides/administrator/insights" icon="user-shield">
+    Turning insights into interventions
+  </Card>
+  <Card title="Analytics Dashboard" href="/features/insights/analytics" icon="chart-line">
+    Complete analytics overview
+  </Card>
+  <Card title="Goal Check Reports" href="/features/goal-check/reports" icon="file-chart-line">
+    Generating performance reports
+  </Card>
+</CardGroup>
