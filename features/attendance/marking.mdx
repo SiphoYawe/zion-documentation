@@ -1,0 +1,238 @@
+---
+title: Marking Attendance
+description: How to mark daily student attendance efficiently in Zion
+icon: "check"
+---
+
+# Marking Daily Attendance
+
+This guide covers the daily attendance marking workflow - the core of Zion&apos;s attendance module. Learn how to mark attendance quickly and accurately using the tablet-optimized interface.
+
+## Accessing Attendance Marking
+
+<Steps>
+  <Step title="Navigate to Attendance">
+    Click "Attendance" in the sidebar navigation
+  </Step>
+  <Step title="Select Mark Attendance">
+    Choose "Mark Attendance" from the attendance menu (or click the main attendance link)
+  </Step>
+  <Step title="Verify Date and Centre">
+    Confirm the date (defaults to today) and select your learning centre
+  </Step>
+</Steps>
+
+---
+
+## The Marking Interface
+
+### Date Selection
+
+The date selector defaults to today. To mark attendance for a previous day:
+
+1. Click the date picker
+2. Select the desired date
+3. Note: You cannot mark attendance for dates after midnight has passed
+
+<Warning>
+**Midnight Cutoff:** Attendance can only be marked for a date before midnight of that date. If you need to correct past attendance, contact your administrator.
+</Warning>
+
+### Centre Selection
+
+**For Administrators:**
+- Optional - view all centres or filter to specific centre
+- Dropdown shows all active learning centres
+- Select "All Centres" for school-wide view
+
+**For Supervisors:**
+- Required - must select one of your assigned centres
+- Only shows centres you have supervisor access to
+- Cannot view other centres&apos; students
+
+### Student List
+
+Students appear in a list sorted for efficiency:
+1. **Unmarked students first** (no status set)
+2. **Then alphabetically** by first name
+
+Each student row shows:
+- Student name
+- Current attendance status (or "Unmarked")
+- Notes indicator (if notes exist)
+- Grade level and student number
+
+---
+
+## Marking Status
+
+### Status Options
+
+| Status | Icon | Color | When to Use |
+|--------|------|-------|-------------|
+| **Present** | Checkmark | Green (Emerald) | Student is in class on time |
+| **Absent** | X | Red | Student is not present today |
+| **Late** | Clock | Amber/Orange | Student arrived after start time |
+
+### Marking a Student
+
+1. **Tap the student row** to expand options
+2. **Tap the status button** for their attendance:
+   - Green button = Present
+   - Red button = Absent
+   - Amber button = Late
+3. **Status saves automatically** - no submit button needed
+
+### For Late Arrivals
+
+When marking "Late":
+1. Tap the Late (amber) button
+2. Optionally set the arrival time using the time picker
+3. Arrival time helps track patterns and report accuracy
+
+### Adding Notes
+
+For any student, you can add notes:
+
+1. Tap the notes toggle (speech bubble icon)
+2. Enter your note (e.g., "Doctor appointment", "Left early")
+3. Notes appear in exports and reports
+4. Notes are visible to administrators
+
+**Common Note Uses:**
+- Reason for absence (if known)
+- Early dismissal times
+- Parent communication records
+- Medical or appointment notes
+
+---
+
+## Bulk Operations
+
+### Mark All Present
+
+For efficient marking when most students are present:
+
+1. Click the "Mark All Present" button in the actions bar
+2. Review the confirmation dialog
+3. Confirm to mark all unmarked students as Present
+4. Then individually mark any absent or late students
+
+<Tip>
+**Best Practice:** Use "Mark All Present" first, then go back and mark the few absent or late students. This is faster than marking each student individually.
+</Tip>
+
+### Attendance Summary
+
+The summary bar shows real-time totals:
+
+| Metric | Description |
+|--------|-------------|
+| **Total** | All students in selected centre |
+| **Marked** | Students with status assigned |
+| **Unmarked** | Students still needing status |
+| **Present** | Count marked as Present |
+| **Absent** | Count marked as Absent |
+| **Late** | Count marked as Late |
+
+The summary updates immediately as you mark each student.
+
+---
+
+## Touch-Optimized Design
+
+The marking interface is designed for tablet use:
+
+**Large Touch Targets:**
+- Status buttons are 48x48 pixels minimum
+- Easy to tap accurately on touchscreen
+- Spacing prevents accidental taps
+
+**Visual Feedback:**
+- Color changes immediately on tap
+- Confirmation icons appear
+- Row highlights when selected
+
+**Efficient Navigation:**
+- Swipe to scroll through students
+- No page reloads - instant updates
+- Keyboard accessible for desktop use
+
+---
+
+## Best Practices
+
+### Timing
+
+- **Mark early:** Complete attendance within first 15 minutes
+- **Update late arrivals:** Check back mid-morning for any students who arrived late
+- **Review before end of day:** Ensure all students are marked before leaving
+
+### Accuracy
+
+- **Don&apos;t guess:** If unsure, wait to confirm before marking
+- **Use notes:** Document any special circumstances
+- **Review unmarked:** Check the summary for any missed students
+
+### Efficiency
+
+1. **Bulk mark first:** Use "Mark All Present" for majority
+2. **Mark exceptions:** Go through and mark absent/late students
+3. **Add notes:** Document reasons for absences
+4. **Verify summary:** Confirm counts match your expectations
+
+---
+
+## Troubleshooting
+
+### Student Not Appearing
+
+**Possible Causes:**
+- Student not assigned to selected centre
+- Student is deactivated
+- Filter is hiding the student
+
+**Solution:**
+- Check centre selection
+- Contact administrator to verify student status
+- Clear any active filters
+
+### Cannot Mark Past Date
+
+**Cause:** The midnight cutoff has passed for that date.
+
+**Solution:**
+- Only administrators can modify past attendance
+- Contact your administrator for corrections
+- Future: Mark attendance before midnight each day
+
+### Status Not Saving
+
+**Possible Causes:**
+- Network connection issue
+- Session expired
+
+**Solution:**
+- Check your internet connection
+- Refresh the page
+- Log out and log back in
+- If persists, contact support
+
+---
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="Attendance Overview" href="/features/attendance/overview" icon="calendar-check">
+    Complete overview of the attendance system
+  </Card>
+  <Card title="Administrator Attendance Guide" href="/guides/administrator/attendance" icon="user-shield">
+    Monitoring attendance metrics and trends
+  </Card>
+  <Card title="Attendance Reports" href="/features/attendance/reports" icon="file-chart-line">
+    Generating and exporting attendance reports
+  </Card>
+  <Card title="Chronic Absence Alerts" href="/features/attendance/alerts" icon="bell">
+    Managing attendance alert notifications
+  </Card>
+</CardGroup>
