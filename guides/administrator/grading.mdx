@@ -1,0 +1,463 @@
+---
+title: Administrator Grading Guide
+description: Complete guide for administrators managing the grading moderation workflow in Zion
+icon: "user-shield"
+---
+
+# Administrator Grading Guide
+
+As an administrator, your primary grading responsibility is moderating test scores for Grades 8-12 students. This guide covers the moderation workflow, SLA management, and oversight of the grading system.
+
+<Note>
+**Role Clarification:** Supervisors enter test scores. Administrators moderate and approve scores for Grades 8-12, configure settings, and monitor overall grading quality.
+</Note>
+
+## Your Grading Responsibilities
+
+### Daily (10-15 minutes)
+
+- Process moderation queue
+- Address overdue items
+- Acknowledge any moderation alerts
+- Review rejected score re-entries
+
+### Weekly (15 minutes)
+
+- Review moderation statistics
+- Check SLA compliance rates
+- Analyze adjustment patterns
+- Monitor audit trail for issues
+
+### Monthly (30 minutes)
+
+- Generate grade reports
+- Review centre performance
+- Assess supervisor accuracy
+- Report to leadership
+
+---
+
+## Moderation Queue
+
+### Accessing the Queue
+
+1. Navigate to **Grading** in sidebar
+2. Click **Moderation**
+3. View all pending scores
+
+### Queue Dashboard
+
+**Summary Cards:**
+
+| Card | Description |
+|------|-------------|
+| **Pending** | Total awaiting moderation |
+| **Approaching SLA** | 36-48 hours pending |
+| **Overdue** | &gt;48 hours pending |
+| **Today&apos;s Processed** | Your moderation count today |
+
+### Queue Columns
+
+| Column | Description |
+|--------|-------------|
+| **Student** | Name and grade level |
+| **PACE** | Subject and PACE number |
+| **Score** | Entered value (0-100) |
+| **Pass/Fail** | Visual indicator |
+| **Entered By** | Supervisor name |
+| **Entry Time** | When submitted |
+| **Hours Pending** | Time since entry |
+| **SLA Status** | Color-coded indicator |
+
+### SLA Color Codes
+
+| Color | Status | Hours Pending |
+|-------|--------|---------------|
+| **Green** | Within SLA | 0-36 hours |
+| **Yellow** | Approaching | 36-48 hours |
+| **Red** | Overdue | 48-72 hours |
+| **Dark Red** | Escalated | &gt;72 hours |
+
+---
+
+## Filtering the Queue
+
+### By Centre
+
+Filter to specific learning centre:
+- Select from dropdown
+- Or "All Centres" for full view
+
+### By Subject
+
+Focus on specific subject area:
+- Math, English, Science, etc.
+- Useful for subject-focused review
+
+### By Grade Level
+
+Filter by student grade:
+- Grades 8, 9, 10, 11, 12
+- Prioritize senior grades if needed
+
+### By SLA Status
+
+View specific urgency:
+- All items
+- Within SLA only
+- Approaching only
+- Overdue only
+
+---
+
+## Moderation Actions
+
+### Approving Scores
+
+When a score looks correct:
+
+1. Click **Approve** on the score row
+2. Add optional notes (e.g., "Verified with test paper")
+3. Confirm approval
+
+**What Happens:**
+- Score moves to `stage_2_internal_approved`
+- Score is finalized for grade calculations
+- Audit log records your approval
+
+### Adjusting Scores
+
+When you need to change the score:
+
+1. Click **Adjust** on the score row
+2. Enter the corrected score (0-100)
+3. Provide mandatory reason (min 10 characters)
+4. Confirm adjustment
+
+**Reason Examples:**
+- "Corrected data entry error - original was 89, entered as 98"
+- "Recalculated score from test paper - one question missed"
+- "Teacher verification confirmed correct score is 85"
+
+**What Happens:**
+- Original score preserved in audit log
+- New score applied and finalized
+- `score_adjusted = true` flag set
+
+<Warning>
+**Adjustment Reason Required:** You must provide a clear reason for any adjustment. This is for ACE compliance and audit purposes.
+</Warning>
+
+### Rejecting Scores
+
+When the score cannot be verified or is incorrect:
+
+1. Click **Reject** on the score row
+2. Provide mandatory reason (min 10 characters)
+3. Confirm rejection
+
+**Reason Examples:**
+- "Wrong student selected - please verify and re-enter"
+- "Score doesn&apos;t match test paper - please verify"
+- "PACE not yet completed by student - premature entry"
+
+**What Happens:**
+- Score returns to supervisor&apos;s rejected list
+- Supervisor must re-enter correct information
+- Original entry preserved in audit log
+
+---
+
+## SLA Management
+
+### Understanding SLA
+
+**Target:** Moderate all scores within 48 hours of entry
+
+**Timeline:**
+- 0-36 hours: Normal processing (green)
+- 36-48 hours: Priority processing (yellow)
+- &gt;48 hours: Overdue, urgent (red)
+- &gt;72 hours: Escalated, critical (dark red)
+
+### Meeting SLA
+
+**Best Practices:**
+
+1. **Check queue first thing each morning**
+2. **Process approaching items before new items**
+3. **Clear overdue items immediately**
+4. **Aim for &lt;24 hour average turnaround**
+
+### SLA Reporting
+
+Monitor your SLA compliance:
+- Queue dashboard shows current status
+- Weekly reports include SLA metrics
+- Target: &gt;95% within 48 hours
+
+---
+
+## Moderation Alerts
+
+### Viewing Alerts
+
+1. Navigate to **Grading → Alerts**
+2. View overdue moderation items
+
+### Alert Types
+
+| Type | Trigger | Action |
+|------|---------|--------|
+| **Warning** | &gt;36 hours pending | Prioritize |
+| **Overdue** | &gt;48 hours pending | Process today |
+| **Escalated** | &gt;72 hours pending | Immediate action |
+
+### Acknowledging Alerts
+
+If you see an alert but need time:
+
+1. Click **Acknowledge**
+2. Alert moves to acknowledged status
+3. You commit to processing soon
+4. Still visible until moderated
+
+---
+
+## Processing Efficiently
+
+### Batch Processing
+
+For efficiency:
+
+1. Filter by centre or subject
+2. Review all items in that filter
+3. Approve straightforward entries quickly
+4. Flag items needing investigation
+
+### Quick Approve Workflow
+
+For routine approvals:
+
+1. Review score and context
+2. Click Approve
+3. Skip notes for routine items
+4. Move to next item
+
+### Handling Exceptions
+
+If something needs investigation:
+
+1. Note the item details
+2. Move on to other items
+3. Return later to investigate
+4. Don&apos;t let unclear items block queue
+
+---
+
+## Audit Trail Access
+
+### Viewing Audit Logs
+
+1. Navigate to **Grading → Audit**
+2. Search by student, date, or action type
+3. View complete history
+
+### What&apos;s Logged
+
+| Action | Information Captured |
+|--------|----------------------|
+| Score Entry | Who, when, what value |
+| Approval | Moderator, timestamp, notes |
+| Adjustment | Before/after values, reason |
+| Rejection | Reason, timestamp |
+| Retest Events | All retest activities |
+
+### Using Audit Data
+
+**For Investigations:**
+- Trace score history
+- Identify who made changes
+- Verify proper process followed
+
+**For Compliance:**
+- Generate audit reports
+- Prove moderation occurred
+- Document interventions
+
+---
+
+## Settings Configuration
+
+### Pass Thresholds
+
+Configure pass requirements:
+
+1. Navigate to **Settings → Grading**
+2. Set thresholds:
+   - Grades 1-4: Default 90%
+   - Grades 5-12: Default 80%
+3. Changes apply to future tests only
+
+### Retest Limits
+
+Configure maximum attempts:
+
+1. Navigate to **Settings → Grading**
+2. Set maximum retest attempts (default: 3)
+3. Changes apply to future tests only
+
+---
+
+## Monitoring Quality
+
+### Supervisor Accuracy
+
+Monitor for patterns:
+
+- High rejection rates (possible training needed)
+- Frequent adjustments (possible data entry issues)
+- Specific supervisors with issues
+
+### Centre Performance
+
+Review grade statistics by centre:
+
+- Average scores
+- Pass rates
+- Moderation patterns
+
+### Flagging Issues
+
+If you notice problems:
+
+1. Document the pattern
+2. Discuss with supervisor privately
+3. Provide training if needed
+4. Monitor for improvement
+
+---
+
+## Retest Oversight
+
+### Monitoring Retests
+
+View retest management:
+
+1. Navigate to **Grading → Retests**
+2. See all failed tests and scheduled retests
+3. Monitor attempt counts
+
+### Max Attempts Reached
+
+When students exhaust retest limits:
+
+- Receive notification
+- Review student situation
+- Determine next steps
+- May require special intervention
+
+---
+
+## Reporting
+
+### Grade Reports
+
+Generate reports for:
+
+- Individual students
+- Learning centres
+- School-wide
+- Specific subjects
+
+### Report Uses
+
+**For Parents:**
+- Student progress reports
+- Grade summaries
+- Performance trends
+
+**For Leadership:**
+- School-wide grade statistics
+- Centre comparisons
+- Subject analysis
+
+**For Compliance:**
+- ACE audit requirements
+- Complete grade records
+- Moderation documentation
+
+---
+
+## Best Practices
+
+### Daily Routine
+
+1. **Morning (10 min):**
+   - Check moderation queue
+   - Process approaching/overdue items
+   - Address alerts
+
+2. **Afternoon:**
+   - Process remaining queue
+   - Review any rejections
+
+### Quality Standards
+
+- Review each score carefully
+- Verify pass/fail makes sense
+- Document adjustments thoroughly
+- Maintain consistent standards
+
+### Communication
+
+- Provide clear rejection reasons
+- Train supervisors on common errors
+- Share feedback constructively
+
+---
+
+## Troubleshooting
+
+### Queue Not Loading
+
+**Solution:**
+- Refresh page
+- Check internet connection
+- Clear browser cache
+- Try different browser
+
+### Adjustment Not Saving
+
+**Check:**
+- Reason meets minimum length (10 chars)
+- Score is valid (0-100)
+- You have administrator access
+
+### Supervisor Disputes Rejection
+
+**Process:**
+1. Review original rejection reason
+2. Check audit trail
+3. Discuss with supervisor
+4. Supervisor re-enters if they agree
+5. Escalate if unresolved
+
+---
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
+    Complete grading feature overview
+  </Card>
+  <Card title="Moderation Queue" href="/features/grading/moderation" icon="clipboard-check">
+    Moderation process details
+  </Card>
+  <Card title="Audit Trail" href="/features/grading/audit-trail" icon="history">
+    Understanding audit logging
+  </Card>
+  <Card title="Test Score Entry" href="/features/grading/score-entry" icon="keyboard">
+    How supervisors enter scores
+  </Card>
+</CardGroup>
