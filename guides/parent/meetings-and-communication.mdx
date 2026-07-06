@@ -1,0 +1,133 @@
+---
+title: Meetings and communication
+description: Book meetings with your child's supervisor, manage your calendar, check library loans, browse activities, and control notifications
+icon: "comments"
+---
+
+This guide covers the parent-facing tools for staying in touch with your child&apos;s school: booking meetings with a supervisor or monitor, adding school events to your own calendar, checking library loans, browsing extracurricular activities, and managing notifications. Everything here is available to the parent role from the sidebar in the parent portal.
+
+## Booking a meeting
+
+Go to **Meetings** in the parent sidebar (`/parent/meetings`) to see your meetings grouped into four lists: requests awaiting your response, expired requests, upcoming meetings, and past meetings.
+
+You can only book with a supervisor or monitor assigned to your child&apos;s learning centre. Administrators are not bookable for meetings.
+
+<Steps>
+  <Step title="Start the booking wizard">
+    Click **Book a meeting** on `/parent/meetings`, or use a meeting shortcut from your child&apos;s dashboard card. This opens the booking wizard at `/parent/meetings/book`.
+  </Step>
+  <Step title="Choose your child">
+    Pick which linked child the meeting is about.
+  </Step>
+  <Step title="Choose a staff member">
+    Only supervisors and monitors assigned to that child&apos;s learning centre appear as options.
+  </Step>
+  <Step title="Pick a date and time">
+    If the staff member has open availability slots, pick a date and then a time slot. Confirming claims the slot immediately and the meeting is booked, no staff confirmation needed.
+  </Step>
+  <Step title="Request a time if no slots are open">
+    If the staff member has no open slots, you can instead propose up to 5 candidate times. This creates a request that waits for the staff member to respond.
+  </Step>
+</Steps>
+
+<Note>
+Booking against an open slot is atomic. If another parent claims the same slot first, your booking attempt is rejected and you&apos;ll need to pick a different time.
+</Note>
+
+### Watching for new availability
+
+If a staff member has no open slots and you don&apos;t want to send a request, you can subscribe to be notified when they publish new availability for that child. Once they publish a slot, your watch is fulfilled and you get a notification.
+
+## Responding to staff proposals
+
+A meeting can also start from the staff side. A supervisor or monitor may propose one or more candidate times for a meeting with you. When that happens, the request appears under **Awaiting your response** on `/parent/meetings`.
+
+<Tabs>
+  <Tab title="Accept a proposed time">
+    Choose one of the proposed times. This confirms the meeting immediately for both you and the staff member.
+  </Tab>
+  <Tab title="Decline">
+    Decline the request. A reason is required. The request is cancelled and does not become a meeting.
+  </Tab>
+  <Tab title="Counter-propose">
+    Suggest a different time. This flips the request back to the staff member, who can then accept, decline, or counter again.
+  </Tab>
+</Tabs>
+
+If you proposed a time yourself and the staff member countered it, the request also lands under **Awaiting your response** so you can confirm the countered time.
+
+### Expired requests
+
+If neither side responds before every proposed time has passed, the request moves to the **Expired** list. From there, click **Book again** to re-propose the same child and staff member without re-entering everything from scratch.
+
+### Meeting details
+
+Opening a meeting from `/parent/meetings/[meetingId]` shows the redacted parent summary the staff member has shared. Private staff notes and internal action items are never shown here.
+
+## Adding meetings to your calendar
+
+Each confirmed meeting can be added to your personal calendar from the meeting detail or list view. This creates a matching event in your subscribed calendar feed (see below) so the meeting shows up alongside your phone or desktop calendar events.
+
+## Using the school calendar
+
+Go to **Calendar** in the parent sidebar (`/parent/calendar`) for a read-only month view of events readable by parents: your children&apos;s learning centre events plus school-wide events. Use Prev, Next, and Today to move around, and the per-child filter if you have children at more than one centre or grade. Clicking an event opens a read-only detail modal. There is no button to create, edit, or delete events from this view.
+
+### Subscribing to the calendar by iCal
+
+To sync the school calendar into Google Calendar, Apple Calendar, or Outlook, go to `/parent/calendar/subscribe`.
+
+<Steps>
+  <Step title="Generate your link">
+    Click to generate a private calendar-sync link. It is shown once on screen.
+  </Step>
+  <Step title="Copy it before leaving the page">
+    After you navigate away, the page only shows a masked placeholder, not the raw URL.
+  </Step>
+  <Step title="Add it to your calendar app">
+    Paste the URL into Google, Apple, or Outlook as a calendar subscription.
+  </Step>
+  <Step title="Revoke and regenerate if needed">
+    If the link is lost or you think it has been shared, click **Revoke &amp; regenerate**. The old link stops working immediately and a new one is issued (also shown once).
+  </Step>
+</Steps>
+
+<Note>
+Your feed shows the same events and visibility rules as the in-app calendar, scoped to your children&apos;s centres plus school-wide events. Calendar apps typically refresh a subscribed feed every few minutes rather than instantly.
+</Note>
+
+## Library loans
+
+Go to **Library** in the parent sidebar (`/parent/library`) for a read-only, per-child list of books your child has borrowed, both current and past loans. Each entry shows the due date and a status badge such as out, overdue, lost, or returned. There is nothing to check out or return here; that happens at school.
+
+## Extracurricular activities
+
+Go to **Activities** in the parent sidebar (`/parent/extracurriculars`) to browse the school&apos;s public activity catalog. Open an activity to see its detail page and express interest in it for your child. This is the same catalog staff see, without any management controls.
+
+## Managing notifications
+
+Go to **Notifications** in the parent sidebar (`/parent/notifications`) for your full in-app notification history, or use the notification bell in the header for a quick list with a **See all** link.
+
+To control which channels you receive notifications on, open **Profile** (`/parent/profile`) and use the notification preferences matrix. It lists the notification types relevant to parents and lets you opt out per channel.
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Meetings overview" icon="calendar-check" href="/features/meetings/overview">
+    How the meeting system works across parents and staff, including statuses and who can meet whom.
+  </Card>
+  <Card title="Booking and requests" icon="calendar-check" href="/features/meetings/booking-and-requests">
+    The full booking and request-handshake flow, including staff-initiated meetings.
+  </Card>
+  <Card title="Calendar overview" icon="calendar" href="/features/calendar/overview">
+    Event types, visibility levels, and centre scoping across the whole calendar system.
+  </Card>
+  <Card title="iCal subscription" icon="calendar" href="/features/calendar/ical-subscription">
+    How the private ICS feed link works and what it includes.
+  </Card>
+  <Card title="Your child's progress" icon="chart-line" href="/guides/parent/your-childs-progress">
+    Goal Check, attendance, grades, and behaviour for each linked child.
+  </Card>
+  <Card title="Parent portal overview" icon="house" href="/features/parent-portal/overview">
+    The full parent portal navigation map and how child access is granted.
+  </Card>
+</CardGroup>
