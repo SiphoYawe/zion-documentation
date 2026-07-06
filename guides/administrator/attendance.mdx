@@ -1,421 +1,202 @@
 ---
-title: Administrator Attendance Guide
-description: Complete guide for administrators managing school-wide attendance in Zion
-icon: "user-shield"
+title: Administrator guide: attendance
+description: How administrators oversee school-wide attendance, manage chronic absence alerts, and generate reports in Zion
+icon: "calendar-check"
 ---
 
-# Administrator Attendance Guide
-
-As an administrator, you oversee attendance across your entire school - monitoring patterns, managing alerts, and ensuring compliance. This guide covers your attendance management responsibilities and workflows.
+As an administrator, you oversee attendance for the whole school rather than marking it every day. Supervisors and monitors mark attendance for the centres they are assigned to. Your work is monitoring the dashboard, reviewing alerts, generating reports, and reading trends across centres.
 
 <Note>
-**Delegation Note:** Administrators typically oversee attendance rather than marking it daily. Supervisors handle daily marking for their centres. Your role focuses on monitoring, alerts, and reporting.
+Administrators are the only role with access to the Reports page and to corrections on locked past dates. Supervisors and monitors can mark attendance and, for supervisors, view a dashboard, alerts, and trends scoped to their own centres.
 </Note>
 
-## Your Attendance Responsibilities
+## Your attendance responsibilities
 
-### Daily (5 minutes)
+### Daily
 
-- Review school-wide attendance dashboard
-- Check chronic absence alerts
-- Verify all centres have active marking
-- Address any urgent issues
+- Review the school-wide attendance dashboard
+- Check for new critical or warning alerts
+- Confirm every centre has marked attendance for the day
+- Follow up on anything urgent
 
-### Weekly (15 minutes)
+### Weekly
 
-- Analyze attendance trends
-- Compare centre performance
-- Review and acknowledge alerts
-- Generate weekly reports
+- Review attendance trends and centre comparisons
+- Work through the alert queue and acknowledge or dismiss open items
+- Generate a weekly report if your school requires one
 
-### Monthly (30 minutes)
+### Monthly or termly
 
-- Generate monthly attendance report
-- Analyze chronic absence patterns
-- Review alert effectiveness
-- Report to leadership
+- Generate a monthly or term report for leadership
+- Review chronic absence patterns and how interventions are tracking
+- Check whether alert thresholds still fit your school
 
 ---
 
-## Administrator Dashboard
+## Administrator dashboard
 
-### Access Your Dashboard
+1. Navigate to **Attendance &gt; Dashboard**.
+2. Review school-wide attendance metrics for the selected day.
 
-1. Log into Zion
-2. Navigate to **Attendance → Dashboard**
-3. View school-wide attendance metrics
-
-### Dashboard Sections
-
-#### Today&apos;s Snapshot
-
-**Summary Cards:**
+### Today&apos;s snapshot
 
 | Card | Description |
 |------|-------------|
-| **Total Students** | All active students |
-| **Attendance Rate** | Today&apos;s overall percentage |
-| **Present** | Students marked present |
-| **Absent** | Students marked absent |
-| **Late** | Students marked late |
-| **Unmarked** | Students not yet marked |
+| Total Students | All active students |
+| Attendance Rate | Today&apos;s overall percentage |
+| Present | Students marked present |
+| Absent | Students marked absent |
+| Late | Students marked late |
+| Unmarked | Students not yet marked |
 
-**Color Coding:**
-- Green: Attendance &gt;90%
-- Yellow: Attendance 75-90%
-- Red: Attendance &lt;75%
+### Absent students and late arrivals
 
-#### Absent Students List
+The dashboard lists absent students (name, grade, learning centre, and how many times they have been absent this week) and late arrivals (name, arrival time, and any notes entered when they were marked late).
 
-Quick view of all absent students today:
-- Student name and grade
-- Learning centre
-- Previous absences this week
-- Click to view student details
+### Centre breakdown
 
-#### Late Arrivals
-
-Students who arrived late:
-- Student name
-- Arrival time
-- Notes (if any)
-
-#### Centre Breakdown
-
-**Chart showing each centre:**
-- Centre name
-- Student count
-- Attendance rate
-- Visual comparison bar
-
-**Quick Actions:**
-- Click centre to drill down
-- Identify struggling centres
-- Compare performance
+A chart compares attendance rate and student count across every learning centre. Click a centre to drill into its own dashboard view.
 
 ---
 
-## Attendance Alerts
+## Attendance alerts
 
-### Alert Dashboard
+Zion generates chronic absence alerts automatically. A cron job runs daily; you can also trigger generation manually as an administrator.
 
-1. Navigate to **Attendance → Alerts**
-2. View all active alerts
+1. Navigate to **Attendance &gt; Alerts**.
+2. Review the open queue, filterable by centre and alert type.
 
-### Understanding Alert Types
+### Alert thresholds
 
-| Type | Trigger | Priority |
-|------|---------|----------|
-| **Critical** | 5+ consecutive absences | Immediate |
-| **Critical** | &gt;20% 30-day absence rate | Immediate |
-| **Warning** | 3+ consecutive absences | Within 48h |
+| Level | Trigger |
+|-------|---------|
+| Warning | Consecutive school-day absences reach the warning threshold (default 3) |
+| Critical | Consecutive school-day absences reach the critical threshold (default 5), or the 30-day absence rate exceeds the critical rate threshold (default 20%) |
 
-### Alert Information
+Consecutive-absence counting walks backward through school days, skipping weekends and holidays, and stops at the first present, late, or unrecorded day. A student&apos;s alert escalates from warning to critical in place if the pattern worsens, and resolves automatically once the student no longer meets either threshold on a later run.
 
-Each alert shows:
-- Student name and details
-- Alert type (Critical/Warning)
-- Consecutive absence count
-- 30-day absence rate
-- List of absence dates
-- Learning centre
+Each alert shows the student&apos;s name and centre, alert type, consecutive absence count, 30-day absence rate, and the list of absence dates.
 
-### Managing Alerts
+### Acknowledging and dismissing alerts
 
-#### Reviewing Alerts
-
-1. Scan for Critical alerts first
-2. Note students with multiple absences
-3. Identify patterns (same centre, same grade)
-4. Plan interventions
-
-#### Acknowledging Alerts
-
-When you&apos;ve taken action:
-
-1. Click **Acknowledge** on alert card
-2. Enter intervention notes:
-   - Parent contact made
-   - Meeting scheduled
-   - Letter sent
-   - Referral made
-3. Submit to acknowledge
+<Steps>
+  <Step title="Review the alert">
+    Check the consecutive absence count, the 30-day rate, and the absence dates. Look for a pattern, such as the same day of the week or the same centre.
+  </Step>
+  <Step title="Take action">
+    Contact the parent or guardian, schedule a meeting, or make a referral as needed.
+  </Step>
+  <Step title="Acknowledge or dismiss">
+    Click **Acknowledge** and enter intervention notes describing what you did. Notes are required. If the alert is a false alarm, click **Dismiss** instead and enter a reason.
+  </Step>
+</Steps>
 
 <Tip>
-**Document Everything:** Use intervention notes to create a record of all actions taken. This is valuable for escalations, parent meetings, and compliance.
+Intervention notes and dismissal reasons are written to the audit trail. Keep them specific: they are your record for parent meetings, escalations, and compliance reviews.
 </Tip>
 
-#### Alert Settings
+### Alert thresholds and settings
 
-Configure thresholds for your school:
-
-1. Click Settings icon on Alerts page
-2. Adjust thresholds:
-   - Consecutive days for warning (default: 3)
-   - Consecutive days for critical (default: 5)
-   - 30-day rate for critical (default: 20%)
-3. Toggle email digest on/off
-4. Save changes
-
-### Email Digest
-
-When enabled, receive daily email:
-- Sent at 8:00 AM
-- Lists all unacknowledged alerts
-- Includes quick summary
-- Link to view in Zion
+Administrators can adjust the warning threshold, critical threshold, and 30-day critical rate for the organization from the school settings alerts page. See [Alerts and reports settings](/features/school-settings/alerts-and-reports) for how to change these values and how email notifications for new alerts are configured.
 
 ---
 
-## Attendance Reports
+## Attendance reports
 
-### Generating Reports
+Report generation is administrator-only.
 
-1. Navigate to **Attendance → Reports**
-2. Select report type:
-   - Daily
-   - Weekly
-   - Monthly
-   - Term
-   - Custom range
-3. Choose date range
-4. Select centres (All or specific)
-5. Optional: Include Goal Check correlation
-6. Click **Generate**
+1. Navigate to **Attendance &gt; Reports**.
+2. Choose a report type: daily, weekly, monthly, term, or custom range.
+3. Select the date range and the centres to include (all or specific).
+4. Optionally include Goal Check correlation data.
+5. Click **Generate**.
 
-### Report Contents
+### What a report contains
 
-**Overview Section:**
-- Date range and centres included
-- Total students analyzed
-- Overall attendance rate
-
-**Detailed Metrics:**
-- Present/Absent/Late counts
-- Day-of-week breakdown
+- Overview: date range, centres included, total students, overall attendance rate
+- Present, absent, and late counts, with a day-of-week breakdown
 - Centre comparison
-- Chronic absence list
-- Late arrival patterns
+- Chronic absence list and late arrival patterns
+- Optional Goal Check correlation, showing students with both attendance and goal completion issues
 
-**Optional Goal Check Integration:**
-- Attendance vs goal completion correlation
-- Students with both attendance and goal issues
+Reports can be exported as PDF or CSV, saved to a report history you can revisit later, and shared by email. A weekly attendance report is also generated and emailed automatically.
 
-### Using Reports
-
-**For Board Meetings:**
-- Generate monthly or term reports
-- Export as PDF for presentation
-- Highlight key metrics and trends
-
-**For Parent Communication:**
-- Generate student-specific attendance records
-- Export for parent conferences
-- Document interventions
-
-**For Compliance:**
-- Generate reports for required periods
-- Keep export copies for audits
-- Track chronic absence interventions
+Use reports for board meetings, for parent conferences (student-specific records), and for keeping compliance copies of chronic absence interventions.
 
 ---
 
-## Trend Analysis
+## Attendance trends
 
-### Viewing Trends
+1. Navigate to **Attendance &gt; Trends**.
+2. Pick a range: 7 days, 30 days, current term, or a custom range. Optionally filter by centre or grade level.
 
-1. Navigate to **Attendance → Trends**
-2. Select time range (7/30 days, term, custom)
-3. View trend chart
+The trend chart shows daily present, absent, and late counts and the attendance rate, along with a summary: average rate, best and worst day, and whether the trend is improving, stable, or declining.
 
-### Understanding Trends
-
-**Improving Trend:**
-- Line slopes upward
-- Recent rates higher than earlier
-- Positive momentum
-
-**Declining Trend:**
-- Line slopes downward
-- Recent rates lower than earlier
-- Requires investigation
-
-**Stable Trend:**
-- Relatively flat line
-- Consistent performance
-- Good if high, concerning if low
-
-### Centre Comparison
-
-Compare attendance across centres:
-
-1. View centre comparison chart
-2. Identify outliers (above or below average)
-3. Click centre for detailed view
-
-**High Performers:**
-- Document successful practices
-- Share with struggling centres
-- Consider mentor relationships
-
-**Struggling Centres:**
-- Investigate specific challenges
-- Provide additional support
-- Review supervisor practices
+Use the centre comparison view to spot outliers. If a centre performs well, look at what its supervisor is doing differently and consider sharing that practice. If a centre is struggling, investigate what is different there before assuming the cause.
 
 ---
 
-## Marking Attendance (When Needed)
+## Marking attendance and correcting past records
 
-As administrator, you can mark attendance for any centre:
+As administrator you can mark attendance directly for any learning centre, for the current school day, the same way a supervisor or monitor would: select a date and centre, then mark each student present, absent, or late, or use bulk actions.
 
-1. Navigate to **Attendance** (main page)
-2. Select date and centre
-3. Mark students as needed
-4. Use bulk actions for efficiency
+Attendance for any day other than the current org-local calendar day is locked to normal marking. If you need to change a past record, administrators can turn on correction mode from the banner shown on a locked date and edit individual student statuses. Corrections are written to the audit trail with a before and after value, separate from the normal daily mark.
 
-**When to Mark:**
-- Covering for absent supervisor
-- Correcting errors
-- Emergency situations
+Use direct marking to cover for an absent supervisor or in an emergency. Use correction mode to fix a data entry error after the fact.
 
 ---
 
-## Intervention Workflows
-
-### For Critical Alerts
+## Escalation for chronic absence
 
 <Steps>
-  <Step title="Same Day Contact">
-    Call parent/guardian immediately
+  <Step title="Contact the parent or guardian">
+    For a critical alert, contact them the same day.
   </Step>
-  <Step title="Document Contact">
-    Record conversation in alert notes
+  <Step title="Document the contact">
+    Record what was discussed in the alert&apos;s intervention notes.
   </Step>
-  <Step title="Schedule Follow-Up">
-    Set meeting if issues persist
+  <Step title="Schedule a follow-up">
+    Set a meeting if the pattern continues.
   </Step>
-  <Step title="Acknowledge Alert">
-    Mark as acknowledged with full notes
+  <Step title="Involve the centre supervisor">
+    Make sure the supervisor is aware and watching the student&apos;s attendance.
   </Step>
-  <Step title="Monitor Student">
-    Track attendance over next week
-  </Step>
-</Steps>
-
-### For Warning Alerts
-
-<Steps>
-  <Step title="Review Pattern">
-    Check if specific days or reasons
-  </Step>
-  <Step title="Send Communication">
-    Letter or message to parents
-  </Step>
-  <Step title="Inform Supervisor">
-    Alert centre supervisor
-  </Step>
-  <Step title="Monitor">
-    Watch for improvement or escalation
+  <Step title="Escalate if needed">
+    Move to a formal parent meeting, an attendance improvement plan, or an external referral if interventions do not change the pattern.
   </Step>
 </Steps>
-
-### Escalation Path
-
-If interventions don&apos;t improve attendance:
-
-1. Formal parent meeting
-2. Principal involvement
-3. Attendance improvement plan
-4. External referral if needed
-
----
-
-## Best Practices
-
-### Daily Routine
-
-1. **Morning Check (5 min):**
-   - Review dashboard for overnight alerts
-   - Check if all centres are marking
-   - Note any urgent situations
-
-2. **Midday Review:**
-   - Quick check for new issues
-   - Follow up on morning alerts
-
-3. **End of Day:**
-   - Verify all marking complete
-   - Address any gaps
-
-### Weekly Reviews
-
-- Monday: Review previous week&apos;s trends
-- Mid-week: Check alert resolution progress
-- Friday: Generate weekly report
-
-### Documentation
-
-- Always document parent contacts
-- Use consistent intervention notes
-- Keep copies of important communications
-- Track intervention effectiveness
 
 ---
 
 ## Troubleshooting
 
-### Centre Not Marking Attendance
+### A centre is not marking attendance
 
-**Check:**
-- Is supervisor logged in?
-- Are there access issues?
-- Is supervisor aware of responsibility?
+Check whether the supervisor or monitor is logged in and has access to that centre. Mark the day yourself if it is urgent, then follow up with the centre staff.
 
-**Action:**
-- Contact supervisor
-- Mark attendance yourself if urgent
-- Train supervisor if needed
+### Absence rate jumps suddenly
 
-### High Absence Rate Suddenly
+Check for a school event, weather, or transport disruption before assuming a data entry error. Confirm the numbers with the centre before communicating them further.
 
-**Investigate:**
-- Is there a school event?
-- Weather or transport issues?
-- Data entry errors?
+### An alert did not generate for a student who should qualify
 
-**Action:**
-- Verify data accuracy
-- Communicate with supervisors
-- Address root cause
-
-### Alert Not Generating
-
-**Check:**
-- Student meets threshold criteria
-- Student is active (not deactivated)
-- Alert generation has run today
-
-**Action:**
-- Manually generate alerts
-- Check student status
-- Verify settings
+Confirm the student is active (not deactivated) and that alert generation ran for the day. You can trigger generation manually as an administrator.
 
 ---
 
-## Related Guides
+## Related pages
 
 <CardGroup cols={2}>
-  <Card title="Attendance Overview" href="/features/attendance/overview" icon="calendar-check">
-    Complete attendance feature overview
+  <Card title="Attendance overview" href="/features/attendance/overview" icon="calendar-check">
+    Full attendance feature reference
   </Card>
-  <Card title="Chronic Absence Alerts" href="/features/attendance/alerts" icon="bell">
-    Alert system details
+  <Card title="Chronic absence alerts" href="/features/attendance/alerts" icon="bell">
+    Alert thresholds and lifecycle in detail
   </Card>
-  <Card title="Supervisor Attendance Guide" href="/guides/supervisor/attendance" icon="users">
-    Guide for supervisors
+  <Card title="Attendance reports" href="/features/attendance/reports" icon="file-lines">
+    Report types, exports, and sharing
   </Card>
-  <Card title="Attendance Reports" href="/features/attendance/reports" icon="file-chart-line">
-    Report generation guide
+  <Card title="Supervisor attendance guide" href="/guides/supervisor/attendance" icon="users">
+    What supervisors see and do for their centres
   </Card>
 </CardGroup>

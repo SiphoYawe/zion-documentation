@@ -1,354 +1,125 @@
 ---
-title: Supervisor Grading Guide
-description: Complete guide for supervisors entering test scores in Zion
-icon: "users"
+title: Supervisor guide: grading
+description: How to enter PACE test scores and take part in moderation for your learning centre
+icon: "graduation-cap"
 ---
 
-# Supervisor Grading Guide
+As a supervisor you enter PACE test scores for the students at your learning centre and, where your school has delegated the role to you, take part in moderating scores for Grade 8 and above. This guide covers both tasks.
 
-As a supervisor, you&apos;re responsible for entering test scores when students complete PACE tests. This guide covers the complete workflow for test score entry, handling rejections, and managing retests.
-
-## Your Grading Responsibilities
-
-### After Each Test
-
-- Enter test score into Zion
-- Verify accuracy before submitting
-- For failed tests, schedule retests
-
-### Daily/Weekly
-
-- Check for rejected scores needing re-entry
-- Monitor scheduled retests
-- Enter retest scores when completed
-
----
-
-## Entering Test Scores
-
-### Step 1: Access Score Entry
-
-1. Log into Zion
-2. Navigate to **Grading** in sidebar
-3. The score entry form appears
-
-### Step 2: Select Student
-
-1. Type student name or number in search
-2. Results filter as you type
-3. Click to select the student
-
-**Student Info Shown:**
-- Full name
-- Student number
-- Grade level
-- Learning centre
-
-### Step 3: Select PACE
-
-1. Click PACE dropdown
-2. Only assigned PACEs appear
-3. Select the completed PACE
-
-<Note>
-**Assigned PACEs Only:** If a PACE doesn&apos;t appear, verify it&apos;s assigned to the student in Student Management.
-</Note>
-
-### Step 4: Enter Score
-
-1. Enter the numeric score (0-100)
-2. Whole numbers only
-3. System shows pass/fail immediately
-
-**Pass Thresholds:**
-- Grades 1-4: 90% required
-- Grades 5-12: 80% required
-
-### Step 5: Select Test Type
-
-Choose the appropriate type:
-
-| Type | When to Use |
-|------|-------------|
-| **PACE Test** | End-of-workbook test (most common) |
-| **Self Test** | Mid-PACE check |
-| **Final Test** | Comprehensive unit test |
-
-### Step 6: Confirm Date
-
-- Defaults to today
-- Change if entering retroactively
-- Cannot use future dates
-
-### Step 7: Submit
-
-1. Review all information
-2. Click **Submit**
-3. Confirmation appears
-
-### What Happens After Submit
-
-**For Grades 1-7:**
-- Score immediately finalized
-- Available for grade calculations
-- Done!
-
-**For Grades 8-12:**
-- Score enters moderation queue
-- Administrator will review
-- Score finalizes after approval
-
----
-
-## Viewing Recent Entries
-
-### Recent Scores Tab
-
-1. Click **Recent Scores** tab
-2. See your recent entries
-
-**Information Shown:**
-- Student name
-- PACE and score
-- Pass/fail status
-- Entry timestamp
-- Moderation status (Grades 8-12)
-
-### Status Meanings
-
-| Status | Meaning |
-|--------|---------|
-| **Finalized** | Complete (Grades 1-7) |
-| **Pending Moderation** | Awaiting admin review |
-| **Approved** | Admin approved |
-| **Rejected** | Needs re-entry |
-
----
-
-## Handling Rejected Scores
-
-When an administrator rejects your score entry, you&apos;ll need to re-enter it correctly.
-
-### Viewing Rejections
-
-1. Navigate to **Grading → Enter Scores**
-2. Click **Rejected Scores** tab
-3. See scores needing correction
-
-### Rejection Information
-
-Each rejected entry shows:
-- Original entry details
-- Rejection reason from admin
-- When it was rejected
-
-### Re-Entering a Rejected Score
+## Entering test scores
 
 <Steps>
-  <Step title="Read Rejection Reason">
-    Understand what was wrong
+  <Step title="Open Score Entry">
+    Navigate to Grading in the sidebar to reach the score entry page. Use the single-entry tab for one student at a time, or the batch tab to enter several scores in one pass.
   </Step>
-  <Step title="Verify Correct Information">
-    Check original test paper
+  <Step title="Select the student and PACE">
+    Search by student name or number. Only PACEs assigned to that student appear in the PACE dropdown. If a PACE is missing, check the student&apos;s assignments in Student Management.
   </Step>
-  <Step title="Enter Corrected Score">
-    Submit with accurate information
+  <Step title="Choose the test type">
+    Pick pace_test, self_test, or final_test. This determines how the score is routed.
   </Step>
-  <Step title="Confirm Submission">
-    New entry replaces rejected one
+  <Step title="Enter the score and date">
+    Scores are whole numbers from 0 to 100. The test date defaults to today; it can be backdated but cannot be set in the future.
+  </Step>
+  <Step title="Submit">
+    Zion checks the score against the student&apos;s pass threshold and shows pass or fail immediately. A duplicate entry for the same student, PACE, test type, and attempt is rejected.
   </Step>
 </Steps>
 
-### Common Rejection Reasons
+### Pass thresholds and moderation routing
 
-| Reason | What to Check |
-|--------|---------------|
-| "Wrong student" | Verify student name matches test paper |
-| "Score doesn&apos;t match" | Recount from test paper |
-| "Wrong PACE" | Verify PACE number on test |
-| "Premature entry" | Student hasn&apos;t completed PACE |
+Zion checks a submitted score against the school&apos;s configured pass thresholds and routes it based on the student&apos;s grade level. Both the threshold band and the moderation floor are set per school by an administrator; the figures below are the defaults.
 
----
+| Grade band | Default pass threshold |
+|---|---|
+| Grades 1 to 4 | 90% |
+| Grades 5 to 12 | 80% |
 
-## Managing Retests
+A self_test is a readiness check. It always finalizes immediately and is never sent to moderation, regardless of grade level.
 
-### When a Student Fails
+A pace_test or final_test is checked against the moderation floor, which defaults to Grade 8:
 
-When a test score is below the pass threshold:
+- Below the moderation floor: the score finalizes immediately and is available for grade calculations.
+- At or above the moderation floor: the score enters Stage 1 of the moderation queue and is not final until it clears external moderation.
 
-1. Student is flagged for retest
-2. You can schedule the retest date
-3. Student studies before retry
-4. You enter retest score when complete
+If a graded test fails, Zion notifies the student&apos;s centre supervisors, monitors, and administrators that a retest is needed.
 
-### Scheduling a Retest
+## Taking part in moderation
 
-1. Navigate to **Grading → Retests**
-2. Find the failed test
-3. Click **Schedule Retest**
-4. Select date (must be future)
-5. Confirm
+By default only administrators moderate scores. Your school can delegate the internal moderation step, the external moderation step, or both to the supervisor role. If your school has done this, you will see the moderation queue for your assigned learning centres.
 
-### Entering Retest Scores
+<Note>
+You can only moderate scores at learning centres you are assigned to, and you cannot moderate a score you entered yourself. This separation-of-duties rule is enforced automatically.
+</Note>
 
-1. Navigate to **Grading → Retests**
-2. Find scheduled retest
-3. Click **Enter Score**
-4. Enter the new score
-5. Submit
+### The moderation pipeline
 
-**Important:**
-- Use the retest entry form
-- NOT the regular score entry
-- This links to original attempt
+| Stage | What happens |
+|---|---|
+| Stage 1: pending | Score entered by staff, waiting for internal moderation |
+| Stage 2: internal approved | A moderator approved the score, or rejected it back to the original grader |
+| Stage 3: external approved | The score is finalized and locked, or flagged for ACE review |
 
-### Retest Limits
+If you hold the internal moderator role for your centre, you review Stage 1 scores and either approve them or reject them with a reason of at least 10 characters. A rejected score returns to the original grader as a rejected entry.
 
-Students have limited retest attempts:
-- Default: 3 attempts total
-- System tracks attempt count
-- Enforced automatically
+If you hold the external moderator role, you review internally approved scores and either finalize them (the score locks) or flag them for ACE review.
 
-### If Student Exhausts Attempts
+### Handling a rejected score
 
-When max attempts reached:
-- Cannot schedule more retests
-- Administrator notified
-- Special intervention may be needed
+When your entry is rejected, it appears back in your score entry queue with the moderator&apos;s reason attached.
 
----
+<Steps>
+  <Step title="Read the rejection reason">
+    Check what the moderator flagged before resubmitting.
+  </Step>
+  <Step title="Verify against the test paper">
+    Confirm the student, PACE, and score against the original paper.
+  </Step>
+  <Step title="Resubmit the corrected score">
+    The corrected entry replaces the rejected one and re-enters Stage 1. The moderation clock restarts.
+  </Step>
+</Steps>
 
-## Best Practices
+Internal moderation has an SLA clock that starts when the score is entered: within 36 hours is on time, 36 to 48 hours is approaching, 48 to 72 hours is overdue, and beyond 72 hours is escalated.
 
-### Score Entry
+### Correcting a locked score
 
-**Enter Same Day:**
-- Enter scores within hours of test
-- Fresh memory, fewer errors
+If a score has already cleared external moderation and is locked, administrators and supervisors can still correct it as a documented exception. Every correction writes to the audit log.
 
-**Double-Check:**
-- Verify student name on test paper
-- Confirm PACE number
-- Recount score if unsure
+## Retests
 
-**Don&apos;t Batch:**
-- Enter one at a time
-- Reduces mistakes
+If a graded test fails, you can schedule and later enter a retest for students at your centre.
 
-### Retest Scheduling
+<Steps>
+  <Step title="Schedule the retest">
+    Go to Grading &gt; Retests, find the failed test, and set a retest date. The date must be today or later.
+  </Step>
+  <Step title="Enter the retest score">
+    Once the student has retested, open the same failed test and enter the new score. Zion chains it to the original attempt and increases the attempt count.
+  </Step>
+</Steps>
 
-**Allow Study Time:**
-- 3-5 days between attempts
-- Student can review material
+Retest attempts are capped, 3 by default, and the cap is configurable at your school. Once a student reaches the cap, you cannot schedule another retest until an administrator grants an override.
 
-**Reasonable Schedule:**
-- Don&apos;t overload retest days
-- Balance with regular tests
-
-### Handling Rejections
-
-**Respond Quickly:**
-- Address within 24 hours
-- Don&apos;t leave pending
-
-**Verify Carefully:**
-- Re-check original test paper
-- Ensure accuracy second time
-
----
-
-## Common Issues
-
-### PACE Not Listed
-
-**Possible Causes:**
-- Not assigned to student
-- Already tested this term
-- Wrong student selected
-
-**Solution:**
-- Check student&apos;s assignments
-- Verify correct student
-
-### Duplicate Error
-
-**Cause:** Score already entered for this test
-
-**Solution:**
-- Check if already submitted
-- For corrections, contact admin
-
-### Cannot Enter Retest
-
-**Possible Causes:**
-- Max attempts reached
-- Original test passed
-- Retest already entered
-
-**Solution:**
-- Check attempt count
-- Verify this is a failed test
-
----
-
-## Your Dashboard
-
-### Viewing Your Stats
-
-Your supervisor dashboard shows:
-
-- Recent score entries
-- Pending moderation (Grades 8-12)
-- Rejected scores count
-- Scheduled retests
-
-### Quick Actions
-
-From dashboard:
-- Enter new score
-- View rejections
-- Check retest schedule
-
----
-
-## Moderation for Grades 8-12
-
-### Understanding the Process
-
-When you enter scores for Grades 8-12:
-
-1. Score enters moderation queue
-2. Administrator reviews
-3. Admin can: Approve, Adjust, or Reject
-4. You&apos;re notified of rejections
-
-### Adjustment vs Rejection
-
-**Adjusted:**
-- Admin changed score
-- Still finalized
-- No action needed from you
-
-**Rejected:**
-- Returned to you
-- Must re-enter correctly
-- See rejection reason
-
----
-
-## Related Guides
+## Related pages
 
 <CardGroup cols={2}>
-  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
-    Complete grading feature overview
+  <Card title="Grading overview" href="/features/grading/overview" icon="graduation-cap">
+    How PACE testing, thresholds, and moderation fit together
   </Card>
-  <Card title="Test Score Entry" href="/features/grading/score-entry" icon="keyboard">
-    Detailed entry guide
+  <Card title="Score entry" href="/features/grading/score-entry" icon="pen-to-square">
+    Full detail on single and batch score entry
   </Card>
-  <Card title="Retest Management" href="/features/grading/retests" icon="rotate">
-    Retest workflow details
+  <Card title="Moderation" href="/features/grading/moderation" icon="clipboard-check">
+    The internal and external moderation pipeline
   </Card>
-  <Card title="Administrator Grading Guide" href="/guides/administrator/grading" icon="user-shield">
-    How admins moderate scores
+  <Card title="Retests" href="/features/grading/retests" icon="rotate">
+    Scheduling, entering, and capping retest attempts
+  </Card>
+  <Card title="Audit trail" href="/features/grading/audit-trail" icon="shield-halved">
+    What gets logged for every grading action
+  </Card>
+  <Card title="Administrator grading guide" href="/guides/administrator/grading" icon="user-shield">
+    How thresholds, moderation floors, and delegated moderators are configured
   </Card>
 </CardGroup>

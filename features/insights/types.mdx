@@ -1,291 +1,262 @@
 ---
-title: Insight Types Explained
-description: Deep dive into each category of Zion insights
-icon: "shapes"
+title: Pattern insights
+description: How each of the six pattern-insight detectors works and what evidence it requires
+icon: "lightbulb"
 ---
 
-# Insight Types Explained
+Pattern Insights is an administrator-only surface. It runs six statistical detectors over your school&apos;s goal-completion data and surfaces patterns that a manual review would likely miss. Supervisors do not have access to this page; the underlying action returns "Unauthorized" for any role other than administrator.
 
-Zion generates six distinct types of insights, each analyzing different aspects of your school&apos;s performance data. This guide explains each type in detail.
-
----
-
-## Day-of-Week Patterns
-
-### What It Analyzes
-
-Goal achievement variations across different days of the week.
-
-### Detection Method
-
-1. Collects goal completion data for last 4 weeks (28 days)
-2. Groups data by day of week (Monday-Friday)
-3. Calculates average achievement per day
-4. Identifies days with &gt;10% variance from weekly average
-
-### Example Insights
-
-**Low Performance Day:**
-"Goal achievement is 18% lower on Fridays compared to the weekly average of 82%"
-
-**High Performance Day:**
-"Students perform 12% better on Tuesdays, the strongest day of the week"
-
-### Confidence Requirements
-
-| Confidence | Sample Size |
-|------------|-------------|
-| High | &gt;40 samples per day |
-| Medium | 20-40 samples per day |
-| Low | &lt;20 samples per day |
-
-### What to Do
-
-**For Low Days:**
-- Investigate day-specific factors
-- Consider reduced goals on problem days
-- Address transitions (Monday) or fatigue (Friday)
-- Plan engaging activities for struggling days
-
-**For High Days:**
-- Document what makes these days successful
-- Consider replicating conditions on other days
-- Use as benchmark for improvement
+Insights are not generated on every page load. An administrator clicks **Generate Insights** (this requires an active subscription) to run all six detectors and replace the organization&apos;s current set of non-dismissed insights. A weekly scheduled job also regenerates them automatically. Each insight expires 7 days after it is generated, gets a relevance score from 0 to 100, and is labeled with a confidence level of high, medium, or low based on how much data backed the detection.
 
 ---
 
-## Subject Correlations
+## Day-of-week patterns
 
-### What It Analyzes
+### What it analyzes
 
-Relationships between performance in different subjects.
+Goal achievement variation across the days of the week.
 
-### Detection Method
+### Detection method
 
-1. Calculates each student&apos;s achievement rate per subject
-2. Computes Pearson correlation coefficient between subject pairs
-3. Identifies pairs with r &gt; 0.7 (strong correlation)
-4. Requires minimum 15 students with data in both subjects
+A day of the week needs at least 10 goals recorded on that day to be considered. The detector compares that day&apos;s average achievement rate to the weekly average and flags the day if the variance exceeds 10 percentage points.
 
-### Example Insights
+### Example insights
 
-**Negative Correlation Pattern:**
-"Students struggling in Math 1042-1048 are also struggling in Science 1040-1045 (correlation: 0.78)"
+**Low-performance day:** "Goal achievement is 18% lower on Fridays compared to the weekly average of 82%."
 
-**Shared Challenge:**
-"English and Social Studies show strong correlation (0.82) - students struggling in one typically struggle in both"
+**High-performance day:** "Students perform 12% better on Tuesdays, the strongest day of the week."
 
-### Confidence Requirements
+### Confidence requirements
 
-| Confidence | Students with Both Subjects |
-|------------|----------------------------|
+| Confidence | Sample size per day |
+|------------|----------------------|
+| High | &gt;40 samples |
+| Medium | 20&ndash;40 samples |
+| Low | &lt;20 samples |
+
+### What to do
+
+**For low days:**
+- Investigate day-specific factors such as Monday transitions or Friday fatigue
+- Consider adjusted goals on the affected day
+- Plan more engaging activities for that day
+
+**For high days:**
+- Document what makes the day successful
+- Consider applying the same conditions to other days
+
+---
+
+## Subject correlations
+
+### What it analyzes
+
+Relationships between a student&apos;s performance in different subjects.
+
+### Detection method
+
+The detector requires at least 5 goals per subject per student and at least 15 students with data in both subjects being compared. It calculates the Pearson correlation coefficient between subject pairs and flags any pair where the correlation magnitude exceeds 0.7. A magnitude above 0.85 is labeled "very strong"; between 0.7 and 0.85 is labeled "strong."
+
+### Example insights
+
+**Shared struggle pattern:** "Students struggling in Math 1042-1048 are also struggling in Science 1040-1045 (correlation: 0.78)."
+
+**Shared challenge:** "English and Social Studies show a strong correlation (0.82). Students struggling in one typically struggle in both."
+
+### Confidence requirements
+
+| Confidence | Students with data in both subjects |
+|------------|--------------------------------------|
 | High | &gt;30 students |
-| Medium | 20-30 students |
+| Medium | 20&ndash;30 students |
 | Low | &lt;20 students |
 
-### What to Do
+### What to do
 
-- Investigate shared prerequisite gaps
-- Consider paired tutoring or support
-- Review if subjects share foundational skills
-- Create integrated support programs
+- Investigate shared prerequisite gaps between the two subjects
+- Consider paired tutoring or combined support sessions
+- Review whether the subjects share foundational skills
 
 ---
 
-## Centre Performance
+## Centre performance
 
-### What It Analyzes
+### What it analyzes
 
-How each learning centre compares to the school average.
+How each learning centre compares to the school-wide average.
 
-### Detection Method
+### Detection method
 
-1. Calculates achievement rate per learning centre
-2. Computes school-wide mean and standard deviation
-3. Identifies centres &gt;15% above or below average
-4. Requires minimum 20 goal samples per centre
+The detector requires at least 20 goals per centre and at least 2 centres with valid data. It compares each centre&apos;s achievement rate to the school-wide average and flags a centre if it differs by more than 15 percentage points.
 
-### Example Insights
+### Example insights
 
-**Underperforming Centre:**
-"Learning Centre B is performing 22% below the school average (58% vs 80%)"
+**Underperforming centre:** "Learning Centre B is performing 22% below the school average (58% vs 80%)."
 
-**High-Performing Centre:**
-"Learning Centre A is 15% above average - top performer at 95%"
+**High-performing centre:** "Learning Centre A is 15% above average, the top performer at 95%."
 
-### Confidence Requirements
+### Confidence requirements
 
-| Confidence | Goal Samples |
-|------------|--------------|
+| Confidence | Goal samples for the centre |
+|------------|-------------------------------|
 | High | &gt;60 samples |
-| Medium | 40-60 samples |
+| Medium | 40&ndash;60 samples |
 | Low | &lt;40 samples |
 
-### What to Do
+### What to do
 
-**For Underperforming Centres:**
-- Investigate environmental factors
-- Review supervisor practices
-- Consider resource reallocation
-- Provide targeted support
+**For underperforming centres:**
+- Investigate environmental factors and supervisor practices
+- Consider resource reallocation or targeted support
+- Check the corresponding centre_low_performance alert for the same signal
 
-**For High-Performing Centres:**
-- Document successful practices
-- Share approaches with other centres
-- Consider mentor relationships
+**For high-performing centres:**
+- Document the practices in place
+- Share the approach with other centres
 
 ---
 
-## Seasonal Trends
+## Seasonal trends
 
-### What It Analyzes
+### What it analyzes
 
-Performance changes over the course of a term.
+Change in achievement rate between the first and second half of the current term.
 
-### Detection Method
+### Detection method
 
-1. Requires at least 6 weeks into current term
-2. Compares first half vs second half of term
-3. Calculates percentage change in achievement
-4. Flags changes &gt;15% as significant
+The term must be at least 6 weeks in, with at least 50 total goals recorded and at least 25 goals in each half. The detector compares the achievement rate in the first half of the term to the second half and flags a change greater than 15%.
 
-### Example Insights
+### Example insights
 
-**Declining Performance:**
-"Achievement has dropped 18% in the second half of this term (72% down from 90%)"
+**Declining performance:** "Achievement has dropped 18% in the second half of this term (72%, down from 90%)."
 
-**Improving Performance:**
-"Performance improved 22% in term&apos;s second half - strong positive momentum"
+**Improving performance:** "Performance improved 22% in the term&apos;s second half, a strong positive trend."
 
-### Confidence Requirements
+### Confidence requirements
 
-| Confidence | Total Goals in Period |
-|------------|----------------------|
+| Confidence | Total goals in the period |
+|------------|-----------------------------|
 | High | &gt;150 goals |
-| Medium | 100-150 goals |
+| Medium | 100&ndash;150 goals |
 | Low | &lt;100 goals |
 
-### What to Do
+### What to do
 
-**For Declining Trends:**
-- Address term fatigue factors
-- Review workload distribution
-- Consider mid-term breaks or incentives
-- Increase engagement activities
+**For declining trends:**
+- Review workload distribution and address term fatigue
+- Consider mid-term breaks or added engagement activities
 
-**For Improving Trends:**
-- Document what&apos;s driving improvement
-- Maintain successful approaches
-- Celebrate progress with students
+**For improving trends:**
+- Document what changed and maintain it
+- Recognize the progress with students and staff
 
 ---
 
-## Student Velocity
+## Student velocity
 
-### What It Analyzes
+### What it analyzes
 
-Individual student acceleration or deceleration over time.
+Individual students whose achievement rate is accelerating or decelerating.
 
-### Detection Method
+### Detection method
 
-1. Analyzes 8-week window (split at 4-week mark)
-2. Compares achievement in first 4 weeks vs last 4 weeks
-3. Identifies &gt;25% change in either direction
-4. Requires 20+ total goals per student
+A student needs at least 20 total goals across an 8-week window, with at least 5 goals in each 4-week half, to be evaluated. The detector compares the first 4 weeks to the last 4 weeks and marks a student as accelerating or decelerating if the change exceeds 25%. An org-level insight only fires if more than 20% of eligible students are accelerating, or more than 20% are decelerating.
 
-### Example Insights
+### Example insights
 
-**Accelerating Students:**
-"8 students have improved their achievement rate by &gt;30% in the last 4 weeks"
+**Accelerating students:** "8 students have improved their achievement rate by &gt;30% in the last 4 weeks."
 
-**Decelerating Students:**
-"5 students have shown &gt;25% decline in recent weeks - intervention needed"
+**Decelerating students:** "5 students have shown a &gt;25% decline in recent weeks. Intervention needed."
 
-### Confidence Requirements
+### What to do
 
-Based on total goal count per student over 8 weeks.
+**For accelerating students:**
+- Note what changed for them and reinforce it
+- Consider peer mentor roles where appropriate
 
-### What to Do
-
-**For Accelerating Students:**
-- Celebrate and reinforce progress
-- Identify what changed for them
-- Consider leadership/peer mentor roles
-- Maintain momentum
-
-**For Decelerating Students:**
-- Investigate root causes immediately
-- Schedule student/parent meetings
-- Develop intervention plans
-- Monitor closely going forward
+**For decelerating students:**
+- Investigate the cause and schedule a student or parent meeting
+- Set up an intervention plan and monitor closely
 
 ---
 
-## Subject Difficulty
+## Subject difficulty
 
-### What It Analyzes
+### What it analyzes
 
-PACEs with abnormally low completion rates.
+PACEs with a completion rate below the expected range.
 
-### Detection Method
+### Detection method
 
-1. Calculates completion rate per PACE
-2. Compares to expected rate for subject/grade
-3. Flags PACEs with &lt;70% completion rate
-4. Requires 10+ attempts per PACE
+A PACE needs at least 10 attempts to be evaluated. The detector flags any PACE with a completion rate below 70%.
 
-### Example Insights
+### Example insights
 
-**Difficult PACE:**
-"Math 1048 has a 58% completion rate - significantly below expected 85%"
+**Difficult PACE:** "Math 1048 has a 58% completion rate, well below the 85% expected."
 
-**Completion Time Issue:**
-"Science 1052 is taking 3x longer to complete than similar PACEs"
-
-### Confidence Requirements
+### Confidence requirements
 
 | Confidence | Attempts |
 |------------|----------|
-| High | &gt;25 attempts |
-| Medium | 15-25 attempts |
-| Low | 10-15 attempts |
+| High | &gt;20 attempts |
+| Medium | 15&ndash;20 attempts |
+| Low | 10&ndash;15 attempts |
 
-### What to Do
+### What to do
 
-- Review PACE content for complexity
-- Provide additional support resources
-- Consider teaching approach changes
-- Check if prerequisites are adequately covered
-- Discuss with curriculum specialists
+- Review the PACE content for complexity and prerequisite coverage
+- Provide additional support resources for that PACE
+- Discuss the pattern with curriculum specialists
 
 ---
 
-## Comparing Insight Types
+## Comparing insight types
 
-| Type | Analysis Focus | Time Window | Min Data |
-|------|----------------|-------------|----------|
-| Day-of-Week | Daily patterns | 4 weeks | 20+ samples/day |
-| Subject Correlations | Subject relationships | 4 weeks | 15+ students |
-| Centre Performance | Centre comparison | 4 weeks | 20+ samples/centre |
-| Seasonal Trends | Term progression | 6+ weeks | 100+ goals |
-| Student Velocity | Individual change | 8 weeks | 20+ goals/student |
-| Subject Difficulty | PACE analysis | 4 weeks | 10+ attempts |
+| Type | Analysis focus | Minimum data required |
+|------|------------------|-------------------------|
+| Day-of-week | Daily achievement pattern | 10+ goals for that weekday |
+| Subject correlations | Relationship between two subjects | 5+ goals/subject/student, 15+ paired students |
+| Centre performance | Centre vs. school average | 20+ goals/centre, 2+ centres |
+| Seasonal trends | First half vs. second half of term | Term 6+ weeks elapsed, 50+ goals, 25+ per half |
+| Student velocity | Individual acceleration or deceleration | 20+ goals/student, 5+ per 4-week half |
+| Subject difficulty | PACE-level completion rate | 10+ attempts |
+
+## Working with insights
+
+<Steps>
+  <Step title="Generate or refresh">
+    Click **Generate Insights** to run all six detectors against current data. This requires an active subscription and replaces the current set of non-dismissed insights.
+  </Step>
+  <Step title="Filter">
+    Filter the list by confidence (all, high, medium, low) or by type (weekly pattern, subject correlation, centre performance, seasonal trend, student velocity, subject difficulty).
+  </Step>
+  <Step title="Drill into an insight">
+    Click a card to open the insight detail drawer, which lists the specific students or centres affected by that pattern.
+  </Step>
+  <Step title="Dismiss or export">
+    Dismiss an insight to remove it from the active list, or export a PDF of the full report or a single insight.
+  </Step>
+</Steps>
+
+<Note>
+Insights expire 7 days after generation. Regenerate them to keep the list current, or rely on the weekly automatic refresh.
+</Note>
 
 ---
 
-## Related Guides
+## Related guides
 
 <CardGroup cols={2}>
-  <Card title="Insights Overview" href="/features/insights/overview" icon="lightbulb">
+  <Card title="Insights overview" href="/features/insights/overview" icon="lightbulb">
     Introduction to the insights system
   </Card>
-  <Card title="Administrator Insights Guide" href="/guides/administrator/insights" icon="user-shield">
+  <Card title="Administrator insights guide" href="/guides/administrator/insights" icon="users">
     Turning insights into interventions
   </Card>
-  <Card title="Analytics Dashboard" href="/features/insights/analytics" icon="chart-line">
-    Complete analytics overview
+  <Card title="Analytics dashboard" href="/features/insights/analytics" icon="chart-line">
+    Trends, subject and centre breakdowns, and predictions
   </Card>
-  <Card title="Goal Check Reports" href="/features/goal-check/reports" icon="file-chart-line">
-    Generating performance reports
+  <Card title="Predictions" href="/features/insights/predictions" icon="chart-line">
+    Per-student termly goal projections
   </Card>
 </CardGroup>

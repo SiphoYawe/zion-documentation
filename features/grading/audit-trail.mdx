@@ -1,373 +1,82 @@
 ---
-title: Audit Trail
-description: Understanding the grading audit trail for ACE compliance
-icon: "history"
+title: Audit trail and ACE compliance
+description: How Zion logs every grading action and what administrators can export for ACE accreditation
+icon: "shield-halved"
 ---
 
-# Grading Audit Trail
+Zion writes a record to the grading audit log for every score entry, adjustment, moderation decision, retest action, override, and reassignment. Administrators use the Audit Log page to investigate a specific score, review moderation compliance, and export evidence for ACE accreditation.
 
-Zion maintains a complete audit trail of all grading activities to support ACE curriculum compliance requirements. Every score entry, modification, and moderation action is logged with full context.
+<Note>
+  The audit log is administrator-facing. Supervisors and monitors see the moderation queues and alerts covered in [Moderation queue](/features/grading/moderation), but the full Audit Log page (`/admin/grading/audit`) is scoped to administrators.
+</Note>
 
-## Why Audit Trails Matter
+## What gets logged
 
-### ACE Compliance
+Every grading mutation writes a row with an action type constrained to a fixed set:
 
-ACE (Accelerated Christian Education) schools must maintain accurate records of student progress. The audit trail provides:
+| Action type | Written when |
+|---|---|
+| `score_entered` | A test score is entered at [score entry](/features/grading/score-entry) |
+| `score_adjusted` | A moderator changes a score value, or a rejected score is resubmitted |
+| `moderation_approved` | A score passes internal or external moderation |
+| `moderation_rejected` | A moderator rejects a score back to Stage 1 with a reason |
+| `grade_finalized` | External moderation approves and locks a score |
+| `retest_scheduled` | A retest is scheduled for a failed test |
+| `retest_completed` | A retest score is entered |
+| `admin_override` | An administrator grants a retest cap override or approves progression |
+| `moderation_reassigned` | An administrator reassigns a stuck moderation to another staff member |
 
-- Proof of grading accuracy
-- Evidence of oversight processes
-- Documentation of corrections
-- Historical record for inspections
+Each entry records the student, PACE, the user who performed the action and their role at the time, and the timestamp. Adjustments and rejections also record the previous value, the new value, and the reason given, since a reason of at least 10 characters is required for both.
 
-### Accountability
-
-The audit trail ensures:
-
-- All actions are traceable to individuals
-- Changes are documented with reasons
-- Historical data is preserved
-- Questions can be investigated
-
----
-
-## What Gets Logged
-
-### Score Entry Events
-
-When a supervisor enters a test score:
-
-| Field | Recorded Value |
-|-------|----------------|
-| **Action Type** | `score_entered` |
-| **Student** | Student ID and name |
-| **PACE** | PACE ID and name |
-| **Score** | Value entered (0-100) |
-| **Test Type** | PACE Test / Self Test / Final Test |
-| **Pass Threshold** | Applied threshold |
-| **Entered By** | User ID and name |
-| **Role** | Role at time of action |
-| **Timestamp** | Exact date/time |
-
-### Moderation Events
-
-When an administrator moderates a score:
-
-**Approval:**
-- Action: `moderation_approved`
-- Moderator ID and name
-- Timestamp
-- Notes (if provided)
-
-**Adjustment:**
-- Action: `score_adjusted`
-- Previous value (original score)
-- New value (adjusted score)
-- Adjustment reason (mandatory)
-- Moderator ID and name
-- Timestamp
-
-**Rejection:**
-- Action: `moderation_rejected`
-- Rejection reason (mandatory)
-- Moderator ID and name
-- Timestamp
-
-### Retest Events
-
-**Retest Scheduled:**
-- Action: `retest_scheduled`
-- Original test reference
-- Scheduled date
-- Scheduled by user
-
-**Retest Completed:**
-- Action: `retest_completed`
-- Attempt number
-- New score
-- Link to original attempt
-
-**Retest Cancelled:**
-- Action: `retest_cancelled`
-- Cancellation reason
-- Cancelled by user
-
-### Administrative Events
-
-**Pass Threshold Changed:**
-- Action: `threshold_changed`
-- Previous thresholds
-- New thresholds
-- Changed by user
-- Reason for change
-
-**Stage Transition:**
-- Action: `stage_transition`
-- From stage
-- To stage
-- Triggered by action
-
----
-
-## Viewing Audit History
-
-### For a Specific Test
-
-1. Navigate to the test score record
-2. Click **View Audit History**
-3. See chronological list of all actions
-
-### For a Student
-
-1. Navigate to student profile
-2. Click **Grade History** tab
-3. Click **Audit Trail** button
-4. See all grading actions for this student
-
-### Organization-Wide
-
-Administrators can view all audit logs:
-
-1. Navigate to **Grading → Audit**
-2. See searchable list of all actions
-3. Filter by date range, action type, user
-
----
-
-## Audit Entry Details
-
-Each audit entry includes:
-
-### Header Information
-
-- **Action Type:** What happened
-- **Timestamp:** When it happened
-- **Performed By:** Who did it
-
-### Context Information
-
-- **Student:** Which student affected
-- **PACE:** Which PACE involved
-- **Test Score ID:** Link to score record
-
-### Change Information
-
-- **Previous Value:** State before change (JSON)
-- **New Value:** State after change (JSON)
-- **Reason:** Why change was made (when applicable)
-
-### Metadata
-
-- **User Role:** Role at time of action
-- **IP Address:** Origin of request (if tracked)
-- **User Agent:** Browser/device info (if tracked)
-
----
-
-## Using Audit Data
-
-### Investigating Issues
-
-When questions arise about a grade:
+## Viewing the audit log
 
 <Steps>
-  <Step title="Locate the Test Score">
-    Find the specific test in question
+  <Step title="Open the Audit Log">
+    Navigate to Grading &gt; Audit Log (`/admin/grading/audit`).
   </Step>
-  <Step title="View Audit History">
-    Open the audit trail for that score
+  <Step title="Filter">
+    Filter by date range, action type, learning centre, performed-by user, or student.
   </Step>
-  <Step title="Trace the Timeline">
-    Follow actions from entry to current state
+  <Step title="Review a score's history">
+    Open a single score to see its full history timeline, from entry through every moderation step to finalization.
   </Step>
-  <Step title="Identify Discrepancies">
-    Note any unexpected changes
-  </Step>
-  <Step title="Contact Involved Parties">
-    Reach out to users who made changes
+  <Step title="Export">
+    Export the filtered log as CSV, or generate one of the compliance reports below.
   </Step>
 </Steps>
 
-### Compliance Audits
+This is the same page you would use to trace a parent-reported score discrepancy: pull the score&apos;s history, compare the original entry to the current value, and identify who changed it and why.
 
-When preparing for ACE inspections:
+## Compliance reports
 
-1. Generate audit reports for review period
-2. Export to PDF/CSV for documentation
-3. Highlight moderation compliance
-4. Show correction processes
+From the Audit Log page, administrators can generate four report types:
 
-### Pattern Analysis
+| Report | Covers |
+|---|---|
+| All Grade Changes | Every logged action across the filtered range |
+| Moderation Compliance | Approvals, rejections, and reassignments through the moderation pipeline |
+| Score Adjustments | Every `score_adjusted` entry with its reason |
+| Rejected Tests | Every `moderation_rejected` entry and its resolution |
 
-Use audit data to identify:
+For an ACE inspection, administrators can also generate a one-click accreditation bundle: a ZIP export containing grades, moderation actions, the student roster, and term dates for the selected period.
 
-- Supervisors with high error rates
-- Subjects requiring frequent adjustments
-- Moderation bottlenecks
-- Retest patterns
+## Audit integrity
 
----
+The Audit Log page shows an audit-integrity verification badge reflecting the result of the latest scheduled tamper check: passed, pending, or tampered rows found. This is the check to look at before submitting an accreditation bundle, since it confirms the underlying log has not been altered outside the normal grading actions.
 
-## Audit Trail Integrity
-
-### Immutable Records
-
-Audit logs cannot be:
-- Deleted
-- Modified
-- Backdated
-
-This ensures complete data integrity for compliance.
-
-### Retention
-
-Audit records are retained:
-- For the current academic year (immediate access)
-- For 7 years (archive access)
-- Permanently for compliance (cold storage)
-
-### Access Controls
-
-Audit viewing requires:
-- Administrator role
-- Authentication
-- All access is itself logged
-
----
-
-## Export Options
-
-### CSV Export
-
-Export audit data to spreadsheet:
-
-1. Navigate to audit view
-2. Set filters (date range, type, user)
-3. Click **Export CSV**
-4. Download file
-
-**Columns Included:**
-- Timestamp
-- Action type
-- User name
-- Student name
-- PACE
-- Previous value
-- New value
-- Reason
-
-### PDF Report
-
-Generate formatted report:
-
-1. Set filters as needed
-2. Click **Export PDF**
-3. Download formatted report
-
-**Report Includes:**
-- Summary statistics
-- Action timeline
-- User activity summary
-- Change details
-
----
-
-## Best Practices
-
-### Regular Review
-
-- Review audit logs weekly for anomalies
-- Check for unusual patterns
-- Verify moderation compliance
-
-### Documentation
-
-- When adjusting scores, provide clear reasons
-- Document conversation outcomes in notes
-- Reference original test when possible
-
-### Training
-
-- Train supervisors on accurate entry
-- Explain audit implications
-- Emphasize first-time accuracy
-
----
-
-## Common Audit Scenarios
-
-### Score Discrepancy Reported
-
-**Scenario:** Parent claims grade was entered incorrectly
-
-**Investigation:**
-1. Pull audit trail for specific test
-2. Trace from entry through any modifications
-3. Compare original entry to current value
-4. Identify who made changes and why
-5. Present findings to parent
-
-### High Adjustment Rate
-
-**Scenario:** Many scores being adjusted during moderation
-
-**Investigation:**
-1. Query adjustments by supervisor
-2. Identify patterns (specific supervisors, subjects)
-3. Review original vs adjusted values
-4. Retrain supervisors if needed
-5. Consider process improvements
-
-### Compliance Audit
-
-**Scenario:** ACE inspector requests grading records
-
-**Response:**
-1. Generate audit report for requested period
-2. Export in requested format
-3. Prepare summary of moderation statistics
-4. Document SLA compliance rates
-5. Provide contact for questions
-
----
-
-## Troubleshooting
-
-### Cannot Find Audit Entry
-
-**Possible Causes:**
-- Looking at wrong test
-- Date filters too narrow
-- Action not yet synced
-
-**Solution:**
-- Verify correct test selected
-- Expand date range
-- Wait for sync and refresh
-
-### Audit Shows Unexpected Change
-
-**Process:**
-1. Note the timestamp and user
-2. Check if legitimate moderation action
-3. Contact user if unclear
-4. Document findings
-5. Escalate if suspicious activity
-
----
-
-## Related Guides
+## Related pages
 
 <CardGroup cols={2}>
-  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
-    Complete overview of the grading system
+  <Card title="Grading overview" href="/features/grading/overview" icon="graduation-cap">
+    How test types, thresholds, and the moderation pipeline fit together
   </Card>
-  <Card title="Moderation Queue" href="/features/grading/moderation" icon="clipboard-check">
-    Understanding the moderation workflow
+  <Card title="Moderation queue" href="/features/grading/moderation" icon="clipboard-check">
+    Internal and external moderation, separation of duties, and delegated moderators
   </Card>
-  <Card title="Test Score Entry" href="/features/grading/score-entry" icon="keyboard">
-    How scores are entered
+  <Card title="Test score entry" href="/features/grading/score-entry" icon="graduation-cap">
+    How scores are entered and routed to moderation
   </Card>
-  <Card title="Roles and Permissions" href="/reference/roles-permissions" icon="shield">
-    Understanding user roles
+  <Card title="Roles and permissions" href="/reference/roles-permissions" icon="shield">
+    Who can moderate, adjust, and view grading records
   </Card>
 </CardGroup>

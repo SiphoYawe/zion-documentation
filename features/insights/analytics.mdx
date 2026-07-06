@@ -1,332 +1,147 @@
 ---
-title: Analytics Dashboard
-description: Complete guide to Zion&apos;s analytics and data visualization features
-icon: "chart-line"
+title: Trends, subjects, and centres
+description: Time-series goal-achievement trends, subject performance analysis, and centre comparison, with exportable tables and charts
+icon: "arrow-trend-up"
 ---
 
-# Analytics Dashboard
+Trends, Subjects, and Centres are three linked analytics surfaces inside Zion. Together they show how goal achievement moves over time, how it breaks down by subject, and how learning centres compare to each other. Administrators see data across the whole organization. Supervisors see the same charts and tables scoped to their assigned centre(s) only.
 
-Zion&apos;s Analytics Dashboard provides comprehensive data visualization across attendance, goal achievement, grading, and student performance. This guide covers all analytics capabilities.
+<Note>
+For AI-generated pattern detection (day-of-week trends, subject correlations, seasonal shifts) and termly-goal projections, see [Insights Overview](/features/insights/overview) and [Predictions](/features/insights/predictions). This page covers the trend, subject, and centre reporting surfaces.
+</Note>
 
-## Accessing Analytics
+## Accessing the analytics hub
 
-1. Navigate to **Analytics** in the sidebar
-2. Choose from available sections:
-   - **Trends:** Time-series analysis
-   - **Subjects:** Subject performance breakdown
-   - **Centres:** Learning centre comparison
-   - **Insights:** AI-generated patterns
+<Steps>
+  <Step title="Open Analytics">
+    Navigate to **Analytics** from the sidebar. Administrators land on the analytics index with quick-link cards to Trends, Subjects, Centres, Predictions, and Insights, plus a student picker.
+  </Step>
+  <Step title="Choose a surface">
+    Click **Trends**, **Subjects**, or **Centres** to open that view. Supervisors reach Trends directly from their own sidebar and see only data for their assigned centre(s).
+  </Step>
+  <Step title="Drill into a student">
+    From the analytics index, use the student picker to open an individual student&apos;s trend detail page.
+  </Step>
+</Steps>
 
----
-
-## Analytics Hub
-
-### Overview Page
-
-The main analytics page provides quick navigation:
-
-**Available Analytics:**
-- Trend analysis over time
-- Subject performance breakdown
-- Centre comparisons
-- AI-powered insights
-
-**Student Analytics:**
-- Grid of students with recent goal data
-- Click any student to view their trend analysis
-- Filter by centre or grade level
+<Tabs>
+  <Tab title="Administrator">
+    Sees org-wide data across all centres for Trends, Subjects, and Centres.
+  </Tab>
+  <Tab title="Supervisor">
+    Sees Trends scoped automatically to their assigned centre(s). A supervisor with no assigned centres sees empty data, never organization-wide totals.
+  </Tab>
+</Tabs>
 
 ---
 
-## Trends Analytics
+## Trends
 
-### Time Series Chart
+### Time-series achievement chart
 
-**What It Shows:**
-Goal completion rates plotted over time
+The trend chart plots goal-achievement rate over time, per student, subject, or centre depending on the filters applied. The x-axis shows dates in the selected range and the y-axis shows the achievement percentage.
 
-**X-Axis:** Dates in selected range
-**Y-Axis:** Completion percentage (0-100%)
-
-### Date Range Options
+### Date range options
 
 | Range | Description |
 |-------|-------------|
-| **7 Days** | Last week&apos;s data |
-| **30 Days** | Last month&apos;s data |
-| **Current Term** | From term start |
-| **Custom** | Any date range |
+| 7 days | Last 7 days of activity |
+| 30 days | Last 30 days of activity |
+| 60 days | Last 60 days of activity |
+| 90 days | Last 90 days of activity |
+| Current term | From the start of the active academic term |
 
-### Trend Indicators
+### Student trend detail
 
-- **Trend Direction:** Improving / Stable / Declining
-- **Average Rate:** Mean completion for period
-- **Best Day:** Highest performing day
-- **Worst Day:** Lowest performing day
+Open a student from the analytics index or their profile to see:
 
-### Interactive Features
-
-- Hover over data points for details
-- Click data point to see student breakdown
-- Export chart data to CSV
-
----
-
-## Subject Analytics
-
-### Subject Performance Chart
-
-**Visualization:** Horizontal bar chart showing performance by subject
-
-**Metrics Per Subject:**
-- Average completion rate
-- Total goals in period
-- Pass rate percentage
-- Trend direction
-
-### Subject Radar Overview
-
-**Visualization:** Radar/spider chart for multi-dimensional view
-
-**Shows:**
-- Relative performance across all subjects
-- Visual balance of subject strengths/weaknesses
-- Quick identification of outliers
-
-### Subject Details
-
-Click any subject to see:
-- Student breakdown for that subject
-- PACE-level performance
-- Historical trends
-- Comparison to school average
+- An achievement time-series chart with the same 7/30/60/90-day range options
+- A highlight for consecutive misses
+- A subject-by-subject breakdown for that student
+- A comparison of the student&apos;s achievement against their centre average
+- An intervention notes panel
+- A printable Student Progress Report
 
 ---
 
-## Centre Analytics
+## Subject performance analysis
 
-### Centre Comparison Chart
+### Filters
 
-**Visualization:** Bar chart comparing learning centres
+Subject analysis supports a date range (7 days, 30 days, or current term), a grade band (1-4, 5-8, 9-12, or all), and a specific subject filter.
 
-**Metrics Per Centre:**
-- Completion rate
-- Student count
-- Goals completed
-- Trend direction
+### What you see
 
-### Outlier Highlighting
+- A subject performance chart showing average completion rate, total goals in the period, pass rate, and trend direction per subject
+- A grade-band by subject matrix
+- A PACE-level completion-rate table
+- A radar overview comparing relative performance across all subjects at once, useful for spotting outliers
 
-Centres are color-coded:
-- **Green:** &gt;1 standard deviation above mean
-- **Normal:** Within 1 standard deviation
-- **Red:** &gt;1 standard deviation below mean
+Clicking a subject opens its student breakdown, PACE-level performance, and historical trend, compared against the school average.
 
-### Centre Metrics Table
+### Exporting
 
-Sortable table showing:
+Export the subject report as a CSV, or generate a PDF report from the export control on the subjects page.
+
+---
+
+## Centre comparison
+
+### What you see
+
+- Summary statistics: mean achievement, standard deviation, and total student count across centres
+- A comparison chart across all learning centres
+- A top-5 and bottom-5 trend chart
+- A sortable metrics table
+
+### Centre metrics table
 
 | Column | Description |
 |--------|-------------|
-| Centre Name | Learning centre identifier |
+| Centre name | Learning centre identifier |
 | Students | Active student count |
-| Completion Rate | Average achievement |
-| Goals This Week | Total goals set |
+| Completion rate | Average goal-achievement rate |
+| Goals this week | Total goals set |
 | Trend | Direction indicator |
 
-### Centre Alerts
+### Outlier highlighting
 
-Banner highlighting:
-- Centres needing immediate attention
-- Centres with significant changes
-- Resource allocation recommendations
+Centres more than one standard deviation above the mean are flagged as high performers. Centres more than one standard deviation below the mean are flagged as needing attention. Ongoing low performance is tracked through a first-class centre_low_performance alert rather than a temporary banner. See [Alerts](/features/alerts/overview).
 
----
+### Exporting
 
-## Student Analytics
-
-### Individual Student Trends
-
-Access from analytics hub or student profile:
-
-**Time Series:**
-- Personal completion rate over time
-- Comparison to class/centre average
-- Trend direction and momentum
-
-**Subject Breakdown:**
-- Performance per subject
-- Strongest and weakest areas
-- Improvement opportunities
-
-**Goal History:**
-- Recent goals with details
-- Variance patterns
-- Notes and interventions
+Export the centre comparison table as a CSV from the centres page.
 
 ---
 
-## Dashboard KPIs
+## Reading the data
 
-### Administrator Dashboard
+| Question | Where to look |
+|----------|----------------|
+| Which days had the lowest achievement? | Trends time-series chart |
+| Which centres need support? | Centre comparison table and outlier highlighting |
+| Which subjects are struggling? | Subject performance chart and radar overview |
+| Is a specific student falling behind? | Student trend detail and consecutive-misses highlight |
 
-**Today&apos;s Snapshot Cards:**
-
-| Card | Metric |
-|------|--------|
-| Total Students | Active student count |
-| Completion Rate | Today&apos;s goal completion % |
-| Learning Centres | Active centre count |
-| Needs Attention | At-risk student count |
-
-**Weekly Trends Chart:**
-- 7-day completion trend line
-- Day-over-day comparison
-- Visual trend direction
-
-**Centre Performance:**
-- Quick view of all centres
-- Color-coded performance badges
-- Click to drill down
-
-### Supervisor Dashboard
-
-**My Centre Snapshot:**
-- Students in my centres
-- Today&apos;s completion for my students
-- My students&apos; trends
-
-**Student Progress Table:**
-- Real-time status per student
-- Today&apos;s goal and progress
-- Quick action buttons
-
-**7-Day Trend:**
-- My centres&apos; trend line
-- Comparison to school average
+<Warning>
+Whether trends, subject, and centre reads themselves require an active subscription was not confirmed in code. Pattern Insight generation, dismissal, and export do require an active subscription.
+</Warning>
 
 ---
 
-## Charts and Visualizations
-
-### Chart Types Used
-
-| Chart | Purpose |
-|-------|---------|
-| **Line Chart** | Time-series trends |
-| **Bar Chart** | Comparisons between groups |
-| **Radar Chart** | Multi-dimensional overview |
-| **Progress Bars** | Completion percentages |
-| **Confidence Meters** | Reliability indicators |
-
-### Interactive Features
-
-All charts support:
-- **Hover:** See detailed data points
-- **Click:** Drill down to details
-- **Export:** Download as CSV or PNG
-- **Responsive:** Adjust to screen size
-
----
-
-## Real-Time Updates
-
-### Auto-Refresh
-
-**Dashboard Refresh:**
-- Automatic refresh every 30 seconds
-- Shows live data as goals are marked
-- No manual refresh needed
-
-**Focus Refresh:**
-- Refreshes when you return to tab
-- Ensures current data on view
-
-### Cache Strategy
-
-- Dashboards: 30-second cache (real-time feel)
-- Analytics: 5-minute cache (stability)
-- Insights: On-demand refresh
-
----
-
-## Export Capabilities
-
-### CSV Export
-
-From any analytics view:
-1. Click **Export** button
-2. Select date range and filters
-3. Download CSV file
-
-**CSV Contains:**
-- Raw data points
-- Calculated metrics
-- Timestamps
-- All visible columns
-
-### Chart Export
-
-Export visualizations:
-1. Click chart export icon
-2. Choose format (PNG/SVG)
-3. Download image file
-
----
-
-## Best Practices
-
-### Regular Review Schedule
-
-| Frequency | Focus |
-|-----------|-------|
-| Daily | Dashboard snapshot |
-| Weekly | Trends and patterns |
-| Monthly | Centre comparisons |
-| Quarterly | Subject analysis |
-
-### Using Data Effectively
-
-1. **Identify Patterns:** Look for recurring trends
-2. **Compare Groups:** Centre vs centre, subject vs subject
-3. **Drill Down:** Don&apos;t stop at high-level; investigate details
-4. **Take Action:** Use data to drive interventions
-5. **Monitor Results:** Track if interventions work
-
-### Common Analysis Questions
-
-- Which days have lowest performance?
-- Which centres need support?
-- What subjects are struggling?
-- Are we improving over the term?
-- Which students need attention?
-
----
-
-## Insights Widget
-
-The analytics dashboard includes the Insights Widget:
-
-- Top 3 most relevant AI insights
-- Quick preview format
-- Links to full insights page
-- Auto-refreshes with dashboard
-
----
-
-## Related Guides
+## Related pages
 
 <CardGroup cols={2}>
-  <Card title="Insights Overview" href="/features/insights/overview" icon="lightbulb">
-    Understanding AI-generated insights
+  <Card title="Insights overview" href="/features/insights/overview" icon="lightbulb">
+    How AI-generated pattern insights are detected and reviewed
   </Card>
-  <Card title="Goal Check Reports" href="/features/goal-check/reports" icon="file-chart-line">
-    Generating performance reports
+  <Card title="Predictions" href="/features/insights/predictions" icon="chart-line">
+    Termly goal projections and on-track, at-risk, off-track status
   </Card>
-  <Card title="Attendance Trends" href="/features/attendance/trends" icon="calendar-check">
-    Attendance analytics
+  <Card title="Attendance trends" href="/features/attendance/trends" icon="calendar-check">
+    Attendance-specific trend analysis
   </Card>
-  <Card title="Administrator Dashboard" href="/guides/supervisor/dashboard" icon="gauge">
-    Dashboard guide for administrators
+  <Card title="Supervisor dashboard" href="/guides/supervisor/dashboard" icon="gauge">
+    How centre-scoped analytics appear for supervisors
   </Card>
 </CardGroup>

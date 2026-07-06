@@ -1,332 +1,202 @@
 ---
 title: Quickstart
-description: Set up your ACE school in Zion and start tracking Goal Check in 15 minutes
+description: Set up your ACE school in Zion, from account creation to your first Morning Ritual
+icon: "rocket"
 ---
 
-# Quickstart Guide
-
-Get your ACE school operational in Zion in just 15 minutes. This guide walks you through the complete setup process from account creation to your first Goal Check.
+This guide walks an administrator through the initial setup of a school in Zion: creating the account and organization, completing the onboarding wizard, adding students, assigning PACEs, and running the first Morning Ritual.
 
 <Note>
-**New to Zion?** This quickstart is designed for school administrators setting up Zion for the first time. If you&apos;re a supervisor or monitor, your administrator will invite you - skip to [Daily Goal Check Workflow](/guides/supervisor/goal-check).
+This quickstart is for the administrator who creates the school&apos;s Zion organization. If you are a supervisor or monitor, an administrator invites you directly. See [Supervisor: Goal Check](/guides/supervisor/goal-check) or the [Rituals overview](/features/goal-check/rituals) for your daily workflow.
 </Note>
 
 ## Prerequisites
 
-Before you begin, have ready:
-- School information (name, location, contact details)
-- School logo (optional, PNG/JPG, max 2MB)
-- List of learning centres (classrooms)
-- List of teaching staff (names and emails for supervisors/monitors)
-- Student roster (names, grades, learning centre assignments)
+Have ready before you start:
+- School name, city, country, contact email and phone, and timezone
+- A list of learning centres (classrooms) to create
+- Names and email addresses for the supervisors and monitors you plan to invite
+- Your student roster (name, date of birth, grade level, learning centre, optional parent contact), either to enter by hand or as a CSV file
 
-<Tip>
-**Pro Tip:** Have your student data in a CSV file? You can bulk import students later to save time.
-</Tip>
-
-## Step 1: Create Your Account
+## Step 1: Create your account and organization
 
 <Steps>
-  <Step title="Sign Up">
-    Visit [zionapp.co/sign-up](https://zionapp.co/sign-up) and create your administrator account with your email and password.
+  <Step title="Sign up">
+    Create your administrator account with your email and password.
   </Step>
-
-  <Step title="Verify Email">
-    Check your inbox for the verification email from Clerk and click the verification link.
+  <Step title="Verify your email">
+    Click the verification link in the email from Clerk, Zion&apos;s authentication provider.
   </Step>
-
-  <Step title="Create Organization">
-    Upon first login, you&apos;ll be prompted to create your school organization. Enter your school name and submit.
+  <Step title="Create your organization">
+    On first login, create your school&apos;s organization. This becomes the org that every learning centre, staff account, and student roster in Zion is scoped to.
   </Step>
 </Steps>
 
-**Time Required:** 2 minutes
+## Step 2: Complete the onboarding wizard
 
----
+After you create the organization, Zion redirects you to `/onboarding`, a forced, sequential wizard with four steps. Each step requires the previous one&apos;s data before you can continue, and it runs once per organization. If you return to `/onboarding` after finishing, Zion shows a completed screen with links to the dashboard and School Settings instead of the wizard.
 
-## Step 2: Complete School Onboarding
-
-Zion&apos;s guided onboarding wizard will walk you through four essential setup steps. You&apos;ll be automatically redirected to `/onboarding` after creating your organization.
-
-### School Profile
+### School profile
 
 <Steps>
-  <Step title="Enter School Details">
-    - School name (auto-filled from organization)
-    - Location (city and country)
-    - Contact email and phone number
-    - Time zone (e.g., "Africa/Kampala")
+  <Step title="Enter school details">
+    School name (required), city, country, contact email, contact phone, and timezone. Language defaults to English.
   </Step>
-
-  <Step title="Upload Logo (Optional)">
-    Click "Upload Logo" and select your school logo. This will appear in reports and navigation.
-  </Step>
-
-  <Step title="Save and Continue">
-    Click "Save & Continue" to proceed to academic terms.
+  <Step title="Continue">
+    Submit to move to Academic Terms.
   </Step>
 </Steps>
 
-### Academic Terms
+### Academic terms
 
 <Steps>
-  <Step title="Create First Term">
-    Click "Add Term" and enter:
-    - Term name (e.g., "Term 1 2025")
-    - Start date (e.g., October 1, 2025)
-    - End date (e.g., December 20, 2025)
+  <Step title="Add a term">
+    Enter a term name and a start and end date. You must create at least one term before you can continue.
   </Step>
-
-  <Step title="Mark as Active">
-    Check "Set as active term" to indicate this is your current term. Goal Check data will be tracked within this term.
-  </Step>
-
-  <Step title="Add More Terms (Optional)">
-    You can add all your terms now or add them later. Click "Save & Continue" when ready.
+  <Step title="Add more terms (optional)">
+    Add additional terms now, or return to [Academic Terms](/features/academic-terms/overview) later. Overlapping date ranges are rejected.
   </Step>
 </Steps>
 
-### Learning Centres
+### Learning centres
 
 <Steps>
-  <Step title="Create Learning Centres">
-    Add each classroom/learning centre:
-    - Centre name (e.g., "Faith Centre", "Grace Centre", "Hope Centre")
-    - Description (optional)
-    - Capacity (optional, e.g., 25 students)
+  <Step title="Add a centre">
+    Enter a centre name, with an optional description and capacity. You must create at least one centre before you can continue.
   </Step>
-
-  <Step title="Add Multiple Centres">
-    Click "Add Another Centre" to create additional centres. Most ACE schools have 3-10 learning centres.
-  </Step>
-
-  <Step title="Save and Continue">
-    Click "Save & Continue" when all centres are added.
+  <Step title="Add more centres">
+    Repeat for each classroom or learning centre in your school. See [Learning Centres](/features/organization/learning-centres) for capacity and transfer details you can adjust later.
   </Step>
 </Steps>
 
-### Invite Teaching Staff
+### Invite teaching staff
 
 <Steps>
-  <Step title="Invite Supervisors">
-    For each supervisor:
-    - Full name
-    - Email address
-    - Role: Select "Supervisor"
-    - Assigned centres: Select which learning centres they supervise
+  <Step title="Invite a supervisor or monitor">
+    Enter a name and email, choose Supervisor or Monitor, and optionally assign the learning centres they work in. This step only offers the Supervisor and Monitor roles. Administrators are added separately from Settings, not through this wizard.
   </Step>
-
-  <Step title="Invite Monitors">
-    For each monitor:
-    - Full name
-    - Email address
-    - Role: Select "Monitor"
-    - Assigned centres: Select which centres they assist in
+  <Step title="Skip or send">
+    Send the invitation, or click Skip This Step to invite staff later from [Teaching Staff and Users](/features/organization/teaching-staff-and-users).
   </Step>
-
-  <Step title="Send Invitations">
-    Click "Send Invitations" and staff will receive email invitations with instructions to set their passwords and access Zion.
-  </Step>
-
-  <Step title="Complete Onboarding">
-    Click "Complete Setup" to finish onboarding. You&apos;ll be redirected to your administrator dashboard.
+  <Step title="Finish">
+    Zion shows a setup summary, then takes you to your administrator dashboard.
   </Step>
 </Steps>
 
-**Time Required:** 10 minutes
+## Step 3: Add students
 
----
+With your terms and learning centres in place, add your student roster.
 
-## Step 3: Add Students
+<Tabs>
+  <Tab title="Add individually">
+    <Steps>
+      <Step title="Open Students">
+        Go to Students in the sidebar.
+      </Step>
+      <Step title="Add Student">
+        Click Add Student.
+      </Step>
+      <Step title="Fill in the student record">
+        Enter full name, optional student ID, date of birth, grade level (1-12), learning centre, and optional parent email and phone.
+      </Step>
+      <Step title="Save">
+        Save the record. If you entered a parent email, Zion sends a parent invitation automatically.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Bulk import via CSV">
+    <Steps>
+      <Step title="Open Import CSV">
+        On the Students page, click Import CSV, then download the template. See [CSV Templates](/reference/csv-templates) for the exact columns.
+      </Step>
+      <Step title="Fill in the file">
+        Columns are name, student_id, dob, grade, centre, parent_email, and parent_phone. The centre value must match an existing learning centre name exactly. Files are capped at 5MB.
+      </Step>
+      <Step title="Validate">
+        Upload the file and click Validate CSV. Zion checks each row and flags invalid rows without blocking the valid ones. A centre at or over its configured capacity produces a warning, not a block.
+      </Step>
+      <Step title="Import valid rows">
+        Click Import to create the valid rows. Download the error report for any skipped rows, fix them, and re-upload if needed.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
 
-Now that your school structure is ready, add your student roster.
+See [Students Overview](/features/students/overview) and [Bulk Import](/features/students/bulk-import) for roster management after setup, including deactivating and reactivating students.
 
-### Option A: Add Students Individually
+## Step 4: Assign PACEs
+
+Students need at least one active PACE assignment before you can set a goal for them in the Ritual. Zion&apos;s PACE catalog covers the ACE curriculum across 23 subjects and levels 1 through 12.
 
 <Steps>
-  <Step title="Navigate to Students">
-    Click "Students" in the sidebar navigation.
+  <Step title="Open a student">
+    Click a student in the roster to open their detail page.
   </Step>
-
-  <Step title="Click Add Student">
-    Click the "Add Student" button in the top right.
+  <Step title="Assign a PACE">
+    Open the PACE assignment dialog and select one or more PACEs, up to 12 per assignment. Zion enforces subject progression: a student cannot be assigned a PACE until every earlier PACE in that subject has been passed, unless an administrator has recorded an override.
   </Step>
-
-  <Step title="Fill Student Form">
-    Enter student information:
-    - Full name
-    - Student ID (optional, your internal ID)
-    - Date of birth
-    - Grade level (1-12)
-    - Assigned learning centre
-    - Parent email and phone (optional)
+  <Step title="Save">
+    Save the assignment. It now appears on the student&apos;s profile and is available to goal in the Ritual.
   </Step>
-
-  <Step title="Save Student">
-    Click "Save" to add the student to your roster.
+  <Step title="Repeat">
+    Repeat for each student. Students in the same grade often carry similar PACE assignments across subjects.
   </Step>
 </Steps>
 
-### Option B: Bulk Import via CSV (Recommended for 20+ students)
+See [PACE Catalog](/features/paces/catalog) to browse subjects and levels, and [PACE Assignments](/features/students/pace-assignments) for progression rules, auto-advance, and completion.
+
+## Step 5: Run your first Morning Ritual
+
+The Morning Ritual is a full-screen, one-student-at-a-time flow for setting daily PACE goals across an entire learning centre in one pass.
 
 <Steps>
-  <Step title="Download CSV Template">
-    On the Students page, click "Import CSV" and then "Download Template" to get the correct CSV format.
+  <Step title="Open the dashboard">
+    Go to your dashboard and find the Today&apos;s Ritual card.
   </Step>
-
-  <Step title="Fill CSV File">
-    Open the template in Excel and fill in student data with columns:
-    - name (required)
-    - student_id (optional)
-    - dob (format: YYYY-MM-DD)
-    - grade (1-12)
-    - centre (exact learning centre name)
-    - parent_email (optional)
-    - parent_phone (optional)
+  <Step title="Choose a centre (if needed)">
+    If you are assigned to more than one learning centre, select which one to run.
   </Step>
-
-  <Step title="Upload CSV">
-    Click "Import CSV", select your file, and click "Upload". Zion will validate your data and show any errors.
+  <Step title="Start Morning Ritual">
+    Click Start Morning Ritual. Zion opens the centre&apos;s active students one at a time.
   </Step>
-
-  <Step title="Confirm Import">
-    Review the validation results. If all rows are valid, click "Confirm Import" to create all students at once.
+  <Step title="Set a goal for each student">
+    For each active PACE, enter a goal end page. The start page is set automatically from where the student left off. Click Advance to move to the next student, or use Skip or Back as needed.
   </Step>
-</Steps>
-
-**Time Required:** 3-5 minutes (individual) or 2 minutes + prep time (CSV)
-
----
-
-## Step 4: Assign PACEs to Students
-
-Students need PACE assignments before you can set daily goals. Zion includes the complete ACE PACE catalog (144 PACEs, 1001-1144).
-
-<Steps>
-  <Step title="Open Student Detail">
-    Click any student from the Students list to view their detail page.
-  </Step>
-
-  <Step title="Click Assign PACE">
-    In the "Current PACEs" section, click "Assign PACE" or "Manage PACEs".
-  </Step>
-
-  <Step title="Select PACEs">
-    A modal opens with the PACE catalog. Select 4-5 PACEs across different subjects for the student:
-    - Example: Math 1005, English 1015, Science 1025, Social Studies 1035
-  </Step>
-
-  <Step title="Save Assignments">
-    Click "Save" and the PACEs will appear in the student&apos;s profile.
-  </Step>
-
-  <Step title="Repeat for All Students">
-    Repeat this process for all students. Each student can have individualized PACE assignments based on their progression.
+  <Step title="Finish the session">
+    After the last student, review the completion summary showing goals set, skipped students, and elapsed time. If your school requires goal approval, an administrator or supervisor can approve the session&apos;s pending goals from this screen.
   </Step>
 </Steps>
 
 <Tip>
-**Time Saver:** Most students in the same grade level will have similar PACE assignments. Assign PACEs to one student, then use their assignments as a reference for others.
+If you close the tab mid-session, reopening the Ritual resumes where you left off. Zion never starts a duplicate session for the same day.
 </Tip>
 
-**Time Required:** 5-10 minutes for 20-30 students
+At the end of the day, run the End-of-Day Check from the same Today&apos;s Ritual card to record actual pages completed against each goal. See [Rituals](/features/goal-check/rituals) for the full AM and PM workflow.
 
----
-
-## Step 5: Set Your First Daily Goals
-
-You&apos;re ready to use Zion&apos;s Goal Check feature! Let&apos;s set today&apos;s goals.
-
-<Steps>
-  <Step title="Navigate to Goal Check">
-    Click "Goal Check" in the sidebar, then click "Set Goals".
-  </Step>
-
-  <Step title="Select Today's Date">
-    The date picker defaults to today. Confirm the date is correct.
-  </Step>
-
-  <Step title="Enter Goal Pages">
-    For each student and PACE, enter:
-    - Goal start page (e.g., 15)
-    - Goal end page (e.g., 20)
-    - Total pages auto-calculates (6 pages in this example)
-  </Step>
-
-  <Step title="Use Quick Templates (Optional)">
-    Click "Copy Previous Day" to pre-fill goals from yesterday, or use standard templates:
-    - Grades 1-4: 5 pages per day
-    - Grades 5-8: 8 pages per day
-    - Grades 9-12: 10 pages per day
-  </Step>
-
-  <Step title="Goals Auto-Save">
-    As you type, goals auto-save. No "Submit All" button needed. Navigate away when done.
-  </Step>
-</Steps>
-
-**Time Required:** 5 minutes for 20 students (vs. hours of manual compilation!)
-
----
-
-## Step 6: View Your Dashboard
-
-<Steps>
-  <Step title="Navigate to Dashboard">
-    Click "Dashboard" in the sidebar to see your school&apos;s real-time status.
-  </Step>
-
-  <Step title="Explore Dashboard Sections">
-    - **Today&apos;s Snapshot:** Total students, completion %, at-risk count
-    - **Weekly Trends:** 7-day completion rate chart
-    - **Centre Performance:** Which centres are performing well
-    - **Quick Actions:** Shortcuts to Goal Check, Students, Reports
-  </Step>
-
-  <Step title="Mark Progress (End of Day)">
-    When students complete their goals, navigate to "Goal Check" → "Mark Progress" and enter actual pages completed for each student.
-  </Step>
-</Steps>
-
----
-
-## Next Steps
-
-<CardGroup cols={3}>
-  <Card title="Daily Workflow" icon="calendar-check" href="/guides/supervisor/goal-check">
-    Learn the morning-to-evening Goal Check workflow for supervisors and monitors
-  </Card>
-
-  <Card title="Generate Reports" icon="file-pdf" href="/features/goal-check/reports">
-    Create daily centre reports and weekly school reports in seconds
-  </Card>
-
-  <Card title="Administrator Guide" icon="user-shield" href="/guides/administrator/onboarding">
-    Explore the complete administrator handbook for advanced features
-  </Card>
-</CardGroup>
-
-## Need Help?
+## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Watch Video Tutorial" icon="video" href="https://zionapp.co/tutorials">
-    See Zion in action with our step-by-step video guide
+  <Card title="Administrator onboarding guide" icon="user-shield" href="/guides/administrator/onboarding">
+    The full administrator handbook for ongoing setup and configuration
   </Card>
-
-  <Card title="Contact Support" icon="life-ring" href="/support">
-    Get help from our team - we&apos;re here for you
+  <Card title="Goal Check" icon="calendar-check" href="/guides/administrator/goal-check">
+    How daily goals, progress marking, and reports fit together
+  </Card>
+  <Card title="Learning Centres" icon="users" href="/features/organization/learning-centres">
+    Manage centre capacity, staff assignment, and transfers
+  </Card>
+  <Card title="Teaching Staff and Users" icon="user-shield" href="/features/organization/teaching-staff-and-users">
+    Invite additional staff and manage roles after onboarding
   </Card>
 </CardGroup>
 
-## You&apos;re All Set!
+## Need help
 
-Congratulations! Your school is now operational in Zion. You&apos;ve completed:
-
-- School profile and academic terms configured
-- Learning centres created
-- Teaching staff invited
-- Student roster added with PACE assignments
-- First daily goals set
-- Dashboard showing real-time intelligence
-
-**The magic begins now:** Tomorrow morning, set goals in 5 minutes. At end of day, mark progress in 5 minutes. Generate daily and weekly reports in under 30 seconds. Reclaim 10+ hours per week!
+<CardGroup cols={2}>
+  <Card title="FAQ" icon="circle-question" href="/faq">
+    Answers to common setup and workflow questions
+  </Card>
+  <Card title="Contact support" icon="life-ring" href="/support">
+    Reach the Zion support team
+  </Card>
+</CardGroup>

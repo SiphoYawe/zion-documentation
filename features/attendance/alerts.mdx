@@ -1,314 +1,105 @@
 ---
-title: Chronic Absence Alerts
-description: Understanding and managing attendance alerts for at-risk students
+title: Chronic absence alerts
+description: How Zion turns consecutive absences and 30-day absence rates into alerts, and how staff acknowledge or dismiss them
 icon: "bell"
 ---
 
-# Chronic Absence Alerts
+Zion watches each student&apos;s attendance record and raises an alert when a consecutive-absence streak or a 30-day absence rate crosses a threshold. Administrators see alerts across every learning centre. Supervisors see alerts only for their assigned centres.
 
-Zion automatically detects students with concerning attendance patterns and generates alerts for proactive intervention. This guide explains how the alert system works and how to manage alerts effectively.
+## How an alert is triggered
 
-## How Alerts Work
+A daily process reviews attendance for every active student and compares two measures against configured thresholds:
 
-### Automatic Detection
+- **Consecutive absences.** Absent school days in a row, counting backward from the most recent day and skipping weekends and holidays. The streak breaks on the first present, late, or unrecorded day.
+- **30-day absence rate.** The percentage of school days marked absent in the trailing 30 days.
 
-The alert system runs automatically each morning at 6:00 AM, analyzing attendance data to identify students who may need intervention.
+| Severity | Default trigger |
+|----------|------------------|
+| Warning | 3 or more consecutive absences |
+| Critical | 5 or more consecutive absences, or a 30-day absence rate above 20% |
 
-**Detection Process:**
-1. System reviews last 60 days of attendance records
-2. Calculates consecutive absences (weekends excluded)
-3. Computes 30-day rolling absence rate
-4. Compares against configured thresholds
-5. Creates new alerts for students meeting criteria
-6. Sends email digest to administrators (if enabled)
+These numbers are the defaults. An administrator can change the consecutive-absence and rate thresholds for the organization; see <a href="/features/school-settings/alerts-and-reports">Alerts and reports settings</a>.
 
-### Alert Types
+An alert stays open and up to date as long as the student keeps meeting the criteria. If a warning-level student later crosses the critical thresholds, the same alert escalates to critical rather than creating a duplicate. If the student&apos;s attendance improves enough to fall below both thresholds, the alert resolves automatically on the next run.
 
-| Type | Icon | Threshold | Priority |
-|------|------|-----------|----------|
-| **Critical** | Red badge | 5+ consecutive absences OR &gt;20% absence rate | Immediate action required |
-| **Warning** | Yellow badge | 3+ consecutive absences | Close monitoring needed |
+<Note>
+Alerts also regenerate after a manual run. An administrator can trigger this from the alerts page, for example right after importing attendance data or correcting a past record.
+</Note>
 
-### Alert Information
+## Alert lifecycle
 
-Each alert includes:
+Each alert moves through one status at a time:
 
-- **Student name** and basic information
-- **Learning centre** assignment
-- **Grade level**
-- **Consecutive absence count**
-- **30-day absence rate** (percentage)
-- **List of absence dates**
-- **Created timestamp**
+| Status | Meaning |
+|--------|---------|
+| Open | Newly created or still active; needs review |
+| Acknowledged | Staff reviewed the alert and recorded what they did about it |
+| Dismissed | Staff reviewed the alert and closed it without an intervention, with a reason on file |
+| Resolved | The student no longer meets either threshold; closed automatically |
 
----
+### Acknowledging an alert
 
-## Viewing Alerts
-
-### Access the Alerts Panel
-
-1. Navigate to **Attendance** in the sidebar
-2. Click **Alerts** submenu
-3. View the alerts dashboard
-
-### Alert Dashboard Overview
-
-**Summary Cards:**
-- **Total Alerts:** All active (unacknowledged) alerts
-- **Critical:** Count of critical severity alerts
-- **Warning:** Count of warning severity alerts
-- **Acknowledged Today:** Alerts addressed today
-
-**Alert List:**
-- Sorted by severity (critical first), then by date (newest first)
-- Each alert shows student details and metrics
-- Quick actions: Acknowledge, View Details
-
-### Filtering Alerts
-
-**By Alert Type:**
-- All alerts
-- Critical only
-- Warning only
-
-**By Learning Centre:**
-- All centres (admin view)
-- Specific centre (dropdown selection)
-
-**By Status:**
-- Active (unacknowledged) - default view
-- Acknowledged (toggle to include)
-
----
-
-## Alert Cards
-
-Each alert displays as a card with:
-
-### Header Section
-- Student name (bold)
-- Alert type badge (Critical/Warning)
-- Learning centre name
-- Grade level
-
-### Metrics Section
-- **Consecutive Absences:** "5 consecutive days absent"
-- **30-Day Rate:** "22% absence rate in last 30 days"
-
-### Absence Dates
-- List of specific dates the student was absent
-- Helps identify patterns (e.g., always Mondays)
-
-### Actions
-- **Acknowledge:** Mark alert as addressed
-- **View Details:** See full student attendance history
-
----
-
-## Acknowledging Alerts
-
-When you&apos;ve taken action on an alert, acknowledge it to track your response.
-
-### Acknowledgment Process
+Acknowledging records that you took action. Zion requires intervention notes before it will accept the acknowledgment, so an alert cannot be closed silently.
 
 <Steps>
-  <Step title="Click Acknowledge Button">
-    On the alert card, click "Acknowledge" to open the dialog
+  <Step title="Open the alert">
+    On the alert card, select Acknowledge.
   </Step>
-  <Step title="Document Intervention">
-    Enter notes about the action taken:
-    - Parent contact made
-    - Meeting scheduled
-    - Letter sent
-    - Referral made
+  <Step title="Enter intervention notes">
+    Describe what you did: who you contacted, what was discussed, and any follow-up commitment. The field cannot be left empty.
   </Step>
   <Step title="Submit">
-    Click "Submit" to acknowledge the alert
+    Zion records your user ID, a timestamp, and your notes, then moves the alert to acknowledged.
   </Step>
 </Steps>
 
-### What Gets Recorded
+Example intervention note:
 
-When you acknowledge an alert:
-- Your user ID is recorded
-- Timestamp is captured
-- Your intervention notes are saved
-- Alert moves to "acknowledged" status
-
-### Intervention Note Examples
-
-**For Parent Contact:**
 ```
 Called mother on 12/20. Discussed absences. Family going through
 relocation. Student to return after break. Follow-up scheduled
 for January 6th.
 ```
 
-**For Warning Alert:**
-```
-Spoke with student. Minor illness last week. Back to full
-attendance. Will monitor for next 2 weeks.
-```
+### Dismissing an alert
 
-**For Ongoing Issue:**
-```
-Third contact attempt. Left voicemail. Sending letter home with
-sibling today. Principal notified.
-```
+Dismissing closes an alert as a false alarm or a case that does not need an intervention. Zion requires a reason of 1 to 500 characters before it will accept the dismissal.
 
----
+<Steps>
+  <Step title="Open the alert">
+    On the alert card, select Dismiss.
+  </Step>
+  <Step title="Enter a reason">
+    State why the alert does not need action, for example a data-entry correction already made.
+  </Step>
+  <Step title="Submit">
+    Zion records the reason and moves the alert to dismissed.
+  </Step>
+</Steps>
 
-## Alert Settings
+<Warning>
+Both acknowledging and dismissing are written to the audit trail with your user ID, a timestamp, and the note or reason you entered. See <a href="/features/audit/corrections-and-notifications">Corrections and notifications audit</a>.
+</Warning>
 
-Administrators can configure alert thresholds for their organization.
+### Who can act on an alert
 
-### Access Settings
+Administrators can acknowledge or dismiss any alert in the organization. Supervisors can act only on alerts for students in their assigned learning centres.
 
-1. Navigate to **Attendance → Alerts**
-2. Click the **Settings** (gear) icon
-3. Modify thresholds as needed
+## Alert digest
 
-### Configurable Thresholds
-
-| Setting | Default | Description |
-|---------|---------|-------------|
-| **Consecutive Warning** | 3 days | Days absent in a row to trigger warning |
-| **Consecutive Critical** | 5 days | Days absent in a row to trigger critical |
-| **Rate Critical** | 20% | 30-day absence rate to trigger critical |
-| **Email Digest** | Enabled | Send daily email summary to admins |
-
-### Email Digest
-
-When enabled, administrators receive a daily email at 8:00 AM containing:
-- Count of new alerts since last digest
-- List of students with critical alerts
-- Quick link to view alerts in Zion
-
-<Note>
-**Email Recipients:** Only users with the Administrator role receive the digest email. Supervisors can view alerts in the app but don&apos;t receive emails.
-</Note>
-
----
-
-## Manual Alert Generation
-
-While alerts generate automatically each morning, you can trigger generation manually.
-
-### When to Generate Manually
-
-- After importing new attendance data
-- When investigating a specific student
-- Before a parent meeting
-- After significant data corrections
-
-### Generate Alerts
-
-1. Navigate to **Attendance → Alerts**
-2. Click **Generate Alerts** button
-3. System processes all active students
-4. New alerts appear in the list
-5. Summary shows: students analyzed, alerts created
-
----
-
-## Best Practices
-
-### Daily Review
-
-- Check alerts panel each morning (takes &lt;2 minutes)
-- Prioritize critical alerts for same-day action
-- Acknowledge alerts after taking action
-
-### Response Timeline
-
-| Alert Type | Response Timeline | Recommended Action |
-|------------|-------------------|-------------------|
-| **Critical** | Within 24 hours | Phone call to parent, possible home visit |
-| **Warning** | Within 48 hours | Note to parent, conversation with student |
-
-### Documentation
-
-- Always document your intervention in the notes
-- Include date of contact and method
-- Note any follow-up commitments
-- Record outcomes of conversations
-
-### Patterns to Watch
-
-- **Monday absences:** May indicate weekend issues
-- **Friday absences:** May indicate early weekend starts
-- **Post-holiday absences:** May indicate transition difficulties
-- **Consistent days:** May indicate schedule conflicts
-
----
-
-## Supervisor vs Administrator View
-
-### Administrators See:
-- All alerts across all learning centres
-- Alert settings configuration
-- Email digest controls
-- Generate alerts button
-- School-wide statistics
-
-### Supervisors See:
-- Only alerts for students in their assigned centres
-- Cannot modify alert settings
-- Cannot generate alerts manually
-- Cannot change email digest settings
-
----
-
-## Troubleshooting
-
-### No Alerts Appearing
-
-**Possible Causes:**
-- No students meet threshold criteria
-- Filters are hiding alerts
-- Alerts were already acknowledged
-
-**Solution:**
-- Check filter settings
-- Toggle "Include Acknowledged" to see all alerts
-- Click Generate Alerts to refresh
-
-### Alert for Wrong Centre
-
-**Cause:** Student&apos;s centre assignment may have changed.
-
-**Solution:**
-- Alert is based on centre at time of generation
-- Check student&apos;s current centre assignment
-- New alerts will use current centre
-
-### Email Digest Not Received
-
-**Possible Causes:**
-- Email digest is disabled
-- Email in spam folder
-- Not an administrator role
-
-**Solution:**
-- Check alert settings for email digest toggle
-- Check spam/junk folder
-- Verify you have administrator role
-
----
-
-## Related Guides
+When an alert fires, Zion dispatches an attendance notification, both in-app and by email, to organization administrators and to any supervisor or monitor whose assigned centre includes the affected student. A separate scheduled digest delivers a summary of these alerts by email.
 
 <CardGroup cols={2}>
-  <Card title="Attendance Overview" href="/features/attendance/overview" icon="calendar-check">
-    Complete overview of the attendance system
+  <Card title="Attendance overview" href="/features/attendance/overview" icon="calendar-check">
+    How daily attendance marking and the rest of the attendance module fit together
   </Card>
-  <Card title="Marking Attendance" href="/features/attendance/marking" icon="check">
-    Daily attendance marking workflow
+  <Card title="Attendance reports" href="/features/attendance/reports" icon="file-lines">
+    Generate and export attendance reports, including chronic-absence lists
   </Card>
-  <Card title="Attendance Reports" href="/features/attendance/reports" icon="file-chart-line">
-    Generating attendance reports
+  <Card title="Attendance trends" href="/features/attendance/trends" icon="chart-line">
+    Review attendance rate trends by centre and grade level
   </Card>
-  <Card title="Attendance Trends" href="/features/attendance/trends" icon="chart-line">
-    Analyzing attendance patterns over time
+  <Card title="Alerts and reports settings" href="/features/school-settings/alerts-and-reports" icon="sliders">
+    Change the consecutive-absence and rate thresholds for your organization
   </Card>
 </CardGroup>

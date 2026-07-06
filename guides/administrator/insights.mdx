@@ -1,412 +1,129 @@
 ---
-title: Administrator Insights Guide
-description: Complete guide for administrators using AI-powered insights in Zion
-icon: "user-shield"
+title: Administrator guide: analytics and insights
+description: How administrators use trends, subject and centre breakdowns, predictions, and pattern insights to make decisions
+icon: "chart-line"
 ---
 
-# Administrator Insights Guide
+Zion&apos;s analytics suite gives administrators four connected views of school performance: time-series trends, subject and centre breakdowns, termly-goal predictions, and pattern insights. Administrators see data across the whole organization. Supervisors see the same tools scoped to their assigned centre or centres. This guide covers how to read each view and turn a finding into an action.
 
-As an administrator, Zion&apos;s Insights feature helps you identify patterns and trends across your school that might otherwise go unnoticed. This guide covers how to use insights effectively for data-driven decision making.
+## Where to find analytics
 
-## Your Insights Responsibilities
+Navigate to **Analytics** in the sidebar to reach the analytics index, which links out to Trends, Subjects, Centres, Predictions, and Insights, plus a student picker for drilling into an individual record. The dashboard also embeds a small insights widget showing your top current insights, with a link through to the full Insights page.
 
-### Weekly (10 minutes)
+<Note>
+Pattern Insights is administrator-only. Supervisors can use Trends and Predictions for their own centres, but the Insights page is not part of their view.
+</Note>
 
-- Review top insights on dashboard
-- Investigate high-relevance patterns
-- Dismiss addressed insights
+## Trends
 
-### Monthly (20 minutes)
+The Trends view charts goal-achievement over time for a student, subject, or centre. Pick a window of 7, 30, 60, or 90 days, or the current term, and the chart updates accordingly.
 
-- Analyze insight patterns over time
-- Generate fresh insights manually
-- Share findings with leadership
+From a student&apos;s trend detail page you can also see:
 
----
+- Consecutive-misses highlighted directly on the chart
+- A subject-level breakdown for that student
+- A comparison against their centre&apos;s average
+- An intervention notes panel
+- A printable Student Progress Report
 
-## Accessing Insights
+Use trends to confirm whether a pattern flagged elsewhere (a low centre score, a flagged insight) is showing up in the raw achievement data over time, not just in a single snapshot.
 
-### Dashboard Widget
+## Subject and centre breakdowns
 
-The administrator dashboard shows top 3 insights:
+### Subjects
 
-1. Log into Zion
-2. Navigate to **Dashboard**
-3. See **Latest Insights** widget
-4. Click any insight for details
-5. Click **View All** for complete list
+The subject view shows goal-achievement by subject, a grade-band by subject matrix, a PACE-level completion-rate table, and a radar overview. Filter by date range (7 days, 30 days, or current term), grade band (1 to 4, 5 to 8, 9 to 12, or all), and subject. Export the filtered view as CSV or PDF.
 
-### Full Insights Page
+### Centres
 
-1. Navigate to **Analytics → Insights**
-2. View all active insights
-3. Filter and sort as needed
+The centre view compares learning centres on goal achievement: mean and standard deviation across centres, outliers highlighted, a comparison chart, a top-5 and bottom-5 trend chart, and a full metrics table. Export as CSV.
 
----
+<Tip>
+Use the subject and centre breakdowns together. A subject that is struggling school-wide reads differently than the same subject struggling in one centre only, and the fix looks different too.
+</Tip>
 
-## Understanding the Dashboard
+## Predictions
 
-### Summary Cards
+Predictions project whether each student is on track to meet their termly PACE-count goal, based on their completion velocity so far this term. Every student and subject gets one of three statuses:
 
-| Card | Description |
-|------|-------------|
-| **Total Active** | All current insights |
-| **High Confidence** | Statistically reliable |
-| **Medium Confidence** | Moderate reliability |
-| **Avg Relevance** | Mean relevance score |
+| Status | What it means |
+|--------|----------------|
+| **On track** | Projected PACE count meets or exceeds the termly target |
+| **At risk** | Projected count is close to target, or progress is falling behind the expected pace for this point in the term |
+| **Off track** | Projected count falls well short of the termly target |
 
-### Insight Cards
+The Predictions page shows a donut summary of on-track, at-risk, and off-track students, plus searchable and filterable student cards (by centre, status, and subject). Click a card to open a detail panel for that student and subject. Export the current at-risk and off-track list as CSV from **Export At-Risk Students**.
 
-Each insight shows:
+<Note>
+Predictions use the same calculation the parent and student &quot;My Progress&quot; views use, so a parent or student sees the same status you do for their record. It is read-only for them.
+</Note>
 
-- **Type Icon:** Visual category indicator
-- **Title:** Brief finding description
-- **Description:** Detailed explanation
-- **Confidence Meter:** Visual reliability
-- **Relevance Score:** 0-100 importance
-- **Created Date:** When generated
+Early in the term, a student with zero completions is not automatically marked off track. Zion checks how far the term has progressed: less than a quarter of the term elapsed still counts as on track, less than half counts as at risk, and later than that counts as off track.
 
----
+## Pattern insights
 
-## Insight Types
+Pattern Insights runs six statistical detectors across the school&apos;s goal data and surfaces findings you might not notice by scanning trends manually.
 
-### Day-of-Week Patterns
+| Type | What it looks for |
+|------|--------------------|
+| **Day-of-week pattern** | A weekday with achievement noticeably above or below the weekly average |
+| **Subject correlation** | Two subjects where students&apos; performance moves together |
+| **Centre performance** | A centre performing noticeably above or below the school average |
+| **Seasonal trend** | A meaningful shift in achievement between the first and second half of the term |
+| **Student velocity** | A student (or a meaningful share of students) accelerating or decelerating over recent weeks |
+| **Subject difficulty** | A PACE with a low completion rate across many attempts |
 
-**What to Look For:**
-- Days with significantly lower performance
-- Consistent weekly patterns
-
-**Example Actions:**
-- Adjust Monday goals lower
-- Plan engaging Friday activities
-- Investigate specific day challenges
-
-### Subject Correlations
-
-**What to Look For:**
-- Subjects that struggle together
-- Shared learning challenges
-
-**Example Actions:**
-- Identify prerequisite gaps
-- Create paired tutoring programs
-- Review curriculum sequencing
-
-### Centre Performance
-
-**What to Look For:**
-- Centres above or below average
-- Outlier performance patterns
-
-**Example Actions:**
-- Support struggling centres
-- Document high-performer practices
-- Reallocate resources
-
-### Seasonal Trends
-
-**What to Look For:**
-- Term-long performance changes
-- Fatigue or momentum patterns
-
-**Example Actions:**
-- Address mid-term fatigue
-- Celebrate term-end momentum
-- Adjust term workloads
-
-### Student Velocity
-
-**What to Look For:**
-- Students accelerating or declining
-- Momentum shifts
-
-**Example Actions:**
-- Celebrate improving students
-- Intervene with declining students
-- Identify what&apos;s driving changes
-
-### Subject Difficulty
-
-**What to Look For:**
-- PACEs with low completion rates
-- Content that consistently challenges
-
-**Example Actions:**
-- Provide additional resources
-- Adjust teaching approaches
-- Consider prerequisite review
-
----
-
-## Working with Insights
-
-### Viewing Details
-
-1. Click **View Details** on any insight
-2. Side drawer opens with:
-   - Full description
-   - Affected students list
-   - Student metrics
-   - Export option
-
-### Analyzing Affected Students
-
-The detail view shows students involved:
-
-| Column | Description |
-|--------|-------------|
-| **Name** | Student name |
-| **Achievement Rate** | Their completion % |
-| **Goals Met** | Completed goals |
-| **Total Goals** | Goals attempted |
-
-Use this to:
-- Identify students for intervention
-- Prioritize by severity
-- Plan targeted support
-
-### Dismissing Insights
-
-When you&apos;ve addressed an insight:
-
-1. Click **Dismiss** on the card
-2. Insight is hidden from view
-3. Won&apos;t reappear until new data
-
-<Warning>
-**Permanent Dismissal:** Dismissed insights don&apos;t return. Only dismiss after taking action or determining it&apos;s not relevant.
-</Warning>
-
----
-
-## Generating Insights
-
-### Automatic Generation
-
-Insights generate automatically:
-- Weekly refresh cycle
-- Old insights replaced
-- Fresh analysis each time
-
-### Manual Generation
-
-Trigger immediate analysis:
-
-1. Click **Generate Insights** button
-2. System analyzes current data
-3. New insights appear in minutes
-4. Old non-dismissed insights replaced
-
-**When to Generate Manually:**
-- After significant data changes
-- Before important meetings
-- When investigating specific issues
-
----
-
-## Filtering and Sorting
-
-### By Confidence
-
-Filter to reliability level:
-- **All:** Show everything
-- **High:** Most reliable
-- **Medium:** Moderate reliability
-- **Low:** Interpret with caution
-
-### By Type
-
-Focus on specific patterns:
-- Day-of-Week
-- Subject Correlation
-- Centre Performance
-- Seasonal Trend
-- Student Velocity
-- Subject Difficulty
-
-### Default Sort
-
-Insights sort by relevance score (highest first).
-
----
-
-## Confidence Levels
-
-### Understanding Confidence
-
-| Level | Meaning | Sample Size |
-|-------|---------|-------------|
-| **High** | Very reliable | Large samples |
-| **Medium** | Reliable | Moderate samples |
-| **Low** | Use caution | Small samples |
-
-### Confidence Meter
-
-- **Green (100%):** High confidence
-- **Blue (66%):** Medium confidence
-- **Gray (33%):** Low confidence
-
-### Acting on Low Confidence
-
-Low confidence doesn&apos;t mean wrong:
-- Consider the finding carefully
-- Look for supporting evidence
-- Don&apos;t dismiss automatically
-- May become high confidence with more data
-
----
-
-## Taking Action
-
-### Action Workflow
+Each insight carries a relevance score from 0 to 100 and a confidence level of high, medium, or low. Confidence reflects sample size: a finding based on a handful of goals is flagged low confidence even if the pattern looks strong, while a finding backed by dozens or hundreds of goals is flagged high confidence. Low confidence does not mean the finding is wrong. Treat it as worth watching rather than acting on immediately.
 
 <Steps>
-  <Step title="Review the Insight">
-    Read title, description, and context
+  <Step title="Review the insight">
+    Read the title and description to understand what was detected.
   </Step>
-  <Step title="Check Confidence">
-    Consider reliability before major actions
+  <Step title="Check confidence">
+    Weigh the confidence level before committing to a major change.
   </Step>
-  <Step title="View Affected Students">
-    See who is impacted
+  <Step title="View affected students">
+    Open the insight&apos;s detail drawer to see which students are involved, with their achievement rate and goals completed against goals attempted.
   </Step>
-  <Step title="Plan Intervention">
-    Develop specific action plan
+  <Step title="Plan and take action">
+    Decide on a concrete step: a curriculum adjustment, a targeted intervention, a conversation with a centre supervisor.
   </Step>
-  <Step title="Implement">
-    Take concrete steps
-  </Step>
-  <Step title="Monitor Results">
-    Track improvement over time
-  </Step>
-  <Step title="Dismiss When Resolved">
-    Remove from view when addressed
+  <Step title="Dismiss when resolved">
+    Dismiss the insight once you have acted on it or decided it does not apply.
   </Step>
 </Steps>
 
-### Documenting Actions
+<Warning>
+Dismissing an insight is permanent. It will not reappear even if the underlying pattern continues, so only dismiss after you have acted on it or confirmed it is not relevant.
+</Warning>
 
-Keep records of:
-- Which insights you acted on
-- What actions you took
-- Results observed
-- Lessons learned
+### Generating and refreshing
 
----
+Insights regenerate automatically on a weekly cycle. You can also click **Generate Insights** to run a fresh analysis on demand, useful after a batch of new data or before a leadership meeting. Generating replaces the current non-dismissed set with a new one.
 
-## Best Practices
+Insight generation, dismissal, and export require an active subscription on your organization.
 
-### Regular Review
+### Filtering and export
 
-- Check insights weekly at minimum
-- Don&apos;t let insights accumulate
-- Prioritize by relevance score
+Filter insights by confidence (all, high, medium, low) or by type (day-of-week, subject correlation, centre performance, seasonal trend, student velocity, subject difficulty). Insights sort by relevance score by default. Export a PDF of the full insight list, or export a single insight, from the Insights page.
 
-### Prioritization
+## Building insight history
 
-1. **High relevance + High confidence:** Act immediately
-2. **High relevance + Medium confidence:** Investigate more
-3. **Medium relevance:** Address when time permits
-4. **Low relevance:** Consider dismissing
+Pattern detection needs enough goal data to find a real signal. A school that has just started using Zion will see few or no insights at first. As daily goal data accumulates over several weeks, more patterns become detectable. Consistent daily goal marking across centres is what feeds this.
 
-### Team Communication
-
-- Share relevant insights in staff meetings
-- Assign action items to appropriate staff
-- Follow up on intervention results
-- Celebrate pattern improvements
-
-### Building Insight History
-
-- Insights improve with more data
-- New schools see limited insights initially
-- Full intelligence emerges after 4-6 weeks
-- Consistent data entry is key
-
----
-
-## Analytics Integration
-
-### Related Analytics
-
-Insights connect to broader analytics:
-
-- **Trends:** Time-series context
-- **Subjects:** Subject-level detail
-- **Centres:** Centre comparisons
-- **Students:** Individual analysis
-
-### Cross-Referencing
-
-When investigating an insight:
-1. Check related analytics views
-2. Look at underlying data
-3. Verify pattern exists in raw data
-4. Understand full context
-
----
-
-## Troubleshooting
-
-### No Insights Appearing
-
-**Possible Causes:**
-- Not enough data yet
-- All insights dismissed
-- No patterns detected
-
-**Solution:**
-- Wait for more data accumulation
-- Check dismissed insights
-- Generate manually
-
-### Insight Seems Wrong
-
-**Steps:**
-1. Check confidence level
-2. Verify underlying data
-3. Consider sample size
-4. May be valid but unexpected
-
-### Cannot Dismiss
-
-**Check:**
-- You have administrator access
-- Not a system-protected insight
-- Try refreshing the page
-
----
-
-## Exporting Insights
-
-### Export Options
-
-From insights page:
-- **Export Report:** PDF summary
-- **Export Data:** CSV for analysis
-
-### Report Contents
-
-- All active insights
-- Confidence and relevance scores
-- Summary statistics
-- Generation timestamp
-
----
-
-## Related Guides
+## Related pages
 
 <CardGroup cols={2}>
-  <Card title="Insights Overview" href="/features/insights/overview" icon="lightbulb">
-    Complete insights feature overview
+  <Card title="Insights overview" href="/features/insights/overview" icon="lightbulb">
+    What pattern insights are and how they are generated
   </Card>
-  <Card title="Insight Types" href="/features/insights/types" icon="shapes">
-    Detailed type explanations
+  <Card title="Insight types" href="/features/insights/types" icon="shapes">
+    Detail on each of the six detectors
   </Card>
-  <Card title="Analytics Dashboard" href="/features/insights/analytics" icon="chart-line">
-    Broader analytics features
+  <Card title="Analytics" href="/features/insights/analytics" icon="chart-line">
+    Trends, subject, and centre breakdowns in depth
   </Card>
-  <Card title="Goal Check Reports" href="/features/goal-check/reports" icon="file-chart-line">
-    Related reporting features
+  <Card title="Predictions" href="/features/insights/predictions" icon="chart-pie">
+    How termly-goal predictions are calculated
   </Card>
 </CardGroup>

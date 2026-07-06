@@ -1,370 +1,146 @@
 ---
-title: Moderation Queue
-description: Managing the test score moderation workflow for Grades 8-12
+title: The three-stage moderation pipeline
+description: How internal moderation, external (ACE) moderation, and finalization protect graded PACE scores for Grade 8 and above
 icon: "clipboard-check"
 ---
 
-# Moderation Queue
+Graded test scores (PACE tests and final tests) for students at or above the school&apos;s moderation floor, Grade 8 by default, pass through a three-stage moderation pipeline before they count toward averages, progression, and report cards. Self-tests are readiness checks and never enter this pipeline; they finalize the moment a score is entered.
 
-For Grades 8-12, test scores require administrator moderation before finalization. This guide covers the moderation workflow, queue management, and best practices for timely processing.
+Administrators use this pipeline by default. A school can delegate stage 1 or stage 2 moderation to supervisors or monitors. This page covers the three stages, the moderation queue, SLA tracking and alerts, and how moderator roles are configured.
 
-## Why Moderation?
+## The three stages
 
-The moderation process ensures:
-
-- **Accuracy:** Review catches data entry errors
-- **Accountability:** Two-person verification for senior grades
-- **Compliance:** Meets ACE curriculum audit requirements
-- **Quality Control:** Maintains grading standards
-
----
-
-## Accessing the Moderation Queue
-
-1. Navigate to **Grading** in the sidebar
-2. Click **Moderation** submenu
-3. View the moderation queue dashboard
+<Steps>
+  <Step title="Stage 1: entered, pending moderation">
+    Staff enter a score at Grading &gt; Score Entry. If the student is at or above the moderation floor and the test type is graded (pace_test or final_test), the score is stamped `stage_1_pending` and enters the internal moderation queue.
+  </Step>
+  <Step title="Stage 2: internal moderation">
+    A moderator reviews the score at Grading &gt; Moderation Queue and either approves it (`stage_2_internal_approved`) or rejects it back to the original grader (`stage_1_rejected`) with a mandatory reason.
+  </Step>
+  <Step title="Stage 3: external (ACE) moderation">
+    A second moderator reviews internally-approved scores at Grading &gt; External Moderation and either finalizes the score (`stage_3_external_approved`, the row is locked) or flags it for ACE accreditation-body review (`flagged_for_ace`).
+  </Step>
+</Steps>
 
 <Note>
-**Administrator Access Only:** The moderation queue is only visible to users with Administrator role. Supervisors cannot access this view.
+Separation of duties applies at every stage. A moderator cannot approve, reject, or finalize a score they entered themselves, and the stage-2 moderator cannot also perform stage-3 external moderation on the same score.
 </Note>
 
----
+## Stage 1: internal moderation queue
 
-## The Moderation Dashboard
+Navigate to **Grading &gt; Moderation Queue**. The queue lists every score in `stage_1_pending`, filterable by learning centre, subject, grade level, and SLA status. Each row shows the student, PACE, entered score, pass or fail indicator, who entered it, entry time, and hours pending.
 
-### Queue Statistics
-
-**Summary Cards:**
-- **Pending:** Total scores awaiting moderation
-- **Approaching SLA:** Scores pending 36-48 hours
-- **Overdue:** Scores pending &gt;48 hours
-- **Processed Today:** Scores you&apos;ve moderated today
-
-### Queue Table
-
-Each pending score shows:
-
-| Column | Description |
-|--------|-------------|
-| **Student** | Name and grade level |
-| **PACE** | Subject and PACE number |
-| **Score** | Entered score value |
-| **Pass/Fail** | Visual indicator |
-| **Entered By** | Supervisor who entered |
-| **Entry Time** | When score was submitted |
-| **Hours Pending** | Time since entry |
-| **SLA Status** | Color-coded time indicator |
-
-### SLA Status Colors
-
-| Color | Status | Time Pending | Action |
-|-------|--------|--------------|--------|
-| **Green** | Within SLA | &lt;36 hours | Standard processing |
-| **Yellow** | Approaching | 36-48 hours | Prioritize |
-| **Red** | Overdue | &gt;48 hours | Urgent attention |
-| **Dark Red** | Escalated | &gt;72 hours | Immediate action |
-
----
-
-## Filtering the Queue
-
-### By Learning Centre
-
-- Select specific centre from dropdown
-- Or "All Centres" for complete view
-
-### By Subject
-
-- Filter to specific subject (Math, English, etc.)
-- Useful for subject-focused review
-
-### By Grade Level
-
-- Filter by student grade (8, 9, 10, 11, 12)
-- Prioritize by grade importance
-
-### By SLA Status
-
-- All
-- Within SLA only
-- Approaching only
-- Overdue only
-
----
-
-## Moderation Actions
-
-For each pending score, you have three options:
+For each pending score, a moderator has two actions:
 
 ### Approve
 
-Accept the score as entered.
-
-<Steps>
-  <Step title="Click Approve Button">
-    Opens confirmation dialog
-  </Step>
-  <Step title="Add Optional Notes">
-    Record any relevant comments
-  </Step>
-  <Step title="Confirm Approval">
-    Score moves to finalized status
-  </Step>
-</Steps>
-
-**When to Approve:**
-- Score appears accurate
-- Entry looks legitimate
-- No concerns with the value
-
-**What Happens:**
-- Score status changes to `stage_2_internal_approved`
-- Score is finalized for grade calculations
-- Audit log records your approval
-
-### Adjust
-
-Change the score value during moderation.
-
-<Steps>
-  <Step title="Click Adjust Button">
-    Opens adjustment form
-  </Step>
-  <Step title="Enter New Score">
-    Type the corrected score (0-100)
-  </Step>
-  <Step title="Provide Reason">
-    Mandatory explanation (min 10 characters)
-  </Step>
-  <Step title="Confirm Adjustment">
-    Score updates and finalizes
-  </Step>
-</Steps>
-
-**When to Adjust:**
-- Obvious data entry error (e.g., 89 entered as 98)
-- Calculation error on original test
-- Administrator has verified correct score
-
-**What Happens:**
-- Original score preserved in audit log
-- New score applied and finalized
-- `score_adjusted = true` flag set
-- Reason recorded in audit trail
-
-<Warning>
-**Adjustment Reason Required:** You must provide a reason of at least 10 characters explaining why you adjusted the score. This is for audit compliance.
-</Warning>
+Approving accepts the score as entered. The score moves to `stage_2_internal_approved` and a `moderation_approved` entry is written to the audit log. A moderator can add an optional note.
 
 ### Reject
 
-Send the score back to the supervisor for re-entry.
+Rejecting sends the score back to the original grader. This requires a reason of at least 10 characters. The score moves to `stage_1_rejected`, and the original grader (or another staff member at that centre) can resubmit a corrected score from the Rejected Scores section of Score Entry. Resubmission restamps the score back to `stage_1_pending`, restarts the SLA clock, and logs a `score_adjusted` audit entry.
+
+<Warning>
+An adjustment or rejection reason under 10 characters is rejected by the form. This is enforced for audit compliance, not a soft suggestion.
+</Warning>
+
+<Tip>
+Adjusting a score value in place (rather than rejecting it) is also available during moderation. The original score is preserved in the audit log, the new value is applied, and a `score_adjusted` flag is set on the row.
+</Tip>
+
+## Stage 2 to Stage 3: external moderation
+
+Navigate to **Grading &gt; External Moderation** to review scores already approved internally. This is where the final ACE-facing decision is made.
+
+| Action | Result |
+|---|---|
+| **Approve and finalize** | Score moves to `stage_3_external_approved`, `is_locked` is set to true, and a `grade_finalized` audit entry is written. The score now counts toward averages, progression, and report cards. |
+| **Flag for ACE review** | Score moves to `flagged_for_ace` and is held out of all finalized-score calculations until the accreditation review is resolved. |
+
+A locked score cannot be changed through normal moderation actions once it reaches `stage_3_external_approved`. Administrators and supervisors have a separate, documented exception, `correctModeratedScore`, to correct an already-locked score when needed; that correction is written to the audit trail like any other change. See [Audit Trail](/features/grading/audit-trail).
+
+## Delegated and configurable moderator roles
+
+By default, only the administrator role can perform internal or external moderation. A school can delegate either stage independently:
+
+- **internal_moderator_role**: can be set to supervisor or monitor to let that role perform stage 1 approvals and rejections.
+- **external_moderator_role**: can be set to supervisor or monitor to let that role perform stage 3 finalization and ACE flagging.
+
+Both are configured from the **Moderation Role Settings** card on the Moderation Queue page, administrator-only. Neither can be delegated to student or parent roles.
+
+A delegated moderator&apos;s authority is scoped to the learning centres they are assigned to. They cannot moderate scores at a centre they are not assigned to, and if an administrator removes the delegation, it takes effect immediately on the next queue read, not on a cache delay.
+
+<Note>
+A staff member can also gain centre-scoped moderation authority through an individual `grading:moderate` permission grant, independent of the internal_moderator_role or external_moderator_role setting. See [Roles and Permissions](/features/organization/roles-and-permissions).
+</Note>
+
+## Moderation queue management
+
+### Reassigning a stuck moderation
+
+An administrator can reassign a pending score to a different active staff member (administrator, supervisor, or monitor) from the queue. Reassignment updates the assigned moderator, writes a `moderation_reassigned` audit entry, and notifies the newly assigned moderator.
+
+### Moderator metrics and history
+
+The moderation queue page shows per-moderator performance metrics and a moderation history. Any moderator can view their own history; administrators can view any moderator&apos;s history.
+
+### Filtering and prioritizing
+
+Filter the queue by learning centre, subject, grade level, or SLA status to divide work across multiple moderators, or to focus on the oldest items first.
+
+## SLA tracking and moderation alerts
+
+Each moderation stage has its own SLA clock, and the internal and external windows are different lengths.
+
+**Internal moderation (stage 1 to stage 2)**, clock starts at score entry:
+
+| Status | Time pending |
+|---|---|
+| Within SLA | &lt;36 hours |
+| Approaching | 36 to 48 hours |
+| Overdue | 48 to 72 hours |
+| Escalated | &gt;=72 hours |
+
+**External moderation (stage 2 to stage 3)**, clock starts when internal moderation approves the score:
+
+| Status | Time pending |
+|---|---|
+| Within SLA | &lt;120 hours |
+| Approaching | 120 to 168 hours |
+| Overdue | 168 to 192 hours |
+| Escalated | &gt;=192 hours |
+
+These thresholds are fixed in the system and are not configurable per school.
+
+### Moderation Alerts page
+
+Navigate to **Grading &gt; Alerts** to see active alerts grouped by escalated, overdue, and warning severity, each showing the student, score, and hours pending. An **Acknowledged** tab holds the alert history.
 
 <Steps>
-  <Step title="Click Reject Button">
-    Opens rejection form
+  <Step title="Open an alert">
+    Review the student, score, and how long it has been pending.
   </Step>
-  <Step title="Provide Reason">
-    Mandatory explanation (min 10 characters)
+  <Step title="Acknowledge it">
+    Click Acknowledge if you have seen the item but cannot process it immediately. The alert moves to the acknowledged list but the underlying score still needs to be moderated.
   </Step>
-  <Step title="Confirm Rejection">
-    Score returns to supervisor
+  <Step title="Process the score">
+    Go to the relevant moderation queue (internal or external) to approve, reject, or finalize it.
   </Step>
 </Steps>
 
-**When to Reject:**
-- Wrong student selected
-- Wrong PACE selected
-- Score cannot be verified
-- Suspicious entry patterns
-
-**What Happens:**
-- Score status changes to `stage_1_rejected`
-- Score appears in supervisor&apos;s rejected list
-- Supervisor must re-enter correct score
-- Original entry preserved in audit log
-
----
-
-## SLA Tracking
-
-### Understanding SLA
-
-**Service Level Agreement (SLA):** Moderation should complete within 48 hours of entry.
-
-**Timeline:**
-- 0-36 hours: Normal processing (green)
-- 36-48 hours: Approaching deadline (yellow)
-- 48-72 hours: Overdue (red)
-- &gt;72 hours: Escalated (dark red)
-
-### Meeting SLA
-
-**Best Practices:**
-1. Check queue at start of each day
-2. Process approaching items first
-3. Clear overdue items immediately
-4. Aim for &lt;24 hour turnaround
-
-### SLA Alerts
-
-When items become overdue, the system:
-- Generates moderation alerts
-- Sends email notifications (if enabled)
-- Highlights items in queue
-- Tracks acknowledgment
-
----
-
-## Moderation Alerts
-
-### Viewing Alerts
-
-1. Navigate to **Grading → Alerts**
-2. See list of overdue moderation items
-3. Each alert shows student, score, and hours pending
-
-### Acknowledging Alerts
-
-When you&apos;ve seen an overdue item but can&apos;t process immediately:
-
-1. Click **Acknowledge** on the alert
-2. Alert moves to acknowledged status
-3. You&apos;ve committed to processing soon
-4. Still appears until moderated
-
-### Alert Types
-
-| Type | Trigger | Priority |
-|------|---------|----------|
-| **Warning** | &gt;36 hours pending | Monitor |
-| **Overdue** | &gt;48 hours pending | Action needed |
-| **Escalated** | &gt;72 hours pending | Urgent |
-
----
-
-## Processing Efficiently
-
-### Batch Processing
-
-For efficiency, process similar items together:
-
-1. Filter by centre or subject
-2. Review all items in that filter
-3. Approve straightforward entries quickly
-4. Flag items needing investigation
-
-### Quick Approve Workflow
-
-For routine approvals:
-
-1. Review score and context
-2. If acceptable, click Approve
-3. Skip notes for routine approvals
-4. Move to next item
-
-### Flagging for Review
-
-If something needs investigation:
-
-1. Note the item details
-2. Move on to other items
-3. Return to investigate later
-4. Don&apos;t let unclear items block queue
-
----
-
-## Moderation Statistics
-
-### Dashboard Metrics
-
-**Pending Count:** Current queue size
-**Average Processing Time:** Hours from entry to moderation
-**Your Moderation Count:** Items you&apos;ve processed today/this week
-**SLA Compliance Rate:** Percentage processed within 48 hours
-
-### Using Statistics
-
-- High pending count = need to allocate more time
-- High average time = process more frequently
-- Low SLA rate = review your schedule
-
----
-
-## Best Practices
-
-### Daily Routine
-
-1. **Morning (9 AM):** Check queue, process approaching items
-2. **Midday (12 PM):** Quick check for new urgent items
-3. **Afternoon (4 PM):** Clear remaining items before end of day
-
-### Quality Checks
-
-- Verify score matches test paper (when needed)
-- Check for patterns suggesting errors
-- Contact supervisor if questions arise
-- Document adjustment reasons clearly
-
-### Delegation
-
-If multiple administrators:
-- Divide by centre or subject
-- Communicate who&apos;s handling what
-- Cover for each other during absences
-- Don&apos;t duplicate effort
-
----
-
-## Troubleshooting
-
-### Queue Not Loading
-
-**Possible Causes:**
-- Network connection issue
-- Session expired
-
-**Solution:**
-- Refresh the page
-- Check internet connection
-- Log out and log back in
-
-### Cannot Process Certain Items
-
-**Possible Causes:**
-- Item already processed by another admin
-- System sync delay
-
-**Solution:**
-- Refresh the queue
-- Item should disappear if already processed
-- Check moderation history
-
-### Supervisor Disputes Rejection
-
-**Process:**
-1. Review the original rejection reason
-2. Check audit trail for context
-3. Discuss with supervisor
-4. Supervisor re-enters if they agree
-5. Escalate to principal if unresolved
-
----
-
-## Related Guides
+## Related pages
 
 <CardGroup cols={2}>
   <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
-    Complete overview of the grading system
+    How scores, thresholds, and the moderation floor fit together
   </Card>
-  <Card title="Test Score Entry" href="/features/grading/score-entry" icon="keyboard">
-    How supervisors enter scores
+  <Card title="Score Entry" href="/features/grading/score-entry" icon="clipboard-check">
+    How staff enter single and batch test scores
   </Card>
-  <Card title="Audit Trail" href="/features/grading/audit-trail" icon="history">
-    Understanding the compliance audit trail
+  <Card title="Retests" href="/features/grading/retests" icon="clipboard-check">
+    Scheduling retests and administrator overrides for failed tests
   </Card>
-  <Card title="Administrator Grading Guide" href="/guides/administrator/grading" icon="user-shield">
-    Complete administrator moderation workflow
+  <Card title="Audit Trail" href="/features/grading/audit-trail" icon="clipboard-check">
+    What gets logged and how to export compliance and accreditation reports
   </Card>
 </CardGroup>

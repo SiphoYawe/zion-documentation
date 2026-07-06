@@ -1,374 +1,88 @@
 ---
-title: Attendance Reports
-description: Generating and understanding attendance reports in Zion
-icon: "file-chart-line"
+title: Attendance reports
+description: Generate, export, and share attendance reports, and read the automated weekly attendance email
+icon: "file-chart-column"
 ---
 
-# Attendance Reports
+Attendance reports summarize marked attendance over a period you choose, with counts, rates, and optional Goal Check correlation. Administrators generate them from **Attendance → Reports**.
 
-Zion provides comprehensive attendance reporting for compliance, analysis, and parent communication. This guide covers report types, generation, and interpretation.
+<Note>
+Supervisors have a dashboard, alerts, and trends view for their assigned centres, but no dedicated reports page was found for that role.
+</Note>
 
-## Report Types
+## Report types
 
-### Daily Report
+| Type | Scope |
+|------|-------|
+| Daily | A single date |
+| Weekly | A selected week |
+| Monthly | A calendar month |
+| Term | A full academic term |
+| Custom | Any start and end date you set |
 
-**Scope:** Single day attendance summary
+All centre or a specific centre is a scoped choice at generation time. Administrators can select a single centre or all centres; supervisors, where they have access to reporting, are limited to their assigned centres.
 
-**Contents:**
-- Date and learning centre
-- Total students, marked count
-- Present/Absent/Late counts
-- Attendance rate percentage
-- Student-by-student breakdown
-- Notes attached to records
-
-**Best For:**
-- Daily record-keeping
-- Parent inquiries about specific days
-- Quick compliance checks
-
-### Weekly Report
-
-**Scope:** 7-day period (Monday-Friday typically)
-
-**Contents:**
-- Week range and centre(s)
-- Daily attendance rates
-- Weekly average attendance rate
-- Day-of-week analysis
-- Chronic absence students (that week)
-- Late arrival patterns
-- Trend compared to previous week
-
-**Best For:**
-- Weekly supervisor meetings
-- Trend identification
-- Staff performance review
-
-### Monthly Report
-
-**Scope:** Full calendar month
-
-**Contents:**
-- Month overview statistics
-- Weekly breakdown within month
-- Centre comparison (admin view)
-- Students with &gt;3 absences
-- Late arrival frequency
-- Month-over-month trend
-- Attendance rate by grade level
-
-**Best For:**
-- Monthly board reports
-- Regulatory compliance
-- Parent communication
-
-### Term Report
-
-**Scope:** Full academic term
-
-**Contents:**
-- Term overview statistics
-- Monthly trends within term
-- Centre performance ranking
-- Chronic absence list (all qualifying students)
-- Grade-level analysis
-- Subject correlation (with Goal Check data)
-- Year-over-year comparison (if data available)
-
-**Best For:**
-- Term-end reviews
-- Academic performance correlation
-- Annual reporting
-
-### Custom Report
-
-**Scope:** User-specified date range
-
-**Contents:**
-- Same comprehensive data as term report
-- Flexible date range (any start/end)
-- All centre or specific centre
-- Optional Goal Check integration
-
-**Best For:**
-- Specific investigations
-- Event impact analysis
-- Custom compliance periods
-
----
-
-## Generating Reports
-
-### Access Reports
-
-1. Navigate to **Attendance** in the sidebar
-2. Click **Reports** submenu
-3. Choose report type from the selector
-
-### Report Configuration
+## Generating a report
 
 <Steps>
-  <Step title="Select Report Type">
-    Choose from Daily, Weekly, Monthly, Term, or Custom
+  <Step title="Open Reports">
+    Go to **Attendance → Reports**.
   </Step>
-  <Step title="Set Date Range">
-    - Daily: Select specific date
-    - Weekly: Select week start date
-    - Monthly: Select month
-    - Term: Select academic term
-    - Custom: Set start and end dates
+  <Step title="Choose a report type">
+    Pick Daily, Weekly, Monthly, Term, or Custom.
   </Step>
-  <Step title="Choose Centre(s)">
-    - Administrators: Select specific centre or "All Centres"
-    - Supervisors: Limited to assigned centres
+  <Step title="Set the date range">
+    For Daily, pick a date. For Weekly, pick a week. For Monthly, pick a month. For Term, pick the academic term. For Custom, set a start and end date.
   </Step>
-  <Step title="Optional: Goal Check Integration">
-    Toggle on to include Goal Check correlation data
+  <Step title="Choose centre scope">
+    Select a specific learning centre or all centres.
   </Step>
-  <Step title="Generate Report">
-    Click "Generate Report" to create the report
+  <Step title="Include Goal Check data (optional)">
+    Toggle on Goal Check correlation if you want attendance compared against Goal Check progress for the same period.
+  </Step>
+  <Step title="Generate">
+    Click Generate Report to build the report.
   </Step>
 </Steps>
 
-### Generation Time
+## What a report contains
 
-| Report Type | Typical Time |
-|-------------|--------------|
-| Daily | &lt;2 seconds |
-| Weekly | &lt;5 seconds |
-| Monthly | 5-10 seconds |
-| Term | 10-30 seconds |
-| Custom (large) | Up to 60 seconds |
+- Total students, present count, absent count, late count
+- Overall attendance rate for the period
+- Centre breakdown, when the report covers more than one centre
+- A chronic-absence student list for the period
+- A late-arrival list
+- Day-of-week statistics
 
----
+<Info>
+Chronic-absence status in a report reflects the thresholds set for [attendance alerts](/features/attendance/alerts). See that page for how consecutive absences and the 30-day absence rate are calculated.
+</Info>
 
-## Report Contents
+## Goal Check correlation
 
-### Overview Section
+When you turn on Goal Check correlation, the generated report includes Goal Check data alongside attendance figures for the same period, letting you compare the two data sets for the students and centres in scope. See [Goal Check reports](/features/goal-check/reports) for what Goal Check data covers on its own.
 
-Every report includes:
+## Exporting and sharing
 
-- **Report Period:** Date range covered
-- **Centre(s) Included:** Which learning centres
-- **Total Students:** Active students in scope
-- **Days Analyzed:** School days in period
+A generated report can be exported as PDF or CSV. Generated reports are stored and appear in report history with links back to their PDF and CSV files, so you can return to a previous report without regenerating it. A report can also be shared by email directly from the report.
 
-### Attendance Statistics
+## Weekly attendance email
 
-**Core Metrics:**
+Separate from reports you generate manually, Zion runs a scheduled job that builds and emails a weekly attendance report automatically. This runs on its own cron schedule and does not require an administrator to open the Reports page.
 
-| Metric | Calculation |
-|--------|-------------|
-| **Attendance Rate** | (Present + Late) / Total Students × 100 |
-| **Present Count** | Students marked as Present |
-| **Absent Count** | Students marked as Absent |
-| **Late Count** | Students marked as Late |
-| **Unmarked** | Students not marked (indicates data gaps) |
-
-### Centre Breakdown
-
-For school-wide reports (admin view):
-
-- Each centre listed with individual metrics
-- Attendance rate per centre
-- Ranking by attendance rate
-- Visual indicators (green/yellow/red)
-
-### Chronic Absence Section
-
-Students meeting chronic criteria:
-
-- Student name and grade
-- Absence count in period
-- Absence rate percentage
-- Last known alert status
-- Centre assignment
-
-### Late Arrival Analysis
-
-Patterns in late arrivals:
-
-- Total late arrivals in period
-- Average arrival time for late students
-- Frequency by day of week
-- Repeat late students
-
-### Day-of-Week Analysis
-
-Performance by weekday:
-
-| Day | Absence Rate | Notes |
-|-----|--------------|-------|
-| Monday | 8.5% | Slightly elevated |
-| Tuesday | 4.2% | Baseline |
-| Wednesday | 4.0% | Baseline |
-| Thursday | 4.3% | Baseline |
-| Friday | 7.8% | End-of-week dip |
-
----
-
-## Goal Check Integration
-
-When enabled, reports include Goal Check correlation:
-
-### What&apos;s Included
-
-- **Attendance vs Goal Completion:** Do students who attend more complete more goals?
-- **Subject Performance by Attendance:** Which subjects suffer most with absences
-- **At-Risk Correlation:** Students with both attendance AND goal issues
-
-### Interpretation
-
-**Positive Correlation Expected:**
-- Higher attendance should correlate with higher goal completion
-- If correlation is weak, investigate other factors
-
-**Actionable Insights:**
-- Students with poor attendance AND poor goals need immediate intervention
-- Students with good attendance but poor goals may have learning challenges
-- Students with poor attendance but good goals may be academically strong but have home issues
-
----
-
-## Export Options
-
-### CSV Export
-
-Click **Export CSV** to download spreadsheet format:
-
-**File Contents:**
-- Header row with column names
-- One row per student record
-- Columns: Name, Number, Grade, Centre, Status, Arrival Time, Notes
-- Summary section at bottom with totals
-
-**File Name Format:**
-`attendance-{date}-{centre-name}.csv`
-
-**Use Cases:**
-- Import into Excel/Sheets for further analysis
-- Archive for compliance
-- Share with external parties
-
-### PDF Export
-
-Click **Export PDF** to download printable format:
-
-**PDF Contents:**
-- Professional header with school name
-- Report type and date range
-- Summary statistics with charts
-- Student detail table
-- Footer with generation timestamp
-
-**Use Cases:**
-- Parent meetings
-- Board presentations
-- Physical filing
-- Official documentation
-
----
-
-## Report History
-
-### Viewing Past Reports
-
-1. Navigate to **Attendance → Reports**
-2. Click **Report History** tab
-3. See list of previously generated reports
-4. Click any report to view or re-download
-
-### History Includes:
-
-- Report type and date range
-- Centre(s) included
-- Generation timestamp
-- Generated by (user name)
-- Quick download links (CSV/PDF)
-
-### Retention
-
-Reports are stored for the current academic year. Older reports may be archived.
-
----
-
-## Best Practices
-
-### Regular Reporting Schedule
-
-| Frequency | Report Type | Audience |
-|-----------|-------------|----------|
-| Daily | Daily Report | Supervisor internal use |
-| Weekly | Weekly Report | Staff meetings, trend review |
-| Monthly | Monthly Report | Principal, board |
-| Quarterly | Term Report | Regulatory compliance, parents |
-
-### Before Generating
-
-- Ensure all attendance is marked for the period
-- Check for data gaps (unmarked students)
-- Verify centre assignments are current
-
-### After Generating
-
-- Review for anomalies or data issues
-- Share with appropriate stakeholders
-- Archive for compliance records
-- Set calendar reminder for next report
-
----
-
-## Troubleshooting
-
-### Report Shows Gaps
-
-**Symptom:** Some students show "Unmarked" status
-
-**Cause:** Attendance was not entered for those students/dates
-
-**Solution:**
-- Cannot fix past unmarked attendance (after midnight cutoff)
-- Note in report distribution that data is incomplete
-- Improve daily marking compliance going forward
-
-### Low Attendance Rate Unexpected
-
-**Symptom:** Rate seems lower than reality
-
-**Check:**
-- Were all students marked?
-- Were late students marked as "Late" not "Absent"?
-- Were there school holidays in the period?
-
-### Export Not Downloading
-
-**Possible Causes:**
-- Pop-up blocker preventing download
-- Large report still generating
-- Network timeout
-
-**Solution:**
-- Disable pop-up blocker for Zion
-- Wait for generation to complete
-- Try a smaller date range
-- Refresh and retry
-
----
-
-## Related Guides
+## Related pages
 
 <CardGroup cols={2}>
-  <Card title="Attendance Overview" href="/features/attendance/overview" icon="calendar-check">
-    Complete overview of the attendance system
+  <Card title="Attendance overview" href="/features/attendance/overview" icon="calendar-check">
+    How attendance marking, alerts, and reporting fit together
   </Card>
-  <Card title="Marking Attendance" href="/features/attendance/marking" icon="check">
-    Daily attendance marking workflow
+  <Card title="Marking attendance" href="/features/attendance/marking" icon="calendar-check">
+    The daily Present, Absent, Late marking workflow
   </Card>
-  <Card title="Chronic Absence Alerts" href="/features/attendance/alerts" icon="bell">
-    Managing attendance alert notifications
+  <Card title="Chronic absence alerts" href="/features/attendance/alerts" icon="bell">
+    How consecutive-absence and rate thresholds generate alerts
   </Card>
-  <Card title="Attendance Trends" href="/features/attendance/trends" icon="chart-line">
-    Analyzing attendance patterns over time
+  <Card title="Attendance trends" href="/features/attendance/trends" icon="chart-line">
+    Trend charts and centre comparisons over time
   </Card>
 </CardGroup>

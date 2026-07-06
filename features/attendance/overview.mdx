@@ -1,236 +1,94 @@
 ---
-title: Attendance Overview
-description: Understanding Zion&apos;s comprehensive attendance tracking system for ACE schools
+title: Attendance overview
+description: Daily Present, Absent, or Late marking with chronic-absence alerts, dashboards, trends, and reports
 icon: "calendar-check"
 ---
 
-# Attendance Management Overview
+Zion&apos;s Attendance module records daily student status, watches for chronic absence, and gives centre staff a dashboard, trend view, and exportable reports. Administrators, supervisors, and monitors mark and review attendance. Parents and students see a read-only summary of their own child or themselves.
 
-Zion&apos;s Attendance module provides a complete digital solution for tracking student presence, managing chronic absence alerts, generating reports, and analyzing attendance trends across your school.
+## Who does what
 
-## What is Attendance Management?
+| Role | Mark attendance | Correct a past day | Dashboard, trends, alerts | Reports |
+|---|---|---|---|---|
+| Administrator | All centres | Yes (audited correction) | Org-wide | Yes |
+| Supervisor | Assigned centres | No | Assigned centres | Not available in the current UI |
+| Monitor | Assigned centres | No | Not available | Not available |
+| Parent | No | No | Read-only summary for their own child | No |
+| Student | No | No | Read-only summary for themselves | No |
 
-In ACE schools, daily attendance tracking is essential for student accountability and regulatory compliance. Zion transforms this process from paper-based record-keeping into a streamlined digital workflow with intelligent alerting.
+Supervisors and monitors only see the learning centres they are assigned to. Administrators see every centre. A custom role grant can also unlock marking or viewing independent of these base roles.
 
-**Traditional Attendance (Manual):**
-- Paper roll books or spreadsheets
-- Manual compilation for reports
-- No chronic absence detection
-- Difficult to identify patterns
-- Time required: 30+ minutes daily
+## Marking the day
 
-**Zion Attendance (Digital):**
-- Touch-optimized digital marking
-- One-tap status updates (Present/Absent/Late)
-- Automatic chronic absence alerts
-- Trend analysis and pattern detection
-- CSV/PDF export for compliance
-- Time required: &lt;5 minutes daily
+Attendance staff select a date and a learning centre, then tap Present, Absent, or Late for each student. A Late status can carry an arrival time and notes. Only the current day, based on the organization&apos;s local calendar date, is open for normal marking. Once that day passes, the entry locks.
 
-**Time Saved:** 30+ minutes → 5 minutes = **25+ minutes saved daily**
+A "Mark All Present" action handles the common case, with per-student exceptions for anyone who is absent or late. Multiple students can also be selected and marked together. A student can be cleared back to unmarked if a status was entered by mistake.
 
----
+On a locked past date, an administrator can turn on correction mode and edit an individual student&apos;s status. Every correction is written to an audit trail with the before and after value.
 
-## How Attendance Works in Zion
+<Card title="Marking attendance" icon="clipboard-check" href="/features/attendance/marking">
+  The full marking workflow, bulk actions, and correction mode
+</Card>
 
-### Morning: Attendance Marking
+## Chronic absence alerts
 
-**Who:** Supervisors or Administrators
-**Where:** Attendance → Mark Attendance
-**Time:** 3-5 minutes for 30 students
+Zion generates alerts automatically each day and lets an administrator trigger generation manually. An alert is created, escalated, or resolved based on these thresholds, which an organization can adjust from its default values:
 
-1. Select today&apos;s date (defaults to current date)
-2. Select learning centre (optional for admins, required for supervisors)
-3. For each student, tap status:
-   - **Present** (green) - Student is in class
-   - **Absent** (red) - Student is not present
-   - **Late** (amber) - Student arrived after start time
-4. For late arrivals, optionally record arrival time
-5. Add notes for any student (e.g., "doctor appointment")
-6. Status auto-saves immediately
+| Level | Default trigger |
+|---|---|
+| Warning | 3 or more consecutive school-day absences |
+| Critical | 5 or more consecutive school-day absences |
+| Critical | Absence rate above 20% over the trailing 30 days |
 
-**Features:**
-- Bulk "Mark All Present" for efficiency
-- Tablet-optimized with large 48x48px touch targets
-- Real-time summary updates as you mark
-- Students sorted: unmarked first, then alphabetically
+Consecutive absences are counted backward through school days, skipping weekends and holidays, and stop counting at the first present, late, or unrecorded day. An alert moves from warning to critical automatically if the student&apos;s absences continue, and resolves on its own once the student no longer meets either threshold.
 
----
+An open alert is acknowledged with required intervention notes, or dismissed with a required reason. Both actions are centre-scoped, so a supervisor or monitor can only act on alerts for their assigned centres, and both are recorded in the audit trail. Org admins, plus any supervisor or monitor assigned to the affected student&apos;s centre, also receive a notification.
 
-### Throughout the Day: Dashboard Monitoring
+<Card title="Chronic absence alerts" icon="bell" href="/features/attendance/alerts">
+  Thresholds, the acknowledge and dismiss workflow, and notification delivery
+</Card>
 
-**Who:** Administrators and Supervisors
-**Where:** Attendance → Dashboard
+## Dashboard
 
-**Dashboard Displays:**
-- Today&apos;s attendance summary (Present/Absent/Late counts)
-- Attendance rate percentage
-- Absent students list with details
-- Late arrivals list with arrival times
-- Centre breakdown chart (admin view)
-- Week-over-week comparison
+The attendance dashboard shows the day&apos;s present, absent, and late counts, the attendance rate, and a centre-by-centre breakdown. An administrator sees every centre; a supervisor sees only the centres they are assigned to.
 
-**Real-Time Updates:**
-- Dashboard refreshes automatically every 30 seconds
-- See live progress as attendance is marked across centres
+## Trends
 
----
+The trends view charts daily present, absent, late, and rate figures over 7 days, 30 days, the current term, or a custom range, with an optional filter by centre or grade level. It also reports an average rate, the best and worst day, and a trend direction of improving, stable, or declining with a percent change.
 
-### Automated: Chronic Absence Alerts
+<Card title="Attendance trends" icon="chart-line" href="/features/attendance/trends">
+  Reading the trend chart and the summary figures
+</Card>
 
-**Who:** System-generated, reviewed by Administrators
-**Where:** Attendance → Alerts
-**When:** Daily at 6:00 AM (before school day)
+## Reports
 
-**Alert Triggers:**
+An administrator can generate a daily, weekly, monthly, term, or custom-range report with total, present, absent, and late counts, an overall rate, a centre breakdown, chronic-absence and late-arrival student lists, and day-of-week statistics. A report can optionally include Goal Check correlation data. Reports export as PDF or CSV, are kept in a history list, and can be shared by email. A weekly attendance report is also generated and emailed automatically.
 
-| Alert Type | Condition | Action Required |
-|------------|-----------|-----------------|
-| **Critical** | 5+ consecutive absences | Immediate parent contact |
-| **Critical** | &gt;20% absence rate in 30 days | Parent meeting required |
-| **Warning** | 3+ consecutive absences | Monitor closely |
+<Card title="Attendance reports" icon="file-lines" href="/features/attendance/reports">
+  Report types, contents, and export and sharing options
+</Card>
 
-**Alert Workflow:**
-1. System analyzes previous 60 days of attendance
-2. Counts consecutive absences (excluding weekends)
-3. Calculates 30-day absence rate
-4. Creates alerts for students meeting thresholds
-5. Sends email digest to administrators (if enabled)
-6. Alerts appear in dashboard for acknowledgment
+## Parent and student visibility
 
----
-
-## Key Features
-
-### 1. 3-Tap Marking Workflow
-
-Quick, intuitive attendance entry:
-
-- **Tap 1:** Tap student row to expand
-- **Tap 2:** Tap status button (Present/Absent/Late)
-- **Tap 3:** Confirm or add optional notes
-
-Each status shows visual confirmation:
-- Green checkmark for Present
-- Red X for Absent
-- Amber clock for Late
-
-### 2. Bulk Operations
-
-For large classes or school-wide events:
-
-- **Mark All Present:** One click marks all unmarked students as present
-- **Clear All:** Reset all attendance for re-entry
-- **Date Selection:** Mark attendance for previous days (before midnight cutoff)
-
-### 3. Chronic Absence Detection
-
-Proactive identification of attendance issues:
-
-**Alert Generation:**
-- Runs automatically each morning
-- Analyzes rolling 60-day window
-- Excludes weekends from consecutive counts
-- Only creates new alerts if no unacknowledged alert exists
-
-**Alert Management:**
-- View all active alerts in dedicated panel
-- Filter by type (Warning/Critical)
-- Filter by learning centre
-- Acknowledge alerts with intervention notes
-- Track parent contacts and follow-up actions
-
-### 4. Attendance Reports
-
-**Report Types:**
-- **Daily:** Single day attendance summary
-- **Weekly:** 7-day overview with trends
-- **Monthly:** Full month statistics
-- **Term:** Complete term analysis
-- **Custom:** User-specified date range
-
-**Report Contents:**
-- Overall attendance rate
-- Centre-by-centre breakdown
-- Chronic absence student list
-- Late arrival patterns
-- Day-of-week analysis
-- Optional Goal Check correlation
-
-### 5. Trend Analysis
-
-**Trend Dashboard:**
-- Line chart showing attendance over time
-- Range options: 7 days, 30 days, term, custom
-- Trend direction indicator (improving/stable/declining)
-- Best and worst performing days identified
-- Centre filtering for focused analysis
-
-### 6. Export Capabilities
-
-**CSV Export:**
-- One-click download for any date
-- Includes: Student name, number, grade, status, arrival time, notes
-- Summary section with totals and attendance rate
-- Filename: `attendance-{date}-{centre-name}.csv`
-
----
-
-## Benefits by Role
-
-### For Administrators
-
-- **School-wide visibility:** See attendance across all centres in one dashboard
-- **Early intervention:** Chronic absence alerts enable proactive parent engagement
-- **Compliance ready:** Generate reports required for regulatory audits
-- **Pattern detection:** Identify systemic attendance issues by centre or grade
-
-### For Supervisors
-
-- **Quick daily marking:** Complete attendance in under 5 minutes
-- **Centre-specific alerts:** See only alerts for your assigned students
-- **Historical tracking:** Review attendance history for any student
-- **Export for parents:** Generate attendance summaries for parent meetings
-
----
-
-## Best Practices
-
-### Daily Routine
-
-1. **Morning (8:00 AM):** Mark attendance within first 15 minutes of school day
-2. **Mid-Morning (10:00 AM):** Update any late arrivals with arrival times
-3. **End of Day:** Review any missed students and complete marking
-
-### Alert Management
-
-- Review alerts daily (takes &lt;2 minutes)
-- Acknowledge alerts after taking action (document intervention)
-- Contact parents within 24 hours of critical alerts
-- Use notes field to track conversations and follow-ups
-
-### Accuracy Tips
-
-- Mark attendance at consistent times each day
-- Use notes for planned absences (field trips, appointments)
-- Review previous day before moving to new day
-- Export reports weekly for your records
-
----
-
-## Related Guides
+Parents see an attendance summary for each of their accepted children on the parent dashboard: percent present over the last 30 school days, absent and late counts, and a list of recent absence and late events. Students see the same figures for themselves on the student dashboard. Neither view includes marking, correction, or alert actions.
 
 <CardGroup cols={2}>
-  <Card title="Administrator Attendance Guide" href="/guides/administrator/attendance" icon="user-shield">
-    Complete guide for administrators managing school-wide attendance
+  <Card title="Marking attendance" icon="clipboard-check" href="/features/attendance/marking">
+    Daily marking, bulk actions, and administrator corrections
   </Card>
-  <Card title="Supervisor Attendance Guide" href="/guides/supervisor/attendance" icon="users">
-    Daily attendance workflow for supervisors and centre managers
+  <Card title="Chronic absence alerts" icon="bell" href="/features/attendance/alerts">
+    Thresholds, escalation, and the acknowledge or dismiss workflow
   </Card>
-  <Card title="Attendance Reports" href="/features/attendance/reports" icon="file-chart-line">
-    Generating and interpreting attendance reports
+  <Card title="Attendance trends" icon="chart-line" href="/features/attendance/trends">
+    Trend charts and direction summaries
   </Card>
-  <Card title="Chronic Absence Alerts" href="/features/attendance/alerts" icon="bell">
-    Managing and responding to attendance alerts
+  <Card title="Attendance reports" icon="file-lines" href="/features/attendance/reports">
+    Generating, exporting, and sharing reports
+  </Card>
+  <Card title="Administrator guide: attendance" icon="user-shield" href="/guides/administrator/attendance">
+    The full workflow for administrators
+  </Card>
+  <Card title="Supervisor guide: attendance" icon="users" href="/guides/supervisor/attendance">
+    The daily workflow for supervisors
   </Card>
 </CardGroup>

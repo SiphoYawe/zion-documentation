@@ -1,270 +1,83 @@
 ---
-title: Test Score Entry
-description: How to enter test scores as a supervisor in Zion
-icon: "keyboard"
+title: Entering test scores
+description: How staff record PACE test scores, read pass/fail feedback, and see where a score routes next
+icon: "pen-to-square"
 ---
 
-# Test Score Entry
+Monitors, supervisors, and administrators enter PACE test scores from **Grading &gt; Score Entry** (`/grading/entry`). The page has a single-entry tab for one score at a time and a batch-entry tab for entering several scores in one pass.
 
-This guide covers how supervisors enter test scores into Zion. Accurate and timely score entry is the foundation of the grading system.
-
-## Accessing Score Entry
-
-1. Navigate to **Grading** in the sidebar
-2. Click **Enter Scores** (or the main Grading link)
-3. The score entry form appears
-
----
-
-## The Entry Form
-
-### Student Selection
-
-**Search for Student:**
-- Type student name or number
-- Results filter as you type
-- Click student to select
-
-**Student Information Shown:**
-- Full name
-- Student number
-- Grade level
-- Learning centre
-
-### PACE Selection
-
-After selecting a student, choose the PACE:
-
-- **Only Assigned PACEs:** Dropdown shows only PACEs assigned to this student
-- **Subject and Number:** e.g., "Math 1042" or "English 1015"
-- **Completion Status:** Shows if already tested
-
-<Tip>
-**Tip:** If the PACE you need isn&apos;t listed, verify the student&apos;s PACE assignments in Student Management. Only assigned PACEs appear in the dropdown.
-</Tip>
-
-### Test Details
-
-**Score:**
-- Enter the numeric score (0-100)
-- Whole numbers only
-- Validation prevents out-of-range values
-
-**Test Type:**
-- PACE Test (most common)
-- Self Test
-- Final Test
-
-**Test Date:**
-- Defaults to today
-- Can select past dates if entering retroactively
-- Cannot select future dates
-
-### Automatic Calculations
-
-As you enter the score, Zion calculates:
-
-- **Pass Threshold:** Based on student&apos;s grade level
-- **Pass/Fail Status:** Immediate visual indicator
-  - Green checkmark = Passed
-  - Red X = Failed
-
----
-
-## Submitting a Score
+## Single entry
 
 <Steps>
-  <Step title="Complete the Form">
-    Fill in student, PACE, score, test type, and date
+  <Step title="Select the student">
+    Search by name or student number. Results filter as you type. Selecting a student shows their full name, student number, grade level, and learning centre.
   </Step>
-  <Step title="Review the Summary">
-    Verify the pass/fail status and all details
+  <Step title="Select the PACE">
+    The dropdown lists only PACEs assigned to that student, shown as subject and number (for example, Math 1042). If a PACE you expect is missing, check the student&apos;s PACE assignments in Student Management.
   </Step>
-  <Step title="Click Submit">
-    Confirm the score entry
+  <Step title="Choose the test type">
+    Pick pace_test, self_test, or final_test. This choice affects both grading (pace_test and final_test count toward averages and progression; self_test does not) and where the score goes next.
   </Step>
-  <Step title="Confirmation">
-    Success message appears with next steps
+  <Step title="Enter the score and date">
+    Score must be a whole number from 0 to 100. Test date must be today or an earlier date, never in the future.
+  </Step>
+  <Step title="Review and submit">
+    The form shows the computed pass/fail status before you submit. Confirm the details and submit the entry.
   </Step>
 </Steps>
 
-### What Happens After Submission
+## Batch entry
 
-**For Grades 1-7:**
-- Score is immediately finalized
-- Available for grade calculations
-- Appears in student record
+The batch tab lets you enter multiple scores in one session instead of repeating the single-entry flow for each student. Each row still runs through the same validation: score range, test date, PACE assignment, and duplicate checks apply per row.
 
-**For Grades 8-12:**
-- Score enters moderation queue (stage_1_pending)
-- Awaits administrator moderation
-- Not yet finalized
+## Pass/fail feedback
 
----
+As soon as a score is entered, Zion calculates a pass threshold from the student&apos;s grade level and shows pass or fail immediately.
 
-## Duplicate Prevention
+| Grade band | Default pass threshold |
+|---|---|
+| Grades 1 to 4 | 90% |
+| Grades 5 to 12 | 80% |
 
-Zion prevents duplicate test entries:
+An administrator can move the grade cutoff between these two bands and change the percentages for each band in grading settings. A failing pace_test or final_test score notifies the student&apos;s centre supervisors, monitors, and administrators that a retest is needed. A failing self_test does not trigger this notification, since self_test is an ungraded readiness check.
 
-**Blocked If:**
-- Same student
-- Same PACE
-- Same test type
-- Same term
-- First attempt (attempt number 1)
+## Duplicate detection
 
-**Not Blocked If:**
-- Different test type for same PACE
-- Retest entry (attempt number 2+)
-- Different term
+Zion blocks a duplicate entry for the same student, PACE, test type, and attempt number. The check runs before submission and is also enforced at the database level, so a duplicate cannot slip through even from concurrent entries.
+
+An entry is not blocked when it is a different test type for the same PACE, a retest (attempt number 2 or higher), or a different term. If you hit a duplicate error, check whether the score was already entered before retrying. To correct an existing score, contact your administrator.
+
+## Where a recorded score goes next
+
+What happens after submission depends on the test type and the student&apos;s grade level:
+
+- **self_test:** Always finalizes immediately. It is never moderated and is excluded from grade averages and PACE progression checks.
+- **pace_test or final_test, below the moderation floor (default below Grade 8):** Finalizes immediately and is available for grade calculations and the student&apos;s record.
+- **pace_test or final_test, at or above the moderation floor (default Grade 8 and up):** Enters the moderation queue at stage 1 pending. It is not yet finalized and awaits review by an internal moderator.
+
+The moderation floor and the pass-threshold band cutoff are both configurable by an administrator, described in the grading overview.
+
+## Rejected scores
+
+If an internal moderator rejects a stage 1 score, it comes back to the original grader with a rejection reason. Re-entering the corrected score resubmits it to stage 1 pending, and the prior rejection no longer shows once the resubmission is logged. A score that has already cleared moderation and been locked can only be corrected by an administrator or supervisor as a documented exception, not by re-entering it here.
 
 <Warning>
-**Warning:** If you receive a duplicate error, check if this score was already entered. If you need to correct an existing score, contact your administrator.
+A wrong student or wrong score noticed after submission cannot be self-corrected from the entry form. Contact your administrator, who can adjust the entry and record the correction in the audit trail.
 </Warning>
 
----
-
-## Viewing Recent Entries
-
-After entering scores, view your recent entries:
-
-1. Click **Recent Scores** tab
-2. See list of your recent entries
-3. Entries show:
-   - Student name
-   - PACE
-   - Score and pass/fail
-   - Entry timestamp
-   - Moderation status (for Grades 8-12)
-
-### Status Indicators
-
-| Status | Meaning |
-|--------|---------|
-| **Finalized** | Score is complete and recorded |
-| **Pending Moderation** | Awaiting administrator review |
-| **Approved** | Administrator approved |
-| **Rejected** | Administrator rejected, needs re-entry |
-
----
-
-## Handling Rejected Scores
-
-When an administrator rejects a score:
-
-1. Score appears in your **Rejected Scores** view
-2. Rejection reason is displayed
-3. You must re-enter the corrected score
-
-### Viewing Rejected Scores
-
-1. Navigate to **Grading → Enter Scores**
-2. Click **Rejected Scores** tab
-3. See list of scores needing correction
-
-### Re-Entering a Rejected Score
-
-<Steps>
-  <Step title="Review Rejection Reason">
-    Understand why the score was rejected
-  </Step>
-  <Step title="Verify Correct Information">
-    Check original test paper for accurate score
-  </Step>
-  <Step title="Enter New Score">
-    Submit the corrected score
-  </Step>
-  <Step title="Previous Rejection Clears">
-    Old rejection no longer appears
-  </Step>
-</Steps>
-
----
-
-## Best Practices
-
-### Timing
-
-- **Enter Same Day:** Enter scores within hours of test completion
-- **Don&apos;t Batch:** Enter scores individually to reduce errors
-- **Handle Rejections Promptly:** Address within 24 hours
-
-### Accuracy
-
-- **Check Student Identity:** Verify correct student selected
-- **Verify Score:** Double-check against test paper
-- **Correct PACE:** Ensure correct PACE and test type
-- **Use Notes:** Document unusual circumstances
-
-### Efficiency
-
-- **Prepare Test Papers:** Organize before entering
-- **One at a Time:** Focus on one entry to avoid mistakes
-- **Confirm Each Entry:** Review before submitting
-
----
-
-## Common Issues
-
-### Wrong Student Selected
-
-**If Noticed Before Submit:**
-- Clear the form
-- Start fresh with correct student
-
-**If Noticed After Submit:**
-- Contact administrator immediately
-- Administrator can void the incorrect entry
-- Re-enter with correct student
-
-### Wrong Score Entered
-
-**If Grades 1-7 (Already Finalized):**
-- Contact administrator for correction
-- Administrator creates audit entry for change
-
-**If Grades 8-12 (In Moderation):**
-- Administrator can adjust during moderation
-- Or reject for you to re-enter correctly
-
-### PACE Not Listed
-
-**Possible Causes:**
-- PACE not assigned to student
-- PACE already tested this term
-- Wrong student selected
-
-**Solution:**
-- Verify student&apos;s PACE assignments
-- Check if already tested (view student record)
-- Confirm correct student
-
----
-
-## Mobile/Tablet Entry
-
-The score entry form is optimized for tablets:
-
-- Large touch targets
-- Clear form fields
-- Confirmation dialogs prevent accidental submission
-- Works offline (syncs when connection restored)
-
----
-
-## Related Guides
+## Related pages
 
 <CardGroup cols={2}>
-  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
-    Complete overview of the grading system
+  <Card title="Grading overview" href="/features/grading/overview" icon="graduation-cap">
+    Test types, pass thresholds, and the moderation pipeline
   </Card>
-  <Card title="Moderation Queue" href="/features/grading/moderation" icon="clipboard-check">
-    How moderation works for Grades 8-12
+  <Card title="Moderation" href="/features/grading/moderation" icon="clipboard-check">
+    How internal and external moderation review scores from Grade 8 up
   </Card>
-  <Card title="Retest Management" href="/features/grading/retests" icon="rotate">
-    Scheduling and entering retest scores
+  <Card title="Retests" href="/features/grading/retests" icon="rotate">
+    Scheduling and entering retest scores after a failed test
   </Card>
-  <Card title="Grading Overview" href="/features/grading/overview" icon="graduation-cap">
-    Complete grading system overview
+  <Card title="Audit trail" href="/features/grading/audit-trail" icon="shield-halved">
+    How every grading change is logged and reported for accreditation
   </Card>
 </CardGroup>
