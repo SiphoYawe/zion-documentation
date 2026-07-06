@@ -1,0 +1,94 @@
+---
+title: Checking out and returning books
+description: Browse the library catalog and run the checkout desk, from lending a book to fixing a mistaken checkout.
+icon: "right-left"
+---
+
+The Library checkout desk is where staff lend books to students and process returns. Administrators use it at Programs &amp; Resources &gt; Library &gt; Catalog and Checkouts (`/admin/library` and `/admin/library/checkouts`). Supervisors use a combined catalog and active-checkouts page at Programs &amp; Resources &gt; Library (`/supervisor/library`).
+
+Two book types behave differently on this page:
+
+- **General** books have a due date, are tracked as overdue, and can be marked lost.
+- **PACE Required** books are custody loans only. They never get a due date, are never flagged overdue, and cannot be marked lost.
+
+<Note>
+  Every checkout goes through a staff member. Students and parents cannot self-checkout, and their library pages are read-only. See [Overdue and lost books](/features/library/overdue-and-lost) for how overdue tracking and lost-book alerts work.
+</Note>
+
+## Browsing the catalog
+
+The catalog lists every book in the org (title, book-type badge, quantity on hand, copies out, and location). Use the search box to filter by title, or the book-type filter to narrow the list to PACE Required or General books. Viewing the catalog requires the inventory:view capability (inventory:manage also grants it).
+
+## Adding a book
+
+Click **Add book** on the catalog page. This opens the same form used for inventory items, pre-set to the library item type. You choose the book type (PACE Required or General) as part of adding it. Adding a book requires the inventory:manage capability.
+
+## Checking out a book
+
+<Steps>
+  <Step title="Open the checkout dialog">
+    On the catalog, find the book and click **Check Out**.
+  </Step>
+  <Step title="Select the student">
+    Search for and select a student from the combobox. If you are not an administrator, the list only shows students in your assigned learning centre(s).
+  </Step>
+  <Step title="Set a due date (General books only)">
+    A due date field appears, defaulting to 14 days from today. You can change it. PACE Required books skip this step entirely and show a custody-only notice instead, since they have no due date.
+  </Step>
+  <Step title="Submit">
+    The server re-checks that the student belongs to the org, is active, and (for non-administrators) falls within your assigned centre. The checkout is rejected if the book has no copies on hand.
+  </Step>
+</Steps>
+
+Checking out a book requires the inventory:checkout capability (inventory:manage also grants it).
+
+## Viewing active checkouts
+
+The Active Checkouts table lists every book currently out (not yet returned), sorted with the soonest due date first. PACE Required checkouts have no due date, so they sort to the bottom. Each row&apos;s status is calculated live from today&apos;s date: lost, then overdue, then checked out.
+
+Non-administrator staff only see checkouts for students in their assigned learning centre(s). A supervisor or monitor with no centre assignment sees no rows here.
+
+## Returning a book
+
+Click **Return** on the book&apos;s row in Active Checkouts. The Return action is hidden once a book has been marked lost, since a lost book goes through Mark Found instead.
+
+If a General book&apos;s due date has already passed, returning it flags the checkout as late automatically. PACE Required books are never flagged late, since they carry no due date.
+
+## Undoing a return
+
+If a book was returned by mistake, open the **Recent returns** panel above the Active Checkouts table (it loads on demand) and find the row. Click **Undo return** and confirm. This reopens the checkout as active again. It only works on a checkout that has actually been returned and is not marked lost.
+
+## Cancelling a mistaken checkout
+
+If a book was checked out to the wrong student or by mistake, open the row&apos;s overflow menu on Active Checkouts and choose **Cancel checkout**. Confirm the destructive dialog. The copy returns to stock and the checkout closes, but the row stays visible for audit. This only works on a checkout that is still active (not already returned or lost).
+
+## Editing a due date
+
+For General books, open the row&apos;s overflow menu and choose **Edit due date**. Pick a new date and save. This is not available for PACE Required checkouts, since they carry no due date to edit.
+
+<AccordionGroup>
+  <Accordion title="Why doesn't a PACE Required book ask for a due date?">
+    PACE Required books are treated as custody loans rather than time-limited loans. They never get a due date, are never marked overdue, and cannot be marked lost, undone, or edited for a due date.
+  </Accordion>
+  <Accordion title="What if the book has no copies left?">
+    The checkout is rejected server-side if the book is out of stock, even if the catalog list has not yet refreshed to show zero copies.
+  </Accordion>
+  <Accordion title="Can a supervisor or monitor check out a book to any student?">
+    No. A non-administrator caller can only lend to a student in one of their assigned learning centres. If they have no centre assignment, they cannot check out or view checkouts for any student.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Library overview" icon="book" href="/features/library/overview">
+    How the catalog, book types, and checkout desk fit together.
+  </Card>
+  <Card title="Overdue and lost books" icon="triangle-exclamation" href="/features/library/overdue-and-lost">
+    How overdue detection, lost-book flags, and alerts work.
+  </Card>
+  <Card title="Inventory overview" icon="warehouse" href="/features/inventory/overview">
+    The shared inventory system that library books belong to.
+  </Card>
+  <Card title="Roles and permissions" icon="shield" href="/reference/roles-permissions">
+    What each role can see and do across Zion.
+  </Card>
+</CardGroup>

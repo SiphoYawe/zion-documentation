@@ -1,0 +1,88 @@
+---
+title: Receiving and adjusting stock
+description: Record a bulk PACE shipment and make manual stock corrections, and see how each posts to the movement ledger
+icon: "truck-ramp-box"
+---
+
+Stock on hand is never edited directly. Every change to a PACE or library item&apos;s quantity is recorded as a movement, and a database trigger reconciles the on-hand count from those movement rows. Receiving a shipment and adjusting stock are the two ways an administrator or supervisor changes stock by hand. Assigning a PACE to a student is the third way stock changes, and it happens automatically.
+
+## Who can do this
+
+Both actions require the `inventory:manage` capability. In the system role bundles, administrators hold it; supervisors hold `inventory:view` and `inventory:checkout` but not `inventory:manage` by default, so the sidebar shows supervisors Inventory Reports, Inventory Movements, and Inventory Items only, without a Receive Stock link. A custom role can grant `inventory:manage` to a supervisor, but access to `/admin/inventory/*` is also gated at the route level to organization role `administrator` or `supervisor`, so no other role reaches these pages regardless of custom capability grants.
+
+<Note>
+  The Recent Shipments list on the Receive PACE Stock page checks specifically for the `administrator` org role, separate from the `inventory:manage` capability that gates the page and the receive action itself. A supervisor granted `inventory:manage` could submit a shipment but still be denied the Recent Shipments list.
+</Note>
+
+## Receive a PACE shipment
+
+Use this when a new shipment of PACE booklets arrives from the supplier. Go to Programs &amp; Resources &gt; Inventory &gt; Receive PACE Stock (`/admin/inventory/pace/receive`).
+
+<Steps>
+  <Step title="Add a line for each PACE received">
+    In the bulk receive form, select the PACE item, enter the quantity received, and optionally add a note (for example, supplier or invoice reference).
+  </Step>
+  <Step title="Add more rows as needed">
+    Add or remove rows to cover every PACE in the shipment before submitting.
+  </Step>
+  <Step title="Record the shipment">
+    Submit the form. All lines commit together in a single transaction through the `bulk_receive_pace_shipment` database function. Either every line posts, or none does.
+  </Step>
+  <Step title="Review Recent Shipments">
+    The Recent Shipments panel below the form lists the last 10 purchase movements, showing PACE name and number, quantity, notes, who recorded it, and the date.
+  </Step>
+</Steps>
+
+Each line in the batch posts as a `purchase` movement, and stock on hand increases by that line's quantity. The per-line quantity is capped at 1,000,000. If receiving the shipment brings a previously low-stock item back above its reorder threshold, a restock-recovery notice fires for users holding `inventory:manage`.
+
+## Adjust stock
+
+Use Adjust Stock for corrections that are not a supplier shipment, such as a damaged booklet, a donation, or a recount that disagrees with the system.
+
+<Steps>
+  <Step title="Open the item's actions menu">
+    Go to Programs &amp; Resources &gt; Inventory &gt; Add Items (`/admin/inventory/items`), find the item, and choose Adjust stock from its row actions.
+  </Step>
+  <Step title="Choose how to enter the change">
+    Pick 'Change by (+/-)' to enter a signed delta, or 'Set new count' to enter the absolute quantity. If you choose Set new count, the app computes the delta for you.
+  </Step>
+  <Step title="Enter a reason">
+    A reason note is mandatory on every adjustment (for example, damaged, donation, or recount).
+  </Step>
+  <Step title="Confirm a negative balance if prompted">
+    The modal shows the resulting on-hand count live. If the adjustment would take stock below zero, a confirmation dialog explains that the balance becomes a recorded stock debt before you can submit.
+  </Step>
+  <Step title="Submit">
+    The adjustment posts as an `adjustment` movement, and quantity on hand is reconciled by the database trigger, never written directly.
+  </Step>
+</Steps>
+
+<Warning>
+  Quantity on hand has no floor in the database. A large negative adjustment or issue is allowed and recorded as a stock debt rather than blocked, so double check the delta before submitting.
+</Warning>
+
+## How each posts to the ledger
+
+| Action | Movement reason | Delta sign | Where it shows up |
+|---|---|---|---|
+| Receive PACE shipment | `purchase` | Positive (quantity received) | Movement ledger, Recent Shipments, item history |
+| Adjust stock, increase | `adjustment` | Positive | Movement ledger, item history |
+| Adjust stock, decrease | `adjustment` | Negative | Movement ledger, item history, may trigger a low-stock alert |
+| PACE assigned to a student | `issue` | Negative (auto) | Movement ledger, item history |
+
+Every posted movement, regardless of source, appears in the item&apos;s History dialog and in the org-wide movement ledger at Programs &amp; Resources &gt; Inventory &gt; Inventory Movements, where it can be filtered by item, reason, and date range and exported to CSV.
+
+## What fires automatically
+
+- **Low-stock alert**: fires when an `issue` movement or a negative `adjustment` crosses an item's reorder threshold from above to at or below it. It is sent in-app and by email to every user holding `inventory:manage`, deduplicated to one alert per item per rolling 24-hour window.
+- **Restock-recovery notice**: fires after a bulk receive or a positive adjustment brings a previously low item back above its reorder threshold.
+- **No alert on a zero threshold**: setting an item's reorder threshold to 0 disables low-stock alerting for that item entirely.
+
+<CardGroup cols={2}>
+  <Card title="Inventory Overview" icon="boxes-stacked" href="/features/inventory/overview">
+    How the movement ledger model works and where inventory lives in the sidebar.
+  </Card>
+  <Card title="Inventory Reports" icon="chart-line" href="/features/inventory/reports">
+    Stock on hand, low-stock widget, burn-rate forecast, and untracked PACEs.
+  </Card>
+</CardGroup>

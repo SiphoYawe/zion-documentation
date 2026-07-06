@@ -1,0 +1,98 @@
+---
+title: Generating and distributing report cards
+description: How administrators, supervisors, and monitors bulk-generate a term's report cards, clear readiness warnings, preview a student's card, and send cards to parents
+icon: "play"
+---
+
+Report card generation turns a term's PACE grades, test scores, attendance, Goal Check completion, and parent-safe character notes into a batch of report-card PDFs. Administrators, supervisors, and monitors run this from **Admin &gt; Report Cards**. Supervisors and monitors are restricted server-side to their assigned centres even if the centre picker shows more.
+
+## Select the scope
+
+<Steps>
+  <Step title="Choose a term">
+    Pick the academic term you want to generate cards for.
+  </Step>
+  <Step title="Narrow by centre (optional)">
+    Administrators can select a specific centre or leave it on all centres. Supervisors and monitors only ever see and generate for their own assigned centres.
+  </Step>
+  <Step title="Choose a template (optional)">
+    Pick a non-default template if the school has more than one. If you skip this, generation uses the org's default template, or a built-in default if no template has been created yet. See [Report card templates](/features/report-cards/templates).
+  </Step>
+</Steps>
+
+## Term-readiness warnings
+
+Before you can generate, Zion checks every in-scope student for five possible warnings:
+
+| Warning | Meaning | Blocking? |
+|---|---|---|
+| No grades | Zero finalized test scores exist for the student this term | Yes |
+| Incomplete grades | Finalized scores exist, but none of them are passing | No |
+| No attendance | No attendance records for the term | No |
+| No Goal Check | No Goal Check data for the term | No |
+| No character notes | No parent-safe character notes for the term | No |
+
+Only the no-grades warning blocks generation. If any student has it, the **Generate report cards** button stays disabled until you check the acknowledgement box confirming you want to proceed anyway. The other four warnings are informational: they tell you a section of that student&apos;s card will show &quot;No data for this term&quot; without stopping the batch.
+
+<Note>
+PACE &quot;Completed&quot; counts on a report card are labelled **Completed (overall)** because they are all-time counts, not term-bound. Test scores, attendance, and Goal Check data on the card are scoped to the selected term.
+</Note>
+
+## Preview a student's card
+
+Once a term is selected, pick a single student from the readiness list to preview their compiled report card before running the full batch. Use this to confirm a template change looks right, or to check a student flagged with a non-blocking warning before you decide whether to proceed.
+
+## Generate
+
+<Steps>
+  <Step title="Click Generate report cards">
+    The job moves through queued, then running with a processed-of-total counter, then complete.
+  </Step>
+  <Step title="Check the failed list">
+    If any individual student fails to generate, they appear in a per-student failed list. A failure for one student does not stop the rest of the batch.
+  </Step>
+</Steps>
+
+## Distribute to parents
+
+Once a term's cards have generated, the distribution panel offers two actions.
+
+<Tabs>
+  <Tab title="Download all (ZIP)">
+    Mints a ZIP archive of every generated report card for the term (and centre, if narrowed). Use this to keep an offline copy or hand cards out through another channel.
+  </Tab>
+  <Tab title="Send to parents">
+    For each student, Zion resolves their accepted parent invitations and sends a report-card-published notification (in-app and email) to each linked parent. A row is written to a delivery ledger per recipient with one of these statuses:
+
+    | Status | Meaning |
+    |---|---|
+    | Sent | Notification delivered |
+    | Queued | Waiting to send |
+    | Bounced | Email delivery failed after acceptance |
+    | Failed | Delivery attempt failed |
+    | Skipped | Student has no accepted parent email on file |
+
+    A student with no linked parent email is recorded as skipped rather than failing the whole batch. Once a card has been sent, its status flips to published, with a published and sent timestamp recorded. The email links to the parent&apos;s in-app report card archive, never to a direct file link.
+  </Tab>
+</Tabs>
+
+## What parents see
+
+Parents access their children's cards at **Report Cards** in the parent portal. They see only published report cards, grouped by child. Cards still generating or not yet sent never appear.
+
+Each card has a **Download** button. Clicking it mints a short-lived signed download link (valid 10 minutes) at the moment of the click rather than exposing a permanent public URL. This is a read-only archive: parents cannot edit, regenerate, or delete a card.
+
+<CardGroup cols={2}>
+  <Card title="Report cards overview" icon="file-lines" href="/features/report-cards/overview">
+    What a report card contains and how term data is compiled.
+  </Card>
+  <Card title="Report card templates" icon="sliders" href="/features/report-cards/templates">
+    Build and manage the sections and logo on a report card template.
+  </Card>
+  <Card title="Permanent record" icon="book" href="/features/report-cards/permanent-record">
+    The multi-year academic record separate from term report cards.
+  </Card>
+  <Card title="Your child&apos;s progress" icon="chart-line" href="/guides/parent/your-childs-progress">
+    How parents follow a child&apos;s academic progress across features.
+  </Card>
+</CardGroup>

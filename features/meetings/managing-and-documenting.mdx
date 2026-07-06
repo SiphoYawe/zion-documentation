@@ -1,0 +1,96 @@
+---
+title: Managing and documenting meetings
+description: Cancel, reschedule, reassign, and close out a booked meeting, and review org-wide meeting outcomes as an administrator
+icon: "note-sticky"
+---
+
+Once a meeting is booked, either firmly or through a request that both sides confirmed, the parent and the assigned staff member can still change it. After it happens, the assigned staff member (or an administrator) documents it with private notes, a parent-facing summary, and a final outcome. Administrators also get an org-wide view of every meeting and its outcome.
+
+This page covers what happens after booking. For how a meeting gets booked in the first place, see <a href="/features/meetings/booking-and-requests">Booking and requesting meetings</a>.
+
+## Cancel a meeting
+
+Either the parent or the staff participant on a firm (booked) meeting can cancel it. Cancelling requires a reason of at least one character. Cancelling frees the linked availability slot so it becomes bookable again, deletes the associated calendar event, and notifies both parties.
+
+<Note>
+A pending request (one still awaiting accept, decline, or counter) cannot be cancelled. It must be declined instead, which also requires a reason.
+</Note>
+
+## Reschedule a meeting
+
+Either participant can move a booked meeting to a different available slot. The move happens as a single atomic swap: the old slot is released and the new slot is claimed together, so the meeting is never left without a slot and the new slot can never be double-booked.
+
+## Reassign a meeting
+
+Staff can reassign a booked meeting to a different bookable staff member in the student&apos;s learning centre. The outgoing staff member and the incoming staff member are notified separately, so both know the meeting has moved off, or onto, their calendar.
+
+## Add a meeting to your personal calendar
+
+Either party, parent or staff, can add a confirmed meeting to their personal calendar from the meeting detail view. This uses the same calendar bridge that publishes other Zion events, so the meeting shows up alongside your other calendar entries.
+
+<Info>
+For how calendar events and subscriptions work more broadly, see <a href="/features/calendar/overview">Calendar overview</a>.
+</Info>
+
+## Document the meeting
+
+The assigned staff member, or an organization administrator, opens the meeting detail page to record what happened.
+
+<Steps>
+<Step title="Open the meeting">
+Go to the meeting from your meetings list. Staff use `/staff/meetings/[meetingId]`.
+</Step>
+<Step title="Autosave private notes and action items">
+Write private notes and action items as the meeting happens or shortly after. These autosave independently of each other and are never visible to the parent. Saving notes does not change the meeting&apos;s status.
+</Step>
+<Step title="Draft a parent summary">
+Draft the parent-facing summary in the same notes editor. This draft is separate from the private notes and is not sent to the parent until you explicitly share it.
+</Step>
+<Step title="Share the summary with the parent">
+Choose to share the summary. An empty summary is rejected. The parent is notified only when the shared text has meaningfully changed from what was shared before, so re-sharing an unchanged summary does not send a duplicate notification.
+</Step>
+<Step title="Mark the meeting completed or no-show">
+Once the meeting has happened, mark it Completed or No-Show. Only a booked, non-pending meeting can be transitioned this way. Marking a meeting No-Show notifies the parent with a prompt to re-book.
+</Step>
+</Steps>
+
+<Warning>
+Only the assigned staff member or an organization administrator can write notes, share a summary, or set the completed/no-show outcome. A parent's view of the meeting is redacted and does not include the private notes or action items.
+</Warning>
+
+## Administrator oversight
+
+An administrator reviews meeting activity across the whole organization from `/admin/meetings`, scoped to the centres they are assigned to, or every centre if they have no explicit centre assignment.
+
+The oversight view supports filtering by:
+
+| Filter | Description |
+|---|---|
+| Centre | Restrict to one learning centre |
+| Staff member | Restrict to meetings involving one staff member |
+| Status | Booked, rescheduled, cancelled, completed, or no-show |
+| Date range | Restrict to a window of meeting dates |
+
+The view also surfaces four KPIs:
+
+| KPI | What it measures |
+|---|---|
+| Total firm meetings | Meetings that reached a firm (booked) state; pending and expired requests are excluded so they do not inflate the count |
+| Completed | Meetings marked completed |
+| No-show | Meetings marked no-show |
+| No-show rate | No-show divided by completed plus no-show; reads as 0 when there are no firm outcomes yet |
+
+<CardGroup cols={2}>
+<Card title="Meetings overview" icon="calendar-check" href="/features/meetings/overview">
+What a meeting is, its statuses, and who can meet with whom
+</Card>
+<Card title="Booking and requests" icon="calendar-plus" href="/features/meetings/booking-and-requests">
+How parents and staff book, propose, and confirm meetings
+</Card>
+<Card title="Staff availability" icon="clock" href="/features/meetings/availability">
+Publishing bookable time slots as a supervisor or monitor
+</Card>
+<Card title="Meetings and communication" icon="user-clock" href="/guides/parent/meetings-and-communication">
+The parent-facing guide to booking, viewing, and cancelling meetings
+</Card>
+</CardGroup>

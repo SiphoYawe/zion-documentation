@@ -1,0 +1,77 @@
+---
+title: Subscribing with iCal
+description: Generate a private, revocable calendar link to sync Zion events into Google, Apple, or Outlook.
+icon: "square-rss"
+---
+
+Every user, administrator, supervisor, monitor, parent, and student, can generate a private ICS (iCal) subscription link and add it to an external calendar app. The feed updates on its own once subscribed, so events created or changed in Zion appear in Google Calendar, Apple Calendar, or Outlook without a manual re-export.
+
+<Note>
+The subscription link is personal. It carries the same visibility and centre scoping as your in-app calendar, so you never see events you would not otherwise be allowed to see.
+</Note>
+
+## Where to generate your link
+
+<Tabs>
+  <Tab title="Administrator, supervisor, monitor">
+    Go to your Profile page and open **Calendar Subscription**, then click **Generate calendar link**.
+  </Tab>
+  <Tab title="Parent">
+    Go to **Calendar** in the parent navigation, then click **Subscribe**. This opens `/parent/calendar/subscribe`, where you click **Generate calendar link**.
+  </Tab>
+  <Tab title="Student">
+    Go to **Calendar** in the student navigation, then click **Subscribe**. This opens `/student/calendar/subscribe`, where you click **Generate calendar link**.
+  </Tab>
+</Tabs>
+
+<Steps>
+  <Step title="Open your subscribe page">
+    Staff and administrators use Profile &gt; Calendar Subscription. Parents and students use the Subscribe button on their Calendar page.
+  </Step>
+  <Step title="Generate the link">
+    Click **Generate calendar link**. The full subscription URL is shown once, directly on the page.
+  </Step>
+  <Step title="Copy it before you leave the page">
+    Copy the URL now. After you navigate away, the page only shows a masked placeholder. Zion does not store or redisplay the raw URL.
+  </Step>
+  <Step title="Add it to your calendar app">
+    In Google Calendar, Apple Calendar, or Outlook, use the app&apos;s &quot;subscribe by URL&quot; or &quot;add calendar from URL&quot; option and paste the link.
+  </Step>
+</Steps>
+
+## Revoking and regenerating
+
+If a link is compromised, shared by mistake, or simply stops working, click **Revoke &amp; regenerate** on the same subscribe page. This immediately invalidates the old URL, so any calendar app still using it stops receiving updates, and issues a new URL, shown once, the same way as the first generation. Subscribe your calendar app again with the new link.
+
+<Warning>
+Revoking a link does not notify calendar apps still pointed at it. They will simply stop refreshing (or start returning an error) the next time they poll the feed.
+</Warning>
+
+## What appears in your feed
+
+The ICS feed applies the same rules as the calendar screen you already use:
+
+- **Visibility.** You only receive events whose visibility level includes your role (admin, staff, parents, students, or public). See the visibility matrix on the [calendar overview](/features/calendar/overview) page.
+- **Centre scoping.** Supervisors and monitors receive only org-wide events plus events targeting their assigned learning centre(s). Administrators receive events across all centres. Parents and students receive events for their child&apos;s or their own learning centre plus org-wide events.
+- **Cancellations.** If a family-visible event is cancelled rather than deleted outright, your calendar app receives a cancelled status for that event on its next refresh, rather than the event simply vanishing.
+
+If a lookup error occurs while building your feed, it fails closed and returns only org-wide events rather than exposing centre-scoped data it could not verify.
+
+## Update frequency
+
+The feed is served with a 5-minute cache. Most calendar apps poll a subscribed URL on their own schedule (commonly every few hours, depending on the app), so new or changed events in Zion may take some time to appear in your external calendar. This is normal behavior for calendar-subscription feeds and is not something you control from Zion.
+
+<CardGroup cols={2}>
+  <Card title="Calendar overview" icon="calendar" href="/features/calendar/overview">
+    Event types, visibility levels, and centre scoping explained.
+  </Card>
+  <Card title="Managing events" icon="calendar-check" href="/features/calendar/managing-events">
+    How administrators and supervisors create, edit, and delete events.
+  </Card>
+  <Card title="Parent getting started" icon="user" href="/guides/parent/getting-started">
+    Setting up your parent account, including the calendar.
+  </Card>
+  <Card title="Student getting started" icon="graduation-cap" href="/guides/student/getting-started">
+    Setting up your student account, including the calendar.
+  </Card>
+</CardGroup>

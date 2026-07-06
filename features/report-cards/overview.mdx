@@ -1,0 +1,74 @@
+---
+title: Report cards overview
+description: Compile per-term academic and character data into report-card PDFs and distribute them to parents
+icon: "file-lines"
+---
+
+Report cards compile a student&apos;s per-term data into a single PDF: PACE grades, test scores, attendance, Goal Check completion, and parent-safe character notes. Administrators, supervisors, and monitors generate report cards for their students. Parents view and download the ones published to them.
+
+## Who can do what
+
+| Role | Access |
+|---|---|
+| Administrator | Generates report cards for any centre, manages templates, distributes to parents |
+| Supervisor | Generates and distributes report cards, restricted to their assigned centre(s) |
+| Monitor | Generates and distributes report cards, restricted to their assigned centre(s) |
+| Parent | Views and downloads only the published report cards for their own children |
+
+Teaching staff and students do not have access to report cards.
+
+## What a report card contains
+
+Every report card is built from five sections. A section shows &quot;No data for this term&quot; if there is nothing to display for that student.
+
+| Section | What it shows | Scope |
+|---|---|---|
+| PACE Grades | PACEs and their percentages | Completed counts are labelled &quot;Completed (overall)&quot; because they are all-time totals, not limited to the selected term |
+| Test Scores | Finalized test scores for the term | Term-bounded |
+| Attendance | Present, absent, late for the term | Term-bounded |
+| Goal Check Summary | Goal Check completion for the term | Term-bounded |
+| Character Notes | Parent-safe notes only | Term-bounded |
+
+<Note>
+Character notes only ever show the public note on a student. Private notes are never included in a report card.
+</Note>
+
+## Report card statuses
+
+A report card moves through two states.
+
+1. **Generated.** The PDF has been compiled for the term but has not been sent to parents.
+2. **Published.** Distribution has run for that card. The card now appears in the parent&apos;s report-card archive.
+
+## Term-readiness warnings
+
+Before generating, each in-scope student is checked for possible gaps in their term data: no finalized grades, incomplete grades, no attendance, no Goal Check activity, or no character notes.
+
+Only the no-grades warning blocks generation. If a student has zero finalized test scores for the term, the generating staff member must check an acknowledgement box before proceeding. The other warnings are informational and do not stop generation.
+
+## Generating and distributing
+
+Administrators, supervisors, and monitors generate report cards for a term, optionally scoped to one centre, then distribute them by downloading a ZIP or sending them to parents by email. See <a href="/features/report-cards/generating-and-distributing">Generating and distributing report cards</a> for the full workflow, including delivery-status meanings.
+
+## Templates
+
+Administrators control what a report card looks like: a logo, a default template, and which of the five sections appear and in what order. If a school has no template configured, Zion uses a built-in default automatically. See <a href="/features/report-cards/templates">Report card templates</a>.
+
+## What parents see
+
+Parents only ever see published report cards for their own linked children, grouped by child. A report card that has not been published, or that belongs to a student outside the parent&apos;s linked children, never appears. Each report card downloads through a short-lived link generated on demand, not a permanent public URL.
+
+<CardGroup cols={2}>
+  <Card title="Generating and distributing" icon="paper-plane" href="/features/report-cards/generating-and-distributing">
+    Run term readiness checks, generate report cards, and send them to parents.
+  </Card>
+  <Card title="Report card templates" icon="file-lines" href="/features/report-cards/templates">
+    Configure the logo, sections, and default template for your school.
+  </Card>
+  <Card title="Permanent record" icon="book" href="/features/report-cards/permanent-record">
+    View a student&apos;s multi-year academic history separate from term report cards.
+  </Card>
+  <Card title="Grading overview" icon="chart-line" href="/features/grading/overview">
+    See how PACE test scores are entered and finalized before a term is generated.
+  </Card>
+</CardGroup>

@@ -1,0 +1,167 @@
+---
+title: Creating and managing events
+description: Create, edit, and retire calendar events, including recurrence, visibility, centre scoping, bulk actions, exports, and seeding public holidays
+icon: "calendar-plus"
+---
+
+Event authoring on the calendar is a staff task. Administrators and supervisors create and edit events from the Calendar page, and administrators alone manage bulk actions, print and CSV export, and public holidays. Parents and students only read the calendar; see [Calendar overview](/features/calendar/overview) for how visibility and centre scoping work from their side.
+
+## Who can create an event
+
+The **New Event** button appears for administrators and supervisors. Supervisors also need the `calendar:create_centre_event` permission; a monitor can get the same button if that permission is granted to them.
+
+- Administrators can target the event org-wide or to any specific centre, and can set any visibility level.
+- Supervisors (and permitted monitors) can only target their own assigned centre or centres. Org-wide is not offered to them, and Save stays disabled until at least one centre is selected.
+- The server re-checks centre authorization for every targeted centre when the event is saved, so a request cannot bypass the picker by editing the form directly.
+
+## Creating and editing an event
+
+<Steps>
+  <Step title="Open the form">
+    Go to Calendar and click **New Event**, or open an existing event and choose to edit it.
+  </Step>
+  <Step title="Fill in the details">
+    Set the title, description, all-day toggle, and start and end date and time.
+  </Step>
+  <Step title="Choose an event type">
+    Pick academic, holiday, school_wide, centre, extracurricular, or meeting. The type also drives the event&apos;s chip color on the calendar grid.
+  </Step>
+  <Step title="Target centres">
+    Leave the event org-wide, or select one or more specific centres. Supervisors only see their assigned centres in this picker.
+  </Step>
+  <Step title="Set visibility">
+    Choose who can read the event: admin, staff, parents, students, or public. The default for a new event is staff. Only administrators can choose a visibility other than the default.
+  </Step>
+  <Step title="Set recurrence (optional)">
+    Pick a recurrence preset if the event repeats, and an end condition: never, on a date, or after a number of occurrences.
+  </Step>
+  <Step title="Save">
+    The event appears on the calendar immediately. Family-visible events (parents, students, or public) trigger a notification.
+  </Step>
+</Steps>
+
+### Visibility levels
+
+| Visibility | Who can read it |
+|---|---|
+| admin | Administrator only |
+| staff | Administrator, supervisor, monitor |
+| parents | Staff roles plus parent |
+| students | Staff roles plus parent and student |
+| public | All authenticated org roles |
+
+### Recurrence presets
+
+Four presets are available. No other repeat pattern is offered in the form.
+
+| Preset | Repeats |
+|---|---|
+| Daily | Every day |
+| Weekly on weekdays | Monday through Friday |
+| Weekly on selected days | The days you pick |
+| Monthly | Same date each month |
+
+Each preset can end never, on a chosen date, or after a set number of occurrences.
+
+## Editing or deleting a recurring event
+
+Opening a recurring event to edit or delete it shows a scope chooser:
+
+<Tabs>
+  <Tab title="This occurrence">
+    Changes only the single date you opened. This creates an override for that one occurrence, and the rest of the series is untouched. An overridden occurrence can be reverted back into the series later if you change your mind.
+  </Tab>
+  <Tab title="This and future">
+    Ends the original series at the date before this occurrence and starts a new series from here forward with your changes. Earlier occurrences are unaffected.
+  </Tab>
+  <Tab title="Entire series">
+    Available on delete. Removes every occurrence of the recurring event.
+  </Tab>
+</Tabs>
+
+<Note>
+Bulk manage does not accept recurring series rows for deletion. To delete a whole series, open the event and use the scope chooser instead.
+</Note>
+
+## Soft-cancel versus hard delete
+
+What happens when you delete an event depends on who can see it:
+
+- **Family-visible events** (visibility set to parents, students, or public) are soft-cancelled by default: the event&apos;s status is set to cancelled rather than removed. Anyone subscribed to the calendar feed still receives a `STATUS:CANCELLED` update for it. Choosing hard delete removes the event permanently instead.
+- **Staff/admin-only events** (visibility admin or staff) are always hard-deleted.
+- **Seed holidays** are never deleted. Removing one from the holiday list marks it not observed, which is reversible; see below.
+
+## Centre-scoped visibility
+
+Supervisors and monitors only see events that are either org-wide or targeted at one of their assigned learning centres, both on the calendar grid and in their ICS feed. Administrators are not scoped and see everything. An event with no centre targeting and no legacy centre reference is treated as org-wide; targeting one or more centres scopes it to just those centres.
+
+## Bulk manage
+
+Administrators can switch the calendar into a multi-select agenda view with the **Bulk manage** toggle.
+
+<Steps>
+  <Step title="Turn on Bulk manage">
+    The grid switches to a list you can multi-select from.
+  </Step>
+  <Step title="Select events">
+    Check the events you want to act on, up to 500 per action.
+  </Step>
+  <Step title="Choose an action">
+    Delete, change visibility, or retarget centres for the selected events.
+  </Step>
+  <Step title="Confirm">
+    A dialog shows the count of events affected.
+  </Step>
+  <Step title="Review the result">
+    Each row is re-authorized individually on the server (creator or administrator, plus centre authorization). Recurring series rows and unauthorized rows are skipped rather than mutated, and the response reports how many succeeded versus were skipped.
+  </Step>
+</Steps>
+
+## Print and CSV export
+
+Administrators get a **Print / Export** control for the current month or the current academic term.
+
+- **Print** opens a grayscale agenda view built from the same event list and filters shown on screen, then hands off to the browser&apos;s print dialog.
+- **CSV export** downloads the same filtered event list as a CSV file.
+
+Both respect whatever event-type, centre, and visibility filters are active on screen at the time.
+
+## Managing public holidays
+
+Administrators manage public holidays from Settings > Holidays. This screen is administrator-only; any other role attempting to reach it is redirected to Settings > School.
+
+<Steps>
+  <Step title="Seed Uganda holidays">
+    Click **Seed Uganda holidays**. This is idempotent, so it is safe to run again later without creating duplicates. Fixed-date holidays are generated per year, Good Friday and Easter Monday are computed from the date of Easter, and Eid al-Fitr and Eid al-Adha are read from a maintained table of gazetted dates.
+  </Step>
+  <Step title="Review observed holidays">
+    Click **Mark not observed** on any holiday your school does not follow. This hides it from the calendar but does not delete it.
+  </Step>
+  <Step title="Review hidden holidays">
+    Click **Reinstate** to bring a hidden holiday back.
+  </Step>
+  <Step title="Add a custom holiday">
+    Use **Add custom holiday** to open the same event form used elsewhere, defaulted to the holiday event type.
+  </Step>
+</Steps>
+
+<Warning>
+The gazetted Eid table currently covers dates at least through 2026. Once the seedable year moves past what the table covers, a staleness banner appears on this page as a reminder that Eid dates need updating for the following year.
+</Warning>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Calendar overview" icon="calendar" href="/features/calendar/overview">
+    Event types, visibility, and centre scoping explained
+  </Card>
+  <Card title="iCal subscription" icon="rss" href="/features/calendar/ical-subscription">
+    Generate a link to sync the calendar into an external app
+  </Card>
+  <Card title="Meetings" icon="calendar-check" href="/features/meetings/overview">
+    How booked meetings appear as calendar events automatically
+  </Card>
+  <Card title="Roles and permissions" icon="shield" href="/features/organization/roles-and-permissions">
+    How centre assignment and permissions are set for staff
+  </Card>
+</CardGroup>

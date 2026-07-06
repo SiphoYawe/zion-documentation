@@ -1,0 +1,78 @@
+---
+title: Roles and permissions
+description: Manage built-in and custom roles, review the permission catalog, and read the role change history.
+icon: "shield-halved"
+---
+
+Zion assigns every staff account one of three built-in roles administrator, supervisor, or monitor, plus student and parent roles for portal access. Administrators can also create custom roles that layer additional permissions on top of a user&apos;s built-in role. This page covers Settings &gt; Roles (`/settings/roles`) and the role change history at `/settings/roles/audit`. Only administrators can reach this area.
+
+<Note>
+Custom roles are additive. Assigning one adds permission keys to what a user already has through their built-in role. It never replaces or downgrades a built-in role.
+</Note>
+
+## Built-in roles
+
+Every built-in role is mirrored as a seeded, immutable system role so its exact grants show up in the same list as custom roles.
+
+| Role | What it can access |
+|---|---|
+| Administrator | Every permission key in the catalog. |
+| Supervisor | View, create, edit, and delete students; assign PACEs; view and set Goal Check targets; mark completion; view and submit grading; mark and view attendance; view calendar and create centre events; view and generate reports; view and check out inventory. |
+| Monitor | Same as supervisor, minus deleting students, creating centre calendar events, and inventory access. |
+| Student | View Goal Check progress and view the calendar. |
+| Parent | View the calendar. |
+
+Supervisors and monitors only see the students, centres, and reports for the learning centres they are assigned to. Administrators see every centre in the organization. For how staff accounts and centre assignments are set up, see <a href="/features/organization/teaching-staff-and-users">Teaching staff and user accounts</a>.
+
+## The permission catalog
+
+Custom roles are built from a fixed catalog of permission keys, grouped by area: Students, Goal Check, Grading, Attendance, Calendar, Reports, Settings, Roles &amp; Permissions, and Inventory. Each key controls one specific action, such as viewing student records, marking attendance, or generating reports.
+
+<Warning>
+Some catalog keys are not yet enforced anywhere in the app (for example, viewing all Goal Check records across centres, or viewing all attendance across centres). The role editor marks these as &quot;Coming soon&quot; and disables them so you cannot grant a permission that has no effect yet.
+</Warning>
+
+For the full list of permission keys and what each one unlocks, see the <a href="/reference/roles-permissions">role and permission reference</a>.
+
+## Managing custom roles
+
+<Steps>
+  <Step title="Open Settings > Roles">
+    Go to Settings &gt; Roles. The list shows every role in your organization: its name, description, a System badge for the built-in role mirrors, how many permissions it grants, and how many members hold it.
+  </Step>
+  <Step title="Create, clone, or edit a role">
+    Click New role to start from scratch, or Clone an existing role including a system role to make a customizable copy of it. Name the role, add a description, and check the exact permission keys to grant. System roles themselves cannot be renamed or edited directly.
+  </Step>
+  <Step title="Assign the role to a user">
+    Open a user&apos;s detail page under Settings &gt; Users and add the custom role under Assigned Roles. You can also bulk-assign or bulk-remove a role across many users at once from the Roles page.
+  </Step>
+  <Step title="Check effective permissions">
+    On the user&apos;s detail page, the Effective Permissions card shows the resolved union of their built-in role and any assigned custom roles, with each key attributed to the role that granted it.
+  </Step>
+  <Step title="Delete a role">
+    Deleting a system role is blocked. Deleting a custom role that is currently held by one or more users shows a warning stating exactly how many users hold it before you confirm.
+  </Step>
+</Steps>
+
+<Tip>
+Click the member count on any custom role to see exactly who holds it before editing or deleting it.
+</Tip>
+
+## Role change history
+
+Settings &gt; Roles includes a link to the audit log at `/settings/roles/audit`. It records every role and permission change made in the organization: who made the change, what changed, and when. The log is paginated with a Load more control and can be filtered by actor.
+
+<CardGroup cols={2}>
+  <Card title="Teaching staff and user accounts" icon="users" href="/features/organization/teaching-staff-and-users">
+    Invite staff, assign centres, and deactivate or reactivate accounts.
+  </Card>
+  <Card title="Learning centres" icon="school" href="/features/organization/learning-centres">
+    How centres scope which students and staff a role can see.
+  </Card>
+  <Card title="Role and permission reference" icon="shield" href="/reference/roles-permissions">
+    The full permission catalog and system role bundles.
+  </Card>
+  <Card title="Terminology" icon="book" href="/reference/terminology">
+    Definitions of roles, centres, and other Zion-specific terms.
+  </Card>
+</CardGroup>

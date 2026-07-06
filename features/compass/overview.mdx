@@ -1,0 +1,97 @@
+---
+title: Curriculum Compass
+description: A read-only map of where every visible student sits across the six ACE PACE subject tracks
+icon: "compass"
+---
+
+Curriculum Compass plots each visible student&apos;s current position across the six ACE PACE subject tracks on a single pan and zoom canvas. Administrators, supervisors, monitors, and parents use it to see where a cohort or a child stands in the curriculum without opening individual PACE records. The feature only displays data. It has no inputs, no selectors, and no save actions anywhere in it.
+
+<Note>
+Nothing on this page writes to the database. Every view, from the canvas to the set and student modals, is read-only.
+</Note>
+
+## What the canvas shows
+
+Compass renders the 144 global PACE sets (set numbers 1001 to 1144, spanning 12 grade bands) as six horizontal tracks, one per subject:
+
+- Math
+- English
+- Word Building
+- Social Studies
+- Science
+- Literature &amp; Creative Writing
+
+Each track carries a row of set-number ticks. A subject-label column stays pinned to the left edge while the rest of the canvas pans and zooms, so you always know which track you are looking at. Zoom in, zoom out, and reset controls sit above the canvas for jumping between an overview of all 144 sets and a close look at a single grade band.
+
+Every visible student&apos;s current in-progress PACE per subject appears as a marker on the matching track, positioned at that student&apos;s current set. Course names that don&apos;t match a set number directly (for example, &quot;Algebra I&quot; or &quot;Biology&quot;) are matched to the correct track through a fixed alias list. A course Compass cannot recognize is left off the map rather than plotted in the wrong place.
+
+## Who sees which students
+
+Compass scopes the student list to your role. You never see students outside your own reach.
+
+| Role | What you see |
+|---|---|
+| Administrator | Every active student in the organisation |
+| Supervisor | Students in the learning centre(s) you are assigned to |
+| Monitor | Students in the learning centre(s) you are assigned to, the same as a supervisor |
+| Parent | Only your own children, matched by your account email |
+
+Roles outside this list see no students on Compass. When a role&apos;s cohort is empty, the page shows a plain message instead of a blank canvas, for example &quot;No children found in your account&quot; for a parent with no linked students, or &quot;No students assigned to your centres&quot; for a supervisor or monitor with no centre assignment yet.
+
+<Info>
+Administrators and supervisors reach Compass from their own sidebar (Compass). Parents reach it from the parent sidebar. If you don&apos;t see a Compass link, your role or centre assignment may not grant access yet.
+</Info>
+
+## Clicking a set
+
+Clicking a set-number tick on any track opens a summary for that set. It shows the set number and grade level, then one row per subject track with:
+
+- A short concept summary for that set
+- A count of how many currently visible students sit at that set
+
+The count reflects only the students already loaded in your scoped cohort, so an administrator and a supervisor looking at the same set number will usually see different counts.
+
+## Clicking a student
+
+Clicking a student marker opens that student&apos;s detail view, showing:
+
+- The student&apos;s name and the subject track you clicked
+- Their current set number
+- Pages done against total pages for that PACE, shown as a progress bar
+- The student&apos;s current set across all six subjects, for a full cross-subject snapshot
+- A projected completion date for their current PACE, or a note that there isn&apos;t enough data yet
+
+## Reading the projected completion date
+
+The projection is based on how many pages a student has actually completed recently, not a fixed pace or a target date.
+
+<Steps>
+  <Step title="Recent completed work is measured">
+    Compass looks at the student&apos;s completed daily goals over the last 28 days and works out a weekly page velocity, how many pages they have been completing per week on average.
+  </Step>
+  <Step title="Remaining pages are divided by that velocity">
+    The pages remaining in the student&apos;s current active PACE across their subjects are divided by the weekly velocity to project a completion date, shown as a full date such as &quot;14 March 2027&quot;.
+  </Step>
+  <Step title="Thin or flat history shows a calm message instead">
+    If the student has completed goals on fewer than 10 distinct days in that 28-day window, or their recent velocity works out to zero or less, Compass shows &quot;Not enough data yet&quot; instead of guessing at a date.
+  </Step>
+</Steps>
+
+<Tip>
+The projection only covers the student&apos;s current active PACE per subject. It is not a forecast for their entire multi-year curriculum plan.
+</Tip>
+
+<CardGroup cols={2}>
+  <Card title="Goal Check overview" icon="target" href="/features/goal-check/overview">
+    See how daily goals, the data behind Compass&apos;s velocity calculation, are set and marked.
+  </Card>
+  <Card title="PACE assignments" icon="book" href="/features/students/pace-assignments">
+    Review how students are assigned to PACEs and subject tracks.
+  </Card>
+  <Card title="Learning centres" icon="users" href="/features/organization/learning-centres">
+    See how supervisor and monitor centre assignments scope what they can view.
+  </Card>
+  <Card title="Roles and permissions" icon="shield" href="/reference/roles-permissions">
+    Compare what each role can see and do across Zion.
+  </Card>
+</CardGroup>

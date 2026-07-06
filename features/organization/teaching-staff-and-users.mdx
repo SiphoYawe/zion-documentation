@@ -1,0 +1,102 @@
+---
+title: Teaching staff and user accounts
+description: Invite, edit, deactivate, and reactivate administrator, supervisor, and monitor accounts.
+icon: "users-gear"
+---
+
+Teaching staff accounts cover the three staff roles in Zion: administrator, supervisor, and monitor. Administrators manage these accounts from a staff directory, the invitation flow, and each user&apos;s detail page. This page is administrator only.
+
+<Note>
+'Teaching Staff' is a directory label, not a separate role. Every account listed here holds one of three roles: administrator, supervisor, or monitor. Students and parents have their own accounts and are not managed on these pages.
+</Note>
+
+## The staff directory
+
+Two pages list the same staff accounts:
+
+- **Teaching Staff** (`/teaching-staff`), reached from the sidebar under People &amp; Centres
+- **Users** (`/settings/users`), reached from the Settings tab bar
+
+Both list every user with the administrator, supervisor, or monitor role, showing each person&apos;s assigned learning centres and a set of stat tiles (Total Staff, Administrators, Supervisors, and on the Teaching Staff page, Monitors). Both pages have an 'Invite Teaching Staff' button.
+
+The Users page also shows a Pending Invitations table above the staff list, with email, role, sent date, status, and Resend or Revoke actions for each invite that hasn&apos;t been accepted yet.
+
+## Inviting a teaching staff member
+
+<Steps>
+  <Step title="Open the invite form">
+    From either the Teaching Staff page or Settings &gt; Users, click 'Invite Teaching Staff'.
+  </Step>
+  <Step title="Enter the email and role">
+    Enter the invitee&apos;s email address and choose a role: Administrator, Supervisor, or Monitor.
+  </Step>
+  <Step title="Assign learning centres">
+    If the role is Monitor, you must select at least one learning centre. Monitors can only access students in their assigned centres. If the role is Supervisor, centre assignment is optional; supervisors use assigned centres for approvals and reporting. If the role is Administrator, any selected centres are cleared since administrators are not centre-scoped.
+  </Step>
+  <Step title="Add an optional welcome message">
+    Add a custom message, up to 500 characters, to include in the invitation email.
+  </Step>
+  <Step title="Submit">
+    Zion sends an invitation email through Clerk so the invitee can set a password and join. The invite appears in the Pending Invitations table until accepted.
+  </Step>
+</Steps>
+
+## Staff roles summary
+
+| Role | Centre scope | Typical access |
+|---|---|---|
+| Administrator | All centres | Full access across the school |
+| Supervisor | Assigned centres (optional at invite) | Approvals and reporting for assigned centres |
+| Monitor | Assigned centres (required at invite) | Students in assigned centres only |
+
+For the full permission breakdown behind each role, see Roles &amp; Permissions.
+
+## Pending invitations
+
+On Settings &gt; Users, the Pending Invitations table lists every invite that hasn&apos;t been accepted, with the invitee&apos;s email, role, and the date it was sent. From this table you can:
+
+- **Resend** the invitation email
+- **Revoke** the invitation before it&apos;s accepted
+
+## User detail and edit
+
+Clicking a staff member opens their user detail page (`/settings/users/[userId]`), which shows:
+
+- **Account information**: email, joined date, and assigned learning centres
+- **Edit form**: name, role, and centre re-assignment
+- **Assigned Roles**: any custom roles layered additively on top of the built-in role
+- **Effective Permissions**: the resolved set of permissions from the built-in role plus any assigned custom roles, with the source of each permission shown
+- **Recent Activity**: a history panel of the user&apos;s actions
+
+## Deactivate and reactivate a user
+
+<Steps>
+  <Step title="Open the user's detail page">
+    Go to Settings &gt; Users and select the account.
+  </Step>
+  <Step title="Deactivate">
+    Click 'Deactivate User' in the Account Information card. Confirm in the dialog. Deactivating blocks the user from logging in, removes them from the organization, and preserves their data for audit.
+  </Step>
+  <Step title="Reactivate">
+    A deactivated user can be reactivated later. Reactivating restores their organization membership and their previous role.
+  </Step>
+</Steps>
+
+## Resetting a user&apos;s onboarding
+
+The user detail page has a Reset Onboarding action for administrators who need to walk a staff member through the getting-started guide again, for example when re-training someone on the team. Resetting clears the user&apos;s onboarding completion and step progress so the guide starts over from the beginning the next time they sign in.
+
+<CardGroup cols={2}>
+  <Card title="Learning Centres" icon="school" href="/features/organization/learning-centres">
+    Create centres, set capacity, and assign staff to a centre&apos;s roster.
+  </Card>
+  <Card title="Roles & Permissions" icon="shield-halved" href="/features/organization/roles-and-permissions">
+    Layer custom roles on top of built-in roles and review effective permissions.
+  </Card>
+  <Card title="Administrator: staff management" icon="users" href="/guides/administrator/staff-management">
+    A guided walkthrough of managing staff as an administrator.
+  </Card>
+  <Card title="Roles and permissions reference" icon="clipboard-check" href="/reference/roles-permissions">
+    The full reference table of roles and permission keys.
+  </Card>
+</CardGroup>

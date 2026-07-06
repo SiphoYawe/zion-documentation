@@ -1,0 +1,84 @@
+---
+title: Onboarding and the getting-started checklist
+description: The one-time setup wizard that creates a school, and the separate per-role checklist widget that follows on the dashboard afterward
+icon: "list-check"
+---
+
+Zion has two onboarding systems, and they do not overlap. The setup wizard at `/onboarding` runs once per organization, right after signup, and builds the school record itself. The Getting Started checklist is a separate, ongoing widget on the dashboard that tracks what each user has done since. This page covers both and keeps them distinct.
+
+## The setup wizard (/onboarding)
+
+The wizard appears the first time the organization&apos;s creator signs in, before any school profile exists. It is forced. Zion checks for a `schools` row matching the Clerk organization, and if none exists, the wizard renders instead of the dashboard.
+
+<Steps>
+  <Step title="School Profile">
+    Enter the school name (required, 2 to 100 characters), plus optional city, country, contact email, and contact phone. Timezone defaults to UTC and language defaults to English, the only language currently offered. Continue calls `createSchoolProfileOnboarding` and creates the `schools` row.
+  </Step>
+  <Step title="Academic Terms">
+    Add at least one term with a name and a start and end date. Continue stays disabled until one term exists. Use &quot;Add Another Term&quot; to add more before moving on.
+  </Step>
+  <Step title="Learning Centres">
+    Add at least one centre with a name (required), an optional description, and an optional capacity. Continue stays disabled until one centre exists.
+  </Step>
+  <Step title="Invite Teaching Staff">
+    Optionally invite a Supervisor or Monitor by email and name, assign learning centres, and add a welcome message. This step only offers the Supervisor and Monitor roles. Both &quot;Skip This Step&quot; and &quot;Send Invitation&quot; move you forward.
+  </Step>
+</Steps>
+
+The wizard ends at a completion screen summarizing what was set up, with buttons to go to the dashboard or contact support.
+
+<Note>
+  If you navigate to `/onboarding` again after the school profile already exists, Zion does not replay the wizard. It shows a static &quot;Onboarding Complete&quot; screen with links to the dashboard and to School Settings.
+</Note>
+
+## The Getting Started checklist (dashboard widget)
+
+This is a different feature. It is a per-user, per-role checklist that appears on the administrator, supervisor, and monitor dashboards, and it has nothing to do with whether the wizard above has run. It tracks a role-specific list of onboarding actions (the steps differ between an administrator and a supervisor or monitor) and shows a completed-versus-total counter.
+
+Each row in the checklist links to the real page where that action happens. For example, an administrator&apos;s &quot;school profile&quot; step links to `/settings/school`, and a supervisor&apos;s &quot;practice Goal Check&quot; step links to the Goal Check entry screen. Completed steps show struck through; open steps stay active.
+
+You can clear a step in either of two ways.
+
+- Click the row to go do the action. Some actions, like saving the school profile, tick the matching step automatically once you complete them.
+- Tap the circle icon next to an open step to mark it done manually, without navigating anywhere.
+
+When every step for your role is complete, the widget briefly shows a &quot;You&apos;re all set&quot; card, then stops appearing once your completion is recorded.
+
+### Dismissing, reopening, and resetting
+
+<Tabs>
+  <Tab title="Dismiss (self)">
+    Click &quot;Dismiss&quot; on the widget to hide it permanently. This records your completion timestamp so the checklist will not reappear on future visits, even with steps still open.
+  </Tab>
+  <Tab title="Reopen (self)">
+    On your Profile page, a &quot;Restart getting-started guide&quot; card appears once the checklist has been dismissed or completed. Confirming it clears your completion timestamp and brings the checklist back. Steps you already finished stay finished, only the remaining open steps show again.
+  </Tab>
+  <Tab title="Reset for another user (administrator only)">
+    An administrator can reset another staff member&apos;s checklist from Settings &gt; Users. This is a full reset, not a reopen: it clears the target user&apos;s completion timestamp and deletes all of their recorded progress, so their checklist starts from zero. Zion writes an audit log entry for this action, and it only applies within the same organization.
+  </Tab>
+</Tabs>
+
+## Keeping the two systems straight
+
+| | Setup wizard (`/onboarding`) | Getting Started checklist (dashboard widget) |
+|---|---|---|
+| Runs | Once per organization | Ongoing, per user |
+| Trigger | No `schools` row exists yet for the org | Rendered whenever a role has open steps |
+| Who sees it | The org creator, before the school profile exists | Administrator, supervisor, and monitor dashboards |
+| What it does | Creates the school profile, first term, first centre, and optional staff invitations | Tracks and links to onboarding actions already available elsewhere in the app |
+| Can you replay it | No, once a school profile exists it shows a completion screen instead | Yes, self-reopen from Profile, or an administrator can reset it for someone else |
+
+<CardGroup cols={2}>
+  <Card title="Organization: Teaching Staff and Users" icon="users" href="/features/organization/teaching-staff-and-users">
+    Invite, manage, and reset onboarding for staff after the wizard is done.
+  </Card>
+  <Card title="Learning Centres" icon="graduation-cap" href="/features/organization/learning-centres">
+    Add and manage the centres created during Step 3 of the wizard.
+  </Card>
+  <Card title="Academic Terms" icon="calendar-check" href="/features/academic-terms/overview">
+    Manage terms beyond the first one created during onboarding.
+  </Card>
+  <Card title="Administrator: Onboarding" icon="rocket" href="/guides/administrator/onboarding">
+    A role-specific walkthrough for administrators finishing initial setup.
+  </Card>
+</CardGroup>

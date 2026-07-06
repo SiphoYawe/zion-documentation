@@ -1,0 +1,88 @@
+---
+title: Behaviour reports and standings
+description: Read ranked merit standings and export behaviour data for your organisation or centre
+icon: "chart-line"
+---
+
+Behaviour reports turn logged merit, demerit, and incident records into a ranked standings table. Administrators see the whole organisation. Supervisors and monitors see only the learning centres they are assigned to.
+
+## Who sees what
+
+| Role | Route | Scope |
+|---|---|---|
+| Administrator | `/admin/behaviour/reports` | Every centre in the organisation, with a centre filter |
+| Supervisor | `/supervisor/behaviour/reports` | Only centres the supervisor is assigned to (no centre filter shown) |
+| Monitor | `/supervisor/behaviour/reports` | Only centres the monitor is assigned to (no centre filter shown) |
+
+<Note>
+Scoping is enforced on the server, not just in the UI. If a supervisor or monitor sends a centre ID outside their assignment, the server ignores it and returns only their assigned centres&apos; data.
+</Note>
+
+## Filters
+
+<Steps>
+  <Step title="Open the reports page">
+    Administrators go to Behaviour &gt; Reports in the sidebar. Supervisors and monitors go to Behaviour in their own sidebar.
+  </Step>
+  <Step title="Set the date range">
+    The report defaults to the trailing 30 days. Widen or narrow the range to cover the period you want to review.
+  </Step>
+  <Step title="Filter by centre (administrator only)">
+    Administrators can narrow the standings to a single learning centre. Supervisors and monitors do not see this filter because their view is already limited to their own centres.
+  </Step>
+  <Step title="Filter by type">
+    Narrow the table to merits, demerits, or incidents, or leave it unfiltered to see all three.
+  </Step>
+  <Step title="Sort the table">
+    Sort by highest net merits or most demerits to bring the students you need to review to the top.
+  </Step>
+</Steps>
+
+## Reading the page
+
+KPI cards at the top of the report summarize the filtered period: total merits, total demerits, and total incidents.
+
+The standings table below lists, per student:
+
+- Student name and centre
+- Net points balance for the filtered period
+- Merit count and points
+- Demerit count and points
+- Incident count and points
+
+Net balance is a signed sum: merits add points, demerits subtract them, and incidents carry whatever sign their category was configured with. Ranking a student here reflects behaviour within the filtered date range and any active type or centre filter, not their all-time balance shown on their individual behaviour summary.
+
+## Exporting to CSV
+
+<Steps>
+  <Step title="Apply your filters">
+    Set the date range, type, and (if administrator) centre filter to match the rows you want to export.
+  </Step>
+  <Step title="Click Export CSV">
+    The export is client-side and downloads exactly the rows currently loaded and filtered in the table.
+  </Step>
+  <Step title="Locate the file">
+    The download is named `behaviour-standings-<from>-to-<to>.csv`, using the start and end of your selected date range.
+  </Step>
+</Steps>
+
+<Warning>
+The CSV export contains the rows currently loaded in the table. Adjust your filters before exporting if you need a different date range, centre, or type.
+</Warning>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Behaviour tracking overview" icon="star" href="/features/behaviour/overview">
+    What merit, demerit, and incident records are and who can log them.
+  </Card>
+  <Card title="Logging behaviour" icon="clipboard-check" href="/features/behaviour/logging">
+    How staff log a merit, demerit, or incident from the quick-log drawer.
+  </Card>
+  <Card title="Administrator reports" icon="file-lines" href="/guides/administrator/reports">
+    Where behaviour reports fit alongside other administrator-facing reports.
+  </Card>
+  <Card title="Roles and permissions" icon="users" href="/reference/roles-permissions">
+    How centre assignment shapes what supervisors and monitors can see.
+  </Card>
+</CardGroup>

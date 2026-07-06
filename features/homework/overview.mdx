@@ -1,0 +1,93 @@
+---
+title: Homework overview
+description: Supervisors and monitors assign a PACE page range for home study, families mark it done, and the teacher verifies it at goal check.
+icon: "book"
+---
+
+Homework in Zion is a home-study assignment tied to a specific PACE page range, not a graded file upload. A supervisor or monitor assigns one student a page range from one of that student&apos;s active PACEs, the family marks it done at home, and the teacher confirms it was actually completed before it counts as verified.
+
+## Who does what
+
+<Tabs>
+  <Tab title="Supervisor and monitor">
+    Assign a page range to a student, review pending verifications, verify completed work at goal check, and cancel or excuse an assignment that no longer applies. Supervisors and monitors only see students in the learning centres they are assigned to.
+  </Tab>
+  <Tab title="Administrator">
+    Does not assign or verify homework directly. Views the Homework Completion Report across every learning centre in the organization.
+  </Tab>
+  <Tab title="Parent">
+    Sees all of their children&apos;s homework on the Homework page and a dashboard widget, marks items done at home, and can undo a mistaken tap before the teacher verifies it.
+  </Tab>
+  <Tab title="Student">
+    Sees their own homework on the Homework page, split into Today, Upcoming, and Done tabs, and can mark an item done the same way a parent can.
+  </Tab>
+</Tabs>
+
+## The lifecycle
+
+An assignment moves through a small set of statuses. Two of them, cancelled and excused, are deliberately neutral rather than a mark against the student.
+
+| Status | Meaning |
+|---|---|
+| Pending | Assigned, due date not yet reached or passed, not yet marked done |
+| Parent Done | The family marked it done at home, waiting for the teacher to verify |
+| Verified | The teacher confirmed the pages were completed (terminal, cannot be undone) |
+| Missed | The due date passed while the item was still pending |
+| Cancelled | Withdrawn by staff because it no longer applies |
+| Excused | Withdrawn by staff for a legitimate reason (for example, the student was sick) |
+
+<Note>
+Cancelled and excused items are never counted as missed. A supervisor or monitor can withdraw an assignment this way at any point before it is verified, including after it has already been flagged missed.
+</Note>
+
+## Assigning a page range
+
+A supervisor or monitor picks one student, one of that student&apos;s active PACEs, a page range (up to 100 characters, for example "pp 12-17"), a due date, and optional notes for the family (up to 500 characters).
+
+The due date defaults to the next school day: Zion computes tomorrow in the school&apos;s timezone, then skips Saturdays, Sundays, and any all-day holiday on the org&apos;s calendar. Staff can move the due date later but not earlier than today. The due date is also mirrored onto the shared school calendar.
+
+Only one assignment can exist per student per PACE per due day. Trying to create a duplicate is rejected.
+
+## Families mark it done, staff verify it
+
+A parent or the student marks a pending item done from home, optionally leaving a short note (up to 280 characters) for the teacher. That flips the item to Parent Done and notifies the assigning teacher. If the family taps Mark Done by mistake, they can undo it back to Pending at any time before the teacher verifies it.
+
+At goal check, the supervisor or monitor works through the Pending Verifications list, oldest due date first, and confirms each item:
+
+- **Verify**, when the family already marked it Parent Done and the student shows the completed pages.
+- **Mark done unilaterally**, when the family never marked it but the work is done, for example when a parent is unreachable. This moves Pending straight to Verified.
+- **Verify (late)**, for an item already flagged Missed that the student completed after the due date. This is recorded as a late verification so the completion report can distinguish it from on-time completions.
+
+Verified is terminal. There is no way to un-verify an assignment once it is confirmed.
+
+## What the daily jobs do
+
+Two scheduled jobs keep homework status current without staff having to check manually:
+
+- A daily sweep moves every assignment still Pending past its due date into Missed, and notifies the assigning teacher and the family.
+- A separate daily job sends a due-soon reminder to the family and the student for anything still Pending and due that day. It does not change the assignment&apos;s status.
+
+An item flagged Missed can still be handled: staff can verify it as late, reopen it back to Pending, or cancel or excuse it. If a Missed item is later cancelled or excused, a corrective notice goes out to the family and teacher so the earlier missed alert isn&apos;t left standing.
+
+## Cancel or excuse
+
+Cancel or excuse withdraws an assignment neutrally, before or after it has been flagged Missed, as long as it hasn&apos;t already been verified. Staff choose Cancel when the assignment no longer applies, or Excuse when the student had a legitimate reason not to complete it. Both render as a neutral status, never as a missed mark, and staff can add an optional reason.
+
+## Completion report
+
+The Homework Completion Report rolls up assigned, parent-done, verified, verified-late, missed, and cancelled counts per student over a date range, defaulting to the last 30 days. Administrators see every learning centre in the organization; supervisors and monitors see only their assigned centres. A student is flagged Chronic when their missed rate reaches 30% or higher over the selected window.
+
+<CardGroup cols={2}>
+  <Card title="Assigning and verifying homework" icon="clipboard-check" href="/features/homework/assigning-and-verifying">
+    The Assign, My Assignments, Pending Verifications, and Missed tabs in detail.
+  </Card>
+  <Card title="Homework Completion Report" icon="chart-line" href="/features/homework/completion-report">
+    Reading the KPI cards, the per-student table, and the Chronic flag.
+  </Card>
+  <Card title="Goal Check overview" icon="target" href="/features/goal-check/overview">
+    Homework verification happens alongside PACE goal checks.
+  </Card>
+  <Card title="Notifications overview" icon="bell" href="/features/notifications/overview">
+    How homework alerts and reminders reach families and staff.
+  </Card>
+</CardGroup>

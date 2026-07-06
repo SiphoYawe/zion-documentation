@@ -1,0 +1,97 @@
+---
+title: Student portal overview
+description: What the student portal covers and who can see it
+icon: "graduation-cap"
+---
+
+The student portal is live. It gives a signed-in student a read-mostly view of their own school record at `/student/*`: homework, goals, grades, progress, attendance, calendar, activities, and notifications.
+
+<Note>
+Access is gated to the `student` Clerk organization role. Every other role is redirected away from `/student/*` routes, and the middleware plus the `(student)` route group layout both enforce the check.
+</Note>
+
+## Self-scoped by design
+
+Every server action resolves the student&apos;s identity from `students.clerk_user_id = auth().userId`. A student ID is never accepted from the client, so a student can only ever load their own record. This closes off the class of bug where one student could request another student&apos;s data by changing an ID in a request.
+
+## What the portal offers
+
+<CardGroup cols={2}>
+  <Card title="Dashboard" icon="gauge">
+    A personalized greeting, a count of homework due today (or "All caught up!" when there is none), today&apos;s PACE goals with status pills, and a 30-day attendance widget.
+  </Card>
+  <Card title="Homework" icon="book-open">
+    Today, Upcoming, and Done tabs. One-tap Mark Done on a pending item, an Overdue badge on the Today tab, and a Done history capped at the most recent 30 items.
+  </Card>
+  <Card title="My Goals" icon="target">
+    Today&apos;s PACE goals plus a 30-day history collapsed to one status per day, and a current met streak.
+  </Card>
+  <Card title="My Grades" icon="chart-line">
+    Finalized PACE scores only. In-flight PACEs show a parent-safe status instead of a number, and no moderator identities or notes are exposed.
+  </Card>
+  <Card title="My Progress" icon="chart-line">
+    A 30-day goal-achievement trend chart plus per-subject termly projections with an on-track, at-risk, or off-track badge.
+  </Card>
+  <Card title="Attendance" icon="calendar-check">
+    The student&apos;s own last-30-school-day attendance, shown on the dashboard.
+  </Card>
+  <Card title="Calendar" icon="calendar-check">
+    A read-only agenda of the student&apos;s own centre plus org-wide events, with a Subscribe link for a private ICS feed.
+  </Card>
+  <Card title="Activities" icon="users">
+    Browse the extracurricular catalog for the student&apos;s own centre and org-wide activities, and express interest in one.
+  </Card>
+</CardGroup>
+
+<Info>
+Notifications are reached from the header bell&apos;s "See all" link rather than a main sidebar item, and open the full in-app notification history at `/student/notifications`.
+</Info>
+
+## Homework: Today, Upcoming, Done
+
+<Steps>
+  <Step title="Land on the dashboard">
+    A student who signs in is routed to `/student/dashboard`. Any other role is bounced to `/dashboard` instead.
+  </Step>
+  <Step title="Open homework">
+    The dashboard card shows how many homework items are due today, with a "View Homework" button to `/student/homework`. The Today tab is the default.
+  </Step>
+  <Step title="Mark a page done">
+    Clicking Mark Done on a homework item updates the item optimistically. It moves to a read-only chip and reappears under the Done tab, which keeps the most recent 30 items.
+  </Step>
+</Steps>
+
+Items already marked done by a parent, verified by a teacher, or marked missed render as a read-only chip rather than an actionable button.
+
+## Goals and grades
+
+Today&apos;s goals show a subject, PACE number, page range, and a status pill: Met, Keep trying, Absent, Excused, No attempt, or Pending. A "View goal history" link opens `/student/goals`, which shows the current met streak and a 30-day history with one worst-of-day status per day (met, missed, non-attempt, pending).
+
+`/student/grades` shows a PACE score only once it is finalized. A finalized PACE that was failed on every attempt shows N/A rather than 0%. A PACE still moving through moderation shows a status label instead: Awaiting moderation, Under external review, Returned for re-entry, Under review, or Pending. Readiness checks (self-tests) are excluded from graded results.
+
+## Progress
+
+`/student/progress` shows a 30-day goal-achievement-rate line chart and, per subject, a termly PACE projection card: PACEs completed against the term target, a status badge (on track, at risk, off track), and the student&apos;s current weekly pace against the required weekly pace. The view is strictly read-only, with no comparison to other students or centres, and an empty state reads "No progress data yet" rather than showing an error.
+
+## Calendar
+
+`/student/calendar` lists events for the student&apos;s own learning centre plus org-wide events, filtered to student-visible items only. Admin, staff, and parent-only events are excluded. Each entry shows a title, formatted date or time, and an event-type badge, with no edit or delete controls. The Subscribe link at `/student/calendar/subscribe` generates a private ICS feed URL scoped to the student&apos;s own visibility and centre, for syncing with an external calendar app.
+
+## Activities
+
+`/student/extracurriculars` shows the same activity catalog staff use, narrowed to org-wide activities plus the student&apos;s own centre, with admin controls hidden and an option to express interest. Opening an activity from the catalog goes to `/student/extracurriculars/[id]` for its detail view; an activity from a different centre renders as not found.
+
+<CardGroup cols={2}>
+  <Card title="Student guide: getting started" icon="graduation-cap" href="/guides/student/getting-started">
+    A step-by-step walkthrough for students using the portal.
+  </Card>
+  <Card title="Parent portal overview" icon="users" href="/features/parent-portal/overview">
+    The equivalent read-only view for a parent, covering the same domains.
+  </Card>
+  <Card title="Homework overview" icon="book-open" href="/features/homework/overview">
+    How homework is assigned and verified on the staff side.
+  </Card>
+  <Card title="Roles and permissions reference" icon="shield" href="/reference/roles-permissions">
+    The full list of roles and what each can access.
+  </Card>
+</CardGroup>

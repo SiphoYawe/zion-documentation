@@ -1,0 +1,104 @@
+---
+title: Managing the activity catalog
+description: How administrators and supervisors create, edit, archive, and schedule extracurricular activities
+icon: "list-check"
+---
+
+Administrators and supervisors maintain the extracurricular activity catalog. An administrator manages activities across the whole organization at Manage catalog (`/admin/extracurriculars`). A supervisor manages activities for their own learning centres at Centre Activities (`/supervisor/extracurriculars`). Both are reached from the Programs &amp; Resources section of the staff sidebar.
+
+<Note>
+The catalog is not an enrolment system. There is no seat count, waitlist, fee, or consent flow attached to an activity. See [Family interest and reports](/features/extracurriculars/interest-and-reports) for how parents and students signal interest.
+</Note>
+
+## Who can do what
+
+| Action | Administrator | Supervisor |
+| --- | --- | --- |
+| Create, edit activities org-wide | Yes | No |
+| Create, edit activities in own centres | Yes | Yes |
+| Scope an activity to zero centres (org-wide) | Yes | No, must pick at least one centre |
+| Archive, restore, delete | Yes | Yes, own centres only |
+| Bulk archive, restore, delete | Yes | No |
+| Bulk re-target to a new centre scope | Yes | No |
+
+A coach assigned to an activity does not use this page. They edit only their own activity&apos;s schedule from Activities I Run (`/extracurriculars/mine`).
+
+## Creating an activity
+
+<Steps>
+  <Step title="Open Manage catalog or Centre Activities">
+    Administrators go to Programs &amp; Resources &gt; Manage catalog. Supervisors go to Centre Activities. Click Add activity.
+  </Step>
+  <Step title="Fill in the required fields">
+    Enter a Name (up to 120 characters) and a Category. Category is one of six fixed values: sport, club, arts, faith, service, or academic enrichment. Enter a Schedule summary (up to 300 characters) describing when and where the activity meets in plain text.
+  </Step>
+  <Step title="Add optional details">
+    Description accepts up to 500 characters. Coach lets you assign a staff member from the org; the person must be an active org member, which is verified on save.
+  </Step>
+  <Step title="Set the learning centre scope">
+    Leave the centre picker empty for an org-wide activity (administrators only) or select one or more learning centres. A supervisor must select at least one of their own centres; org-wide creation is blocked for supervisors.
+  </Step>
+  <Step title="Optionally attach a calendar recurrence">
+    Set a repeat preset if you want the activity to appear on the school calendar. See below for the recurrence fields.
+  </Step>
+  <Step title="Save">
+    The Active toggle defaults to on. Saving adds the activity to the public catalog and, if a recurrence was set, emits the corresponding event onto the school calendar.
+  </Step>
+</Steps>
+
+## Calendar recurrence
+
+Recurrence is optional. Leaving the preset unset keeps the activity catalog-only, with no calendar event. Setting a preset requires the remaining fields.
+
+| Field | Rule |
+| --- | --- |
+| Preset | One of daily, weekly on weekdays, weekly on selected days, or monthly |
+| Selected weekdays | Required only when the preset is "weekly on selected days"; at least one day |
+| Start time | Required 24-hour time (HH:MM) whenever a preset is set |
+| Duration | Required whenever a preset is set; 15 to 600 minutes |
+
+<Note>
+Emitting the calendar event is best-effort. If it fails, the form shows a non-blocking calendar warning, but the activity itself still saves. A failed calendar emission never rolls back the activity save.
+</Note>
+
+Once a recurrence is set, the activity&apos;s upcoming occurrences (up to 5, looking 365 days ahead) appear on its detail page, and the schedule can be subscribed to through the [iCal feed](/features/calendar/ical-subscription).
+
+## Archiving, restoring, and deleting
+
+<Tabs>
+  <Tab title="Archive">
+    Archiving is a soft delete. It sets the activity to inactive, removes its calendar event, and is recorded in the audit log. Archived activities stop appearing in the public catalog but remain visible to administrators (and to their assigned coach on Activities I Run, badged as archived).
+  </Tab>
+  <Tab title="Restore">
+    Restoring reverses an archive: the activity becomes active again and its calendar event is re-emitted if a recurrence is set.
+  </Tab>
+  <Tab title="Delete">
+    Deleting removes the row permanently. If another record still references the activity, the delete is blocked with a message asking you to archive instead.
+  </Tab>
+</Tabs>
+
+## Editing an archived activity
+
+An archived activity can still be opened and edited by an administrator or supervisor with rights to it. Restoring is done from the same edit view.
+
+## Bulk operations
+
+Bulk actions are administrator-only and apply to up to 200 activities per call.
+
+- **Bulk archive, restore, or delete**: select activities in the catalog table and apply the action. Each activity succeeds or fails independently, so one failing row does not block the rest.
+- **Bulk re-target to a new centre scope**: select activities and choose a new set of learning centres. Every target centre is verified to belong to the organization first, then each selected activity&apos;s centre assignments are replaced and its calendar event is re-synced.
+
+<CardGroup cols={2}>
+  <Card title="Extracurriculars overview" icon="trophy" href="/features/extracurriculars/overview">
+    What the catalog covers and who can see which activities.
+  </Card>
+  <Card title="Family interest and reports" icon="chart-line" href="/features/extracurriculars/interest-and-reports">
+    How parents and students register interest, and the Catalog Report.
+  </Card>
+  <Card title="Managing calendar events" icon="calendar-check" href="/features/calendar/managing-events">
+    How activity recurrences relate to the school calendar.
+  </Card>
+  <Card title="iCal subscription" icon="calendar" href="/features/calendar/ical-subscription">
+    Subscribing to activity schedules from a personal calendar app.
+  </Card>
+</CardGroup>

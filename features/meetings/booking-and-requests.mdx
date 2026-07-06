@@ -1,0 +1,98 @@
+---
+title: Booking and requesting meetings
+description: How parents book an open slot or request a meeting, and how staff respond, counter-propose, or hard-book directly
+icon: "calendar-plus"
+---
+
+A meeting between a parent and their child&apos;s supervisor or monitor can start two ways: the parent claims an open slot right away, or one side proposes times and the other side accepts, declines, or counters. Staff can also start a meeting directly with a parent, either as a request or as an instant booking.
+
+<Note>
+Parents can only book or request meetings with supervisors and monitors assigned to their child&apos;s learning centre. Administrators are not bookable by parents.
+</Note>
+
+## Parent books an open slot
+
+<Steps>
+<Step title="Open the booking wizard">
+Go to `/parent/meetings` and click **Book a meeting**.
+</Step>
+<Step title="Pick a child">
+Choose which linked child the meeting is about.
+</Step>
+<Step title="Pick a staff member">
+Only supervisors and monitors assigned to that child&apos;s learning centre appear as bookable.
+</Step>
+<Step title="Pick a date, then a time">
+Available dates show first, then the open time slots on that date.
+</Step>
+<Step title="Confirm">
+The slot is claimed atomically, so two parents can never book the same slot. A slot that has already passed or was just taken is rejected. Both the parent and the staff member get a calendar event and a notification.
+</Step>
+</Steps>
+
+## When no slots are open
+
+If the staff member has no open slots, the parent has two options from the same booking wizard.
+
+<Tabs>
+<Tab title="Request a meeting">
+The parent proposes up to 5 candidate times, with an optional agenda. This creates a pending request awaiting the staff member&apos;s response. The staff member is notified and can accept one of the proposed times, decline with a reason, or counter with a different time.
+</Tab>
+<Tab title="Watch for new availability">
+The parent subscribes to be notified when that staff member publishes a new slot for that child. The next time the staff member publishes availability, the watch is fulfilled and the parent is notified so they can book.
+</Tab>
+</Tabs>
+
+## Staff-initiated meetings
+
+Supervisors, monitors, and administrators can start a meeting with a parent directly, without waiting for the parent to book.
+
+<Steps>
+<Step title="Open the new meeting form">
+Go to `/staff/meetings` and click **Request a meeting**, then continue on `/staff/meetings/new`.
+</Step>
+<Step title="Pick a student">
+Administrators can pick any student in the org. Supervisors and monitors are limited to students in their assigned centres.
+</Step>
+<Step title="Pick a staff member">
+This can be the initiating staff member or a colleague who is bookable for that student.
+</Step>
+<Step title="Choose request or hard-book">
+Propose candidate times and wait for the parent to respond, or claim an open slot immediately with no parent confirmation needed.
+</Step>
+</Steps>
+
+<Note>
+A hard-booked meeting is confirmed the moment it&apos;s created. Calendar events and notifications go out right away to both the staff member and the parent.
+</Note>
+
+## Responding to a pending request
+
+A pending request is always waiting on one specific party. Only that party can respond.
+
+| Action | Effect |
+|---|---|
+| Accept | Confirms the proposed time; the meeting becomes booked |
+| Decline | Cancels the request; a reason is required |
+| Counter-propose | Suggests a different time; the turn flips to the other party |
+
+If a parent counters a staff-initiated request, the staff member must respond next. If staff counters a parent-initiated request, the parent must confirm the countered time from `/parent/meetings`.
+
+## Auto-expiry
+
+A pending request does not stay open forever. A daily job checks every pending request, and once every proposed time has passed with no response, the request is marked expired. The original initiator is notified, and can start over: a parent can book again, and staff can re-propose.
+
+<CardGroup cols={2}>
+<Card title="Meetings overview" icon="calendar-check" href="/features/meetings/overview">
+How meetings and requests fit together, plus the full status list.
+</Card>
+<Card title="Publishing availability" icon="clock" href="/features/meetings/availability">
+How staff and administrators create the slots parents book against.
+</Card>
+<Card title="Managing and documenting meetings" icon="calendar-xmark" href="/features/meetings/managing-and-documenting">
+Cancelling, rescheduling, reassigning, notes, and marking a meeting completed or no-show.
+</Card>
+<Card title="Meetings and communication for parents" icon="user-clock" href="/guides/parent/meetings-and-communication">
+The parent-facing walkthrough for booking, requesting, and following up on a meeting.
+</Card>
+</CardGroup>

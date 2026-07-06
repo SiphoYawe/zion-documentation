@@ -1,0 +1,116 @@
+---
+title: Assigning and verifying homework
+description: How supervisors and monitors assign PACE page ranges, edit or cancel them, and verify completion at goal check
+icon: "clipboard-check"
+---
+
+Supervisors and monitors use the Homework page to assign PACE page ranges to individual students for home study, then verify at goal check that the work was actually done. This page covers the Assign tab, My Assignments, Pending Verifications, and Missed tabs.
+
+<Info>
+You only see and act on students who sit in a learning centre you are assigned to. Administrators do not use this page; the report at [Homework Completion Report](/features/homework/completion-report) is where administrators review homework standings.
+</Info>
+
+## Assign homework
+
+Assignments are single-student, single-PACE. There is no centre-wide bulk assignment in the current UI.
+
+<Steps>
+  <Step title="Open Homework">
+    Go to Homework in the sidebar and land on the Assign tab.
+  </Step>
+  <Step title="Select a student">
+    Choose from the list of students in your assigned learning centres.
+  </Step>
+  <Step title="Select an active PACE">
+    Only PACEs the student is currently in progress on are listed. If the student has none in progress, the list shows a hint instead.
+  </Step>
+  <Step title="Enter the page range">
+    Free text, up to 100 characters (for example &quot;pp 12-17&quot;).
+  </Step>
+  <Step title="Confirm or change the due date">
+    The date field is pre-filled with the next school day and cannot be set before today.
+  </Step>
+  <Step title="Add notes (optional)">
+    Up to 500 characters, visible to the family.
+  </Step>
+  <Step title="Submit">
+    A pending assignment is created, mirrored onto the shared calendar, and the family is notified immediately.
+  </Step>
+</Steps>
+
+<Note>
+You cannot assign the same PACE to the same student twice for the same due day. The system rejects the duplicate.
+</Note>
+
+### The next-school-day default
+
+The due date defaults to the next school day, not simply tomorrow. Zion computes tomorrow in the school&apos;s timezone, then skips forward past Saturdays, Sundays, and any all-day holiday event on the org&apos;s calendar. You can still override the suggested date to any day from today forward.
+
+## My Assignments
+
+The My Assignments tab lists everything you have assigned, grouped by student, with a status chip:
+
+| Status | Meaning |
+|---|---|
+| Pending | Assigned, not yet marked done by the family |
+| Parent Done | Family marked it done, waiting on your verification |
+| Verified | You confirmed the pages were completed |
+| Missed | Due date passed while still pending |
+| Cancelled / Excused | Withdrawn, does not count as missed |
+
+Edit and Cancel/Excuse icons appear on pending, parent-done, and missed rows. The delete (trash) icon appears only on pending rows, since a verified assignment is permanent.
+
+<Tabs>
+  <Tab title="Edit a pending item">
+    Open the edit icon on a pending or parent-done row to correct the page range, due date, or notes. This is unavailable once an item is verified.
+  </Tab>
+  <Tab title="Delete">
+    The trash icon on a pending row removes the assignment outright, after a confirmation dialog. Once a family has marked it done or you have verified it, delete is no longer available; use cancel or excuse instead.
+  </Tab>
+  <Tab title="Cancel or excuse">
+    Use this when an assignment no longer applies, for example the student is sick. Pick Cancel (no longer applies) or Excuse (legitimately let off), add an optional reason, and confirm. The row is marked cancelled or excused with a neutral chip, never a destructive-red one, because a legitimate non-completion is not meant to read as a black mark. If the item had already been flagged missed, a corrective notice goes out to the family and to you. Cancel/excuse is not available once an item is teacher-verified.
+  </Tab>
+</Tabs>
+
+## Verify at goal check
+
+Verification happens either from the goal-check panel or from the Pending Verifications and Missed tabs described below. There are three ways to move an item to Verified, and verification is terminal: once an item is verified there is no un-verify action.
+
+| Action | Starting status | Result |
+|---|---|---|
+| Verify | Parent Done | Teacher Verified |
+| Mark done unilaterally | Pending | Teacher Verified (used when a parent is unavailable and you confirm the work directly) |
+| Verify (late) | Missed | Teacher Verified, flagged as a late completion |
+
+## Pending Verifications tab
+
+This tab lists every unverified assignment, pending or parent-done, across all students in your centres, grouped by student and sorted oldest-due first. Use the same Verify or Mark Done actions here as you would from the goal-check panel.
+
+## Missed tab
+
+This tab lists every assignment currently in the Missed state across your centres, most-recently-due first. A daily sweep moves a pending item to Missed once its due date has fully passed, and notifies you and the linked parents.
+
+From the Missed tab you can:
+
+- **Verify (late)**: confirm the work was actually completed after the due date; the record keeps a late flag.
+- **Reopen**: revert the item back to Pending if it should not have been marked missed, or the student still needs to complete it.
+- **Cancel or excuse**: withdraw the item as described above; a corrective notice is sent since it had already been flagged missed.
+
+<Warning>
+Reopening a missed item sends it back to Pending. It will be swept into Missed again by the next day&apos;s run if it is still incomplete by then.
+</Warning>
+
+<CardGroup cols={2}>
+  <Card title="Homework overview" icon="book" href="/features/homework/overview">
+    What homework is in Zion and how the assignment lifecycle works
+  </Card>
+  <Card title="Homework Completion Report" icon="chart-line" href="/features/homework/completion-report">
+    Per-student completion, participation, and missed rates
+  </Card>
+  <Card title="Goal Check overview" icon="target" href="/features/goal-check/overview">
+    Where daily verification also takes place
+  </Card>
+  <Card title="Roles and permissions" icon="users" href="/features/organization/roles-and-permissions">
+    Who can assign, verify, and view homework
+  </Card>
+</CardGroup>

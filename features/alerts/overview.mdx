@@ -1,0 +1,94 @@
+---
+title: Performance alerts
+description: How the alerts inbox surfaces at-risk students, centres, and subjects, and how administrators and supervisors act on them
+icon: "triangle-exclamation"
+---
+
+Zion watches Goal Check completion patterns and raises an alert when a student, a centre, or a subject crosses a threshold worth a look. Administrators and supervisors both work from the same alerts inbox, but what each role sees and what each role can trigger differs.
+
+## Who sees what
+
+<Tabs>
+  <Tab title="Administrator">
+    The administrator&apos;s alerts inbox, at Alerts in the sidebar, shows every alert across the organization. There is no centre restriction. Administrators also get two manual controls not shown to supervisors: **Generate Alerts Now** and **Send Digest Now**.
+  </Tab>
+  <Tab title="Supervisor">
+    The supervisor&apos;s alerts inbox, at Alerts in the sidebar, is read-only. It shows only alerts for the centre or centres the supervisor is assigned to. A supervisor with no assigned centre sees a dedicated "No Centres Assigned" message instead of the usual empty state, and should contact their administrator to get a centre assignment. Supervisors can acknowledge, resolve, and reopen alerts for their centre the same way administrators can, but the Generate and Digest controls do not appear on this view.
+  </Tab>
+</Tabs>
+
+<Note>
+  If an administrator opens the supervisor alerts URL directly, or a supervisor opens the administrator alerts URL directly, the app redirects them to the dashboard. Each view is gated to its own role.
+</Note>
+
+## What an alert is
+
+Every alert has three properties:
+
+| Property | Values | Notes |
+|---|---|---|
+| Entity type | Student, centre, subject | Centre and subject alerts have no linked student profile; they are rendered with their own icon and label. |
+| Severity | Critical, warning | Shown as a badge on the alert card. |
+| Status | Open, acknowledged, resolved | The lifecycle state, described below. |
+
+## The seven alert types
+
+Each alert type has a default threshold. An administrator can adjust these on the [alert threshold settings page](/features/school-settings/alerts-and-reports).
+
+| Alert type | Entity | Default trigger |
+|---|---|---|
+| Consecutive misses | Student | 3 consecutive missed days |
+| Declining trend | Student | 20% decline over 2 weeks |
+| Subject struggle | Student | 60% miss rate on a subject, minimum 5 goals |
+| Sudden drop | Student | Completion rate falls from 80% to 50% |
+| Termly goal at risk | Student | Projected to reach only 80% of the term's goal |
+| Centre low performance | Centre | Centre average below 60% |
+| Subject declining | Subject | Subject completion dropping more than 10% over 2 weeks |
+
+<Info>
+  A separate setting, alert expiry, auto-dismisses a stale alert after a configurable window (7 days by default) if nobody has acted on it. This applies to every alert type and is always on.
+</Info>
+
+## Reading the inbox
+
+The inbox has a Severity filter, an Alert Type filter, and three tabs: **Unacknowledged**, **Acknowledged**, and **All**. When a tab has nothing to show, the inbox displays "No Alerts Found."
+
+## Acknowledge and resolve lifecycle
+
+<Steps>
+  <Step title="Acknowledge">
+    Open an alert and choose Acknowledge. A dialog lets you add an optional note. This moves the alert from open to acknowledged and records who acknowledged it.
+  </Step>
+  <Step title="Resolve">
+    Once the issue behind an acknowledged alert has been handled, choose Resolve to move it from acknowledged to resolved.
+  </Step>
+  <Step title="Reopen">
+    If the same issue recurs, an acknowledged or resolved alert can be reopened, which returns it to open.
+  </Step>
+</Steps>
+
+### Acknowledging in bulk
+
+On the Unacknowledged tab, select multiple alerts with the checkboxes, or use the **Acknowledge all warnings** shortcut to select every warning-severity alert in one action. Add one note in the shared field and it is attached to every alert in the batch when you acknowledge.
+
+## Generating alerts (administrator only)
+
+Alerts generate automatically on a daily schedule, but an administrator can also trigger generation on demand from the alerts inbox:
+
+- **Generate Alerts Now** runs the alert-generation check immediately instead of waiting for the next scheduled run. This requires an active subscription.
+- **Send Digest Now** sends the alert digest immediately.
+
+<CardGroup cols={2}>
+  <Card title="Alert and report settings" icon="sliders" href="/features/school-settings/alerts-and-reports">
+    Adjust thresholds per alert type and manage report scheduling.
+  </Card>
+  <Card title="Goal Check overview" icon="target" href="/features/goal-check/overview">
+    See how daily goal completion is tracked, which is what feeds these alerts.
+  </Card>
+  <Card title="Attendance alerts" icon="bell" href="/features/attendance/alerts">
+    Attendance-specific alerting, tracked separately from the performance alerts inbox.
+  </Card>
+  <Card title="Roles and permissions" icon="shield-halved" href="/reference/roles-permissions">
+    See exactly which role can see and act on which surfaces.
+  </Card>
+</CardGroup>

@@ -1,0 +1,87 @@
+---
+title: Importing legacy data
+description: Bring students, PACE progress, and grades into Zion from a CSV using the four-step import wizard
+icon: "file-import"
+---
+
+Zion includes a self-serve import wizard for schools moving off a legacy system. It reads a CSV file, walks you through mapping its columns, previews exactly what will change, and commits the import as a single all-or-nothing operation. Only administrators can access it.
+
+<Info>
+The wizard imports three entity types: students, PACE progress, and grades. Attendance history is not supported, since attendance data in most legacy systems is inconsistent and risky to import automatically.
+</Info>
+
+## Where to find it
+
+Administrators reach the wizard from the sidebar Import item, which opens `/admin/import`. The page also links to a Data Preparation Guide with prompts you can use to clean up a legacy export before uploading it. No AI runs inside Zion during the import itself; the guide is only a preparation aid.
+
+## File requirements
+
+| Requirement | Limit |
+| --- | --- |
+| File type | CSV (`.csv`, `text/csv`, `text/plain`, or `application/vnd.ms-excel`) |
+| Maximum file size | 10MB |
+| Maximum rows | 10,000 data rows |
+
+The file is parsed in your browser. Only the parsed rows, not the raw file, are sent to Zion once you confirm the preview.
+
+## The four-step wizard
+
+<Steps>
+  <Step title="Upload">
+    Select or drag in your CSV and choose which entity type it contains: Students, PACE Progress, or Grades. Zion parses the file, shows you a sample of the first rows, and asks you to confirm before saving the session.
+  </Step>
+  <Step title="Map columns">
+    Match each column header from your CSV to a target field in Zion. Common headers are auto-detected. For example, columns named `dob`, `date_of_birth`, or `birthday` are all recognized as the student&apos;s date of birth. Any column you don&apos;t need can be set to &quot;Ignore this column.&quot;
+
+    Required fields differ by entity type. See [CSV Templates](/reference/csv-templates) for the full field list per entity, including accepted header names.
+  </Step>
+  <Step title="Dry-run preview">
+    Zion classifies every row as create, update, or skip without writing anything to the database. You see totals for each outcome, up to 10 sample rows per outcome, and up to 200 warnings explaining why a row would be skipped.
+  </Step>
+  <Step title="Commit">
+    Once you approve the preview, the import runs as a single transaction. Either every row is written or none are. If the commit fails partway through, the whole batch rolls back and the session returns to its dry-run state so you can fix the file and retry. Every commit, successful or not, writes an audit log entry.
+  </Step>
+</Steps>
+
+## Required fields per entity
+
+| Entity | Required fields | Identifier rule |
+| --- | --- | --- |
+| Students | First name, last name | A resolvable learning centre name, or the org's default centre, is required to create a record |
+| PACE Progress | Subject, PACE number, status | Needs a student code, or both student first and last name |
+| Grades | Subject, assessment name, score | Needs a student code, or both student first and last name |
+
+Status values for PACE progress must be one of `completed`, `in_progress`, or `not_started`. Grade scores must be a non-negative number no greater than 999.99.
+
+## How rows are matched
+
+Zion matches an incoming row to an existing record first by student code, and if that isn&apos;t present, by exact match on the lowercased full name. If two rows in the same CSV would otherwise create the same record (for example, the same student, subject, and PACE number), the second row is treated as an update to the first, mirroring how the database itself would resolve the conflict.
+
+## Common reasons a row is skipped
+
+- Missing first or last name (students)
+- A date of birth that can&apos;t be parsed, or an impossible date
+- No resolvable learning centre and no org default centre set (students)
+- Missing subject, PACE number, or an invalid status (PACE progress)
+- Missing subject or assessment name, or a score outside the allowed range (grades)
+
+Dates that can&apos;t be parsed for a PACE completion date or a grade date are imported as blank rather than causing a skip.
+
+<Note>
+Need help with a larger or more complex migration instead of running the wizard yourself? See [Migration Concierge](/features/data/migration-concierge) for the paid, staff-assisted option.
+</Note>
+
+<CardGroup cols={2}>
+  <Card title="CSV Templates" icon="file-lines" href="/reference/csv-templates">
+    Column names, formats, and required fields for each importable entity.
+  </Card>
+  <Card title="Migration Concierge" icon="headset" href="/features/data/migration-concierge">
+    Have Zion staff run your import for you.
+  </Card>
+  <Card title="Students overview" icon="users" href="/features/students/overview">
+    How student records work once they&apos;re in Zion.
+  </Card>
+  <Card title="Exporting your data" icon="file-export" href="/features/data/exporting-data">
+    Request CSV and PDF exports of your school&apos;s data.
+  </Card>
+</CardGroup>

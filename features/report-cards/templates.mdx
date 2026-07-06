@@ -1,0 +1,89 @@
+---
+title: Report card templates
+description: Build and manage the school's report card layout, including the logo and which sections appear
+icon: "palette"
+---
+
+Administrators control what a report card looks like from the template builder at **Admin > Report Cards > Templates**. A template sets the school logo and which of the five report sections appear, in what order. If a school has never created a template, Zion falls back to a built-in default automatically.
+
+<Info>
+The template builder is administrator-only. Supervisors and monitors can generate and distribute report cards, but they cannot create or edit templates.
+</Info>
+
+## Creating or editing a template
+
+<Steps>
+  <Step title="Open Templates">
+    From **Admin > Report Cards**, click **Templates**. This link only appears for administrators.
+  </Step>
+  <Step title="Start a new template or edit an existing one">
+    Click **New template**, or **Edit** on a template already in the list.
+  </Step>
+  <Step title="Name the template">
+    Enter a name. This is required.
+  </Step>
+  <Step title="Upload a logo (optional)">
+    Upload a JPG, PNG, or SVG file. Other file types are rejected before upload.
+  </Step>
+  <Step title="Toggle sections on or off">
+    Turn each of the five sections on or off depending on what the school wants printed.
+  </Step>
+  <Step title="Reorder sections">
+    Use the up and down arrows to set the order sections appear in on the finished PDF.
+  </Step>
+  <Step title="Set as default (optional)">
+    Turn on **Use as the school's default template** if this template should be used whenever staff generate report cards without picking one explicitly.
+  </Step>
+  <Step title="Save">
+    Save the template. It becomes available to select the next time staff generate report cards for a term.
+  </Step>
+</Steps>
+
+<Note>
+The default template cannot be deleted. Its delete button is disabled in the template list until another template is set as the default.
+</Note>
+
+## The five sections
+
+A template controls five fixed sections. You cannot add custom sections, only enable, disable, and reorder these:
+
+| Section key | Label | What it shows |
+|---|---|---|
+| `pace_grades` | PACE Grades | The student's PACE percentages and PACEs completed |
+| `test_scores` | Test Scores | Finalized test scores for the term |
+| `attendance` | Attendance | Present, absent, and late counts for the term |
+| `goal_check_summary` | Goal Check Summary | Goal Check completion for the term |
+| `character_notes` | Character Notes | Parent-safe notes only |
+
+## Data rules for each section
+
+<AccordionGroup>
+  <Accordion title="Term scope">
+    Test scores, attendance, and Goal Check Summary are bounded to the selected term. PACE Grades is the one exception: the &quot;Completed&quot; count is labelled &quot;Completed (overall)&quot; because it reflects all-time PACEs completed, not just the current term.
+  </Accordion>
+  <Accordion title="Character Notes are parent-safe only">
+    Only public notes (notes marked visible to parents) appear in the Character Notes section. Private notes are never included in a report card, at any stage of compilation.
+  </Accordion>
+  <Accordion title="Empty sections">
+    If a section has no data for a student in the selected term, it renders as &quot;No data for this term&quot; rather than being hidden.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+There are no numeric thresholds to configure in a template. The only threshold in report-card generation is fixed by the system: zero finalized test scores for a term blocks generation until acknowledged, and finalized scores with none passing produces a non-blocking warning. See [Generating and distributing report cards](/features/report-cards/generating-and-distributing) for how these warnings appear during generation.
+</Warning>
+
+<CardGroup cols={2}>
+  <Card title="Report Cards Overview" icon="file-lines" href="/features/report-cards/overview">
+    What a report card contains and how term data is compiled.
+  </Card>
+  <Card title="Generating and Distributing" icon="paper-plane" href="/features/report-cards/generating-and-distributing">
+    Select a term, review readiness warnings, generate, and send to parents.
+  </Card>
+  <Card title="Permanent Record" icon="book" href="/features/report-cards/permanent-record">
+    The multi-year academic record, separate from term report cards.
+  </Card>
+  <Card title="Roles and Permissions" icon="shield" href="/features/organization/roles-and-permissions">
+    Who can generate, distribute, and configure report cards.
+  </Card>
+</CardGroup>

@@ -1,0 +1,87 @@
+---
+title: Inventory and PACE stock overview
+description: How Zion tracks PACE booklets and library books through a movement ledger, with stock that reconciles automatically instead of being edited by hand.
+icon: "boxes-stacked"
+---
+
+Inventory tracks two kinds of stock in one items table: PACE booklets and library books. Every change to stock is recorded as a movement (a purchase, an issue, a return, a loss, or an adjustment) in an append-only ledger. A database trigger reads that ledger and reconciles the quantity on hand. The interface never writes the on-hand count directly.
+
+## Who can use it
+
+<Tabs>
+  <Tab title="Administrator">
+    Full access: view items and reports, add and edit items, import the PACE catalog, receive shipments, and adjust stock.
+  </Tab>
+  <Tab title="Supervisor">
+    View items, the movement ledger, and reports, and check out library items. Supervisors do not see the Receive PACE Stock link unless separately granted the manage permission.
+  </Tab>
+</Tabs>
+
+Access to the inventory area is gated by the `inventory:view`, `inventory:manage`, and `inventory:checkout` permissions. Find the module under Programs &amp; Resources &gt; Inventory in the sidebar.
+
+## Why stock changes only through movements
+
+`quantity_on_hand` on each item is never a field you fill in. Every increase or decrease is written as a row in the movement ledger with a reason:
+
+| Movement reason | What causes it |
+| --- | --- |
+| Purchase | Receiving a PACE shipment |
+| Issue | A PACE assigned to a student, or a library checkout |
+| Return | A library item returned |
+| Loss | A library item marked lost |
+| Adjustment | A manual correction, with a mandatory reason note |
+
+A Postgres trigger recalculates the on-hand total from these rows. This keeps every stock change traceable to who did it, when, and why, and it is the same mechanism whether the change came from a shipment, a student assignment, or a manual correction.
+
+<Note>
+Quantity on hand can go negative. A negative balance represents a recorded stock debt rather than a hard floor, and adjustments that would push a count negative show a confirmation dialog before they are saved.
+</Note>
+
+## PACE assignment auto-decrements stock
+
+When a PACE is assigned to a student, Zion matches it to an inventory item by PACE number and subject and writes an issue movement for one unit. The item&apos;s stock decreases automatically. No separate step is needed to record that a booklet went out.
+
+If a PACE is assigned but no inventory item exists with a matching number and subject, the decrement has nothing to apply to and silently does not happen. Zion surfaces this as an untracked-PACE nudge on the reports page so you can add the missing item. See <Card title="Inventory reports" icon="chart-line" href="/features/inventory/reports">Inventory reports</Card> for details.
+
+## Adding and editing items
+
+<Steps>
+  <Step title="Open Inventory Items">
+    Go to Programs &amp; Resources &gt; Inventory &gt; Add Items.
+  </Step>
+  <Step title="Choose the item type">
+    Click 'Add PACE' for a curriculum booklet, or 'Add Book' for a library item.
+  </Step>
+  <Step title="Fill in the details">
+    For a PACE, enter the name, PACE number, and optional subject. For a library book, choose whether it is General or PACE-required.
+  </Step>
+  <Step title="Set opening quantity and reorder threshold">
+    Opening quantity only applies when creating the item. The reorder threshold controls low-stock alerts; setting it to 0 turns those alerts off for that item.
+  </Step>
+  <Step title="Save">
+    A duplicate PACE number and subject combination is rejected with an inline error.
+  </Step>
+</Steps>
+
+Editing an existing item (the row's Edit action) changes name, reorder threshold, and other metadata only. Quantity on hand cannot be edited from here: use the Adjust Stock action described in <Card title="Receiving and adjusting stock" icon="truck-ramp-box" href="/features/inventory/receiving-and-adjusting">Receiving and adjusting stock</Card>.
+
+### Importing the PACE catalog
+
+Rather than adding every PACE by hand, the 'Import PACE catalog' button on the items page seeds an inventory item, with zero opening stock, for every curriculum PACE your organization does not already track. Items are matched by PACE number and subject, so re-running the import is safe: it skips PACEs you already have and only adds what is missing.
+
+## Where to go next
+
+<CardGroup cols={2}>
+  <Card title="Receiving and adjusting stock" icon="truck-ramp-box" href="/features/inventory/receiving-and-adjusting">
+    Record a PACE shipment as a batch, or correct a count with a reasoned adjustment.
+  </Card>
+  <Card title="Inventory reports" icon="chart-line" href="/features/inventory/reports">
+    Stock on hand, low-stock alerts, PACE burn-rate forecasts, and the library overview.
+  </Card>
+  <Card title="Library overview" icon="book-open" href="/features/library/overview">
+    Checkout, return, overdue, and lost-book workflows for library items tracked in the same catalog.
+  </Card>
+  <Card title="PACE assignments" icon="graduation-cap" href="/features/students/pace-assignments">
+    Assign PACEs to students, the action that drives the automatic stock decrement.
+  </Card>
+</CardGroup>

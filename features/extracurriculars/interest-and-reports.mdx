@@ -1,0 +1,118 @@
+---
+title: Interest signals, coaching, and reports
+description: How family interest, coach self-service, and the catalog report work for extracurricular activities
+icon: "hand-holding-heart"
+---
+
+Extracurriculars in Zion are catalog-only. There is no enrolment, attendance, capacity, fee, or consent workflow attached to an activity. What families can do is register non-binding interest, what coaches can do is keep their own schedule current, and what administrators and supervisors can do is read the demand back in a rollup report.
+
+<Note>
+For creating, scoping, and archiving activities themselves, see [Managing the catalog](/features/extracurriculars/managing-catalog).
+</Note>
+
+## Family interest
+
+Any authenticated org member can register interest in an active activity from the catalog. In practice this is parents and students.
+
+- A parent can optionally attach one of their own children using the 'For (optional)' child picker on the activity card. Only children with an accepted parent-child link can be selected.
+- A student&apos;s interest is tied automatically to their own student record. There is no child picker for a student.
+- Any other caller can register general interest with no child attached.
+
+Registering interest triggers a best-effort notification to the activity&apos;s coach and to org admins.
+
+Interest can be withdrawn from the same card by clicking 'Interested, withdraw'. Withdrawal is idempotent: the row is kept with a status of `withdrawn` rather than deleted, so it still counts in reporting history.
+
+<Warning>
+Interest is a demand signal only. There is no seat count, no waitlist, no accept or reject action, and no fee or consent step. Registering interest does not enrol a child or student in the activity.
+</Warning>
+
+<Steps>
+  <Step title="Open Activities">
+    Parents open Activities from the sidebar (`/parent/extracurriculars`). Students open Activities from the top navigation (`/student/extracurriculars`), scoped to org-wide activities plus their own learning centre.
+  </Step>
+  <Step title="Choose a child (parents only)">
+    On an activity card, optionally select a child from the 'For (optional)' dropdown before registering.
+  </Step>
+  <Step title="Register interest">
+    Click Register interest. The coach and org admins are notified.
+  </Step>
+  <Step title="Withdraw if needed">
+    Click 'Interested, withdraw' on the same card to retract. You can register again later.
+  </Step>
+</Steps>
+
+## Interest visibility for staff
+
+Administrators see a per-activity active-interest count directly on the catalog table at `/admin/extracurriculars`. Clicking that count opens a read-only drawer listing every requester for the activity: name, optional child name, status (interested or withdrawn), and registered date.
+
+There are no accept or reject controls in this drawer, because interest is not enrolment.
+
+## Coach self-service: Activities I run
+
+Any staff member assigned as the coach on an activity (administrator, supervisor, or monitor) gets a personal view at `/extracurriculars/mine`, reachable as 'Activities I run' from the staff catalog page. It lists every activity where they are the assigned coach, including archived ones, which are badged as archived.
+
+From this view a coach can edit only:
+
+- Schedule summary
+- Recurrence preset, selected weekdays (for weekly selected), start time, and duration
+
+A coach cannot change the activity name, category, coach assignment, learning-centre scope, or the active flag. Those fields stay administrator or supervisor only. Every write is re-verified against the coach assignment stored on the activity, never trusted from the request itself.
+
+<Steps>
+  <Step title="Open Activities I run">
+    From the staff catalog page, open `/extracurriculars/mine`.
+  </Step>
+  <Step title="Select an activity">
+    Choose an activity where you are the assigned coach.
+  </Step>
+  <Step title="Update the schedule">
+    Edit the schedule summary and, if the activity has a calendar recurrence, its preset, weekdays, start time, or duration.
+  </Step>
+  <Step title="Save">
+    Only the schedule and recurrence fields change. Name, category, coach, centre scope, and active status stay untouched.
+  </Step>
+</Steps>
+
+## Catalog Report
+
+Administrators (org-wide) and supervisors (their own learning centres) can open the Catalog Report at `/extracurriculars/report` for an aggregate view of the catalog.
+
+| Metric | What it shows |
+|---|---|
+| Total active activities | Count of currently active activities in scope |
+| By category | Counts across the six categories: sport, club, arts, faith, service, academic enrichment |
+| By learning centre | Counts per centre, plus a separate org-wide count |
+| Unassigned coach count | Number of active activities with no coach assigned |
+| Interest leaders | Top 5 activities ranked by active interest count |
+
+The interest-leaders section is omitted gracefully if interest data is unavailable, rather than showing an error.
+
+<Steps>
+  <Step title="Open the report">
+    From the catalog page, open Report (`/extracurriculars/report`).
+  </Step>
+  <Step title="Review totals">
+    Check total active count, the breakdown by category, and the breakdown by learning centre.
+  </Step>
+  <Step title="Check for coaching gaps">
+    Look at the unassigned-coach count to find activities that need a coach assigned.
+  </Step>
+  <Step title="Review demand">
+    Scan the top 5 activities by active interest count to see where family demand is concentrated.
+  </Step>
+</Steps>
+
+<CardGroup cols={2}>
+  <Card title="Extracurriculars overview" icon="trophy" href="/features/extracurriculars/overview">
+    What extracurriculars are in Zion and who sees what.
+  </Card>
+  <Card title="Managing the catalog" icon="list-check" href="/features/extracurriculars/managing-catalog">
+    Creating, scoping, and archiving activities.
+  </Card>
+  <Card title="Calendar overview" icon="calendar-check" href="/features/calendar/overview">
+    How recurring activities appear on the school calendar.
+  </Card>
+  <Card title="ICS subscription" icon="calendar-check" href="/features/calendar/ical-subscription">
+    Subscribing to the calendar feed, including extracurricular events.
+  </Card>
+</CardGroup>

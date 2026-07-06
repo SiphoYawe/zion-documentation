@@ -1,0 +1,68 @@
+---
+title: Publishing staff availability
+description: How supervisors and monitors publish bookable meeting slots, and how administrators can publish on their behalf.
+icon: "clock"
+---
+
+Availability is the set of open time slots a supervisor or monitor makes bookable for parents. A meeting can only be booked directly when an open slot exists. Supervisors and monitors manage their own slots on `/staff/availability`. Administrators can publish or delete slots on behalf of a staff member from `/admin/availability`.
+
+## Who can publish availability
+
+| Role | Where | Scope |
+|---|---|---|
+| Supervisor, monitor | `/staff/availability` | Their own slots only |
+| Administrator | `/admin/availability` | On behalf of any staff member, constrained to the admin&apos;s assigned learning centres, or org-wide if the admin has no explicit centre assignment |
+
+Administrators, teaching staff, parents, and students do not publish availability. A staff member is only bookable by a parent if they hold the supervisor or monitor role and are assigned to the child&apos;s learning centre. Administrators are never bookable.
+
+## Publishing a slot
+
+<Steps>
+  <Step title="Open the availability page">
+    Supervisors and monitors go to `/staff/availability`. Administrators go to `/admin/availability` and select the staff member to publish for.
+  </Step>
+  <Step title="Choose a single slot or bulk-generate">
+    Create one slot at a time by setting a date, start time, and end time, or bulk-generate a schedule using a recurring preset, an explicit list of dates or a date range, or by copying last week&apos;s slots forward by seven days.
+  </Step>
+  <Step title="Save">
+    The slot is published immediately. If publishing on behalf of a staff member, that staff member is notified, and any parent who is watching for openings with that staff member is notified too.
+  </Step>
+</Steps>
+
+<Note>
+Bulk generation is capped at 200 slots per call.
+</Note>
+
+## Rules that keep slots valid
+
+- Slots cannot overlap. The app checks for overlap before saving, and a database constraint blocks it as a backstop.
+- Slots cannot be created in the past. The check compares the slot against today&apos;s date in the Africa/Kampala timezone.
+- A slot only becomes bookable once it is published and remains unbooked. It disappears from the bookable list the moment a parent claims it.
+
+## Deleting a slot
+
+A staff member, or an administrator acting on their behalf, can delete a slot they published as long as it has not been booked. A slot that is already attached to a meeting cannot be deleted directly. Cancel the meeting first, which frees the slot, and then delete it if needed.
+
+## How a slot becomes bookable
+
+Once a slot is published:
+
+- It appears to parents whose child is assigned to that staff member&apos;s learning centre, on the `/parent/meetings/book` wizard.
+- A parent claims it atomically, so two parents can never book the same slot.
+- A stale slot, one whose time has already passed, is rejected if a parent tries to book it.
+- If no slots are open for a given staff member, a parent can instead propose candidate times as a request, or subscribe to be notified when that staff member next publishes a slot.
+
+<CardGroup cols={2}>
+  <Card title="Meetings overview" icon="calendar-check" href="/features/meetings/overview">
+    How meetings, slots, and requests fit together.
+  </Card>
+  <Card title="Booking and requests" icon="calendar-plus" href="/features/meetings/booking-and-requests">
+    How parents book a slot or request a time, and how staff respond.
+  </Card>
+  <Card title="Managing and documenting meetings" icon="clipboard-check" href="/features/meetings/managing-and-documenting">
+    Rescheduling, cancelling, notes, and marking a meeting complete or no-show.
+  </Card>
+  <Card title="Roles and permissions" icon="shield" href="/reference/roles-permissions">
+    Full reference of what each role can do across Zion.
+  </Card>
+</CardGroup>

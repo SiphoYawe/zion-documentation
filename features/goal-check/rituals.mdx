@@ -1,0 +1,123 @@
+---
+title: The AM and PM daily ritual
+description: Run Goal Check for a whole learning centre in one guided, full-screen session, morning and evening.
+icon: "sun"
+---
+
+The daily ritual is a full-screen, one-student-at-a-time way to run Goal Check for an entire learning centre in a single pass. It writes to the same `daily_goals` data as the standalone [Goal Check entry and marking](/features/goal-check/marking-progress) screens, so nothing about the ritual creates a separate record of student progress. It is available to administrators, supervisors, and monitors.
+
+<Note>
+The ritual has two modes: the Morning Ritual for setting per-PACE goals, and the End-of-Day Check for recording what actually happened. Run both on the same day for a centre to have complete Goal Check data.
+</Note>
+
+## Starting from the dashboard
+
+Every dashboard (administrator, supervisor, monitor) shows a Today&apos;s Ritual card. This card is the only entry point for the guided flow.
+
+<Steps>
+  <Step title="Open the Today's Ritual card">
+    The card shows the current status for each mode: not started, in progress, or done for the day.
+  </Step>
+  <Step title="Pick a learning centre, if you supervise more than one">
+    Supervisors and monitors assigned to multiple centres see a centre selector above the Start/Resume buttons. Each centre tracks its own AM and PM status independently, so finishing the ritual in one centre does not affect another.
+  </Step>
+  <Step title="Tap Start Morning Ritual or Start End-of-Day Check">
+    If a session for that mode is already in progress today, the button reads Resume instead, and picks up exactly where the session left off.
+  </Step>
+</Steps>
+
+Starting a session builds a queue of every active student in the chosen centre, ordered by name. The app then walks that queue one student at a time in a full-screen view.
+
+## The Morning Ritual: setting goals
+
+For each student, the Morning Ritual shows every active PACE (an in-progress unit in the ACE curriculum) that student is working through.
+
+- The start page for a PACE is fixed and derived automatically: it is one page past the last page that PACE&apos;s previous goal marked complete, or page 1 if there is no prior record. You cannot edit the start page.
+- You enter the goal end page for each PACE using a touch number pad. The end page cannot exceed that PACE&apos;s total page count.
+- A PACE with no page count set cannot be goaled.
+- Tap Advance to save the goals for that student and move to the next one. If you advance while some of the student&apos;s PACEs are still blank, the app asks you to confirm before moving on.
+
+Because goal entry is saved through an idempotent write, going Back to a student and changing an end page revises the existing goal rather than creating a duplicate.
+
+<Tip>
+If you close the tab or switch devices mid-entry, your typed-but-unsaved values for the current student are recovered from a local draft when you reopen the session on the same device. Once you advance past a student, that student&apos;s data is already saved server-side and available from any device.
+</Tip>
+
+## The End-of-Day Check: recording results
+
+The End-of-Day Check uses the same session and queue mechanics, in `pm` mode. For each student, it recaps every PACE that had a morning goal and asks you to record one of three outcomes, plus the actual start and end page reached.
+
+| Outcome | Meaning |
+|---|---|
+| Hit | The student reached the goal end page. |
+| Missed | The student did not reach the goal end page. |
+| Partial | The student made progress but did not fully reach the goal end page. |
+
+If a student has no morning goal at all, such as a student who joined the centre after the Morning Ritual ran, you can still advance past them. Nothing is recorded for that student since there is no goal to check against; it is a note-only pass.
+
+## Controls available in both rituals
+
+<Tabs>
+  <Tab title="Back">
+    Reverts the previous student in the queue back to pending, so you can review or correct what you just entered before moving on again.
+  </Tab>
+  <Tab title="Skip">
+    Marks the current student as skipped and advances to the next one. Skipped students are not lost: the session offers them again in the return-to-skipped pass before it lets you finish.
+  </Tab>
+  <Tab title="Roster jump">
+    Opens a roster sheet listing every student in the queue, so you can jump directly to a specific student instead of stepping through the queue in order.
+  </Tab>
+  <Tab title="Skip remaining">
+    Bulk-flips every still-pending student in the queue to skipped and completes the session immediately. Use this when you need to end a session early.
+  </Tab>
+</Tabs>
+
+## Finishing a session
+
+Before a session completes, the app runs one return-to-skipped pass: it offers each skipped student once more, in case you have time to go back and enter their goal or result. After that pass, if any students are still skipped, you can tap Finish anyway to complete the session with those students left unrecorded for the day.
+
+## Resuming across a closed tab or a different device
+
+Ritual sessions are tracked server-side as in progress, not just in the browser. If you close the tab, lose connection, or open the ritual on a different device:
+
+- Reopening the Morning Ritual or End-of-Day Check for a centre resumes the same day&apos;s in-progress session where it left off.
+- If that mode is already completed for the day, the app returns you to the dashboard with a notice instead of starting a new session.
+- A session left in progress from a prior day is treated as stale and does not block starting a fresh session today.
+
+## Completion summary
+
+When a session finishes, whether by reaching the end of the queue, using Skip remaining, or Finish anyway, the ritual shows a summary with:
+
+- The number of goals set (Morning Ritual) or results recorded (End-of-Day Check), counting only actual saved records, not every queue entry.
+- The number of students skipped.
+- The elapsed time for the session.
+
+From the summary you can return to the dashboard or open the standalone [Goal Check](/features/goal-check/marking-progress) views for a closer look at individual students.
+
+## Optional goal approval sign-off
+
+Some organizations turn on a setting that requires a sign-off on morning goals before they count as final. When this setting is on:
+
+- Every goal entered during the Morning Ritual starts with a pending approval status.
+- From the completion summary of a finished Morning Ritual session, an administrator or supervisor can approve all of that session&apos;s pending goals in one action.
+- A monitor cannot approve goals. This keeps the person who sets a goal separate from the person who signs off on it.
+- Once a goal is both approved and has an End-of-Day result recorded against it, it is locked against casual re-marking through the ritual. Changing it after that point requires the audited correction path rather than the ritual screens.
+
+<Warning>
+If your organization has not turned this setting on, morning goals do not carry a pending or approved status. There is nothing to sign off on.
+</Warning>
+
+<CardGroup cols={2}>
+  <Card title="Goal Check overview" icon="target" href="/features/goal-check/overview">
+    What Goal Check tracks and how it fits into daily PACE work.
+  </Card>
+  <Card title="Setting goals" icon="calendar-check" href="/features/goal-check/setting-goals">
+    The standalone, per-student way to set a morning goal outside the ritual.
+  </Card>
+  <Card title="Marking progress" icon="clipboard-check" href="/features/goal-check/marking-progress">
+    The standalone, per-student way to record an end-of-day result.
+  </Card>
+  <Card title="Goal Check reports" icon="chart-line" href="/features/goal-check/reports">
+    Weekly reporting built from the same daily_goals data.
+  </Card>
+</CardGroup>

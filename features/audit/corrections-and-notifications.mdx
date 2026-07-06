@@ -1,0 +1,105 @@
+---
+title: Corrections and notification audit logs
+description: Administrator-only audit trails for retroactive record corrections and org-wide notification delivery
+icon: "clock-rotate-left"
+---
+
+Zion keeps two separate audit logs for administrators: one for retroactive corrections to locked records, and one for every notification the school has sent. Both are read-only history views, and both are restricted to the administrator role.
+
+<Note>
+This page covers the corrections audit log and the notification audit log only. It does not cover the alerts inbox, the SEO dashboard, or the internal webhook-events tool used by Zion&apos;s own operators.
+</Note>
+
+## Corrections audit log
+
+Some records in Zion get locked after submission, such as a goal entry, a goal check, a back-dated check, or a test score. When an administrator or supervisor needs to fix one of these after the fact, that fix is logged as a correction rather than a silent edit.
+
+Supervisors can make corrections to records in their own centre. Only administrators can view the org-wide corrections audit log that shows every correction made across all centres.
+
+### Where to find it
+
+Navigate to **People &amp; Centres &gt; Corrections Audit** in the sidebar, or go directly to `/admin/corrections-audit`. If you are not an administrator, this page redirects you to your dashboard.
+
+### What each row shows
+
+| Column | What it contains |
+|---|---|
+| Timestamp | When the correction was made |
+| Actor | The name of the administrator or supervisor who made the correction |
+| Action | A badge identifying the correction type: goal entry, goal check, back-dated check, or test score |
+| Resource | The type of record that was amended |
+| Change summary | A computed before-and-after comparison of the fields that changed |
+| Reason | The mandatory correction reason the actor entered when making the fix |
+
+<Tip>
+Expand any row to see the full before-and-after JSON snapshot of the record, not just the summarized field changes.
+</Tip>
+
+The table loads more history with a **Load more** control as you scroll, rather than numbered pages.
+
+### Investigating a disputed record
+
+<Steps>
+  <Step title="Open the corrections audit">
+    Go to **People &amp; Centres &gt; Corrections Audit** in the sidebar.
+  </Step>
+  <Step title="Locate the record">
+    Scan the table for the relevant student or date, using **Load more** to pull in older entries.
+  </Step>
+  <Step title="Expand the row">
+    Open the row to see the full before-and-after JSON and the actor&apos;s stated reason for the change.
+  </Step>
+</Steps>
+
+## Notification audit log
+
+The notification audit log records every notification the organization has sent, across every delivery channel, so an administrator can confirm whether a message actually went out and whether it was delivered.
+
+This log is administrator-only and org-wide. It is not scoped to a single centre.
+
+### Where to find it
+
+The notification audit log is reachable at `/admin/notification-audit`. Unauthenticated visitors are sent to sign in, and any signed-in user who is not an administrator is redirected to their dashboard.
+
+### What each row shows
+
+| Column | What it contains |
+|---|---|
+| Notification | The title and category of the notification |
+| Channel | In-App, Email, or WhatsApp |
+| Status | queued, sent, read, failed, or dead |
+| Delivery outcome | Email only: Delivered, Bounced, Complaint, or No signal |
+| Sent | The timestamp the notification was created or sent |
+
+The table can be filtered by channel and by status, and loads additional history with **Load more**.
+
+### Checking whether a parent received a message
+
+<Steps>
+  <Step title="Open the notification audit log">
+    Go to `/admin/notification-audit`.
+  </Step>
+  <Step title="Filter by channel or status">
+    Narrow the list to the channel in question (for example Email) or to a status such as failed or dead.
+  </Step>
+  <Step title="Read the delivery outcome">
+    For email, check the delivery outcome badge to see whether the message was delivered, bounced, or flagged as a complaint.
+  </Step>
+</Steps>
+
+## See also
+
+<CardGroup cols={2}>
+  <Card title="Alerts overview" icon="triangle-exclamation" href="/features/alerts/overview">
+    Read the performance alerts inbox that surfaces at-risk students, centres, and subjects.
+  </Card>
+  <Card title="Notifications overview" icon="bell" href="/features/notifications/overview">
+    Understand how notifications are generated and sent in the first place.
+  </Card>
+  <Card title="Notification deliverability and audit" icon="signal" href="/features/notifications/deliverability-and-audit">
+    Learn more about how notification deliverability is tracked.
+  </Card>
+  <Card title="Grading audit trail" icon="file-lines" href="/features/grading/audit-trail">
+    See the audit trail for grading-specific score history.
+  </Card>
+</CardGroup>

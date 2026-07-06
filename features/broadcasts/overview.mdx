@@ -1,0 +1,111 @@
+---
+title: Broadcasts
+description: Send one-off or scheduled announcements to parents, students, or staff, with templates, a per-recipient delivery ledger, and resend.
+icon: "bullhorn"
+---
+
+A broadcast is a message an administrator or supervisor sends to a group of people at once, such as a school-wide notice, a centre update, or a note to one grade level&apos;s parents. It differs from the notifications other features generate automatically (homework assigned, attendance alerts, meeting confirmations). Those come from the system as a side effect of an action. A broadcast is written and sent on purpose, by a person, to an audience the sender chooses.
+
+<Note>
+  Composing, sending, and resending broadcasts is limited to the administrator and supervisor roles. Monitors, parents, and students do not have access to compose a broadcast, though they can receive one and read it from their own notification history. See [Notifications](/features/notifications/overview).
+</Note>
+
+## Composing a broadcast
+
+<Steps>
+  <Step title="Open the compose screen">
+    Go to `/broadcasts` for the history list, or straight to `/broadcasts/new` to compose.
+  </Step>
+  <Step title="Apply a template (optional)">
+    Pick a saved template to fill in the Subject and Message body. Applying a template never changes the audience you have already chosen.
+  </Step>
+  <Step title="Write the subject and message">
+    Subject is limited to 200 characters. The message body is limited to 5000 characters.
+  </Step>
+  <Step title="Choose the audience">
+    Pick a scope: school-wide, one or more centres, one or more grade levels, or hand-picked individuals. Then pick recipient types: parents, students, staff, or a combination.
+  </Step>
+  <Step title="Check the recipient preview">
+    A live "Will reach N recipients" count updates as you adjust scope and recipient types. Submission is blocked until at least one recipient resolves.
+  </Step>
+  <Step title="Send now or schedule">
+    Leave "Schedule for later" off and click Send now, or turn it on to schedule the broadcast for a future date and time.
+  </Step>
+</Steps>
+
+<Warning>
+  A supervisor never sees a usable school-wide option. Supervisors are confined server-side to their assigned centres, so any audience they build only reaches people in centres they supervise even if the option appears to include more.
+</Warning>
+
+## Audience and recipient types
+
+| Scope | Who can pick it | What it targets |
+|---|---|---|
+| School-wide | Administrator only | Everyone in the org matching the chosen recipient types |
+| Centre | Administrator, supervisor (own centres only) | Everyone in the selected centre(s) |
+| Grade level | Administrator, supervisor | Everyone in the selected grade level(s) |
+| Individual | Administrator, supervisor | Hand-picked people |
+
+Recipient types (parents, students, staff) narrow any of the scopes above. You can combine more than one recipient type in a single broadcast.
+
+## Channel
+
+Email is the only active send channel, and it bundles an in-app notification for anyone with a Zion account. SMS appears in the interface as disabled and marked coming soon, and is never sent.
+
+## Templates
+
+Save the current subject and body as a named template (up to 120 characters for the name). Templates are scoped to your organization, so any administrator or supervisor in the org can reuse one. Re-applying a template only refills the subject and message. It does not touch whatever audience you already selected.
+
+## Sending now vs. scheduling
+
+<Tabs>
+  <Tab title="Send now">
+    The server re-checks your role and your org's active subscription, re-resolves the audience against the current roster, and delivers immediately. You land back on `/broadcasts`, where the new row shows its status and delivery tally right away.
+  </Tab>
+  <Tab title="Schedule for later">
+    Pick a future date and time. A past or present time is rejected on both the form and the server. The broadcast is stored with status `scheduled`, and its recipients are not resolved yet. At the scheduled time, a cron sweep (`/api/cron/broadcasts`) claims the row, re-resolves the audience against the live roster (not the roster at the time you scheduled it), delivers, and marks the broadcast sent or failed.
+  </Tab>
+</Tabs>
+
+<Info>
+  Because a scheduled broadcast re-resolves its audience at send time, someone who joined a targeted centre or grade after you scheduled the message can still receive it, and someone who left will not.
+</Info>
+
+Sending, scheduling, or resending a broadcast requires an active org subscription.
+
+## Delivery ledger and resend
+
+Open any broadcast from the `/broadcasts` history to reach its detail page at `/broadcasts/[id]`. The page lists a per-recipient delivery ledger with recipient type, contact, channel, status (sent, failed, queued, or skipped), and an error message where applicable.
+
+<Steps>
+  <Step title="Check the failed tally">
+    If the broadcast has failed deliveries, the detail page shows a "Resend to failed (N)" action.
+  </Step>
+  <Step title="Confirm and resend">
+    Click it and confirm in the dialog. Only the failed rows are reset to queued and retried.
+  </Step>
+  <Step title="Delivered recipients are left alone">
+    Resend never re-contacts recipients who already received the message. It only retries the legs that failed.
+  </Step>
+</Steps>
+
+## Broadcast history
+
+`/broadcasts` lists past and scheduled broadcasts, 20 rows per page. Each row shows the subject, status, and delivery tally; clicking a row opens its detail page and ledger.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Notifications" icon="bell" href="/features/notifications/overview">
+    The in-app notification centre, bell, and history every role uses to read what they&apos;ve been sent.
+  </Card>
+  <Card title="Deliverability and audit" icon="shield-halved" href="/features/notifications/deliverability-and-audit">
+    Email suppression handling and the org-wide notification audit log, administrator only.
+  </Card>
+  <Card title="Roles and permissions" icon="users" href="/features/organization/roles-and-permissions">
+    Who holds which of the five roles and what each can do.
+  </Card>
+  <Card title="Reference: roles and permissions" icon="shield" href="/reference/roles-permissions">
+    Full permission matrix across all features.
+  </Card>
+</CardGroup>

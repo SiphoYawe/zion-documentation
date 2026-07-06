@@ -1,0 +1,69 @@
+---
+title: Academic terms
+description: Configure the academic calendar that anchors grading, Goal Check, and reporting to a single current term
+icon: "calendar-days"
+---
+
+Academic terms define the school year windows that Zion uses to group goals, scores, and reports. Every org has one term marked current at a time, and that term is what grading, Goal Check, and reporting anchor to. Only administrators manage academic terms.
+
+## Why terms matter
+
+A term is not just a label. Reports, Goal Check history, and grade summaries are all read against the org&apos;s current term. If no term is configured, features that depend on a term window have nothing to anchor to, so setting up at least one term is a prerequisite for reporting to make sense.
+
+<Note>
+  Only the administrator role can create, edit, delete, or set the current term. Supervisors, monitors, teaching staff, parents, and students do not have access to /academic-terms.
+</Note>
+
+## Term fields
+
+| Field | Rule |
+|---|---|
+| Name | 3 to 50 characters |
+| Start date | Any valid date |
+| End date | Must be after the start date |
+| Current | Exactly one term per org can be flagged current |
+
+## Creating a term
+
+<Steps>
+  <Step title="Open Academic Terms">
+    Navigate to /academic-terms.
+  </Step>
+  <Step title="Click Create New Term">
+    Enter a name and a start and end date.
+  </Step>
+  <Step title="Submit">
+    Zion rejects a term whose date range overlaps an existing term. Overlap is checked both in the app and at the database level, so it cannot be bypassed by a race condition.
+  </Step>
+</Steps>
+
+## Setting the current term
+
+Only one term can be current at a time. Clicking Set as current on a term clears the current flag from every other term first, so the switch is atomic and there is never a moment with two current terms.
+
+<Warning>
+  If no term has been explicitly set as current, the app falls back to whichever term&apos;s date window contains today&apos;s date. Once you explicitly set a current term, that flag takes precedence over the date-window fallback.
+</Warning>
+
+## Editing and deleting terms
+
+Administrators can edit a term&apos;s name or dates from /academic-terms, subject to the same overlap check used at creation.
+
+Deleting a term is blocked if the term has goals or scores linked to it. This keeps historical goal and grade data from being orphaned. To remove a term that has data attached, address the linked goals or scores first.
+
+## What a term drives
+
+<CardGroup cols={2}>
+  <Card title="Goal Check" icon="target" href="/features/goal-check/overview">
+    Daily goals and progress are recorded against the current term.
+  </Card>
+  <Card title="Grading" icon="chart-line" href="/features/grading/overview">
+    Score entry and grade summaries are scoped to the current term.
+  </Card>
+  <Card title="Report cards" icon="file-lines" href="/features/report-cards/overview">
+    Report generation reads the current term to determine the reporting period.
+  </Card>
+  <Card title="Students" icon="users" href="/features/students/overview">
+    PACE assignments and student records reference the academic calendar terms define.
+  </Card>
+</CardGroup>

@@ -1,0 +1,97 @@
+---
+title: Email deliverability and the notification audit log
+description: Manage suppressed email addresses from bounces and complaints, and review the org-wide notification audit log
+icon: "shield-check"
+---
+
+This page is for administrators. Zion sends notifications by email and in-app for every event across the platform, from homework and attendance to meetings and billing. When an email address hard-bounces or a recipient marks a message as spam, Zion suppresses that address automatically so it is not emailed again until you clear it. The notification audit log gives you an org-wide view of every dispatched notification and its delivery outcome.
+
+## Email suppression
+
+<Info>
+Suppression is automatic. Zion listens for hard-bounce and spam-complaint events from its email provider (Resend) and stops sending to that address without any action from you.
+</Info>
+
+Two events trigger a suppression:
+
+| Reason | What happened |
+|---|---|
+| Bounce | The email hard-bounced, for example the address does not exist or the mailbox rejected it permanently. |
+| Complaint | The recipient marked the message as spam. |
+| Manual | An administrator suppressed the address directly. |
+
+Suppression can be org-scoped or global depending on how the provider reported the failure. While an address is suppressed, Zion continues to deliver the same notifications in-app, but no further emails go to that address.
+
+### Reviewing suppressed addresses
+
+<Steps>
+  <Step title="Open the suppression list">
+    Go to **/admin/email-suppressions**.
+  </Step>
+  <Step title="Filter by reason">
+    Filter the list by bounce, complaint, or manual to narrow down what you are looking at.
+  </Step>
+  <Step title="Confirm the address is fixable">
+    Check with the parent, student, or staff member that the address is correct and can now receive mail, for example a typo has been corrected or a mailbox issue has been resolved.
+  </Step>
+  <Step title="Unsuppress">
+    Click **Unsuppress** on the address and confirm in the dialog. Emailing to that address resumes immediately.
+  </Step>
+</Steps>
+
+<Warning>
+Unsuppressing an address that is still invalid causes it to bounce again and get re-suppressed. Confirm the address is corrected before unsuppressing it.
+</Warning>
+
+## Notification audit log
+
+The audit log at **/admin/notification-audit** is an org-wide table of every notification Zion has dispatched, regardless of which feature triggered it (homework, attendance, meetings, grading, billing, and others all write to the same log).
+
+Each row shows:
+
+| Field | What it tells you |
+|---|---|
+| Channel | In-app, email, or WhatsApp (where active for that category). |
+| Delivery status | Queued, sent, read, failed, or dead. |
+| Email outcome | For email sends: delivered, bounced, complaint, or no signal. |
+
+### Reading delivery status
+
+| Status | Meaning |
+|---|---|
+| Queued | The notification is waiting to be sent. |
+| Sent | The notification was dispatched to the channel. |
+| Read | The recipient has opened or read the notification. |
+| Failed | The send attempt did not succeed. |
+| Dead | The notification was stuck in processing for too long and was reclaimed as stale. |
+
+Filter the log by channel and by status to isolate a problem, for example filtering to email and failed to see which sends did not go through.
+
+### Using the audit log with suppressions
+
+<Steps>
+  <Step title="Spot a delivery problem">
+    In the audit log, filter to channel Email and status Failed or Dead to find notifications that did not reach a recipient.
+  </Step>
+  <Step title="Check the address">
+    Open **/admin/email-suppressions** and see whether the recipient&apos;s address is suppressed for a bounce or complaint.
+  </Step>
+  <Step title="Fix or unsuppress">
+    Correct the address with the recipient if it was wrong, or unsuppress it if it is confirmed valid.
+  </Step>
+</Steps>
+
+<CardGroup cols={2}>
+  <Card title="Notifications" icon="bell" href="/features/notifications/overview">
+    How the notification bell and personal notification history work for every role.
+  </Card>
+  <Card title="Broadcasts" icon="bullhorn" href="/features/broadcasts/overview">
+    Compose and send announcements with a per-recipient delivery ledger.
+  </Card>
+  <Card title="Roles and permissions" icon="users" href="/reference/roles-permissions">
+    See which capabilities each of Zion&apos;s five roles can reach.
+  </Card>
+  <Card title="Corrections and notifications audit" icon="clipboard-check" href="/features/audit/corrections-and-notifications">
+    The org's general audit log for corrections and other administrative actions.
+  </Card>
+</CardGroup>

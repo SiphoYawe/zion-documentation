@@ -1,0 +1,101 @@
+---
+title: Exporting your school data
+description: Request an async export bundle of your school's records from the unified export center.
+icon: "file-export"
+---
+
+The unified export center at `/settings/export` builds a downloadable bundle of your school&apos;s records. Each request produces per-entity CSV files plus a PDF snapshot, and runs in the background so you do not have to keep the page open while it works.
+
+Administrators and supervisors reach this page from Settings, under the Data Export tab.
+
+## What gets exported
+
+A single request can include any combination of these entities:
+
+| Entity | Contents |
+|---|---|
+| Students | Student roster records |
+| Attendance | Attendance history |
+| Goal checks | Goal Check records, with optional filters for completion status and PACE subject |
+| Grades | Grade and assessment records |
+| Report cards | Report card data, where enabled for your school |
+
+Every export also includes a PDF school snapshot alongside the per-entity CSVs.
+
+<Note>
+Report cards only appear as an export option if your school has report cards enabled. If you do not see it, ask an administrator to confirm the feature is turned on.
+</Note>
+
+## Who can export what
+
+<Tabs>
+  <Tab title="Administrator">
+    Administrators export across the whole organization. On the request form you can optionally scope the export to one or more learning centres, or to a single student. Choosing a centre clears any student selection, and choosing a student clears any centre selection, since the two filters are mutually exclusive.
+
+    Administrators also see a one-click **Export everything** button that requests every entity across the org&apos;s full history without picking a date range.
+  </Tab>
+  <Tab title="Supervisor">
+    Supervisors are scoped to their assigned learning centre or centres automatically. The centre and student pickers are replaced with a note explaining that scope is enforced for you. If you have no centre assigned, the form is blocked and asks you to have an administrator assign one.
+  </Tab>
+</Tabs>
+
+## Requesting an export
+
+<Steps>
+  <Step title="Open Data Export">
+    Go to Settings, then the Data Export tab, to reach `/settings/export`.
+  </Step>
+  <Step title="Choose a date range">
+    Pick a start and end date, or check All time to export full history. Custom date ranges are capped at 18 months; check All time if you need older records.
+  </Step>
+  <Step title="Select entities">
+    Check the entities you want: students, attendance, goal checks, grades, and report cards where available. If you select goal checks, optional filters for completion status and PACE subject appear.
+  </Step>
+  <Step title="Scope the export (administrators only)">
+    Optionally narrow the export to specific centres or a single student. Supervisors skip this step since their scope is applied automatically.
+  </Step>
+  <Step title="Submit the request">
+    The job appears in the export history table as queued, then running.
+  </Step>
+  <Step title="Download when ready">
+    Download from the history table, or from the link in the export-ready email. The link is valid for 7 days from when the export finishes.
+  </Step>
+</Steps>
+
+## Export history and job states
+
+Every request you make appears in the export history table on the same page. A job moves through these states:
+
+| State | Meaning |
+|---|---|
+| Queued | Request received, waiting to run |
+| Running | Bundle is being generated |
+| Ready | Bundle is available to download for 7 days |
+| Failed | Generation did not complete |
+| Cancelled | You cancelled a queued or running job |
+| Expired | The 7-day download window has passed |
+
+From the history table you can re-run a past job, which prefills the request form with the same settings, and you can cancel, retry, or delete a job.
+
+<Note>
+Download links do not point directly at the file. They redirect through a secure page that re-checks your role and organization before handing you a fresh link. If a job is missing, expired, or does not belong to your organization, you land on a branded expired page instead of an error that reveals whether the job exists.
+</Note>
+
+## The deprecated Goal Check export
+
+The earlier Goal Check-only export at `/goal-check/export` no longer produces exports. It now shows a deprecation notice that points you to `/settings/export`. Its export history remains reachable read-only for administrators during the deprecation window, and any links generated there still follow their original 24-hour expiry rather than the unified exporter&apos;s 7-day window.
+
+<CardGroup cols={2}>
+  <Card title="Importing your school data" icon="file-import" href="/features/data/importing-data">
+    Bring students, PACE progress, and grades into Zion from a CSV.
+  </Card>
+  <Card title="Migration concierge" icon="headset" href="/features/data/migration-concierge">
+    Have Zion staff run your legacy data import for you.
+  </Card>
+  <Card title="Goal Check reports" icon="chart-line" href="/features/goal-check/reports">
+    View Goal Check completion data inside Zion before exporting it.
+  </Card>
+  <Card title="Roles and permissions" icon="shield" href="/reference/roles-permissions">
+    See what each role can see and do across Zion.
+  </Card>
+</CardGroup>

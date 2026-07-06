@@ -1,0 +1,98 @@
+---
+title: Extracurricular activities overview
+description: A school-wide catalog of sport, club, arts, faith, service, and academic enrichment activities, separate from enrolment and attendance.
+icon: "trophy"
+---
+
+Zion keeps a catalog of extracurricular activities across your school or organization. It lists what is on offer, who coaches it, and when it happens. It does not manage enrolment, attendance, capacity, fees, or consent for those activities.
+
+<Note>
+This is a catalog and calendar feature, not a registration system. There is no seat count, waitlist, fee collection, or consent form anywhere in extracurriculars. Registering interest tells staff that a family wants to know more. It does not sign anyone up.
+</Note>
+
+## What an activity is
+
+Every activity has a name, an optional description, and one of six fixed categories:
+
+| Category | Example use |
+| --- | --- |
+| sport | Football club, athletics |
+| club | Debate club, chess club |
+| arts | Choir, drama, art class |
+| faith | Prayer group, Bible study |
+| service | Community outreach, volunteering |
+| academic_enrichment | Study group, tutoring club |
+
+Each activity also carries a required schedule summary (free text, up to 300 characters) describing when and where it happens in plain language, and an active/inactive toggle.
+
+Two fields are optional on every activity:
+
+- **Coach**: a staff member (administrator, supervisor, or monitor) assigned to run it. Zion verifies the coach is an active member of your organization before saving.
+- **Learning centre scope**: one or more learning centres the activity belongs to. Leaving this empty makes the activity org-wide, visible everywhere.
+
+## Calendar recurrence is optional
+
+An activity can also carry an optional recurrence: a repeat preset (daily, weekly on weekdays, weekly on selected days, or monthly), a start time, and a duration. Setting a preset puts the activity on the school calendar and on the school&apos;s ICS calendar feed. Leaving the preset unset keeps the activity catalog-only, with no calendar event.
+
+Anyone can also generate a personal ICS subscription link scoped to extracurricular events, either for the whole catalog or for a single activity, using the same signed-link mechanism as the main school calendar feed.
+
+<Card title="School calendar" icon="calendar-check" href="/features/calendar/overview">
+See how extracurricular events sit alongside terms, exams, and other school events on the calendar.
+</Card>
+
+## Who sees what
+
+Visibility follows organization and learning-centre scope:
+
+| Role | What they see |
+| --- | --- |
+| Administrator | Full org-wide catalog, unscoped |
+| Parent | Full org-wide catalog, unscoped |
+| Supervisor | Org-wide activities plus activities scoped to their own learning centres |
+| Monitor | Org-wide activities plus activities scoped to their own learning centres |
+| Student | Org-wide activities plus activities scoped to their own learning centre |
+
+Only administrators can see archived (inactive) activities in the catalog. Everyone else sees active activities only.
+
+## Managing the catalog
+
+Administrators manage the full org-wide catalog. Supervisors manage activities for their own learning centres and must target at least one centre when creating an activity: supervisors cannot create an org-wide activity. Any staff member assigned as a coach on an activity can view it under &quot;Activities I run&quot; and edit its schedule summary and recurrence, but not its name, category, coach, centre scope, or active status.
+
+<Card title="Managing the activity catalog" icon="list-check" href="/features/extracurriculars/managing-catalog">
+Creating, editing, archiving, and bulk-managing activities as an administrator or supervisor.
+</Card>
+
+## Non-binding interest
+
+Parents and students browse the catalog and can register interest in an activity. A parent may optionally attach one of their own children to the interest. A student&apos;s interest is tied automatically to their own student record. Interest can be withdrawn at any time.
+
+Registering interest sends a best-effort notification to the activity&apos;s coach and to administrators. Staff see an active-interest count on each activity and can open a read-only list of everyone who registered, along with a Catalog Report that rolls up totals by category, by learning centre, coaches missing from activities, and the activities with the most interest.
+
+<Card title="Interest and reports" icon="chart-line" href="/features/extracurriculars/interest-and-reports">
+How families register and withdraw interest, and how staff read demand through the catalog report.
+</Card>
+
+## What extracurriculars does not do
+
+- No enrolment or roster of who is signed up to attend
+- No attendance tracking for activity sessions
+- No capacity, seat limits, or waitlists
+- No fees, payments, or billing tied to an activity
+- No consent forms or approval workflow
+
+If your school needs to track who actually attended a session, that sits outside this feature.
+
+<CardGroup cols={2}>
+  <Card title="Managing the catalog" icon="list-check" href="/features/extracurriculars/managing-catalog">
+    Create, edit, archive, and bulk-manage activities.
+  </Card>
+  <Card title="Interest and reports" icon="chart-line" href="/features/extracurriculars/interest-and-reports">
+    Register interest, view demand, and read the catalog report.
+  </Card>
+  <Card title="School calendar" icon="calendar-check" href="/features/calendar/overview">
+    See how recurring activities appear on the calendar.
+  </Card>
+  <Card title="Calendar ICS subscription" icon="rss" href="/features/calendar/ical-subscription">
+    Subscribe to school and activity events from an external calendar app.
+  </Card>
+</CardGroup>

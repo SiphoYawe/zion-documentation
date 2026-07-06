@@ -1,0 +1,79 @@
+---
+title: Admissions funnel analytics
+description: Read counts per stage and conversion rates across the admissions pipeline
+icon: "chart-line"
+---
+
+The funnel page at `/admin/admissions/funnel` shows how many applications sit at each pipeline stage and how many convert from one stage to the next. It is the analytics counterpart to the admissions board, and only administrators can open it.
+
+<Note>
+Funnel analytics requires an active subscription, the same as admissions write actions. An org without an active subscription cannot load this page.
+</Note>
+
+## Getting there
+
+From the admissions board (`/admin/admissions`), click 'Funnel analytics' in the page header.
+
+## What the page shows
+
+### KPI tiles
+
+Three tiles sit at the top of the page.
+
+| Tile | What it counts |
+|---|---|
+| Total applications | Every application in scope, across all six stages |
+| Accept rate | Applications currently Accepted or Enrolled, divided by total applications |
+| Enrol rate | Applications currently Enrolled, divided by total applications |
+
+### Applications by stage
+
+A bar list shows a count for each of the six pipeline stages: Applied, Under Review, Accepted, Waitlisted, Rejected, Enrolled. Bar length is scaled to the largest stage count, so it is a visual comparison, not a percentage.
+
+### Conversion rates
+
+A row of cards shows the conversion rate for each step along the main path:
+
+- Applied to Under Review
+- Under Review to Accepted
+- Accepted to Enrolled
+
+A summary line below the cards states the overall Applied-to-Enrolled rate.
+
+<Note>
+Waitlisted and Rejected are terminal off-ramps. An application that moves to either status leaves the main path and is excluded from the step conversion rates, though it is still counted in Total applications and in its own stage bar.
+</Note>
+
+### How the rate is calculated
+
+Conversion uses a cumulative-reach model, not a snapshot of who moved directly between two stages. An application currently sitting at a later main-path stage counts as having already reached every earlier main-path stage. For example, an Enrolled application is counted as having reached Applied, Under Review, and Accepted as well. This means the Under Review to Accepted rate reflects applications that are now Accepted or Enrolled, divided by applications that are now Under Review, Accepted, or Enrolled.
+
+If a stage has zero applications in scope, its dependent conversion rate shows as 0% rather than an error.
+
+## Filters
+
+| Filter | Effect |
+|---|---|
+| Centre | Restrict counts to applications with that desired learning centre |
+| Date range | Restrict counts to applications created within the range |
+
+Filters apply to every tile, bar, and conversion card on the page at once. If no applications match the current filters, the page shows an empty state instead of the charts.
+
+## Who can see this
+
+Funnel analytics is restricted to the administrator role, the same as the admissions board and all admissions write actions. There is no CSV or PDF export for this page. It is an in-app dashboard only.
+
+<CardGroup cols={2}>
+  <Card title="Admissions overview" icon="user-plus" href="/features/admissions/overview">
+    The six-stage pipeline and how applications enter it.
+  </Card>
+  <Card title="Managing applications" icon="table-columns" href="/features/admissions/managing-applications">
+    Working the kanban board and converting applicants to students.
+  </Card>
+  <Card title="Roles and permissions" icon="shield" href="/reference/roles-permissions">
+    Who can access each feature across the app.
+  </Card>
+  <Card title="Insights overview" icon="chart-line" href="/features/insights/overview">
+    Other analytics available across the app.
+  </Card>
+</CardGroup>

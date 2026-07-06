@@ -1,0 +1,89 @@
+---
+title: Billing and subscription plans
+description: How Zion's subscription tiers, Founding 50 program, and lapsed-subscription handling work
+icon: "credit-card"
+---
+
+Zion bills schools through Polar, which acts as the merchant of record. Polar collects payment and remits tax in every market Zion sells into, and there is no currency conversion applied at checkout, prices are quoted and charged in USD. Administrators manage subscriptions from Settings &gt; Billing. Supervisors and monitors see a read-only summary of the same status. Parents and students never see billing screens at all, except for the calm notice they get if a school&apos;s subscription lapses.
+
+## Self-serve plans
+
+Three tiers are available for an administrator to subscribe to directly, without contacting Zion.
+
+| Tier | Price | Student cap | How to subscribe |
+|---|---|---|---|
+| Lite | $399/mo | 150 students | Self-serve checkout |
+| Standard | $799/mo | 500 students | Self-serve checkout, marked &quot;Most popular&quot; |
+| Enterprise | $12,000/mo | Unlimited | Contact sales (mailto link, no self-serve checkout) |
+
+Clicking Subscribe to Lite or Subscribe to Standard mints a Polar hosted-checkout session for the school&apos;s organization. Tax is calculated on Polar&apos;s checkout page at the point of payment. Enterprise has no subscribe button. It is a mailto link that opens a message to sales.
+
+<Steps>
+  <Step title="Open Settings > Billing">
+    An administrator with no active subscription sees a Choose a plan screen with Lite, Standard, and Enterprise cards.
+  </Step>
+  <Step title="Choose a plan">
+    Click Subscribe to Lite or Subscribe to Standard.
+  </Step>
+  <Step title="Complete checkout with Polar">
+    Payment and tax are handled on Polar&apos;s hosted checkout page.
+  </Step>
+  <Step title="Return to Zion">
+    The page redirects back to Settings &gt; Billing and polls automatically until the subscription shows as active.
+  </Step>
+</Steps>
+
+## Founding 50
+
+Founding 50 is a flat $99/month rate that includes every feature, capped at 50 seats, available only during a 90-day window from launch. There is no self-serve Founding 50 signup and no Founding subscribe button anywhere in the app. A school is placed on Founding 50 by the Zion team, which enforces the 50-seat cap and rejects new assignments once the window has closed. While the window is still open, a non-Founding school sees only a passive note acknowledging the offer, not a way to claim it.
+
+When a Founding 50 school&apos;s window closes, it can be given a temporary comped Standard plan for a grace period while it chooses a permanent tier. If that grace period lapses before the school subscribes, access is cut off and the billing dashboard shows a message that the access bridge has ended, with a prompt to subscribe to Standard.
+
+## How entitlement is decided
+
+Zion never calls Polar live to check whether a school is entitled to use the app. Instead, a local subscriptions table mirrors each school&apos;s Polar status, kept in sync by webhooks and a reconciliation cron. Every entitlement check, on every page load, reads that local mirror.
+
+The read is deliberately strict. A school still counts as entitled while a payment is past due and Polar is retrying it, and while a canceled subscription runs out its already-paid period. A school stops being entitled once a checkout is abandoned and expires, once a payment fails outright as unpaid, or once a canceled subscription passes its final paid day. If the mirror can&apos;t be read or the data doesn&apos;t parse, the check fails closed and treats the school as not entitled.
+
+## What each role sees when billing lapses
+
+When a school&apos;s subscription is no longer entitled, anyone signed in to that organization is redirected to `/subscription-required`. What appears there depends on the role.
+
+<Tabs>
+  <Tab title="Administrator">
+    Sees a remedy specific to the subscription&apos;s status: a reactivate action that returns to Settings &gt; Billing for statuses that need a fresh checkout, or a direct link into Polar&apos;s customer portal for a past-due or unpaid card.
+  </Tab>
+  <Tab title="Supervisor or monitor">
+    Sees a notice that the school&apos;s subscription needs attention and a button to notify the administrator. There is no billing control here, only the notify-admin action and a contact-support option.
+  </Tab>
+  <Tab title="Parent or student">
+    Sees a calm message that access is temporarily paused and the school is sorting it out. There is no billing language and no mention of Zion or payment. A mailto link to the school&apos;s administrator contact and a sign-out option are the only actions offered.
+  </Tab>
+</Tabs>
+
+## Updating a card or viewing invoices
+
+Manage billing and Update payment method both link to Polar&apos;s hosted customer portal. This link only appears when the school has a real Polar customer record and billing is enabled. The billing summary also shows a read-only card hint, such as the card brand, last four digits, and expiry, and never shows a full card number.
+
+## Billing kill switch
+
+Zion has a global kill switch that puts the entire billing suite into a dormant state. While dormant, every school is treated as entitled with no lockouts, checkout and the customer portal both refuse to open new sessions, and the daily billing cron takes no action. In this state the billing dashboard shows an inline note that self-serve billing is not open yet and that the school has full access in the meantime, instead of dead-end buttons.
+
+<Note>
+  Billing recipients (which email addresses get billing notices) and a history of billing emails sent are configurable by administrators from Settings &gt; Billing.
+</Note>
+
+<CardGroup cols={2}>
+  <Card title="Roles and permissions" icon="users" href="/reference/roles-permissions">
+    See what each role can access across the app.
+  </Card>
+  <Card title="School settings" icon="sliders" href="/features/school-settings/overview">
+    Configure the rest of your school&apos;s account.
+  </Card>
+  <Card title="Notifications" icon="bell" href="/features/notifications/overview">
+    How billing and other notices reach staff.
+  </Card>
+  <Card title="Getting started" icon="graduation-cap" href="/features/onboarding/getting-started">
+    Set up your school in Zion.
+  </Card>
+</CardGroup>

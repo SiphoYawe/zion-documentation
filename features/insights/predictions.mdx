@@ -1,0 +1,98 @@
+---
+title: Termly goal predictions
+description: How Zion projects whether a student will hit their termly PACE goal, and how that status is shown to staff, parents, and students
+icon: "chart-pie"
+---
+
+Termly goal predictions project whether a student is on track to complete their termly PACE-count goal in a subject, based on how many PACEs they have finished and how much of the term is left. Administrators and supervisors use this to find students who need intervention before the term ends. Parents and students see the same projection on their own My Progress view.
+
+## Where to find it
+
+<Tabs>
+  <Tab title="Administrator">
+    Open Analytics from the sidebar, then select the Predictions card. This lands on the predictions dashboard with org-wide data across all learning centres.
+  </Tab>
+  <Tab title="Supervisor">
+    Open Analytics, then Predictions. The dashboard shows only the students in the centre or centres assigned to you. If you have no assigned centre, the dashboard shows no data rather than org-wide totals.
+  </Tab>
+  <Tab title="Parent or student">
+    Predictions are not a separate page for parents and students. The same projection appears inside My Progress, described below.
+  </Tab>
+</Tabs>
+
+## How a projection is calculated
+
+Zion computes one projection per student per subject, using PACEs completed so far and the pace at which the student is completing them.
+
+<Steps>
+  <Step title="Velocity">
+    Velocity is the student's PACEs completed divided by the number of weeks elapsed in the term so far. Weeks elapsed is floored at 1, so a projection can be produced even in the first days of a term.
+  </Step>
+  <Step title="Projected total">
+    The projected end-of-term PACE count is the PACEs already completed plus velocity multiplied by the weeks remaining in the term. Weeks remaining is floored at 0.
+  </Step>
+  <Step title="Status">
+    The projected total is compared against the student's termly PACE target for that subject to assign a status of on track, at risk, or off track.
+  </Step>
+</Steps>
+
+### Status thresholds
+
+| Projected total vs target | Status |
+|---|---|
+| Projection meets or exceeds the target | On track |
+| Projection is at least 80% of the target | At risk |
+| Projection is below 80%, but the student&apos;s progress-to-date is at least 70% of what would be expected at this point in the term | At risk |
+| Below both of the above | Off track |
+
+For a student with zero PACEs completed so far, Zion classifies status by how far into the term the class is, since there is no completion velocity yet to project from:
+
+| Term elapsed | Status |
+|---|---|
+| Less than 25% | On track |
+| Less than 50% | At risk |
+| 50% or more | Off track |
+
+<Note>
+These thresholds are the same for every student and subject. Zion does not let staff adjust them from the dashboard.
+</Note>
+
+## Reading the dashboard
+
+The predictions dashboard opens with a donut chart summarizing how many students fall into each status: on track, at risk, and off track. Below it, student cards are searchable by name and filterable by centre, status, and subject. The centre filter only appears when your scope includes more than one centre.
+
+Clicking a student card opens a detail panel for that student and subject, showing the underlying PACE counts and target used in the projection.
+
+## Exporting at-risk students
+
+<Steps>
+  <Step title="Filter if needed">
+    Narrow the dashboard by centre or subject first if you only want a subset.
+  </Step>
+  <Step title="Export">
+    Select Export At-Risk Students to download a CSV listing every student and subject currently classified as at risk or off track.
+  </Step>
+</Steps>
+
+This export is available to administrators and supervisors. A supervisor's export is limited to their assigned centre or centres.
+
+## Same numbers in My Progress
+
+Predictions on the admin and supervisor dashboards, and the termly-goal projection shown to a parent or student in My Progress, are computed by the same underlying calculation. A parent viewing their child&apos;s projection sees the identical status and projected PACE count that an administrator would see for that student, not a separate estimate.
+
+Parents and students only see their own child's or their own record. Neither view offers editing, export, or cross-student visibility.
+
+<CardGroup cols={2}>
+  <Card title="Insights Overview" icon="chart-line" href="/features/insights/overview">
+    See how predictions fit alongside trends, breakdowns, and pattern insights.
+  </Card>
+  <Card title="Analytics Types" icon="sliders" href="/features/insights/types">
+    Compare the different analytics surfaces available to admins and supervisors.
+  </Card>
+  <Card title="Your Child's Progress" icon="graduation-cap" href="/guides/parent/your-childs-progress">
+    How parents read My Progress, including the termly-goal projection.
+  </Card>
+  <Card title="Goal Check Overview" icon="target" href="/features/goal-check/overview">
+    The daily goal data that feeds every trend, breakdown, and prediction.
+  </Card>
+</CardGroup>

@@ -1,0 +1,84 @@
+---
+title: Alert and weekly report settings
+description: Configure alert thresholds and schedule the weekly Goal Check report as an administrator.
+icon: "sliders"
+---
+
+Administrators configure two related settings surfaces under Admin Settings: the thresholds that generate performance alerts, and the schedule for the automated weekly Goal Check report. Both pages are administrator-only and are reached by direct navigation rather than the main sidebar.
+
+<Note>
+These settings control when alerts fire and when reports go out. To read and act on alerts once they exist, see [Attendance alerts](/features/attendance/alerts) and the [Alerts overview](/features/alerts/overview). To read the weekly report content itself, see [Goal Check reports](/features/goal-check/reports).
+</Note>
+
+## Alert threshold settings
+
+Navigate to `/admin/settings/alerts` to review and adjust the thresholds that drive Zion's alert generation. Alerts are normally generated automatically once a day, and the alert email digest is normally sent daily at 8 AM to all administrators. From this page you can also trigger both on demand:
+
+<Steps>
+  <Step title="Generate alerts now">
+    Click &apos;Generate Alerts Now&apos; to run alert analysis immediately across all active students, instead of waiting for the daily automatic run. This requires an active subscription.
+  </Step>
+  <Step title="Send digest now">
+    Click &apos;Send Digest Now&apos; to email unacknowledged alerts from the last 24 hours to all administrators immediately, instead of waiting for the 8 AM send.
+  </Step>
+  <Step title="Adjust thresholds">
+    Edit any of the threshold values below, then save. Changes apply to the next alert-generation run.
+  </Step>
+</Steps>
+
+### Threshold reference
+
+| Alert type | What it measures | Default |
+|---|---|---|
+| Consecutive missed goals | Number of consecutive days a student misses their goal | 3 days |
+| Declining trend | Drop in goal completion rate over a rolling window | 20% drop over 2 weeks |
+| Subject struggle | Miss rate within a single subject, once enough goals exist to be meaningful | 60% miss rate, minimum 5 goals |
+| Sudden drop | A sharp week-over-week fall in completion rate | From 80% to 50% in a week |
+| Termly goal-at-risk projection | Projected likelihood of missing a termly goal | 80% projection threshold |
+| Centre low performance | Average completion rate for a learning centre falling below the floor | 60% |
+| Alert expiry window | How long an untouched alert stays open before it auto-dismisses | 7 days |
+
+<Tip>
+Lowering a percentage or day threshold makes the alert fire more often (more sensitive). Raising it makes the alert fire less often. If administrators are seeing too many low-value alerts, raise the relevant threshold rather than turning the alert type off entirely.
+</Tip>
+
+<Warning>
+The alert expiry window is a global auto-dismiss setting, not a per-alert-type toggle. An alert that reaches this age without being acknowledged or resolved is automatically dismissed.
+</Warning>
+
+## Weekly report settings
+
+Navigate to `/admin/settings/weekly-reports` to configure the automated weekly Goal Check report.
+
+<Steps>
+  <Step title="Enable or disable the report">
+    Turn the weekly report on or off. When off, no automated report is generated or sent.
+  </Step>
+  <Step title="Choose the day and time">
+    Set the day of the week and time of day the report generates. This runs in your school&apos;s configured timezone, the same timezone set on the [school profile](/features/school-settings/overview).
+  </Step>
+  <Step title="Manage recipients">
+    Add or remove people on the recipient list. The list is not limited to administrators. You can include supervisors, monitors, or other stakeholders who should receive the weekly Goal Check summary by email.
+  </Step>
+</Steps>
+
+<Info>
+The weekly report and the alert digest are separate mailings. The weekly report summarizes Goal Check progress on your chosen schedule. The alert digest is a daily 8 AM (or manually triggered) email of unacknowledged alerts.
+</Info>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Alerts overview" icon="triangle-exclamation" href="/features/alerts/overview">
+    How alerts are surfaced, acknowledged, resolved, and reopened.
+  </Card>
+  <Card title="Attendance alerts" icon="bell" href="/features/attendance/alerts">
+    Attendance-specific alert behavior for administrators and supervisors.
+  </Card>
+  <Card title="Goal Check reports" icon="chart-line" href="/features/goal-check/reports">
+    What the weekly Goal Check report contains.
+  </Card>
+  <Card title="School settings overview" icon="sliders" href="/features/school-settings/overview">
+    School profile, timezone, and other org-wide settings.
+  </Card>
+</CardGroup>

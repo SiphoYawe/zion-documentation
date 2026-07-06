@@ -1,0 +1,65 @@
+---
+title: Homework completion report
+description: A per-student rollup of assigned, verified, missed, and participation rates for homework over a date range
+icon: "chart-line"
+---
+
+The Homework Completion Report rolls up every homework assignment in a date range into per-student standings: how many pages were assigned, how many were verified, how many were missed, and how consistently the student participates. It lives at `/admin/homework/reports`.
+
+Administrators, supervisors, and monitors can open the report. There is no sidebar link to it today, so reach it by navigating directly to `/admin/homework/reports`.
+
+## Who sees what
+
+<Tabs>
+  <Tab title="Administrator">
+    Sees every learning centre in the organization.
+  </Tab>
+  <Tab title="Supervisor or monitor">
+    Sees only the learning centres they are assigned to. Students in other centres do not appear in the table.
+  </Tab>
+</Tabs>
+
+## Reading the report
+
+<Steps>
+  <Step title="Set the date range">
+    The report opens with a From/To date range defaulting to the last 30 days. Change either date to look at a different window, such as a single term.
+  </Step>
+  <Step title="Check the KPI cards">
+    Four cards summarize the window: total students with activity, total assignments made, overall completion percentage, and overall missed percentage.
+  </Step>
+  <Step title="Scan the per-student table">
+    Each row is one student, with counts for Assigned, Verified, Late, and Missed, plus Completion % and Participation %.
+  </Step>
+  <Step title="Follow up on Chronic students">
+    A student whose missed rate reaches 30% or higher over the selected window is flagged with a Chronic badge, so staff know who needs a conversation or a change in approach.
+  </Step>
+</Steps>
+
+## Table columns
+
+| Column | What it counts |
+|---|---|
+| Assigned | Every homework assignment created for the student in the date range, in any status |
+| Verified | Assignments a supervisor or monitor confirmed at goal check, including those verified late |
+| Late | Verified assignments that were in the missed state before being verified |
+| Missed | Assignments still pending when the due date fully passed, flipped by the daily missed-homework sweep |
+| Completion % | Verified assignments divided by assigned assignments |
+| Participation % | How consistently the student engages with assigned homework over the window |
+
+Cancelled and excused assignments are tracked separately and are not counted toward the missed rate. Withdrawing an assignment that no longer applies, for example because the student was sick, does not count against the student.
+
+<Note>
+Chronic status is based on the missed rate for the selected date range only. Widening or narrowing the range can change which students are flagged.
+</Note>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Homework overview" icon="book" href="/features/homework/overview">
+    What homework assignments are and how the pending, parent-done, verified, and missed statuses work.
+  </Card>
+  <Card title="Assigning and verifying homework" icon="clipboard-check" href="/features/homework/assigning-and-verifying">
+    How supervisors and monitors assign PACE page ranges and verify completed work.
+  </Card>
+</CardGroup>

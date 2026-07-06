@@ -1,0 +1,88 @@
+---
+title: Logging a merit, demerit, or incident
+description: How supervisors, monitors, and administrators quick-log a behaviour record from the centre roster or a student's profile
+icon: "clipboard-check"
+---
+
+Administrators, supervisors, and monitors log merit, demerit, and incident records against a student using the same Log behaviour drawer wherever it appears. This page covers the quick-log flow itself. For how categories are defined, see [Behaviour Tracking Overview](/features/behaviour/overview).
+
+## Where the drawer appears
+
+The Log behaviour drawer is embedded directly on student records, not on its own page:
+
+- The centre roster, on each student row
+- The supervisor&apos;s student-detail view
+- The administrator's student-detail view
+
+Click **Log behaviour** to open it.
+
+<Note>
+Supervisors and monitors can only log behaviour for students in a learning centre they are assigned to. This is enforced on the server, not just hidden in the UI, so attempting to log against a student outside your assigned centre is rejected regardless of what the client sends. Administrators can log for any student in the organization.
+</Note>
+
+## Log a behaviour record
+
+<Steps>
+  <Step title="Open the drawer">
+    From the centre roster or a student's profile, click **Log behaviour**.
+  </Step>
+  <Step title="Pick a category">
+    The **Category** field lists active categories grouped as Merits, Demerits, and Incidents. Choosing a category pre-fills the **Points** field with that category&apos;s default point value.
+  </Step>
+  <Step title="Adjust points if needed">
+    Points remain editable after the category pre-fills them. Each type enforces a sign rule:
+
+    | Type | Points |
+    | --- | --- |
+    | Merit | Zero or positive |
+    | Demerit | Zero or negative |
+    | Incident | Positive or negative |
+
+    Enter a value outside that sign and the form rejects it before you can submit.
+  </Step>
+  <Step title="Add a note (optional)">
+    The field labeled **Note (visible to parents)** is shared with the student&apos;s linked parent. Leave it blank if there is nothing to share.
+  </Step>
+  <Step title="Add a private staff note (optional)">
+    The field labeled **Private staff note (not shown to parents)** is for staff only. It appears in the staff-facing timeline but is never sent to, or visible from, a parent account.
+  </Step>
+  <Step title="Submit">
+    Click **Log behaviour** to save the record. The button reads "Logging…" while the request is in flight.
+  </Step>
+</Steps>
+
+<Warning>
+If a category was archived between the time you opened the drawer and the time you submit, the server rejects the submission rather than logging against a stale category.
+</Warning>
+
+## Public note vs private staff note
+
+| Field | Who sees it |
+| --- | --- |
+| Note (visible to parents) | Staff and the student&apos;s linked parent |
+| Private staff note (not shown to parents) | Staff only. Structurally excluded from any data a parent account can read |
+
+Both notes are optional on every record.
+
+## What the server checks on submit
+
+The category you pick determines the record's type. The server re-derives that type from the trusted category row rather than trusting whatever the client sends, then re-checks the sign-by-type rule against the points you entered. For supervisors and monitors, it also confirms the student belongs to a learning centre you are assigned to before the record is inserted.
+
+## Parent notification
+
+If the student has an accepted parent link, logging a record enqueues a behaviour notification to that parent on a best-effort basis. Notification delivery never blocks or rolls back the logged record if it fails, and there is no organization-level toggle to turn this off. A parent can only opt out of this notification category from their own account settings.
+
+<CardGroup cols={2}>
+  <Card title="Behaviour Tracking Overview" icon="star" href="/features/behaviour/overview">
+    What behaviour tracking is and the sign-by-type rule.
+  </Card>
+  <Card title="Behaviour Reports and Standings" icon="chart-line" href="/features/behaviour/reports">
+    Ranked standings, filters, and CSV export.
+  </Card>
+  <Card title="Notifications" icon="bell" href="/features/notifications/overview">
+    How notifications are enqueued and delivered.
+  </Card>
+  <Card title="Roles and Permissions" icon="users" href="/reference/roles-permissions">
+    What each role can see and do.
+  </Card>
+</CardGroup>

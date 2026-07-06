@@ -1,0 +1,99 @@
+---
+title: Overdue and lost books
+description: How the daily overdue sweep flags general loans, who gets notified, and how staff mark a book lost or found
+icon: "triangle-exclamation"
+---
+
+Zion tracks overdue and lost books for General loans only. PACE Required books are custody loans with no due date, so they are never marked overdue and can never be marked lost.
+
+## How &quot;overdue&quot; is determined
+
+A checkout&apos;s status is computed live, not stored as a static flag. For a General book, Zion compares the due date to the school&apos;s local end-of-today. Once that moment passes and the book has not been returned, the checkout shows as Overdue. PACE Required checkouts carry no due date, so they never enter this state.
+
+<Note>
+Status shown on the catalog and active-checkouts screens (Out, Overdue, Lost, Returned) reflects the live comparison. The daily sweep below is what turns an overdue checkout into a notification, not what determines the status itself.
+</Note>
+
+## The daily overdue sweep
+
+A scheduled job runs once a day and checks every General checkout across the organization:
+
+<Steps>
+<Step title="Find overdue, unreturned checkouts">
+The sweep looks for General checkouts whose due date has passed the school&apos;s local end-of-day, that are still checked out (not returned), and that have not already been flagged as late.
+</Step>
+<Step title="Flag the checkout">
+The checkout is marked late. If two sweeps happen to run at the same time, only one flags a given checkout, so a family is not notified twice for the same overdue book.
+</Step>
+<Step title="Notify staff and the parent">
+A late-return notification goes to everyone with an inventory:manage capability at the organization, to the staff member who originally checked the book out, and to the student&apos;s linked parent(s).
+</Step>
+</Steps>
+
+<Warning>
+The sweep only ever affects General books. A PACE Required checkout has no due date, so it is excluded from the sweep and never generates a late-return notification.
+</Warning>
+
+## Marking a book lost
+
+Staff mark a book lost from the same row where it would otherwise be returned.
+
+<Steps>
+<Step title="Open Active Checkouts">
+Navigate to the library desk (administrators: Catalog and Checkouts under Programs &amp; Resources; supervisors: the combined Library page) and find the checked-out book.
+</Step>
+<Step title="Select Mark Lost">
+This action is available only for General books. A PACE Required checkout does not offer it, since custody-only loans cannot be lost in the system.
+</Step>
+<Step title="Confirm in the dialog">
+The confirm dialog states that no billing occurs. Marking a book lost does not charge the family.
+</Step>
+</Steps>
+
+Once confirmed, the checkout is flagged lost, the copy is permanently removed from stock, and the organization&apos;s low-stock threshold is checked. The student&apos;s accepted-invitation parent(s) and everyone holding inventory:manage are notified.
+
+<Note>
+The Return action disappears from a row once it is marked Lost. To close it out, use Mark Found.
+</Note>
+
+## Marking a lost book found
+
+A lost row offers a Mark Found action with two outcomes:
+
+| Outcome | Effect |
+|---|---|
+| Found &amp; returned to the shelf | The checkout is closed and the copy is added back to stock, reversing the loss. |
+| Found, still with the student | The lost flag is cleared and the checkout stays open, as if it were never marked lost. |
+
+Each outcome writes the exact inverse of whatever the loss recorded, so stock counts stay accurate. Attempting to mark a checkout found when it is not currently lost is rejected.
+
+## What staff and parents each see
+
+| Who | What they see | Actions available |
+|---|---|---|
+| Administrator, supervisor, monitor (with inventory:checkout or inventory:manage) | Active checkouts with live status (Out, Overdue, Lost), sorted soonest-due-first | Mark Lost, Mark Found, Return, and the other desk corrections |
+| Parent | Each linked child&apos;s checkouts, current and past, with due date and status badge (Out, Overdue, Lost, Returned), at the parent library view | Read-only. No checkout, return, or correction actions |
+| Any staff viewing a student&apos;s profile | That student&apos;s Library section, split into Currently Out and Past Loans, with the same status badges | Read-only |
+
+<Info>
+Non-administrator staff (supervisor, monitor) only see checkouts for students in their assigned learning centre(s). A supervisor or monitor with no centre assignment sees none.
+</Info>
+
+## What a family should expect
+
+If a book shows Overdue, the family receives a notification and can return it any time, staff will flag it late automatically on return if it is a General book past its due date. If a book is marked Lost, the family is notified and no charge is applied. Contact the school directly to resolve either case, since parents cannot return, cancel, or edit a checkout themselves.
+
+<CardGroup cols={2}>
+<Card title="Checkout and return" icon="arrow-right-arrow-left" href="/features/library/checkout-and-return">
+How staff check a book out, return it, and correct a mistaken checkout
+</Card>
+<Card title="Library overview" icon="book" href="/features/library/overview">
+Catalog, book types, and who can access the library desk
+</Card>
+<Card title="Your child's progress" icon="child-reaching" href="/guides/parent/your-childs-progress">
+Where library checkouts fit alongside a parent&apos;s other views of their child
+</Card>
+<Card title="Notifications overview" icon="bell" href="/features/notifications/overview">
+How queued notifications like late-return and lost-book alerts get delivered
+</Card>
+</CardGroup>

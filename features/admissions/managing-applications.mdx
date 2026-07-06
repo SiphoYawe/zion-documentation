@@ -1,0 +1,104 @@
+---
+title: Managing applications
+description: Triage applicants on the admissions board, review their documents, and convert accepted applicants into enrolled students.
+icon: "table-columns"
+---
+
+The admissions board at `/admin/admissions` is where administrators work applications from first submission through to enrollment. Every applicant appears as a card on a six-column kanban board, and each card opens into a detail drawer with the applicant&apos;s information, guardian details, and uploaded documents.
+
+<Note>
+Admissions is only visible to the administrator role, and write actions (moving a card, adding an applicant, converting to student) require an active subscription.
+</Note>
+
+## The board
+
+Find the board under People &amp; Centres > Admissions in the sidebar. It has six fixed columns, in pipeline order:
+
+| Column | Meaning |
+|---|---|
+| Applied | New submission, not yet reviewed |
+| Under Review | Staff are evaluating the application |
+| Accepted | Approved for enrollment, not yet converted |
+| Waitlisted | Held for a future opening |
+| Rejected | Declined |
+| Enrolled | Converted into a student record |
+
+Cards can be dragged between Applied, Under Review, Accepted, Waitlisted, and Rejected. You cannot drag a card into Enrolled. The board blocks that move with a toast, and the server rejects it too. Enrolled is only reachable through the convert action described below.
+
+Use the search box to find an applicant by their name or their guardian&apos;s name, and use the centre filter to narrow the board to one learning centre.
+
+### Adding an applicant manually
+
+Not every applicant comes from the public form. Use Add applicant to record a walk-in visit or a phone enquiry directly.
+
+<Steps>
+  <Step title="Click Add applicant">
+    On `/admin/admissions`, click the Add applicant control above the board.
+  </Step>
+  <Step title="Fill in the same intake fields">
+    Enter the applicant&apos;s details and the guardian&apos;s details, the same fields a family would fill in on the public form.
+  </Step>
+  <Step title="Submit">
+    The application enters the pipeline at Applied. Internally it is tagged with a staff source rather than a public one, and it appears attached to the staff member who created it.
+  </Step>
+</Steps>
+
+## The applicant detail drawer
+
+Click a card to open its drawer. It shows:
+
+- Applicant fields: desired grade, desired learning centre, date of birth, and how the application arrived (online or staff-entered)
+- Guardian fields: name, email, phone, and any notes
+- Uploaded documents, each as a link
+- A stage selector for moving the applicant to any column except Enrolled
+- A Convert to student action, shown only once the applicant is Accepted and has not already been converted
+
+### Documents and signed links
+
+Document links in the drawer are short-lived signed URLs. Each link is valid for five minutes from the moment the drawer loads it, so if a link stops working, reopen the drawer to get a fresh one. Accepted document types are PDF, JPEG, PNG, and WebP, up to 10MB per file, with a maximum of 10 documents per application.
+
+### Moving an applicant between stages
+
+You can change an applicant&apos;s stage from the board by dragging the card, or from the drawer using the stage selector. Both paths update the same record, so use whichever is more convenient while you are already reviewing a file.
+
+<Warning>
+Moving an applicant to Enrolled directly is not available from either the board or the drawer&apos;s stage selector. Enrollment only happens through Convert to student, described below.
+</Warning>
+
+## Converting an accepted applicant to a student
+
+Once an applicant reaches Accepted, the drawer shows a Convert to student action. This is the only way an application becomes an enrolled student.
+
+<Steps>
+  <Step title="Open the Accepted applicant's drawer">
+    Confirm the applicant record has a name, date of birth, desired grade, and desired learning centre filled in. All four are required before conversion is allowed, and the destination learning centre must still exist.
+  </Step>
+  <Step title="Click Convert to student">
+    A confirmation dialog appears before anything is written.
+  </Step>
+  <Step title="Confirm">
+    A new student record is created, and the application is marked Enrolled. The applicant can only go through this once; the drawer will not offer Convert to student a second time for the same application.
+  </Step>
+  <Step title="Parent invite fires automatically">
+    If the application has a guardian email on file, a parent invite is sent as part of the same action. No separate step is needed.
+  </Step>
+</Steps>
+
+After conversion, the drawer shows a link to the new student record in place of the Convert to student action.
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Admissions overview" icon="user-plus" href="/features/admissions/overview">
+    The full pipeline, both intake paths, and where admissions fits in the app.
+  </Card>
+  <Card title="Funnel analytics" icon="chart-line" href="/features/admissions/funnel-analytics">
+    Per-stage counts and conversion rates for the pipeline.
+  </Card>
+  <Card title="Students overview" icon="graduation-cap" href="/features/students/overview">
+    What a converted applicant looks like once they are a student record.
+  </Card>
+  <Card title="Roles and permissions" icon="users" href="/reference/roles-permissions">
+    Who can reach admissions and what each role can do.
+  </Card>
+</CardGroup>

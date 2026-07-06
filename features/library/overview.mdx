@@ -1,0 +1,65 @@
+---
+title: Library overview
+description: How Zion's library checkout desk works, who can use it, and how PACE Required and General books differ
+icon: "book-bookmark"
+---
+
+Zion&apos;s library is a checkout and return desk built on the same inventory system used for PACE and other stock. A library book is an inventory item with an item type of library, and it carries one of two book types that decide how it is loaned and tracked.
+
+## Two book types
+
+<Tabs>
+  <Tab title="PACE Required">
+    A custody-only loan. There is no due date, so the book can never go overdue and it cannot be marked lost. Staff hand it to a student and record who has it, without a return deadline attached.
+  </Tab>
+  <Tab title="General">
+    A standard loan with a due date. The due date defaults to 14 days from checkout, calculated against the school&apos;s local end of day. General checkouts are tracked as overdue once the due date passes, and they can be marked lost if the copy does not come back.
+  </Tab>
+</Tabs>
+
+<Note>
+Every checkout goes through a staff member. Students and parents cannot check a book out themselves.
+</Note>
+
+## What the desk covers
+
+- **Catalog**: a list of every library book for the school, showing title, book type, quantity on hand, copies currently out, and location. You can search by title and filter by book type.
+- **Active checkouts**: every book currently out, sorted with the soonest due date first. Books with no due date (PACE Required) sort to the end. Status on each row is calculated live from the due date, so a book shows as lost, overdue, or checked out without waiting for an overnight job.
+- **Checkout and return actions**: checking a book out, returning it, marking it lost or found, undoing a return, cancelling a mistaken checkout, and editing a due date. See [Checkout and return](/features/library/checkout-and-return) for the step-by-step flow.
+- **Overdue and lost handling**: how overdue status is determined, the daily sweep that flags late general loans, and the lost/found flow. See [Overdue and lost books](/features/library/overdue-and-lost).
+
+## Who can access what
+
+Library access follows the same capability matrix as the rest of inventory, not a fixed list of roles.
+
+| Capability | Lets you | Included in |
+| --- | --- | --- |
+| inventory:view | Browse the catalog and view active checkouts | inventory:manage |
+| inventory:checkout | Check books out, return them, mark lost/found, undo a return, cancel a checkout, edit a due date | inventory:manage |
+| inventory:manage | Everything above, plus adding and editing library items in the catalog | (superset) |
+
+A staff member needs inventory:view (or inventory:manage) to see the catalog and the active-checkouts list, and inventory:checkout (or inventory:manage) to operate the desk.
+
+<Warning>
+A non-administrator staff member is scoped to their assigned learning centre(s). They can only see checkouts and lend books to students in a centre they are assigned to. A supervisor or monitor with no centre assigned sees no students and no checkouts.
+</Warning>
+
+## Read-only views elsewhere
+
+- A student&apos;s profile page includes a Library section showing that student&apos;s checkouts, split into currently out and past loans, with a status badge. This view has no actions.
+- The parent portal includes a Library page grouping each linked child's current and past checkouts with due dates and status badges. Parents cannot check out, return, or otherwise act on a book from this view.
+
+<CardGroup cols={2}>
+  <Card title="Checkout and return" icon="arrow-right-arrow-left" href="/features/library/checkout-and-return">
+    Step-by-step for checking a book out, returning it, and correcting mistakes.
+  </Card>
+  <Card title="Overdue and lost books" icon="triangle-exclamation" href="/features/library/overdue-and-lost">
+    How overdue status is calculated and how the lost/found flow works.
+  </Card>
+  <Card title="Inventory overview" icon="boxes-stacked" href="/features/inventory/overview">
+    The shared inventory system that library items are built on.
+  </Card>
+  <Card title="Roles and permissions" icon="shield-halved" href="/reference/roles-permissions">
+    How capabilities like inventory:view and inventory:checkout map to roles.
+  </Card>
+</CardGroup>

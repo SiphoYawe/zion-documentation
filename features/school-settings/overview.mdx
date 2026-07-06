@@ -1,0 +1,83 @@
+---
+title: School settings
+description: How administrators edit the school profile and two Goal Check toggles at /settings/school
+icon: "gear"
+---
+
+School Settings is the page where an administrator maintains the school&apos;s profile information and two operational toggles that change how PACE progression and goal approval work. It lives at `/settings/school`.
+
+## Who can access this page
+
+Only the administrator role can open `/settings/school`. Supervisors, monitors, teaching staff, parents, and students who navigate to this URL are redirected to the dashboard. Saving changes calls `updateSchoolProfile`, which is gated on the `settings:edit_org` permission, currently granted only to the administrator permission bundle.
+
+<Note>
+If you have not completed the initial setup wizard yet, some of these same fields (school name, city, country, timezone, language) were first entered there. School Settings is where you come back to change them afterward.
+</Note>
+
+## School profile fields
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| School name | Yes (2 to 100 characters) | Displayed across the app and on report cards |
+| City | No | |
+| Country | No | Dropdown of roughly 14 African and Western countries, plus Other |
+| Contact email | No | Validated email format |
+| Contact phone | No | |
+| Timezone | No, defaults to UTC | About 10 preset zones; used for scheduling and timestamps such as the weekly report generation time |
+| Language | No, defaults to English | English is currently the only option offered |
+
+<Steps>
+  <Step title="Open School Settings">
+    Sign in as an administrator and go to `/settings/school`.
+  </Step>
+  <Step title="Update the profile fields">
+    Edit school name, city, country, contact email, contact phone, timezone, and language as needed.
+  </Step>
+  <Step title="Adjust the two toggles">
+    Set Auto-advance PACEs on completion and Require goal approval in the Ritual to match how your school operates. See the sections below.
+  </Step>
+  <Step title="Save">
+    Saving updates the school profile immediately. If the &quot;school_profile&quot; step on your getting-started checklist was still open, saving here also ticks it off.
+  </Step>
+</Steps>
+
+## Auto-advance PACEs on completion
+
+This toggle controls what happens when a student finishes a PACE in a subject.
+
+| State | Behaviour |
+| --- | --- |
+| Off (default) | Zion shows a one-click suggestion for the next PACE in that subject. A monitor or supervisor confirms it. |
+| On | Zion automatically assigns the next PACE in that subject as soon as the current one is marked complete, with no confirmation step. |
+
+Turn this on if your school wants PACE sequencing to move forward without a manual confirmation each time. Leave it off if you want a monitor or supervisor to review and confirm the next assignment before it starts.
+
+## Require goal approval in the Ritual
+
+This toggle controls how goals entered during the Morning Ritual are treated.
+
+| State | Behaviour |
+| --- | --- |
+| Off (default) | Goals entered in the Ritual go live immediately. |
+| On | Goals entered in the Ritual start in a pending state and require a supervisor or administrator to sign off before they count. |
+
+Turning this on adds a sign-off step to goal entry, useful where a school wants separation of duties or an audit trail between what a student proposes and what a supervisor approves. Turning it off means goals are usable as soon as they are entered.
+
+<Tip>
+Both toggles are org-wide. Every learning centre and every student in the school follows whichever setting is currently saved here, there is no per-centre or per-student override.
+</Tip>
+
+<CardGroup cols={2}>
+  <Card title="Alert and weekly report settings" icon="triangle-exclamation" href="/features/school-settings/alerts-and-reports">
+    Configure alert thresholds and the automated weekly Goal Check report.
+  </Card>
+  <Card title="Goal Check rituals" icon="calendar-check" href="/features/goal-check/rituals">
+    See how the Morning Ritual works and where the approval step appears when it is required.
+  </Card>
+  <Card title="PACE assignments" icon="book" href="/features/students/pace-assignments">
+    Understand how PACEs are assigned to students, with and without auto-advance.
+  </Card>
+  <Card title="Roles and permissions" icon="shield" href="/reference/roles-permissions">
+    See which permission bundles include settings:edit_org and other admin-only capabilities.
+  </Card>
+</CardGroup>

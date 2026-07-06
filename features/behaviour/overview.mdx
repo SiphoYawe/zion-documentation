@@ -1,0 +1,99 @@
+---
+title: Behaviour tracking overview
+description: How Zion records merit, demerit, and incident events against an admin-defined category catalog and tracks each student's net balance
+icon: "star"
+---
+
+Behaviour tracking lets staff log merit, demerit, and incident events for a student against a category catalog that an administrator defines. Each event carries signed points, and Zion computes a running net balance and a timeline per student. Administrators, supervisors, and monitors log and review these events. Parents see the same balance and timeline for their own linked children, with private staff notes structurally removed from what they can read.
+
+## The three event types
+
+Every behaviour category has a type, and the type constrains the sign of its points. Zion enforces this rule both when an administrator sets a category's default points and again when staff submit a record, so a record can never carry points with the wrong sign for its type.
+
+| Type | Points | Meaning |
+|---|---|---|
+| Merit | Zero or above | Positive behaviour, effort, or achievement |
+| Demerit | Zero or below | Rule violation or negative conduct |
+| Incident | Any sign | A logged event that is not itself a reward or penalty |
+
+Points on both categories and individual records are integers between -100 and 100.
+
+## Net balance and timeline
+
+For each student, Zion computes a net balance as a single signed sum across every behaviour record that student has, not just the records currently loaded on screen. Alongside the balance, staff and parents see a breakdown of merit, demerit, and incident counts and points, and a reverse-chronological timeline that pages backward through history.
+
+<Note>
+Archiving a category never changes past records. Each behaviour record stores its own points at the time it was logged, so retiring a category from the quick-log picker does not alter any student's existing balance or timeline.
+</Note>
+
+## Recording an event
+
+Staff open a student from the centre roster or a student-detail view and log an event through the quick-log drawer. Picking a category pre-fills its default points, which staff can still adjust before submitting. See [Logging behaviour events](/features/behaviour/logging) for the full procedure, including how public and private notes work.
+
+Administrators can log or view behaviour for any student in the organization. Supervisors and monitors are limited to students in the learning centres they are assigned to, and this scoping is enforced on the server, not only hidden in the interface.
+
+## Privacy: public notes and private staff notes
+
+A behaviour record can carry two separate notes, each up to 500 characters:
+
+- **Public note**: visible to the parent as part of the timeline entry.
+- **Private staff note**: visible only to staff. It is never selected from the database for a parent-facing view, so it cannot leak into the parent portal even by accident.
+
+Parents viewing their child&apos;s behaviour see the same net balance and breakdown staff see, but the private staff note is absent from the data they receive.
+
+## Reports and standings
+
+Administrators and supervisors or monitors can view a ranked standings table of students by net balance, with KPI cards for total merits, demerits, and incidents, filterable by date range, type, and (for administrators) centre. Administrators see standings across the whole organization; supervisors and monitors see only their assigned centres. See [Behaviour reports](/features/behaviour/reports) for filters, sorting, and CSV export.
+
+## Managing the category catalog
+
+Administrators maintain the category catalog at `/admin/behaviour/categories`.
+
+<Steps>
+  <Step title="Add a category">
+    Enter a label (up to 80 characters), choose a type (merit, demerit, or incident), and set default points as an integer from -100 to 100. The sign of the default points must match the type: merit at or above zero, demerit at or below zero, incident either sign.
+  </Step>
+  <Step title="Set the active toggle">
+    New categories are active by default. Only active categories appear in the quick-log picker.
+  </Step>
+  <Step title="Submit">
+    A duplicate label within the same organization is rejected with an error, since labels must be unique per org.
+  </Step>
+  <Step title="Archive instead of delete">
+    There is no hard delete. Archiving a category removes it from the quick-log picker but leaves every record that already used it untouched. An archived category can be restored later to reactivate it.
+  </Step>
+</Steps>
+
+## Who can do what
+
+| Capability | Administrator | Supervisor | Monitor | Parent |
+|---|---|---|---|---|
+| Manage the category catalog | Yes | No | No | No |
+| Log a merit, demerit, or incident | Yes, any student in the org | Yes, own assigned centres | Yes, own assigned centres | No |
+| View a student&apos;s balance and timeline | Yes, any student in the org | Yes, own assigned centres | Yes, own assigned centres | Yes, own linked children only |
+| See the private staff note | Yes | Yes | Yes | No, never present in the data |
+| View standings reports | Yes, org-wide with centre filter | Yes, own centres only | Yes, own centres only | No |
+| Export standings to CSV | Yes | Yes | Yes | No |
+
+<Tip>
+A parent who requests a student they are not linked to gets a not-found result rather than any partial data. Parent access is scoped strictly to children linked through an accepted parent invitation.
+</Tip>
+
+## Parent notifications
+
+After a behaviour record is logged, if the student has a parent with an accepted link, Zion enqueues a notification to that parent. This notification is best-effort: if it fails to send, the behaviour record itself is not rolled back or blocked. There is no organization-level toggle to disable these notifications, though a parent can opt out per category from their own notification settings.
+
+<CardGroup cols={2}>
+  <Card title="Logging behaviour events" icon="clipboard-check" href="/features/behaviour/logging">
+    Step-by-step guide to the quick-log drawer, centre scoping, and note visibility.
+  </Card>
+  <Card title="Behaviour reports and standings" icon="chart-line" href="/features/behaviour/reports">
+    Filters, sorting, KPI cards, and CSV export for behaviour standings.
+  </Card>
+  <Card title="Notifications overview" icon="bell" href="/features/notifications/overview">
+    How Zion queues and delivers notifications like the behaviour-logged alert.
+  </Card>
+  <Card title="Roles and permissions" icon="users" href="/features/organization/roles-and-permissions">
+    How centre assignment and role scoping work across Zion&apos;s features.
+  </Card>
+</CardGroup>

@@ -1,0 +1,106 @@
+---
+title: Calendar overview
+description: One school calendar shown as a staff month/week/day view, a read-only parent and student agenda, and an admin-only holiday screen, with visibility and centre rules deciding who sees each event.
+icon: "calendar"
+---
+
+Zion keeps one calendar for the whole school. Administrators, supervisors, and monitors work from a full month, week, and day view at `/calendar`. Parents and students get a read-only view of the same events, scoped to their child&apos;s or their own learning centre. Administrators also manage public holidays from a dedicated screen, and anyone can subscribe the calendar to their phone or desktop calendar app.
+
+## Where to find it
+
+<Tabs>
+  <Tab title="Administrator, supervisor, monitor">
+    The Calendar sidebar item opens `/calendar`, a full month/week/day grid with Prev, Next, and Today navigation, plus filters for event type, centre, and visibility.
+  </Tab>
+  <Tab title="Parent">
+    The Calendar item in the parent navigation opens a read-only month view at `/parent/calendar`. If you have more than one child, you can filter by child.
+  </Tab>
+  <Tab title="Student">
+    The Calendar item in the student navigation opens a read-only agenda list at `/student/calendar`, showing date, time, and event type.
+  </Tab>
+</Tabs>
+
+<Note>
+  Clicking an event opens a detail modal. Parents and students see the details only; the New Event button and edit/delete controls appear for administrators and supervisors.
+</Note>
+
+## Event types
+
+Each event carries one of six types, shown as a colored chip in the grid.
+
+| Event type | Chip color | Typical source |
+| --- | --- | --- |
+| Academic | Primary | Created directly, or pushed in from homework due dates |
+| Holiday | Warning | Seeded or added on the Manage Holidays screen |
+| School-wide | Info | Created directly by an administrator |
+| Centre | Secondary | Created by an administrator or supervisor for one or more centres |
+| Extracurricular | Success | Pushed in from an extracurricular activity&apos;s schedule |
+| Meeting | Accent | Pushed in when a meeting is booked |
+
+## Visibility levels
+
+Every event has a visibility setting that maps to roles. It controls who can read the event in the calendar UI and in the iCal feed.
+
+| Visibility | Who sees it |
+| --- | --- |
+| Admin | Administrator only |
+| Staff | Administrator, supervisor, monitor |
+| Parents | Staff roles, plus parents |
+| Students | Staff roles, plus parents and students |
+| Public | All authenticated roles |
+
+A new event defaults to Staff visibility. Only administrators can set an event to a visibility other than the default when creating or editing it.
+
+## Centre scoping
+
+An event with no centre assigned is org-wide and visible to everyone whose visibility level allows it. An event assigned to one or more specific centres is visible only to people connected to those centres.
+
+- Administrators are unscoped and see every event.
+- Supervisors and monitors see only org-wide events plus events targeting one of their assigned centres, in both the calendar list and their iCal feed.
+- Parents see org-wide events plus events targeting their child's centre.
+- Students see org-wide events plus events targeting their own centre.
+
+## Views and filters
+
+The staff calendar at `/calendar` switches between month, week, and day views. Each view supports filtering by event type, centre, and visibility, so an administrator can, for example, isolate a single centre's meetings for the current week.
+
+The parent view is a month grid with a per-child filter. The student view is an agenda list rather than a grid.
+
+<Tip>
+  A link from another feature, such as a meeting confirmation, can deep-link into the calendar with a highlighted event. Opening that link jumps the month view to the right date and opens the event&apos;s detail modal automatically.
+</Tip>
+
+## Events that appear automatically
+
+Some events are not created directly in the calendar. Other features write them in as a one-way feed, and they show a link back to the source record.
+
+| Source feature | What it adds | Default visibility |
+| --- | --- | --- |
+| Meetings | The scheduled meeting, with a &quot;View meeting&quot; link | Parents |
+| Homework | An all-day event on the due date, with a &quot;View homework&quot; link | Parents |
+| Extracurriculars | The activity&apos;s recurring schedule, with a &quot;View activity&quot; link | Students |
+
+These bridge-created events display normally alongside events created directly in the calendar, but they are edited from their source feature, not from the calendar itself.
+
+## Manage Holidays
+
+Administrators reach a dedicated holiday screen from Settings &gt; Holidays. From there you can seed Uganda&apos;s public holidays, mark a seeded holiday as not observed if the school does not follow it, reinstate a hidden one, and add a custom holiday. This screen is administrator-only; other roles are redirected away from it. See [Managing events](/features/calendar/managing-events) for details.
+
+## Subscribing from another calendar app
+
+Every user, staff or family, can generate a private link that syncs the school calendar into Google, Apple, or Outlook. The link respects the same visibility and centre rules as the in-app view. See [iCal subscription](/features/calendar/ical-subscription) for how to generate, use, and revoke it.
+
+<CardGroup cols={2}>
+  <Card title="Creating and managing events" icon="calendar-plus" href="/features/calendar/managing-events">
+    Create events, target centres, set recurrence, and handle recurring-series edits and holidays.
+  </Card>
+  <Card title="iCal subscription" icon="rss" href="/features/calendar/ical-subscription">
+    Generate, use, and revoke a calendar sync link for Google, Apple, or Outlook.
+  </Card>
+  <Card title="Meetings overview" icon="calendar-check" href="/features/meetings/overview">
+    Booked meetings appear on the calendar automatically once confirmed.
+  </Card>
+  <Card title="Homework overview" icon="book" href="/features/homework/overview">
+    Homework due dates feed into the calendar as all-day academic events.
+  </Card>
+</CardGroup>

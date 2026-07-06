@@ -1,0 +1,83 @@
+---
+title: Admissions overview
+description: How prospective families become enrolled students, from application to conversion
+icon: "user-plus"
+---
+
+Admissions turns applications into enrolled students. It is a six-stage pipeline that administrators work from a kanban board, with applicants entering either through a public application form or through manual staff entry.
+
+<Note>
+Admissions is limited to administrators. Supervisors, monitors, parents, and students do not have access to this feature.
+</Note>
+
+## The pipeline
+
+Every application moves through fixed stages, always in this order:
+
+| Stage | Meaning |
+|---|---|
+| Applied | Application submitted, not yet reviewed |
+| Under Review | Staff are evaluating the applicant |
+| Accepted | Approved for enrollment, not yet converted |
+| Waitlisted | Held for a future opening |
+| Rejected | Not proceeding |
+| Enrolled | Converted into a student record |
+
+Waitlisted and Rejected are terminal off-ramps. Enrolled is reached only through the one-click convert action described in [Managing applications](/features/admissions/managing-applications), never by dragging a card into that column on the board.
+
+## Two ways applications enter the pipeline
+
+<Tabs>
+  <Tab title="Public application form">
+    A prospective family fills out the form at `/apply/[your-org-slug]` without needing an account. They provide applicant details (name required, date of birth and desired grade or centre optional) and guardian details (name and email required, phone optional), and can attach up to 10 documents. The application enters the pipeline at Applied with its source recorded as online.
+  </Tab>
+  <Tab title="Staff manual entry (walk-in)">
+    An administrator clicks Add applicant on the board and fills the same form fields on behalf of a walk-in visitor or phone enquiry. The application enters the pipeline at Applied with its source recorded as staff-entered.
+  </Tab>
+</Tabs>
+
+## Sharing the public application form
+
+Each school has its own application link, built from its organization slug: `/apply/[your-org-slug]`. Share this link on your website, in enrollment emails, or on printed materials so families can apply without contacting the office first.
+
+<Steps>
+  <Step title="Find your organization slug">
+    Your organization slug is the identifier Clerk assigned your school. Confirm it with your administrator team if you are unsure which slug your organization uses.
+  </Step>
+  <Step title="Build the link">
+    Combine your app's domain with `/apply/` and your slug, for example `https://yourapp.com/apply/your-school-slug`.
+  </Step>
+  <Step title="Share it">
+    Post the link wherever prospective families will see it. No login is required to submit the form.
+  </Step>
+  <Step title="Applicant confirmation">
+    After submitting, the family sees an in-form thank-you message with no personal data echoed back, and a matching standalone confirmation page is available at `/apply/[your-org-slug]/confirmation`.
+  </Step>
+</Steps>
+
+<Warning>
+The form determines which school an application belongs to strictly from the slug in the URL. Sharing the wrong link sends an application to the wrong school.
+</Warning>
+
+## Where to find it
+
+Administrators reach the admissions board from the sidebar under People &amp; Centres > Admissions (`/admin/admissions`). A link to funnel analytics is available from the board&apos;s header.
+
+## Subscription requirement
+
+Viewing the board and opening an applicant&apos;s detail drawer does not require an active subscription. Writing to admissions (adding an applicant, moving a stage, uploading a document, converting to student) and viewing funnel analytics both require an active subscription. Without one, these actions are blocked.
+
+<CardGroup cols={2}>
+  <Card title="Managing applications" icon="table-columns" href="/features/admissions/managing-applications">
+    Work the kanban board, review applicants, and convert accepted applications to students.
+  </Card>
+  <Card title="Funnel analytics" icon="chart-line" href="/features/admissions/funnel-analytics">
+    See stage counts and conversion rates across the admissions pipeline.
+  </Card>
+  <Card title="Students overview" icon="users" href="/features/students/overview">
+    See what happens to a student record created by admissions conversion.
+  </Card>
+  <Card title="Roles and permissions" icon="shield" href="/features/organization/roles-and-permissions">
+    Confirm which roles can access which features.
+  </Card>
+</CardGroup>

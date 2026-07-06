@@ -1,0 +1,86 @@
+---
+title: Inventory reports
+description: Read stock on hand, PACE burn rate, low-stock alerts, and library overview reports for your inventory
+icon: "chart-line"
+---
+
+Inventory Reports gathers everything an administrator or supervisor needs to decide what to reorder in one page: current stock levels, how fast PACEs are being used, which items are running low, which assigned PACEs have no matching stock record, and what is happening in the library. Find it under Programs &amp; Resources &gt; Inventory &gt; Inventory Reports, at `/admin/inventory/reports`.
+
+Administrators and supervisors with `inventory:view` or `inventory:manage` can open this page. Only administrators and supervisors can reach `/admin/inventory` at all; other roles do not have inventory access.
+
+## Stock on Hand
+
+The Stock on Hand report lists every tracked item (PACE or library) with its current quantity. An item is flagged low when `quantity_on_hand` is at or below its `reorder_threshold` and that threshold is greater than zero. Setting a reorder threshold of 0 turns off the low flag for that item, so items you do not want to track for reordering (uncommon items, one-offs) will not clutter the report.
+
+## Low-stock widget and alerts
+
+A low-stock panel sits on the reports page and lists every item currently at or below its reorder threshold. Items at or below zero are marked in the destructive colour; items above zero but at/below threshold use the warning colour. When nothing is low, the panel shows &quot;All stock above threshold.&quot;
+
+<Note>
+The same condition also triggers an automatic alert outside the report. Whenever an issue movement or a negative adjustment pushes an item from above its threshold to at or below it, every user holding `inventory:manage` gets an in-app and email alert. Alerts are deduplicated to one per item within a rolling 24-hour window, so repeated small movements will not spam the same recipients.
+</Note>
+
+When a shipment or a positive adjustment brings a previously low item back above its threshold, a complementary restock-recovery notice fires for the same audience.
+
+## PACE burn-rate and stock-out forecast
+
+The burn-rate forecast estimates, for each PACE item, how many days of stock remain and when it will run out. For each item it calculates the average daily usage from issue movements over a lookback window you choose (7, 30, or 90 days, defaulting to 30), then divides remaining stock by that rate to project days remaining and a stock-out date.
+
+| Column | Meaning |
+|---|---|
+| Avg daily usage | Issue movements for the item divided by the lookback window (or by days since the item was created, if shorter) |
+| Days remaining | Current quantity on hand divided by average daily usage |
+| Projected stock-out date | Today plus days remaining |
+
+Rows with fewer than 14 days remaining are highlighted so they stand out against the rest of the list. An item with no issue activity in the selected window shows &quot;No usage data&quot; instead of a forecast, since there is no usage rate to project from.
+
+Use the Export CSV control on this report to download the name, PACE number, average daily usage, days remaining, and projected stock-out date for the selected lookback window.
+
+## Untracked PACEs nudge
+
+When a PACE is assigned to a student but no inventory item exists for that PACE number and subject, the auto-decrement has nothing to decrement against, so the assignment silently does not affect stock. The untracked-PACEs nudge is a dismissible callout on the reports page that names the first untracked PACE and how many others exist. Dismissing it is remembered per browser.
+
+<Steps>
+<Step title="Notice the callout">
+Look for &quot;Some assigned PACEs are not tracked&quot; on Inventory Reports, or open the untracked PACEs report for the full list.
+</Step>
+<Step title="Add the missing item">
+Follow through to add an inventory item for that PACE number and subject.
+</Step>
+<Step title="Confirm future assignments decrement stock">
+Once the item exists, assigning that PACE to a student will decrement its quantity on hand going forward.
+</Step>
+</Steps>
+
+## Library overview
+
+The library section of the reports page shows the ten most-borrowed library items and every overdue, still-out, non-lost checkout, sorted with the most overdue first, along with days overdue for each. This report reads from the same `inventory_items` rows used for PACE stock (where item type is library), while day-to-day checkout and return actions live in the library feature.
+
+<Note>
+Checking books out, returning them, and marking items lost happen on the library pages, not here. See [Library overview](/features/library/overview) for those workflows.
+</Note>
+
+## Movement ledger
+
+Every change to stock, whether a shipment, an assignment issuing a PACE, a return, a loss, or a manual adjustment, is recorded as a row in the movement ledger rather than as a direct edit to the quantity. The ledger view at `/admin/inventory/movements` shows each movement&apos;s item name, signed delta (green for increases, red for decreases), who performed it, any notes, and the timestamp.
+
+You can filter the ledger by item, by reason (purchase, issue, return, loss, or adjustment), and by date range. Click Export CSV to download the rows matching your current filters, useful for reconciling a shipment or preparing figures for a meeting or audit.
+
+<Tip>
+To see the full history for a single item instead of the org-wide ledger, use the History action on that item&apos;s row in Inventory Items.
+</Tip>
+
+<CardGroup cols={2}>
+<Card title="Inventory overview" icon="boxes-stacked" href="/features/inventory/overview">
+How PACE and library stock are tracked, and who can do what.
+</Card>
+<Card title="Receiving and adjusting stock" icon="truck-ramp-box" href="/features/inventory/receiving-and-adjusting">
+Record shipments and correct stock counts.
+</Card>
+<Card title="Library overview" icon="book" href="/features/library/overview">
+Checkout, return, and overdue workflows for library items.
+</Card>
+<Card title="PACE assignments" icon="graduation-cap" href="/features/students/pace-assignments">
+How assigning a PACE to a student decrements inventory.
+</Card>
+</CardGroup>

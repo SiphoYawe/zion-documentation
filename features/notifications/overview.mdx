@@ -1,0 +1,116 @@
+---
+title: Notifications and preferences
+description: How every feature in Zion reaches a user in-app and by email, and how each person controls what they receive
+icon: "bell"
+---
+
+Every feature in Zion, from homework and attendance to meetings and billing, sends updates through one notification pipeline. Each authenticated role, administrator, supervisor, monitor, parent, and student, has a personal notification bell and a full notification history, plus a preferences page to control what arrives and how.
+
+<Note>
+WhatsApp is wired into the notification system but is only active for the categories a caller explicitly enables. There is no organization-wide WhatsApp toggle. In-app and email are the two channels every role can rely on.
+</Note>
+
+## The notification bell
+
+Every dashboard header carries a notification bell. It works the same way for every role:
+
+- An unread-count badge shows on the bell, capped at display &quot;99+&quot; once unread notifications pass that count.
+- Clicking the bell opens a short list of recent notifications: a popover on desktop, a full-width sheet on mobile.
+- A &quot;See all&quot; link in that list opens the full notification history for the current portal.
+
+Staff reach their history at `/notifications`. Parents and students see the identical component at `/parent/notifications` and `/student/notifications`.
+
+## The notification history page
+
+The history page groups notifications by date (Today, Yesterday, Earlier) and loads more as you scroll. It has two tabs:
+
+- **Inbox**, for active notifications.
+- **Archived**, for ones you have filed away.
+
+You can narrow the list with search, a category filter, a read/unread filter, and a date-range filter.
+
+### Row and bulk actions
+
+| Action | Scope |
+| --- | --- |
+| Open | Reads the notification and, where relevant, takes you to the related record |
+| Mark read / unread | Single row or bulk-selected rows |
+| Archive / unarchive | Single row or bulk-selected rows |
+| Snooze | Single row |
+| Dismiss | Single row |
+| Select all | Applies bulk actions to every visible row |
+
+Snoozing and dismissing only affect the individual row you act on. Bulk actions apply to whatever rows are currently selected.
+
+## Where notifications come from
+
+Notifications are grouped into categories, and the categories a person sees depend on their role. A parent, for example, only sees categories relevant to their child&apos;s records (homework, attendance, meetings, report cards), while an administrator sees the full organizational set, including billing and staff-management categories. Features across Zion that dispatch through this pipeline include:
+
+<CardGroup cols={2}>
+  <Card title="Goal Check" icon="target" href="/features/goal-check/overview">
+    Goal-marking and ritual reminders
+  </Card>
+  <Card title="Attendance" icon="calendar-check" href="/features/attendance/overview">
+    Attendance alerts and daily marks
+  </Card>
+  <Card title="Homework" icon="book" href="/features/homework/overview">
+    Assignment and verification updates
+  </Card>
+  <Card title="Meetings" icon="users" href="/features/meetings/overview">
+    Booking, requests, and scheduling changes
+  </Card>
+  <Card title="Grading" icon="chart-line" href="/features/grading/overview">
+    Score entry and moderation updates
+  </Card>
+  <Card title="Broadcasts" icon="bullhorn" href="/features/broadcasts/overview">
+    School-wide and centre-wide announcements
+  </Card>
+</CardGroup>
+
+## Notification preferences matrix
+
+At `/profile/notifications`, every role sees a grid of the categories they can receive, with a toggle per channel: In-App, Email, and (where eligible) WhatsApp.
+
+- The In-App and Email columns always show.
+- The WhatsApp column appears only if your role has at least one category that is WhatsApp-eligible.
+- The matrix is opt-out: a missing preference row means the channel stays on by default. Turning a toggle off stops that category from reaching you on that channel.
+- The list also includes any category you have actually received a notification for, even if it is not yet part of the standard catalogue for your role.
+
+## Delivery settings: digest and quiet hours
+
+Below the preferences matrix, each person controls how their email notifications are timed:
+
+<Steps>
+  <Step title="Choose Immediate or Digest">
+    Immediate sends one email per event as it happens. Digest batches your notifications into a single daily summary email instead.
+  </Step>
+  <Step title="Set quiet hours (optional)">
+    Enter a start and end time, in your organization&apos;s local time, during which email (and WhatsApp, where active) is held rather than sent. Both a start and an end must be set together, or neither.
+  </Step>
+  <Step title="Save">
+    Held notifications are released once the quiet-hours window ends. In-app notifications are never held or batched: the bell and history page stay live regardless of your digest or quiet-hours settings.
+  </Step>
+</Steps>
+
+By default, delivery mode is Immediate and no quiet-hours window is set.
+
+<Warning>
+Digest and quiet hours only govern email and WhatsApp. Anything sent in-app appears on the bell and in your history the moment it is dispatched.
+</Warning>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Broadcasts" icon="bullhorn" href="/features/broadcasts/overview">
+    Compose and send school-wide or centre-wide announcements
+  </Card>
+  <Card title="Deliverability and audit" icon="shield-halved" href="/features/notifications/deliverability-and-audit">
+    Email suppression handling and the organization-wide notification audit log
+  </Card>
+  <Card title="Roles and permissions" icon="users" href="/features/organization/roles-and-permissions">
+    What each of the five roles can see and do
+  </Card>
+  <Card title="Alerts" icon="bell" href="/features/alerts/overview">
+    Threshold-based alerts that also flow through this pipeline
+  </Card>
+</CardGroup>

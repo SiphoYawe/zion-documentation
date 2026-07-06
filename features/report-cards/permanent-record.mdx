@@ -1,0 +1,112 @@
+---
+title: Permanent record and transcripts
+description: A multi-year academic record by year, with administrator-only manual entries and an official transcript export.
+icon: "book"
+---
+
+The Permanent Record is a multi-year view of a student&apos;s academic history. It aggregates PACE percentages, PACEs completed, and attendance for each academic year, and administrators can generate an official transcript PDF from it. Administrators, supervisors, and monitors can open the record; parents see their own child&apos;s record read-only.
+
+<Note>
+The Permanent Record deliberately excludes credits, GPA, rank, and honor roll. Zion does not calculate or display any of these on this page.
+</Note>
+
+## What the record shows
+
+Open a student&apos;s profile and go to Permanent Record. A year selector (newest first) switches between academic years. Each year shows one table with these columns:
+
+| Column | Description |
+|---|---|
+| Subject | The subject the PACE belongs to |
+| PACE ref | The PACE reference number, where available |
+| PACEs completed | Count of PACEs completed in that subject |
+| Percentage | The student&apos;s percentage for that subject and year |
+
+Below the subject table, a single attendance summary for the year shows present, absent, late, and total counts. Attendance is shown once per year, not broken out per subject.
+
+PACEs completed counts are drawn from all-time student PACE data, since that record is not scoped to a school term. Percentages and attendance in the record reflect what has been calculated or entered for that academic year.
+
+## What it deliberately excludes
+
+Credits, GPA, rank, and honor roll never appear anywhere on this page, for any role. If your school tracks these outside Zion, keep doing so in that separate system.
+
+## Computed rows, manual rows, and overrides
+
+Most rows are computed automatically from PACE and attendance data already in Zion. Administrators can also add or correct rows for cases the computed data can&apos;t cover:
+
+<Tabs>
+  <Tab title="Add a historical row">
+    Use this for a transfer student&apos;s prior-year record or any year before the school used Zion. Click "Add historical row" and fill in:
+
+    - Academic year, in `YYYY-YYYY` format
+    - Subject
+    - PACE ref (optional)
+    - Percentage, 0 to 100
+    - Attendance: present, absent, late
+    - Note (optional)
+
+    The row is stamped as manual and carries a "Manual" badge in the table.
+  </Tab>
+  <Tab title="Override a computed cell">
+    Use this to correct a computed subject cell without losing the underlying data. Click "Override" on the row. The dialog shows the current computed percentage as read-only, then asks for:
+
+    - New percentage
+    - PACEs completed, pre-filled from the computed value so it isn&apos;t zeroed out by accident
+    - Attendance
+    - Reason (optional)
+
+    The computed value is never deleted. The override writes a separate manual row that takes precedence when the record is displayed, while the original computed data stays intact underneath.
+  </Tab>
+</Tabs>
+
+<Warning>
+Only administrators can add, edit, or delete manual rows and overrides. Supervisors and monitors can view the Permanent Record but have no controls to change it.
+</Warning>
+
+## Generating an official transcript
+
+<Steps>
+  <Step title="Open the student's Permanent Record">
+    Navigate to the student&apos;s profile, then Permanent Record.
+  </Step>
+  <Step title="Click Generate transcript">
+    This queues an export job for that student. Only one transcript request can be in flight per student at a time, so a second request while one is queued or running is blocked.
+  </Step>
+  <Step title="Wait for it to finish">
+    The button becomes "Download transcript" once the PDF is ready.
+  </Step>
+  <Step title="Download the PDF">
+    Click "Download transcript" to get the file.
+  </Step>
+</Steps>
+
+<Warning>
+Generating an official transcript is administrator-only. Supervisors, monitors, teaching staff, and parents cannot request one.
+</Warning>
+
+## Who can do what
+
+| Role | View record | Add manual row / override | Generate transcript |
+|---|---|---|---|
+| Administrator | Yes | Yes | Yes |
+| Supervisor | Yes | No | No |
+| Monitor | Yes | No | No |
+| Parent | Own child only, read-only | No | No |
+
+## What parents see
+
+Parents view their own linked children&apos;s Permanent Record through a separate parent-scoped view. It shows the same per-year subject data and attendance summary, with no credits, GPA, rank, or honor roll, and no controls to add rows, override cells, or generate a transcript. A student ID outside the parent&apos;s own children resolves to "Record not found."
+
+<CardGroup cols={2}>
+  <Card title="Report Cards Overview" icon="file-lines" href="/features/report-cards/overview">
+    How term-based report cards are compiled and what sections they contain.
+  </Card>
+  <Card title="Generating and Distributing Report Cards" icon="paper-plane" href="/features/report-cards/generating-and-distributing">
+    Bulk-generate, preview, and send report cards to parents.
+  </Card>
+  <Card title="Report Card Templates" icon="palette" href="/features/report-cards/templates">
+    Customize the logo and sections used on generated report cards.
+  </Card>
+  <Card title="Your Child's Progress" icon="chart-line" href="/guides/parent/your-childs-progress">
+    Where parents find their child&apos;s report cards and progress.
+  </Card>
+</CardGroup>

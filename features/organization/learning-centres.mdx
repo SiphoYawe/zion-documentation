@@ -1,0 +1,126 @@
+---
+title: Learning centres
+description: Manage the classroom units that scope which students and staff each account can see
+icon: "school"
+---
+
+A learning centre is Zion&apos;s classroom unit. Every student belongs to a centre, and every supervisor or monitor sees only the students and rosters in the centres they are assigned to. Administrators see every centre in the organization.
+
+## Who can do what
+
+| Role | Access |
+|------|--------|
+| Administrator | Sees every centre, creates and edits centres, archives and restores centres, assigns supervisors and monitors |
+| Supervisor | Sees only centres they are assigned to, views the roster and teaching staff on the centre detail page |
+| Monitor | Sees only centres they are assigned to, views the roster and teaching staff on the centre detail page |
+
+Any other role, or a signed-in user without one of these three roles, is redirected away from the centres pages.
+
+## The centres directory
+
+Go to People &amp; Centres &gt; Learning Centres in the sidebar (`/centres`) to see the directory.
+
+The page header shows four stat tiles:
+
+- Total Centres, with the active count
+- Total Students
+- Average Class Size
+- Total Capacity
+
+Below the stats, active centres are listed as cards. Each card shows the centre name, description, an Active badge, the student count against capacity, and a View Details link. Administrators additionally see an Active/Archived tab switcher and a Create Centre button. Supervisors and monitors see only the active grid, scoped to their assigned centres.
+
+If no centres exist yet, administrators see a Create Your First Centre empty state.
+
+### The capacity indicator
+
+If a centre has no capacity set, no indicator is shown. Otherwise the indicator on the card and on the centre detail page follows these bands:
+
+| Enrollment vs capacity | Indicator |
+|---|---|
+| Below 80% | Normal (success tone), no badge |
+| 80% to 99% | Warning tone, no badge |
+| 100% or more | Destructive tone with an Over capacity badge |
+
+<Note>
+Capacity is a soft guardrail. Reaching or passing 100% does not block new students from being enrolled in the centre, it only flags the card and detail page for attention.
+</Note>
+
+## Creating and editing a centre
+
+<Steps>
+  <Step title="Open Learning Centres">
+    Go to `/centres` and click Create Centre. Administrators can also open an existing centre&apos;s detail page and choose to edit it.
+  </Step>
+  <Step title="Fill in the centre form">
+    Enter a name (required) and an optional description. Capacity is optional too. Leave it empty if you don&apos;t need capacity tracking for that centre.
+  </Step>
+  <Step title="Save">
+    The centre is created or updated and appears in the active grid.
+  </Step>
+</Steps>
+
+## Archiving and restoring a centre
+
+Administrators can archive a centre they no longer need active. Archived centres move out of the active grid into the Archived tab.
+
+<Steps>
+  <Step title="Switch to the Archived tab">
+    On `/centres`, use the Active/Archived tab switcher.
+  </Step>
+  <Step title="Find the centre">
+    The archived list shows each centre&apos;s archived date and capacity.
+  </Step>
+  <Step title="Restore">
+    Click Restore and confirm in the dialog. The centre returns to the Active tab.
+  </Step>
+</Steps>
+
+The Archived tab explains that centres appear there once archived, so an empty Archived tab is expected for schools that haven&apos;t removed any centres yet.
+
+## The centre detail page
+
+Opening a centre from the directory (`/centres/[id]`) shows:
+
+- The centre header with its name, description, and capacity indicator
+- A Teaching Staff panel, split into Supervisors and Monitors sub-lists, with an Assign action
+- A student roster for that centre
+
+Administrators can open any centre in their organization. Supervisors and monitors can only open centres they are assigned to. Trying to open a centre they are not assigned to returns a not-found page rather than showing the data.
+
+## Assigning supervisors and monitors
+
+Assignment is what actually grants a supervisor or monitor access to a centre. A staff member can be assigned to more than one centre.
+
+<Steps>
+  <Step title="Open the centre detail page">
+    Go to the centre you want to staff, from `/centres`.
+  </Step>
+  <Step title="Click Assign in the Teaching Staff panel">
+    This opens a dialog listing the organization&apos;s members.
+  </Step>
+  <Step title="Select one or more members">
+    Multi-select the supervisors or monitors who should have access to this centre.
+  </Step>
+  <Step title="Submit">
+    The assignment is saved and the member&apos;s roster access updates to include this centre.
+  </Step>
+</Steps>
+
+<Tip>
+Assigning a supervisor or monitor to a centre from this page has the same effect as assigning a centre to them when inviting or editing their account under Teaching Staff. Either path updates the same assignment.
+</Tip>
+
+<CardGroup cols={2}>
+  <Card title="Teaching staff and users" icon="users-gear" href="/features/organization/teaching-staff-and-users">
+    Invite staff, assign roles and centres, and manage accounts.
+  </Card>
+  <Card title="Roles and permissions" icon="shield-halved" href="/features/organization/roles-and-permissions">
+    Layer custom permissions on top of the built-in roles.
+  </Card>
+  <Card title="Students overview" icon="graduation-cap" href="/features/students/overview">
+    See how students are enrolled into a centre&apos;s roster.
+  </Card>
+  <Card title="Administrator: learning centres" icon="school" href="/guides/administrator/learning-centres">
+    A walkthrough of centre setup from the administrator&apos;s perspective.
+  </Card>
+</CardGroup>
