@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
   "name": "Zion",
-  "description": "AI-powered school management system for ACE schools - Transform Goal Check, attendance, grading, and reporting",
+  "description": "School management for ACE schools: Goal Check, attendance, grading, behaviour, homework, reporting, and family portals.",
   "colors": {
     "primary": "#3B82F6",
     "light": "#F8FAFC",
@@ -28,99 +28,258 @@
     }
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": ["index", "quickstart", "features"]
-      },
-      {
-        "group": "Administrator Guides",
-        "pages": [
-          "guides/administrator/onboarding",
-          "guides/administrator/goal-check",
-          "guides/administrator/attendance",
-          "guides/administrator/grading",
-          "guides/administrator/insights",
-          "guides/administrator/school-management",
-          "guides/administrator/learning-centres",
-          "guides/administrator/staff-management",
-          "guides/administrator/students",
-          "guides/administrator/reports"
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": ["index", "quickstart", "features"]
+          },
+          {
+            "group": "Administrator Guides",
+            "pages": [
+              "guides/administrator/onboarding",
+              "guides/administrator/goal-check",
+              "guides/administrator/attendance",
+              "guides/administrator/grading",
+              "guides/administrator/insights",
+              "guides/administrator/learning-centres",
+              "guides/administrator/school-management",
+              "guides/administrator/staff-management",
+              "guides/administrator/students",
+              "guides/administrator/reports"
+            ]
+          },
+          {
+            "group": "Supervisor & Monitor Guides",
+            "pages": [
+              "guides/supervisor/goal-check",
+              "guides/supervisor/dashboard",
+              "guides/supervisor/attendance",
+              "guides/supervisor/grading",
+              "guides/monitor/goal-check"
+            ]
+          },
+          {
+            "group": "Teaching Staff",
+            "pages": ["guides/teaching-staff/overview"]
+          },
+          {
+            "group": "For Parents",
+            "pages": [
+              "features/parent-portal/overview",
+              "guides/parent/getting-started",
+              "guides/parent/your-childs-progress",
+              "guides/parent/meetings-and-communication"
+            ]
+          },
+          {
+            "group": "For Students",
+            "pages": [
+              "features/student-portal/overview",
+              "guides/student/getting-started"
+            ]
+          }
         ]
       },
       {
-        "group": "Supervisor & Monitor Guides",
-        "pages": [
-          "guides/supervisor/goal-check",
-          "guides/supervisor/attendance",
-          "guides/supervisor/grading",
-          "guides/supervisor/dashboard",
-          "guides/monitor/goal-check"
+        "tab": "Features",
+        "groups": [
+          {
+            "group": "Goal Check",
+            "pages": [
+              "features/goal-check/overview",
+              "features/goal-check/setting-goals",
+              "features/goal-check/marking-progress",
+              "features/goal-check/rituals",
+              "features/goal-check/reports",
+              "features/goal-check/export"
+            ]
+          },
+          {
+            "group": "Attendance",
+            "pages": [
+              "features/attendance/overview",
+              "features/attendance/marking",
+              "features/attendance/alerts",
+              "features/attendance/reports",
+              "features/attendance/trends"
+            ]
+          },
+          {
+            "group": "Grading",
+            "pages": [
+              "features/grading/overview",
+              "features/grading/score-entry",
+              "features/grading/moderation",
+              "features/grading/retests",
+              "features/grading/audit-trail"
+            ]
+          },
+          {
+            "group": "Behaviour",
+            "pages": [
+              "features/behaviour/overview",
+              "features/behaviour/logging",
+              "features/behaviour/reports"
+            ]
+          },
+          {
+            "group": "Homework",
+            "pages": [
+              "features/homework/overview",
+              "features/homework/assigning-and-verifying",
+              "features/homework/completion-report"
+            ]
+          },
+          {
+            "group": "Extracurriculars",
+            "pages": [
+              "features/extracurriculars/overview",
+              "features/extracurriculars/managing-catalog",
+              "features/extracurriculars/interest-and-reports"
+            ]
+          },
+          {
+            "group": "Library",
+            "pages": [
+              "features/library/overview",
+              "features/library/checkout-and-return",
+              "features/library/overdue-and-lost"
+            ]
+          },
+          {
+            "group": "PACE Inventory",
+            "pages": [
+              "features/inventory/overview",
+              "features/inventory/receiving-and-adjusting",
+              "features/inventory/reports"
+            ]
+          },
+          {
+            "group": "Meetings",
+            "pages": [
+              "features/meetings/overview",
+              "features/meetings/availability",
+              "features/meetings/booking-and-requests",
+              "features/meetings/managing-and-documenting"
+            ]
+          },
+          {
+            "group": "Calendar",
+            "pages": [
+              "features/calendar/overview",
+              "features/calendar/managing-events",
+              "features/calendar/ical-subscription"
+            ]
+          },
+          {
+            "group": "Broadcasts & Notifications",
+            "pages": [
+              "features/broadcasts/overview",
+              "features/notifications/overview",
+              "features/notifications/deliverability-and-audit"
+            ]
+          },
+          {
+            "group": "Report Cards",
+            "pages": [
+              "features/report-cards/overview",
+              "features/report-cards/generating-and-distributing",
+              "features/report-cards/templates",
+              "features/report-cards/permanent-record"
+            ]
+          },
+          {
+            "group": "Curriculum Compass",
+            "pages": ["features/compass/overview"]
+          },
+          {
+            "group": "Admissions",
+            "pages": [
+              "features/admissions/overview",
+              "features/admissions/managing-applications",
+              "features/admissions/funnel-analytics"
+            ]
+          },
+          {
+            "group": "Analytics & Insights",
+            "pages": [
+              "features/insights/overview",
+              "features/insights/analytics",
+              "features/insights/types",
+              "features/insights/predictions"
+            ]
+          },
+          {
+            "group": "Students & PACEs",
+            "pages": [
+              "features/students/overview",
+              "features/students/bulk-import",
+              "features/students/pace-assignments",
+              "features/paces/catalog",
+              "features/academic-terms/overview"
+            ]
+          },
+          {
+            "group": "Organization",
+            "pages": [
+              "features/organization/learning-centres",
+              "features/organization/teaching-staff-and-users",
+              "features/organization/roles-and-permissions"
+            ]
+          },
+          {
+            "group": "Billing",
+            "pages": ["features/billing/overview"]
+          },
+          {
+            "group": "Data Import & Export",
+            "pages": [
+              "features/data/importing-data",
+              "features/data/migration-concierge",
+              "features/data/exporting-data"
+            ]
+          },
+          {
+            "group": "Setup & Settings",
+            "pages": [
+              "features/onboarding/getting-started",
+              "features/school-settings/overview",
+              "features/school-settings/alerts-and-reports"
+            ]
+          },
+          {
+            "group": "Alerts & Audit",
+            "pages": [
+              "features/alerts/overview",
+              "features/audit/corrections-and-notifications"
+            ]
+          }
         ]
       },
       {
-        "group": "Goal Check Features",
-        "pages": [
-          "features/goal-check/overview",
-          "features/goal-check/setting-goals",
-          "features/goal-check/marking-progress",
-          "features/goal-check/reports",
-          "features/goal-check/export"
+        "tab": "Reference",
+        "groups": [
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/roles-permissions",
+              "reference/terminology",
+              "reference/csv-templates"
+            ]
+          }
         ]
       },
       {
-        "group": "Attendance Features",
-        "pages": [
-          "features/attendance/overview",
-          "features/attendance/marking",
-          "features/attendance/alerts",
-          "features/attendance/reports",
-          "features/attendance/trends"
+        "tab": "Resources",
+        "groups": [
+          {
+            "group": "Resources",
+            "pages": ["changelog", "support", "faq"]
+          }
         ]
-      },
-      {
-        "group": "Grading Features",
-        "pages": [
-          "features/grading/overview",
-          "features/grading/score-entry",
-          "features/grading/moderation",
-          "features/grading/retests",
-          "features/grading/audit-trail"
-        ]
-      },
-      {
-        "group": "Insights & Analytics",
-        "pages": [
-          "features/insights/overview",
-          "features/insights/types",
-          "features/insights/analytics"
-        ]
-      },
-      {
-        "group": "Student Management",
-        "pages": [
-          "features/students/overview",
-          "features/students/bulk-import",
-          "features/students/pace-assignments"
-        ]
-      },
-      {
-        "group": "PACE Catalog",
-        "pages": [
-          "features/paces/catalog"
-        ]
-      },
-      {
-        "group": "Reference",
-        "pages": [
-          "reference/roles-permissions",
-          "reference/terminology",
-          "reference/csv-templates"
-        ]
-      },
-      {
-        "group": "Resources",
-        "pages": ["changelog", "support", "faq"]
       }
     ]
   },
