@@ -10,6 +10,10 @@ Zion has two onboarding systems, and they do not overlap. The setup wizard at `/
 
 The wizard appears the first time the organization&apos;s creator signs in, before any school profile exists. It is forced. Zion checks for a `schools` row matching the Clerk organization, and if none exists, the wizard renders instead of the dashboard.
 
+<Frame caption="The school profile step of the setup wizard.">
+  <img src="/images/guides/administrator/school-settings-1.png" alt="School profile step of the setup wizard with name, city, and contact fields" />
+</Frame>
+
 <Steps>
   <Step title="School Profile">
     Enter the school name (required, 2 to 100 characters), plus optional city, country, contact email, and contact phone. Timezone defaults to UTC and language defaults to English, the only language currently offered. Continue calls `createSchoolProfileOnboarding` and creates the `schools` row.
@@ -26,6 +30,10 @@ The wizard appears the first time the organization&apos;s creator signs in, befo
 </Steps>
 
 The wizard ends at a completion screen summarizing what was set up, with buttons to go to the dashboard or contact support.
+
+<Frame caption="The invite teaching staff step of the setup wizard.">
+  <img src="/images/guides/administrator/onboarding-1-users.png" alt="Invite teaching staff step of the setup wizard" />
+</Frame>
 
 <Note>
   If you navigate to `/onboarding` again after the school profile already exists, Zion does not replay the wizard. It shows a static &quot;Onboarding Complete&quot; screen with links to the dashboard and to School Settings.

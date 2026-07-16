@@ -6,6 +6,10 @@ icon: "boxes-stacked"
 
 Inventory tracks two kinds of stock in one items table: PACE booklets and library books. Every change to stock is recorded as a movement (a purchase, an issue, a return, a loss, or an adjustment) in an append-only ledger. A database trigger reads that ledger and reconciles the quantity on hand. The interface never writes the on-hand count directly.
 
+<Frame caption="The inventory items list with quantity on hand for each item">
+  <img src="/images/features/inventory/items-1.png" alt="A list of inventory items showing quantity on hand and reorder status" />
+</Frame>
+
 ## Who can use it
 
 <Tabs>

@@ -8,6 +8,10 @@ Inventory Reports gathers everything an administrator or supervisor needs to dec
 
 Administrators and supervisors with `inventory:view` or `inventory:manage` can open this page. Only administrators and supervisors can reach `/admin/inventory` at all; other roles do not have inventory access.
 
+<Frame caption="Stock on hand with low-stock items flagged for reorder">
+  <img src="/images/features/inventory/reports-1.png" alt="An inventory report listing stock on hand with items flagged for low stock" />
+</Frame>
+
 ## Stock on Hand
 
 The Stock on Hand report lists every tracked item (PACE or library) with its current quantity. An item is flagged low when `quantity_on_hand` is at or below its `reorder_threshold` and that threshold is greater than zero. Setting a reorder threshold of 0 turns off the low flag for that item, so items you do not want to track for reordering (uncommon items, one-offs) will not clutter the report.

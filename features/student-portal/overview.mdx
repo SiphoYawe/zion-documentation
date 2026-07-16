@@ -6,6 +6,10 @@ icon: "graduation-cap"
 
 The student portal is live. It gives a signed-in student a read-mostly view of their own school record at `/student/*`: homework, goals, grades, progress, attendance, calendar, activities, and notifications.
 
+<Frame caption="The student dashboard with today's PACE goals and a 30-day attendance widget.">
+  <img src="/images/guides/student/dashboard-1.png" alt="Student dashboard showing today's PACE goals and a 30-day attendance widget" />
+</Frame>
+
 <Note>
 Access is gated to the `student` Clerk organization role. Every other role is redirected away from `/student/*` routes, and the middleware plus the `(student)` route group layout both enforce the check.
 </Note>
@@ -42,6 +46,10 @@ Every server action resolves the student&apos;s identity from `students.clerk_us
     Browse the extracurricular catalog for the student&apos;s own centre and org-wide activities, and express interest in one.
   </Card>
 </CardGroup>
+
+<Frame caption="The My Progress view with a 30-day goal-achievement trend and termly projections.">
+  <img src="/images/features/student-portal/progress-1.png" alt="Student My Progress view showing a 30-day goal-achievement trend and termly projections" />
+</Frame>
 
 <Info>
 Notifications are reached from the header bell&apos;s "See all" link rather than a main sidebar item, and open the full in-app notification history at `/student/notifications`.

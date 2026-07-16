@@ -6,6 +6,10 @@ icon: "gear"
 
 School Settings is the page where an administrator maintains the school&apos;s profile information and two operational toggles that change how PACE progression and goal approval work. It lives at `/settings/school`.
 
+<Frame caption="The school settings page showing the school profile fields and operational toggles.">
+  <img src="/images/guides/administrator/school-settings-1.png" alt="School settings page showing school profile fields and operational toggles" />
+</Frame>
+
 ## Who can access this page
 
 Only the administrator role can open `/settings/school`. Supervisors, monitors, teaching staff, parents, and students who navigate to this URL are redirected to the dashboard. Saving changes calls `updateSchoolProfile`, which is gated on the `settings:edit_org` permission, currently granted only to the administrator permission bundle.
